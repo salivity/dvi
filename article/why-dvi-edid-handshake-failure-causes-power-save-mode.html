@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why DVI EDID Handshake Failure Causes Power-Save Mode - dvi</title>
+    <meta name="description" content="When a monitor connects to a computer via Digital Visual Interface (DVI), it relies on an Extended Display Identification Data (EDID) handshake to communicate its capabilities to the graphics card. If this handshake fails, becomes corrupted, or cannot be">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-dvi-edid-handshake-failure-causes-power-save-mode">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why DVI EDID Handshake Failure Causes Power-Save Mode - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-dvi-edid-handshake-failure-causes-power-save-mode" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="When a monitor connects to a computer via Digital Visual Interface (DVI), it relies on an Extended Display Identification Data (EDID) handshake to communicate its capabilities to the graphics card. If this handshake fails, becomes corrupted, or cannot be" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-dvi-edid-handshake-failure-causes-power-save-mode">Why DVI
+EDID Handshake Failure Causes Power-Save Mode</h1>
+<p>When a monitor connects to a computer via Digital Visual Interface
+(DVI), it relies on an Extended Display Identification Data (EDID)
+handshake to communicate its capabilities to the graphics card. If this
+handshake fails, becomes corrupted, or cannot be read across the Display
+Data Channel (DDC), the graphics processing unit (GPU) cannot confirm
+that an active, compatible display is attached. As a fail-safe, the GPU
+halts the transmission of digital video and synchronization signals,
+leading the monitor's internal scaler to interpret the missing input as
+an idle connection and trigger power-save mode.</p>
+<h3 id="the-role-of-edid-and-ddc-in-dvi-connections">The Role of EDID
+and DDC in DVI Connections</h3>
+<p>DVI cables carry both video signals and data communication channels.
+While Transition-Minimized Differential Signaling (TMDS) lines transmit
+raw pixel data and clock signals, dedicated lines—specifically DDC Clock
+(pin 6) and DDC Data (pin 7)—form an I2C communication bus.</p>
+<p>When the computer boots or a display is plugged in, the monitor
+asserts a 5-volt Hot Plug Detect (HPD) signal. In response, the GPU
+queries the monitor’s onboard EEPROM chip over the DDC bus to read its
+EDID block. This 128-byte (or 256-byte extended) data structure details
+the monitor’s manufacturer, native resolution, supported refresh rates,
+and precise pixel clock timings.</p>
+<h3 id="why-gpu-output-shuts-down-on-a-failed-handshake">Why GPU Output
+Shuts Down on a Failed Handshake</h3>
+<p>Modern display drivers enforce strict handshaking protocols to
+prevent hardware damage. Older analog monitors could often accept
+out-of-range signals, risking hardware failure, but digital standards
+like DVI require known parameters before transmission begins.</p>
+<p>If the GPU attempts to read the EDID data and encounters an I2C
+timeout, electrical noise, or a corrupted checksum, the handshake fails.
+Because the GPU cannot determine the display's supported frequencies, it
+enters a protective state. Rather than transmitting an arbitrary or
+potentially damaging resolution, the graphics driver refuses to
+initialize the TMDS transmitter. The GPU halts the TMDS clock entirely
+or drops the digital video data streams, resulting in zero transmission
+across the digital video pins.</p>
+<h3 id="how-the-monitor-enters-power-save-mode">How the Monitor Enters
+Power-Save Mode</h3>
+<p>A monitor monitors incoming signals at its physical receiver and
+scaler chip. Under standard VESA Display Power Management Signaling
+(DPMS) rules adapted for digital displays, the monitor looks for two
+primary indicators of activity:</p>
+<ol type="1">
+<li><strong>A stable TMDS clock signal:</strong> Indicates an active
+transmitter at the host end.</li>
+<li><strong>Valid horizontal and vertical synchronization
+pulses:</strong> Indicates an incoming image frame structure.</li>
+</ol>
+<p>When an EDID handshake fails and the GPU suppresses the TMDS link,
+the monitor’s scaler detects an absence of both the TMDS clock and sync
+signals. The monitor's internal firmware determines that no active video
+source is broadcasting. To comply with international energy-efficiency
+standards, the display controller turns off the panel backlight, shuts
+down non-essential internal processing components, and enters a
+low-power sleep state, often briefly flashing a "No Signal" or "Entering
+Power Saving Mode" message on screen.</p>
+<h3 id="common-root-causes-of-dvi-handshake-failures">Common Root Causes
+of DVI Handshake Failures</h3>
+<p>Several hardware and electrical issues can interrupt the DVI EDID
+handshake:</p>
+<ul>
+<li><strong>Bent or Missing DDC Pins:</strong> Pins 6 and 7 handle the
+I2C data transfer, and pin 14 supplies +5V power to the monitor's
+EEPROM. If any of these pins are bent or broken, the video pins may
+still connect physically, but the EDID handshake will fail
+entirely.</li>
+<li><strong>Cable Length and Capacitance:</strong> Long or low-quality
+DVI cables suffer from signal degradation on the I2C bus, causing bit
+errors that invalidate the EDID checksum.</li>
+<li><strong>Passive Adapters:</strong> Using passive adapters (such as
+DisplayPort-to-DVI or HDMI-to-DVI) can drop the DDC voltage levels below
+the threshold required for the GPU to read the EEPROM reliably.</li>
+<li><strong>Corrupted Display EEPROM:</strong> Power surges can corrupt
+the data stored inside the monitor's non-volatile memory, returning an
+invalid EDID block to the GPU upon request.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

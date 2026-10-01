@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How TMDS Equalizers Restore High-Frequency DVI Loss - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) cables rely on Transition Minimized Differential Signaling (TMDS) to transmit high-speed video data, but long cable runs cause severe high-frequency signal attenuation that degrades the digital transmission. An equalizer so">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-tmds-equalizers-restore-high-frequency-dvi-loss">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How TMDS Equalizers Restore High-Frequency DVI Loss - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-tmds-equalizers-restore-high-frequency-dvi-loss" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) cables rely on Transition Minimized Differential Signaling (TMDS) to transmit high-speed video data, but long cable runs cause severe high-frequency signal attenuation that degrades the digital transmission. An equalizer so" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-tmds-equalizers-restore-high-frequency-dvi-loss">How TMDS
+Equalizers Restore High-Frequency DVI Loss</h1>
+<p>Digital Visual Interface (DVI) cables rely on Transition Minimized
+Differential Signaling (TMDS) to transmit high-speed video data, but
+long cable runs cause severe high-frequency signal attenuation that
+degrades the digital transmission. An equalizer solves this problem by
+acting as an inverse frequency filter, selectively amplifying the
+weakened high-frequency signal components while leaving lower
+frequencies intact. By neutralizing the physical losses of copper
+conductors, the equalizer sharpens transition edges, eliminates
+inter-symbol interference, and reopens the collapsed data "eye" so the
+DVI receiver can reliably reconstruct the original digital bits.</p>
+<h3 id="the-physics-of-high-frequency-cable-attenuation">The Physics of
+High-Frequency Cable Attenuation</h3>
+<p>Copper DVI cables suffer from two primary frequency-dependent loss
+mechanisms: the skin effect and dielectric loss. At standard DVI clock
+rates, alternating currents concentrate on the outer perimeter of the
+copper conductor, increasing effective resistance as frequency climbs.
+Simultaneously, the insulating dielectric material absorbs
+electromagnetic energy at higher frequencies.</p>
+<p>Because TMDS encodes data into rapid state transitions, the
+high-frequency harmonics that define sharp signal edges are attenuated
+much faster than the fundamental, low-frequency components. As a result,
+fast rising and falling square-wave edges round off, causing adjacent
+signal pulses to bleed into one another. This condition, known as
+Inter-Symbol Interference (ISI), collapses the differential signal's
+"eye diagram," making it impossible for the receiver's clock and data
+recovery (CDR) circuitry to distinguish between logical 1s and 0s
+without bit errors.</p>
+<h3 id="the-inversion-principle-of-equalization">The Inversion Principle
+of Equalization</h3>
+<p>The primary function of an equalizer—typically implemented as a
+Continuous-Time Linear Equalizer (CTLE) integrated into the DVI
+receiver—is to synthesize a frequency response that mirrors the cable's
+insertion loss curve.</p>
+<p>Where the physical cable acts as a low-pass filter, the equalizer
+acts as a high-pass peaking filter. The transfer function of the
+combined system (cable plus equalizer) yields a flat, uniform frequency
+response across the required bandwidth. By providing higher gain to
+high-frequency components (near the Nyquist frequency of the TMDS
+stream) relative to direct current (DC) and low-frequency components,
+the equalizer restores the original spectral balance of the differential
+signal.</p>
+<h3 id="restoring-the-differential-eye-diagram">Restoring the
+Differential Eye Diagram</h3>
+<p>Equalization directly reverses the phase and amplitude distortions
+introduced by the cable:</p>
+<ul>
+<li><strong>Edge Sharpening:</strong> By restoring high-frequency
+spectral content, the equalizer shortens rise and fall times, converting
+rounded waveforms back into sharply defined square transitions.</li>
+<li><strong>Jitter Reduction:</strong> ISI-induced deterministic jitter
+shifts the time at which differential signals cross zero. Boosting the
+attenuated transitions realigns these zero-crossing points to their
+nominal clock boundaries.</li>
+<li><strong>Eye Opening:</strong> The combination of restored amplitude
+and aligned transitions re-establishes adequate vertical voltage margin
+(noise margin) and horizontal timing margin (jitter tolerance). This
+expanded eye window allows the internal differential comparators to
+sample the bits accurately.</li>
+</ul>
+<h3 id="adaptive-vs-fixed-equalization">Adaptive vs. Fixed
+Equalization</h3>
+<p>High-performance DVI receivers often utilize adaptive equalization
+circuitry rather than fixed-gain filters. Because attenuation varies
+based on cable length, gauge, and manufacturing quality, fixed boosting
+can lead to under-equalization (failing to open the eye) or
+over-equalization (amplifying high-frequency noise and inducing
+overshoot). Adaptive equalizers continuously sample the incoming
+signal's spectral balance, automatically tuning internal capacitive and
+resistive feedback loops to match the precise attenuation profile of the
+connected DVI link.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

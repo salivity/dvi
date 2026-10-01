@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Cable Capacitance Degrades DVI Signals - dvi</title>
+    <meta name="description" content="Cable capacitance plays a critical role in determining the integrity of high-frequency Digital Visual Interface (DVI) video transmissions. In long or poorly shielded cables, stray capacitance interacts with the intrinsic resistance of the conductors to f">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-cable-capacitance-degrades-dvi-signals">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Cable Capacitance Degrades DVI Signals - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-cable-capacitance-degrades-dvi-signals" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Cable capacitance plays a critical role in determining the integrity of high-frequency Digital Visual Interface (DVI) video transmissions. In long or poorly shielded cables, stray capacitance interacts with the intrinsic resistance of the conductors to f" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-cable-capacitance-degrades-dvi-signals">How Cable
+Capacitance Degrades DVI Signals</h1>
+<p>Cable capacitance plays a critical role in determining the integrity
+of high-frequency Digital Visual Interface (DVI) video transmissions. In
+long or poorly shielded cables, stray capacitance interacts with the
+intrinsic resistance of the conductors to form a parasitic low-pass
+filter. This filtering rounds off the sharp square-wave edges required
+for digital data, resulting in signal attenuation, phase jitter, and
+inter-symbol interference. Over distance, excessive capacitance reduces
+the margin for error at the receiver, manifesting visually as random
+pixel "sparkles," color banding, intermittent display flickering, or
+complete loss of sync.</p>
+<h3 id="the-low-pass-filter-mechanism">The Low-Pass Filter
+Mechanism</h3>
+<p>DVI transmits uncompressed digital video using Transition-Minimized
+Differential Signaling (TMDS). TMDS relies on fast switching speeds and
+square waves where high and low voltage states represent binary
+data.</p>
+<p>A physical cable consists of insulated copper conductors running
+parallel to each other and surrounding ground shields. This geometry
+naturally creates parasitic capacitance between adjacent data lines and
+between the signal lines and ground. When combined with the wire's
+inherent resistance, this capacitance forms an equivalent
+resistance-capacitance (RC) low-pass filter circuit.</p>
+<p>An RC filter permits low-frequency components of a signal to pass
+through while attenuating high-frequency components. Because a digital
+square wave is mathematically composed of a fundamental frequency
+combined with numerous high-frequency odd harmonics, stripping away
+these higher frequencies rounds off the rapid voltage transitions
+between digital "1" and "0" states.</p>
+<h3 id="impact-on-rise-and-fall-times">Impact on Rise and Fall
+Times</h3>
+<p>Cable capacitance dictates the rate at which voltage can change
+across the differential pairs. The charging and discharging cycles of
+parasitic capacitors limit the transition speed, directly increasing the
+rise and fall times of the TMDS signals.</p>
+<p>At higher resolutions and refresh rates (such as 1920x1200 at 60Hz or
+dual-link configurations), bit rates easily exceed 1.65 Gbps per
+channel. When clock cycles are measured in picoseconds, sluggish rise
+times prevent the signal from reaching full logic-level voltages before
+the next transition occurs.</p>
+<h3 id="eye-diagram-closure-and-jitter">Eye Diagram Closure and
+Jitter</h3>
+<p>In digital signal analysis, signal health is measured using an "eye
+diagram," which overlays multiple signal transitions. An open "eye"
+indicates a clean distinction between binary states and sufficient
+setup/hold time for the receiver.</p>
+<p>High cable capacitance degrades this diagram in two primary ways:</p>
+<ul>
+<li><strong>Inter-Symbol Interference (ISI):</strong> Because
+transitions are delayed, energy from a previous bit bleeds into the time
+slot of the subsequent bit. A logic state can become dependent on
+preceding bits, blurring the distinction between binary data.</li>
+<li><strong>Deterministic Jitter:</strong> Capacitive loading causes the
+crossing points of differential signals to wander relative to the TMDS
+clock, introducing timing uncertainty at the receiver's sampling
+stage.</li>
+</ul>
+<p>As capacitance increases, the eye closes both horizontally (timing
+margin) and vertically (amplitude margin), making it difficult for the
+display controller to accurately sample incoming bits.</p>
+<h3 id="observable-effects-on-video-output">Observable Effects on Video
+Output</h3>
+<p>Unlike analog connections where capacitance causes ghosting or soft
+focus, digital DVI signals fail sharply due to threshold-detection
+issues. When cable capacitance causes bit errors, users experience:</p>
+<ul>
+<li><strong>Digital "Sparkles":</strong> Single-pixel anomalies that
+flicker across the screen when individual color bits are
+misinterpreted.</li>
+<li><strong>Line Dropping and Stutter:</strong> Loss of horizontal
+synchronization markers, causing horizontal streaks.</li>
+<li><strong>Blanking and Black Screens:</strong> Total failure of the
+display receiver to lock onto the degraded TMDS clock, leading to cyclic
+signal loss.</li>
+</ul>
+<h3 id="mitigating-capacitive-degradation">Mitigating Capacitive
+Degradation</h3>
+<p>To counter capacitive losses over standard copper DVI runs:</p>
+<ul>
+<li><strong>Dielectric Materials:</strong> Cables constructed with
+foamed polyethylene or PTFE insulation exhibit lower dielectric
+constants, directly reducing mutual and ground capacitance.</li>
+<li><strong>Wire Gauge (AWG):</strong> Thicker conductors (e.g., 24 AWG
+vs. 28 AWG) lower series resistance, which helps mitigate the RC time
+constant despite standard capacitance levels.</li>
+<li><strong>Length Constraints:</strong> Passive DVI cables are
+typically constrained to a maximum of 5 meters (approx. 15 feet); beyond
+this, active equalizers or repeaters are required to boost
+high-frequency components and restore sharp signal transitions.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

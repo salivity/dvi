@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI PCB Trace Length Matching and Signal Integrity - dvi</title>
+    <meta name="description" content="Trace length matching on a graphics card's printed circuit board (PCB) is critical for preserving Digital Visual Interface (DVI) signal integrity. Because DVI uses high-speed serial links to transmit uncompressed video data, slight variations in copper t">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-pcb-trace-length-matching-and-signal-integrity">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI PCB Trace Length Matching and Signal Integrity - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-pcb-trace-length-matching-and-signal-integrity" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Trace length matching on a graphics card's printed circuit board (PCB) is critical for preserving Digital Visual Interface (DVI) signal integrity. Because DVI uses high-speed serial links to transmit uncompressed video data, slight variations in copper t" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-pcb-trace-length-matching-and-signal-integrity">DVI PCB
+Trace Length Matching and Signal Integrity</h1>
+<p>Trace length matching on a graphics card's printed circuit board
+(PCB) is critical for preserving Digital Visual Interface (DVI) signal
+integrity. Because DVI uses high-speed serial links to transmit
+uncompressed video data, slight variations in copper trace lengths cause
+timing mismatches known as skew. Maintaining precise trace length
+tolerances prevents data corruption, jitter, and electromagnetic
+interference, ensuring that digital display signals arrive synchronized
+and intact at the monitor.</p>
+<h3 id="the-role-of-tmds-in-dvi">The Role of TMDS in DVI</h3>
+<p>DVI interfaces rely on Transition Minimized Differential Signaling
+(TMDS) to transmit data. A standard single-link DVI connection consists
+of four differential pairs: three data channels carrying red, green, and
+blue video components, and one dedicated clock channel. Dual-link DVI
+doubles the data channels to six.</p>
+<p>TMDS operates at frequencies up to 165 MHz for single-link DVI,
+corresponding to data rates of up to 1.65 Gbps per channel. At these
+multi-gigabit speeds, electrical signals travel across PCB copper at
+approximately six inches per nanosecond. Any discrepancy in physical
+trace length directly translates to temporal displacement of the signal
+wavefronts.</p>
+<h3 id="intra-pair-skew-and-common-mode-noise">Intra-Pair Skew and
+Common-Mode Noise</h3>
+<p>Intra-pair skew refers to a length difference between the positive
+(+) and negative (-) traces within the same differential pair. In a
+balanced differential system, the two lines carry inverted versions of
+the same signal. The receiver interprets the difference between these
+two voltages, which inherently cancels external noise.</p>
+<p>When the two traces are not matched in length:</p>
+<ul>
+<li><strong>Phase Misalignment:</strong> The signals no longer arrive
+180 degrees out of phase. One edge transitions earlier than the
+other.</li>
+<li><strong>Eye Diagram Closure:</strong> The differential eye diagram
+suffers from reduced width and height, narrowing the margin for the
+receiver to correctly sample bits.</li>
+<li><strong>Common-Mode Conversion:</strong> The timing asymmetry
+converts part of the differential signal into common-mode energy,
+generating high electromagnetic interference (EMI) that can cause the
+graphics card to fail regulatory compliance.</li>
+<li><strong>Increased Jitter:</strong> Duty-cycle distortion occurs,
+introducing jitter that raises the bit error rate (BER).</li>
+</ul>
+<p>PCB designers typically constrain intra-pair skew to under 5 mils
+(0.127 mm), or a few picoseconds of delay, to maintain clean
+differential signal reception.</p>
+<h3 id="inter-pair-skew-and-channel-synchronization">Inter-Pair Skew and
+Channel Synchronization</h3>
+<p>Inter-pair skew occurs when there are length discrepancies between
+different differential pairs, most notably between any of the TMDS data
+lanes and the TMDS clock lane.</p>
+<p>The DVI receiver uses the clock signal to sample incoming video data
+across all data lanes simultaneously. If a data lane is significantly
+longer or shorter than the clock line:</p>
+<ul>
+<li><strong>Clock-to-Data Misalignment:</strong> The clock edge may
+attempt to sample the data during transition states rather than during
+stable signal plateaus.</li>
+<li><strong>Pixel Sparkle and Artifacts:</strong> Misaligned bits lead
+to single-pixel noise, commonly visible as green or white "sparkles"
+across the display.</li>
+<li><strong>Link Instability:</strong> Severe inter-pair skew causes
+total synchronization failure, resulting in black screens, screen
+flickering, or the monitor dropping to a lower resolution.</li>
+</ul>
+<p>Inter-pair tolerances are broader than intra-pair limits because
+receivers contain internal phase-locked loops (PLLs) with built-in
+deskew capability. However, to guarantee compatibility across various
+display controllers, inter-pair routing length mismatches are generally
+kept below 50 mils (1.27 mm).</p>
+<h3 id="pcb-routing-techniques-for-skew-compensation">PCB Routing
+Techniques for Skew Compensation</h3>
+<p>To achieve the necessary signal integrity for DVI, graphics card
+designers implement specific layout strategies:</p>
+<ul>
+<li><strong>Serpentine Routing:</strong> Designers add "accordion" or
+"trombone" meanders to shorter traces to artificially lengthen them to
+match the longest trace in the group.</li>
+<li><strong>Meander Placement:</strong> Meanders are placed close to the
+source of the mismatch—such as package breakouts or routing around
+vias—to prevent mismatched phase propagation over long distances.</li>
+<li><strong>Impedance Continuity:</strong> DVI requires a 100-ohm
+differential impedance. Meanders must maintain proper spacing between
+parallel segments to avoid localized impedance dips that cause signal
+reflections.</li>
+</ul>
+<p>By rigorously matching both intra-pair and inter-pair trace lengths,
+graphics card manufacturers ensure that the high-frequency TMDS signals
+meet DVI electrical specifications, resulting in artifact-free video
+transmission.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

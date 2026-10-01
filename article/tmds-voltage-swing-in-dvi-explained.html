@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDS Voltage Swing in DVI Explained - dvi</title>
+    <meta name="description" content="Transition-Minimized Differential Signaling (TMDS) is the core physical-layer protocol used to transmit high-speed digital display data across Digital Visual Interface (DVI) connections. This article details the standard electrical characteristics and vo">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/tmds-voltage-swing-in-dvi-explained">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TMDS Voltage Swing in DVI Explained - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/tmds-voltage-swing-in-dvi-explained" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Transition-Minimized Differential Signaling (TMDS) is the core physical-layer protocol used to transmit high-speed digital display data across Digital Visual Interface (DVI) connections. This article details the standard electrical characteristics and vo" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="tmds-voltage-swing-in-dvi-explained">TMDS Voltage Swing in DVI
+Explained</h1>
+<p>Transition-Minimized Differential Signaling (TMDS) is the core
+physical-layer protocol used to transmit high-speed digital display data
+across Digital Visual Interface (DVI) connections. This article details
+the standard electrical characteristics and voltage swings defined by
+the DVI 1.0 specification, explaining both single-ended and differential
+peak-to-peak voltage amplitudes, Current Mode Logic (CML) architecture,
+and how these voltage levels ensure reliable video transmission.</p>
+<h3 id="standard-tmds-voltage-levels">Standard TMDS Voltage Levels</h3>
+<p>Under the DVI 1.0 specification, TMDS uses Current Mode Logic (CML)
+referencing a nominal supply voltage (<span
+class="math inline">\(AV_{cc}\)</span>) of +3.3 V DC.</p>
+<ul>
+<li><strong>Single-Ended Voltage Swing:</strong> The nominal
+single-ended voltage swing is <strong>500 mV</strong> (0.5 V), with an
+allowable operating range typically between <strong>400 mV and 600
+mV</strong>.</li>
+<li><strong>Differential Voltage Swing:</strong> Because TMDS relies on
+differential pairs (a true and an inverted signal), the nominal
+peak-to-peak differential voltage swing is <strong>1000 mV</strong> (1.0
+V), with an allowable range between <strong>800 mV and 1200 mV</strong>
+(1.2 V).</li>
+</ul>
+<h3 id="electrical-architecture-and-signal-behavior">Electrical
+Architecture and Signal Behavior</h3>
+<p>The TMDS transmitter consists of a switched current source, while the
+receiver incorporates 50-ohm termination pull-up resistors connected to
+the 3.3 V supply rail on each line of the differential pair.</p>
+<p>When a TMDS line is in an inactive or high state, no current is
+drawn, pulling the line voltage to the 3.3 V termination level (<span
+class="math inline">\(V_{high} = 3.3\text{ V}\)</span>). When the line
+switches to an active or low state, a current sink draws approximately
+10 mA to 12 mA through the 50-ohm termination resistor. This current
+creates a 500 mV drop across the resistor, pulling the signal line down
+to approximately 2.8 V (<span class="math inline">\(V_{low} = 2.8\text{
+V}\)</span>).</p>
+<h3 id="purpose-of-low-voltage-differential-signaling">Purpose of
+Low-Voltage Differential Signaling</h3>
+<p>The relatively small 500 mV single-ended swing provides two primary
+advantages:</p>
+<ol type="1">
+<li><strong>High-Speed Switching:</strong> Lower voltage excursions
+allow transistors to transition between binary states much faster,
+enabling high pixel clock rates without excessive slew-rate
+limitations.</li>
+<li><strong>Reduced Electromagnetic Interference (EMI):</strong> The
+combination of a low voltage swing and balanced differential pairs
+minimizes radiated noise, as the electromagnetic fields generated by the
+complementary signals cancel each other out along the cable.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

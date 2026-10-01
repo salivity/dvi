@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure DVI Modelines with xrandr in X11 - dvi</title>
+    <meta name="description" content="Configuring custom display resolutions and refresh rates for DVI outputs under the X11 windowing system relies on calculating specific timing parameters and injecting them dynamically using the xrandr utility. This guide explains how X11 handles DVI vide">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/configure-dvi-modelines-with-xrandr-in-x-11">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Configure DVI Modelines with xrandr in X11 - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/configure-dvi-modelines-with-xrandr-in-x-11" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Configuring custom display resolutions and refresh rates for DVI outputs under the X11 windowing system relies on calculating specific timing parameters and injecting them dynamically using the xrandr utility. This guide explains how X11 handles DVI vide" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="configure-dvi-modelines-with-xrandr-in-x11">Configure DVI
+Modelines with xrandr in X11</h1>
+<p>Configuring custom display resolutions and refresh rates for DVI
+outputs under the X11 windowing system relies on calculating specific
+timing parameters and injecting them dynamically using the
+<code>xrandr</code> utility. This guide explains how X11 handles DVI
+video timings, how to calculate custom modelines within DVI bandwidth
+constraints, and the precise sequence of <code>xrandr</code> commands
+required to declare, bind, and activate a new display mode.</p>
+<h3 id="how-modelines-work-in-x11">How Modelines Work in X11</h3>
+<p>A modeline is a configuration string that instructs the graphics
+card's display controller how to drive a monitor. It defines the pixel
+clock frequency, active visible resolution, and the front porch, sync
+pulse, and back porch timings for both horizontal and vertical scan
+lines.</p>
+<p>When dealing with DVI (Digital Visual Interface), the timing
+parameters must adhere to hardware limitations:</p>
+<ul>
+<li><strong>Single-Link DVI</strong> has a maximum pixel clock of 165
+MHz, supporting up to 1920x1200 at 60 Hz or 2560x1600 with reduced
+blanking.</li>
+<li><strong>Dual-Link DVI</strong> supports higher bandwidth by using a
+second transmitter, allowing higher pixel clocks for resolutions such as
+2560x1600 or 144 Hz refresh rates.</li>
+</ul>
+<h3 id="step-1-identify-the-dvi-output">Step 1: Identify the DVI
+Output</h3>
+<p>Query the X11 server to locate the active or connected DVI interface
+name:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xrandr</span> <span class="at">-q</span></span></code></pre></div>
+<p>In the output, identify your DVI connector. Typical names assigned by
+display drivers include <code>DVI-0</code>, <code>DVI-1</code>,
+<code>DVI-I-1</code>, or <code>DVI-D-0</code>. Note this exact
+identifier for subsequent commands.</p>
+<h3 id="step-2-generate-the-modeline">Step 2: Generate the Modeline</h3>
+<p>Use the Coordinated Video Timings (CVT) standard utility to calculate
+the required signal timings for your desired resolution and refresh
+rate.</p>
+<p>For standard timings:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cvt</span> 1920 1080 60</span></code></pre></div>
+<p>To fit within single-link DVI's 165 MHz pixel clock limit at high
+resolutions, generate a reduced blanking modeline using the
+<code>-r</code> flag:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cvt</span> <span class="at">-r</span> 1920 1080 60</span></code></pre></div>
+<p>The output will provide a <code>Modeline</code> string similar
+to:</p>
+<pre class="text"><code>Modeline &quot;1920x1080R&quot;  138.50  1920 1968 2000 2080  1080 1083 1088 1111 +hsync -vsync</code></pre>
+<h3 id="step-3-register-the-modeline-with-x11">Step 3: Register the
+Modeline with X11</h3>
+<p>Create the mode in the running X server using
+<code>xrandr --newmode</code>. Exclude the word "Modeline" and pass the
+rest of the generated string:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xrandr</span> <span class="at">--newmode</span> <span class="st">&quot;1920x1080R&quot;</span> 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync <span class="at">-vsync</span></span></code></pre></div>
+<p>This registers the timing profile globally in X11's internal mode
+pool, but it is not yet attached to any physical hardware port.</p>
+<h3 id="step-4-associate-the-mode-with-the-dvi-output">Step 4: Associate
+the Mode with the DVI Output</h3>
+<p>Link the newly registered mode to your specific DVI interface using
+<code>--addmode</code>:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xrandr</span> <span class="at">--addmode</span> DVI-1 <span class="st">&quot;1920x1080R&quot;</span></span></code></pre></div>
+<p>This validates the timing parameters against the driver’s
+capabilities for that specific output port.</p>
+<h3 id="step-5-activate-the-new-mode">Step 5: Activate the New Mode</h3>
+<p>Instruct X11 to switch the DVI display to the new configuration:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xrandr</span> <span class="at">--output</span> DVI-1 <span class="at">--mode</span> <span class="st">&quot;1920x1080R&quot;</span></span></code></pre></div>
+<p>The display controller will immediately reprogram the pixel clock and
+sync signals over the DVI link to match the defined modeline.</p>
+<h3 id="persisting-the-configuration">Persisting the Configuration</h3>
+<p>Modes created via <code>xrandr</code> exist only in memory and are
+reset when the X server restarts. To make these changes permanent, add
+the execution commands to the desktop session startup script (such as
+<code>~/.xprofile</code> or <code>~/.xinitrc</code>), or define a custom
+<code>Monitor</code> section containing the <code>Modeline</code> within
+an Xorg configuration file in
+<code>/etc/X11/xorg.conf.d/10-monitor.conf</code>.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

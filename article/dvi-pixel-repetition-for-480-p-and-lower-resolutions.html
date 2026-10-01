@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI Pixel Repetition for 480p and Lower Resolutions - dvi</title>
+    <meta name="description" content="Pixel repetition is a video transmission technique that allows standard-definition formats, such as 480p and lower interlaced resolutions, to travel across Digital Visual Interface (DVI) links by artificially increasing the signal's transmission frequenc">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-pixel-repetition-for-480-p-and-lower-resolutions">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI Pixel Repetition for 480p and Lower Resolutions - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-pixel-repetition-for-480-p-and-lower-resolutions" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Pixel repetition is a video transmission technique that allows standard-definition formats, such as 480p and lower interlaced resolutions, to travel across Digital Visual Interface (DVI) links by artificially increasing the signal's transmission frequenc" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-pixel-repetition-for-480p-and-lower-resolutions">DVI Pixel
+Repetition for 480p and Lower Resolutions</h1>
+<p>Pixel repetition is a video transmission technique that allows
+standard-definition formats, such as 480p and lower interlaced
+resolutions, to travel across Digital Visual Interface (DVI) links by
+artificially increasing the signal's transmission frequency. This
+article explains the technical limitations of DVI receiver hardware, how
+duplicating pixel samples satisfies minimum frequency requirements, and
+how receiving displays process the repeated data to reconstruct the
+original image cleanly.</p>
+<h3 id="the-minimum-clock-frequency-limitation-of-dvi">The Minimum Clock
+Frequency Limitation of DVI</h3>
+<p>DVI relies on Transition Minimized Differential Signaling (TMDS) to
+transmit high-speed digital video data. The DVI specification was
+engineered primarily for computer monitors, defining a nominal pixel
+clock frequency operating range between 25.175 MHz and 165 MHz for
+single-link connections.</p>
+<p>Standard-definition formats frequently present a compatibility issue
+with this specification. For example, standard-definition interlaced
+video (480i) operates at a 13.5 MHz pixel clock, and certain
+standard-definition timings or custom 480p signals fall below the
+operational range of a display's internal Phase-Locked Loop (PLL). If a
+source transmits a signal below roughly 25 MHz, standard DVI receiver
+hardware cannot stabilize or lock onto the clock signal, resulting in a
+blank screen or a complete failure to detect the input.</p>
+<h3 id="how-pixel-repetition-works">How Pixel Repetition Works</h3>
+<p>Pixel repetition solves the hardware frequency floor by duplicating
+pixel data within the digital stream before it leaves the source
+transmitter.</p>
+<p>When a resolution requires pixel repetition, the transmitting device
+reads each individual pixel and sends it multiple times across the TMDS
+data lines:</p>
+<ul>
+<li><strong>1x (No repetition):</strong> Each pixel is transmitted once
+(<span class="math inline">\(P_1, P_2, P_3\)</span>).</li>
+<li><strong>2x Pixel Repetition:</strong> Each pixel is transmitted
+twice consecutively (<span class="math inline">\(P_1, P_1, P_2, P_2,
+P_3, P_3\)</span>).</li>
+<li><strong>4x Pixel Repetition:</strong> Each pixel is transmitted four
+times consecutively.</li>
+</ul>
+<p>By transmitting each pixel twice (2x repetition), the transmitter
+doubles the effective pixel clock. A legacy standard-definition clock of
+13.5 MHz is elevated to 27 MHz. Because 27 MHz exceeds the 25.175 MHz
+threshold, the TMDS receiver's PLL can successfully lock onto the
+incoming clock and establish a stable connection.</p>
+<h3 id="synchronization-and-image-reconstruction">Synchronization and
+Image Reconstruction</h3>
+<p>Simply multiplying the pixels would cause an image to stretch
+horizontally if the receiving hardware interpreted every sample as a
+unique coordinate. To prevent distortion, the display must know that the
+incoming data contains duplicate samples.</p>
+<p>In consumer video extensions associated with DVI and HDMI
+(specifically CEA-861 standards), auxiliary data indicates the pixel
+repetition factor. In pure DVI implementations, the display uses
+standardized timing parameters provided by the Extended Display
+Identification Data (EDID) and the horizontal sync timings.</p>
+<p>Once the receiver locks onto the elevated clock frequency:</p>
+<ol type="1">
+<li>The receiver identifies the repetition factor (e.g., 2x).</li>
+<li>The internal scaler or video processor discards the redundant
+duplicates (or averages them) during the decoding phase.</li>
+<li>The video buffer reconstructs the intended native frame dimensions
+(such as 720×480) with correct aspect ratio and geometry.</li>
+</ol>
+<p>Through this process, pixel repetition bridges the gap between modern
+digital transmission standards and lower-resolution video signals,
+ensuring legacy formats remain compatible with digital displays without
+requiring expensive analog conversion.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

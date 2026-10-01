@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Is My DVI Screen Pink or Green? - dvi</title>
+    <meta name="description" content="An all-pink (magenta) or all-green screen over a digital DVI connection is usually caused by a color space mismatch, a failed EDID handshake, or a physical hardware fault in the cable or port. When the sending device and the receiving display miscommunic">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-is-my-dvi-screen-pink-or-green">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Is My DVI Screen Pink or Green? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-is-my-dvi-screen-pink-or-green" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="An all-pink (magenta) or all-green screen over a digital DVI connection is usually caused by a color space mismatch, a failed EDID handshake, or a physical hardware fault in the cable or port. When the sending device and the receiving display miscommunic" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-is-my-dvi-screen-pink-or-green">Why Is My DVI Screen Pink or
+Green?</h1>
+<p>An all-pink (magenta) or all-green screen over a digital DVI
+connection is usually caused by a color space mismatch, a failed EDID
+handshake, or a physical hardware fault in the cable or port. When the
+sending device and the receiving display miscommunicate about how color
+data is encoded—typically confusing RGB with YCbCr—the video signal
+renders entirely in tint extremes. This guide explains the core reasons
+behind this digital display error and how to resolve it.</p>
+<h3 id="color-space-mismatch-rgb-vs-ycbcr">Color Space Mismatch (RGB vs.
+YCbCr)</h3>
+<p>The most common reason for a solid pink or green screen is a mismatch
+in the pixel color format. Digital displays generally use two primary
+color encoding formats: RGB (Red, Green, Blue) and YCbCr (Luminance,
+Blue-difference, Red-difference).</p>
+<p>DVI was originally designed to carry uncompressed digital RGB data.
+However, modern graphics cards, media players, and HDMI-to-DVI adapters
+can also output YCbCr.</p>
+<ul>
+<li><strong>The Pink Screen:</strong> If the video source outputs a
+YCbCr signal, but the monitor expects a standard RGB signal, the monitor
+will misinterpret the green-channel luminance data. The missing green
+values cause the display to default to full magenta/pink.</li>
+<li><strong>The Green Screen:</strong> Conversely, if the video source
+sends an RGB signal to a display configured to read YCbCr, the luminance
+channel is incorrectly mapped, flooding the entire image with
+green.</li>
+</ul>
+<h3 id="failed-edid-handshake">Failed EDID Handshake</h3>
+<p>When a monitor connects to a computer, it sends Extended Display
+Identification Data (EDID). This data tells the graphics card the
+monitor's supported resolutions, refresh rates, and color formats.</p>
+<p>If this digital handshake fails due to a glitch, outdated drivers, or
+an intermediary adapter, the graphics card may fall back on an
+incompatible color setting. Without accurate EDID data, the source
+defaults to a generic profile that frequently triggers the pink or green
+tint.</p>
+<h3 id="hdcp-authentication-errors">HDCP Authentication Errors</h3>
+<p>High-bandwidth Digital Content Protection (HDCP) is the encryption
+protocol used over DVI and HDMI to prevent unauthorized copying of
+digital media. When an HDCP handshake fails between the GPU and the
+display, the signal cannot decrypt properly. While this sometimes
+results in a completely black screen or an error message, some monitors
+and graphics cards display a solid green or pink screen when HDCP fails
+to authenticate.</p>
+<h3 id="physical-cable-or-pin-damage">Physical Cable or Pin Damage</h3>
+<p>Although DVI is a digital interface that uses Transition-Minimized
+Differential Signaling (TMDS), physical damage can still disrupt the
+data streams:</p>
+<ul>
+<li><strong>Bent or Broken Pins:</strong> DVI connectors have numerous
+pins dedicated to red, green, and blue data channels, as well as the
+Display Data Channel (DDC) used for EDID communication. A bent pin can
+kill the color negotiation line or drop an entire color channel.</li>
+<li><strong>Loose Connections:</strong> If the DVI cable is not securely
+screwed into both the monitor and the graphics card, signal integrity
+drops, leading to color inversion or solid color tints.</li>
+<li><strong>Faulty Adapters:</strong> Converting DVI to HDMI or
+DisplayPort frequently introduces handshake failures if the passive or
+active adapter degrades.</li>
+</ul>
+<h3 id="how-to-fix-the-issue">How to Fix the Issue</h3>
+<ol type="1">
+<li><strong>Adjust GPU Color Settings:</strong> Open your graphics
+control panel (NVIDIA Control Panel, AMD Radeon Software, or Intel
+Graphics Command Center). Navigate to the display or color settings,
+find the "Digital Color Format" option, and manually switch it between
+<strong>RGB</strong> and <strong>YCbCr444</strong> (or
+<strong>YCbCr422</strong>) until the screen returns to normal.</li>
+<li><strong>Reseat and Secure the Cable:</strong> Power down the
+display, unplug the DVI cable, inspect the connector for bent or missing
+pins, firmly plug it back in, and tighten the thumbscrews.</li>
+<li><strong>Power Cycle the Hardware:</strong> Turn off both the monitor
+and the computer completely, unplug their power cables for 30 seconds,
+and turn them back on to force a fresh EDID handshake.</li>
+<li><strong>Replace the Cable or Adapter:</strong> If the issue
+persists, the internal wiring or the DVI adapter is likely damaged and
+requires replacement.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

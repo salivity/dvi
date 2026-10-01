@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can DVI-A Support 2048x1536 on High-End CRTs? - dvi</title>
+    <meta name="description" content="DVI-A is fully capable of carrying analog resolutions up to 2048x1536 and beyond to high-end CRT monitors. Because DVI-A transmits the exact same analog RGBHV signals as a traditional VGA interface, it is not bound by digital transmission limits like Sin">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-dvi-a-support-2048-x-1536-on-high-end-cr-ts">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can DVI-A Support 2048x1536 on High-End CRTs? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-dvi-a-support-2048-x-1536-on-high-end-cr-ts" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="DVI-A is fully capable of carrying analog resolutions up to 2048x1536 and beyond to high-end CRT monitors. Because DVI-A transmits the exact same analog RGBHV signals as a traditional VGA interface, it is not bound by digital transmission limits like Sin" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-dvi-a-support-2048x1536-on-high-end-crts">Can DVI-A Support
+2048x1536 on High-End CRTs?</h1>
+<p>DVI-A is fully capable of carrying analog resolutions up to 2048x1536
+and beyond to high-end CRT monitors. Because DVI-A transmits the exact
+same analog RGBHV signals as a traditional VGA interface, it is not
+bound by digital transmission limits like Single-Link DVI's 165 MHz
+pixel clock. Instead, performance depends strictly on the graphics
+card's digital-to-analog converter (RAMDAC), the quality of the cabling,
+and the CRT’s maximum horizontal scan rate.</p>
+<h3 id="the-mechanics-of-dvi-a">The Mechanics of DVI-A</h3>
+<p>DVI-A (DVI-Analog) utilizes the analog pins located around the flat
+blade on the DVI connector (pins C1 through C4, along with C5 and the
+dedicated sync lines). This configuration bypasses the digital TMDS
+lines entirely and directly outputs raw red, green, blue, horizontal
+sync, and vertical sync signals. As a result, a DVI-A output functions
+essentially as a standard 15-pin VGA or 5-BNC connection packaged in a
+DVI form factor.</p>
+<h3 id="ramdac-and-pixel-clock-demands">RAMDAC and Pixel Clock
+Demands</h3>
+<p>Because analog video signals lack strict resolution metadata caps,
+the maximum resolution is governed by the graphics card’s internal
+RAMDAC frequency:</p>
+<ul>
+<li><strong>2048x1536 at 60 Hz</strong> requires a pixel clock of
+approximately 268 MHz (using standard VESA CVT timings).</li>
+<li><strong>2048x1536 at 85 Hz</strong> pushes the pixel clock to
+roughly 388 MHz.</li>
+</ul>
+<p>Most late-generation graphics cards equipped with native DVI-I/DVI-A
+ports (such as the Nvidia GeForce 8000/9000 series or ATI Radeon HD
+series) feature integrated RAMDACs operating at 400 MHz. This provides
+more than enough bandwidth to generate a stable, full-color 2048x1536
+analog image.</p>
+<h3 id="crt-monitor-capabilities">CRT Monitor Capabilities</h3>
+<p>Displaying 2048x1536 requires a monitor with an exceptionally high
+horizontal deflection rate (horizontal scan frequency, measured in
+kHz):</p>
+<ul>
+<li>Running 2048x1536 at 60 Hz requires a CRT capable of at least a
+<strong>96 kHz to 100 kHz</strong> horizontal scan rate.</li>
+<li>Running 2048x1536 at an ergonomic 85 Hz requires a top-tier CRT
+capable of <strong>130 kHz to 140 kHz</strong>.</li>
+</ul>
+<p>Flagship 21-inch and 22-inch CRT displays—such as the Sony CPD-G520,
+ViewSonic P225f, Iiyama Vision Master Pro 514, or the widescreen Sony
+GDM-FW900 (using proportional resolutions)—regularly handled these
+parameters natively over analog inputs.</p>
+<h3 id="signal-integrity-and-cables">Signal Integrity and Cables</h3>
+<p>At a pixel clock approaching 400 MHz, high-frequency analog signals
+are highly susceptible to interference and attenuation. Achieving a
+sharp 2048x1536 image requires high-grade, individually shielded coaxial
+cabling (typically a DVI-to-VGA or DVI-to-5x-BNC breakout cable).
+Substandard cables at this resolution often introduce ringing, ghosting,
+or high-frequency blur across the screen. When paired with high-quality
+components, DVI-A provides the full analog throughput necessary to drive
+high-end CRTs at 2048x1536.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

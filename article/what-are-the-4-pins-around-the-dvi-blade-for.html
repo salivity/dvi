@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Are the 4 Pins Around the DVI Blade For? - dvi</title>
+    <meta name="description" content="The four analog pins surrounding the flat ground blade on a DVI-I connector transmit legacy RGB analog video signals alongside a dedicated ground. While the primary rectangular grid of pins handles digital data, these four quadrant pins allow a DVI-I por">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/what-are-the-4-pins-around-the-dvi-blade-for">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="What Are the 4 Pins Around the DVI Blade For? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/what-are-the-4-pins-around-the-dvi-blade-for" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The four analog pins surrounding the flat ground blade on a DVI-I connector transmit legacy RGB analog video signals alongside a dedicated ground. While the primary rectangular grid of pins handles digital data, these four quadrant pins allow a DVI-I por" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="what-are-the-4-pins-around-the-dvi-blade-for">What Are the 4
+Pins Around the DVI Blade For?</h1>
+<p>The four analog pins surrounding the flat ground blade on a DVI-I
+connector transmit legacy RGB analog video signals alongside a dedicated
+ground. While the primary rectangular grid of pins handles digital data,
+these four quadrant pins allow a DVI-I port to carry full analog VGA
+signals simultaneously, enabling passive adapters to connect modern
+DVI-I sources to older VGA monitors.</p>
+<h2 id="the-dual-link-architecture-of-dvi">The Dual-Link Architecture of
+DVI</h2>
+<p>The Digital Visual Interface standard was engineered during a
+transitional era in display technology, bridging the gap between legacy
+cathode-ray tube (CRT) monitors and newer flat-panel digital screens. To
+avoid forcing users to purchase multiple graphics cards, the
+specification introduced three distinct connector configurations: DVI-D
+for digital-only video, DVI-A for rare analog-only setups, and DVI-I for
+integrated digital and analog video.</p>
+<p>The main 24-pin block provides transition-minimized differential
+signaling (TMDS) channels for purely digital audio and video
+transmission. However, graphics cards equipped with DVI-I also feature
+an extended cross-shaped analog section on the side. This section
+contains a broad horizontal blade flanked above and below by four
+discrete analog pins, providing backward compatibility without active
+signal conversion.</p>
+<h2 id="pinout-and-functional-breakdown">Pinout and Functional
+Breakdown</h2>
+<p>The four separate pins surrounding the central blade form a dedicated
+analog pathway. Each pin carries a specific component of an analog video
+stream:</p>
+<ul>
+<li><strong>C1 (Top Right): Analog Red Signal.</strong> Carries the
+analog red color channel voltage to the display.</li>
+<li><strong>C2 (Bottom Right): Analog Green Signal.</strong> Carries the
+analog green color channel voltage, which can also carry sync-on-green
+pulses in select systems.</li>
+<li><strong>C3 (Top Left): Analog Blue Signal.</strong> Carries the
+analog blue color channel voltage.</li>
+<li><strong>C4 (Bottom Left): Analog Horizontal Sync.</strong> Carries
+the horizontal synchronization pulse that tells CRT and early LCD
+monitors when to scan across the display lines.</li>
+</ul>
+<p>The flat bar in the center, designated as pin <strong>C5</strong>,
+acts as the analog ground return line for these color signals. Vertical
+synchronization and display data channel lines (DDC) are routed through
+specific shared pins inside the primary digital grid, allowing the
+computer to identify display parameters via EDID even when running over
+analog mode.</p>
+<h2 id="why-these-pins-matter-for-adapters">Why These Pins Matter for
+Adapters</h2>
+<p>Because these four pins output standard 0.7V peak-to-peak RGB video
+alongside dedicated sync lines, a DVI-I to VGA adapter does not require
+any digital-to-analog converter chips or external power. The adapter
+simply routes the C1 through C4 pins, along with the C5 ground and sync
+lines, straight into the corresponding pins of a standard 15-pin DE-15
+(VGA) connector.</p>
+<p>Attempting to plug a passive DVI-to-VGA adapter into a DVI-D port
+fails physically because digital-only ports omit the four analog pin
+holes. Today, modern display standards like DisplayPort and HDMI have
+fully replaced analog video pathways, but the quadrant pins on DVI-I
+remain a prominent example of legacy backward-compatibility engineering
+in personal computing.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

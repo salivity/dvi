@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generating DVI Signals with Microcontrollers - dvi</title>
+    <meta name="description" content="Modern microcontrollers have evolved beyond simple text-based serial outputs, with several groundbreaking projects now generating digital DVI and HDMI-compatible video signals directly from silicon. By manipulating high-speed I/O blocks, direct memory ac">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/generating-dvi-signals-with-microcontrollers">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Generating DVI Signals with Microcontrollers - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/generating-dvi-signals-with-microcontrollers" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Modern microcontrollers have evolved beyond simple text-based serial outputs, with several groundbreaking projects now generating digital DVI and HDMI-compatible video signals directly from silicon. By manipulating high-speed I/O blocks, direct memory ac" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="generating-dvi-signals-with-microcontrollers">Generating DVI
+Signals with Microcontrollers</h1>
+<p>Modern microcontrollers have evolved beyond simple text-based serial
+outputs, with several groundbreaking projects now generating digital DVI
+and HDMI-compatible video signals directly from silicon. By manipulating
+high-speed I/O blocks, direct memory access (DMA), and programmable
+state machines, developers can create Transition-Minimized Differential
+Signaling (TMDS) streams without dedicated external graphics chips. This
+article covers the leading software-defined video projects that
+synthesize DVI signals natively on bare-metal microcontroller
+hardware.</p>
+<h3 id="picodvi-by-luke-wren-raspberry-pi-rp2040">PicoDVI by Luke Wren
+(Raspberry Pi RP2040)</h3>
+<p>PicoDVI is one of the most prominent software-defined DVI
+implementations available today. Developed for the Raspberry Pi RP2040,
+the project leverages the chip's unique Programmable I/O (PIO) state
+machines alongside dual-core ARM Cortex-M0+ processing.</p>
+<p>PicoDVI operates by dedicating one core to application logic and
+rendering, while the second core handles real-time TMDS encode loops.
+The encoded 10-bit symbols are pushed via DMA into the PIO FIFOs. The
+PIO state machines serialize the data at pixel-clock rates up to 252
+MHz, directly outputting differential signals across digital pins.
+PicoDVI reliably outputs 640x480 (VGA resolution at 60Hz), 720x480, and
+even 800x600 resolutions in various color depths, serving as the
+foundational driver for hardware like the Adafruit Feather RP2040
+DVI.</p>
+<h3 id="bitlunis-esp32-dvi-and-esp32-s3-projects">Bitluni’s ESP32 DVI
+and ESP32-S3 Projects</h3>
+<p>Maker and engineer bitluni has pioneered software-defined video
+output across the Espressif ecosystem. While earlier iterations focused
+on software-generated VGA and composite video, recent projects target
+digital DVI using the ESP32 and ESP32-S3.</p>
+<p>These projects repurpose high-speed parallel peripherals—specifically
+the I2S peripheral on classic ESP32s or the dedicated LCD parallel
+interface on the ESP32-S3—to stream pre-computed TMDS symbols. By
+overclocking the bus to match DVI pixel timing requirements, the ESP32
+transmits differential red, green, blue, and clock pairs directly over
+GPIOs to DVI/HDMI connectors. These implementations typically achieve
+resolutions like 320x240 line-doubled or native 640x480 at lower frame
+rates, accommodating the memory limits of the ESP32 architecture.</p>
+<h3 id="parallax-propeller-2-tmds-drivers">Parallax Propeller 2 TMDS
+Drivers</h3>
+<p>The Parallax Propeller 2 (P2) microcontroller features 64
+configurable "smart pins" and eight 32-bit cores (cogs), making it
+inherently suited for software-defined digital video.</p>
+<p>Community-developed drivers on the Propeller 2 utilize smart pins
+configured for 7:1 or 10:1 serialization. Unlike general-purpose
+microcontrollers that require complex bit-manipulation in software, the
+P2 smart pins can handle synchronous TMDS data output with minimal CPU
+overhead. The P2 generates resolutions ranging from standard 640x480 up
+to 720p (1280x720) directly from its digital I/O pins, requiring only
+series resistors to match transmission line impedance.</p>
+<h3 id="how-microcontroller-dvi-generation-works">How Microcontroller
+DVI Generation Works</h3>
+<p>All software-defined DVI projects overcome the same primary technical
+challenges:</p>
+<ul>
+<li><strong>TMDS Encoding:</strong> DVI requires converting 8-bit color
+channels into 10-bit transition-minimized, DC-balanced symbols. Doing
+this purely in software requires precomputed lookup tables to minimize
+CPU instruction cycles.</li>
+<li><strong>High Bitrates:</strong> A standard 640x480 display running
+at 60Hz requires a 25.2 MHz pixel clock, translating to a serial
+bitstream of 252 Mbps per data lane. Microcontrollers achieve this by
+using hardware serializers (like PIO or I2S) coupled with DMA to prevent
+processor starvation.</li>
+<li><strong>Differential Signaling:</strong> Instead of true low-voltage
+differential signaling (LVDS), these projects use the 3.3V CMOS output
+of the microcontroller directly. While out of official TMDS electrical
+specification, most modern monitors tolerate these levels due to
+internal input protection and broad receiver thresholds.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel-to-Pixel Mapping Over DVI for Crisp LED Text - dvi</title>
+    <meta name="description" content="Pixel-to-pixel mapping over DVI ensures text on LED displays remains sharp and legible by matching the output resolution of a media source directly to the physical LED pixel matrix without intermediate scaling. This article explains how eliminating scali">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/pixel-to-pixel-mapping-over-dvi-for-crisp-led-text">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pixel-to-Pixel Mapping Over DVI for Crisp LED Text - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/pixel-to-pixel-mapping-over-dvi-for-crisp-led-text" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Pixel-to-pixel mapping over DVI ensures text on LED displays remains sharp and legible by matching the output resolution of a media source directly to the physical LED pixel matrix without intermediate scaling. This article explains how eliminating scali" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1
+id="pixel-to-pixel-mapping-over-dvi-for-crisp-led-text">Pixel-to-Pixel
+Mapping Over DVI for Crisp LED Text</h1>
+<p>Pixel-to-pixel mapping over DVI ensures text on LED displays remains
+sharp and legible by matching the output resolution of a media source
+directly to the physical LED pixel matrix without intermediate scaling.
+This article explains how eliminating scaling artifacts, utilizing
+uncompressed digital transmission via DVI, and avoiding analog phase
+issues work together to deliver perfectly rendered, high-contrast
+typography on large-format digital signage.</p>
+<h3 id="understanding-pixel-to-pixel-11-mapping">Understanding
+Pixel-to-Pixel (1:1) Mapping</h3>
+<p>Pixel-to-pixel mapping, often called 1:1 native mapping, means that
+one pixel in the digital source file corresponds to exactly one physical
+LED cluster (pixel) on the display board. In conventional display setups
+where source resolutions do not match the screen's native grid, a scaler
+interpolates the image. While video content tolerates interpolation
+relatively well, text suffers significantly. Scaling engines recalculate
+hard font boundaries into soft, fractional values, spreading a sharp
+single-pixel line across adjacent diodes. By enforcing a 1:1 mapping,
+the video processor completely bypasses any downscaling or upscaling
+algorithms, ensuring that every glyph's stroke remains precisely as
+designed.</p>
+<h3 id="the-role-of-dvi-in-uncompressed-digital-transmission">The Role
+of DVI in Uncompressed Digital Transmission</h3>
+<p>Digital Visual Interface (DVI) transmits uncompressed digital video
+data using Transition-Minimized Differential Signaling (TMDS). Unlike
+older analog interfaces like VGA, DVI eliminates the digital-to-analog
+conversion at the graphics card and the subsequent analog-to-digital
+conversion at the LED sending card.</p>
+<p>Analog signals are susceptible to clock and phase misalignments,
+which introduce jitter, ghosting, and phase noise—flaws that manifest as
+blurry fringes around high-contrast edges like text. Because DVI sends a
+purely digital bitstream with discrete color and brightness coordinates
+for every pixel, the receiving processor gets mathematically identical
+values to those output by the graphics processor.</p>
+<h3 id="why-led-displays-demand-strict-native-mapping">Why LED Displays
+Demand Strict Native Mapping</h3>
+<p>Unlike modern smartphones or high-DPI computer monitors, LED signage
+typically features a significantly lower resolution spread over a
+massive physical area. The pixel pitch—the distance between the centers
+of adjacent pixels—often ranges from 1.5mm to 10mm or more.</p>
+<p>Because the pixel density is relatively low, individual character
+strokes may only be one or two pixels wide:</p>
+<ul>
+<li><strong>Without Native Mapping:</strong> A one-pixel-wide vertical
+stroke falling between two physical columns of LEDs gets averaged out
+across both. Both columns illuminate at half brightness, turning a crisp
+line into a dim, blurry smear.</li>
+<li><strong>With Native Mapping:</strong> The single-pixel stroke lights
+up exactly one column of LEDs at 100% intended brightness, maintaining
+the maximum contrast ratio between the text and the background.</li>
+</ul>
+<h3 id="preserving-font-geometry-and-contrast">Preserving Font Geometry
+and Contrast</h3>
+<p>High contrast is essential for readability at a distance. When an LED
+sending card accepts a native DVI feed, it maps the incoming raster
+frame directly to the display's network of receiving cards. This
+eliminates anti-aliasing artifacts that commonly dilute text edges. Thin
+horizontal elements (such as the crossbars on the letters "e" or "A")
+and tight counter spaces remain distinct and open, preventing characters
+from blending together into illegible shapes when viewed from roadway or
+concourse distances.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

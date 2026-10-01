@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCI Graphics Cards With Dual-Link DVI Support - dvi</title>
+    <meta name="description" content="Conventional PCI graphics cards did support high-resolution dual-link DVI, allowing older systems without AGP or PCI Express slots to drive displays at resolutions up to 2560x1600. Although dual-link DVI emerged during the industry's transition away from">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/pci-graphics-cards-with-dual-link-dvi-support">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PCI Graphics Cards With Dual-Link DVI Support - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/pci-graphics-cards-with-dual-link-dvi-support" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Conventional PCI graphics cards did support high-resolution dual-link DVI, allowing older systems without AGP or PCI Express slots to drive displays at resolutions up to 2560x1600. Although dual-link DVI emerged during the industry's transition away from" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="pci-graphics-cards-with-dual-link-dvi-support">PCI Graphics
+Cards With Dual-Link DVI Support</h1>
+<p>Conventional PCI graphics cards did support high-resolution dual-link
+DVI, allowing older systems without AGP or PCI Express slots to drive
+displays at resolutions up to 2560x1600. Although dual-link DVI emerged
+during the industry's transition away from legacy PCI, several
+manufacturers released specialized retrofits and late-generation budget
+GPUs on the standard 32-bit PCI interface that featured full dual-link
+DVI output.</p>
+<p>Dual-link DVI was introduced to bypass the bandwidth limits of
+single-link DVI, which maxed out at 1920x1200 at 60 Hz. Driving large
+displays, such as the 30-inch Apple Cinema HD Display or the Dell
+UltraSharp 3007WFP, required a second TMDS transmitter link to push
+2560x1600. By the time these monitors hit the market in the mid-2000s,
+high-end display controllers were almost exclusively built for AGP and
+PCI Express. However, legacy PCI remained widely used in servers,
+industrial machinery, and older workstations that still required
+high-resolution monitor support.</p>
+<p>To serve this niche, manufacturers adapted modern budget GPUs
+containing integrated dual-link display engines onto the legacy 33 MHz /
+32-bit PCI bus. Prominent examples included:</p>
+<ul>
+<li><strong>NVIDIA GeForce 8400 GS PCI:</strong> Manufacturers like EVGA
+released PCI variants of the G86/G98 architecture equipped with
+dual-link DVI-I ports capable of native 2560x1600 output.</li>
+<li><strong>ZOTAC GeForce GT Series PCI:</strong> ZOTAC produced legacy
+PCI versions of the GeForce GT 430, GT 520, and GT 610. These cards
+included dual-link DVI connectors that fully supported 2560x1600 digital
+output.</li>
+<li><strong>ATI/AMD Radeon HD Series PCI:</strong> VisionTek, HIS, and
+Club 3D produced PCI versions of the Radeon HD 2400 Pro, HD 4350, and HD
+5450. The integrated display pipelines on these GPUs supported dual-link
+DVI resolutions out of the box.</li>
+<li><strong>Specialized Multi-Display and Medical Cards:</strong>
+Companies like Matrox and Barco manufactured specialized PCI display
+adapters for medical imaging and multi-monitor setups, though many
+relied on proprietary dongles or dual single-link connections rather
+than standard dual-link DVI.</li>
+</ul>
+<p>While these cards successfully displayed static 2D content, office
+applications, and medical imaging at 2560x1600, they faced severe
+performance bottlenecks. The legacy 32-bit PCI bus has a maximum
+theoretical bandwidth of only 133 MB/s, shared across all devices on the
+bus. While driving a 2560x1600 desktop buffer required minimal bus
+traffic once frames were loaded into local video memory, demanding 3D
+rendering or high-bitrate video playback choked on the limited bus
+throughput. Nonetheless, for users needing ultra-high-resolution 2D
+output on legacy hardware, dual-link DVI on conventional PCI was fully
+functional.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

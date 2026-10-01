@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Are DVI-D Cables Missing Center Pins? - dvi</title>
+    <meta name="description" content="Many users notice that their DVI-D cables have a distinct gap in the middle of the pin grid, missing six specific pins found on fully populated connectors. This article explains the technical differences between single-link and dual-link DVI standards, t">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-are-dvi-d-cables-missing-center-pins">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Are DVI-D Cables Missing Center Pins? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-are-dvi-d-cables-missing-center-pins" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Many users notice that their DVI-D cables have a distinct gap in the middle of the pin grid, missing six specific pins found on fully populated connectors. This article explains the technical differences between single-link and dual-link DVI standards, t" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-are-dvi-d-cables-missing-center-pins">Why Are DVI-D Cables
+Missing Center Pins?</h1>
+<p>Many users notice that their DVI-D cables have a distinct gap in the
+middle of the pin grid, missing six specific pins found on fully
+populated connectors. This article explains the technical differences
+between single-link and dual-link DVI standards, the function of those
+omitted pins, and why manufacturers deliberately leave them out to
+reduce costs while maintaining seamless backward compatibility.</p>
+<h3 id="single-link-vs-dual-link-dvi">Single-Link vs. Dual-Link DVI</h3>
+<p>The presence or absence of the center pins designates whether a cable
+is DVI-D Single-Link or DVI-D Dual-Link. Digital Visual Interface (DVI)
+transmits data using Transition-Minimized Differential Signaling
+(TMDS).</p>
+<ul>
+<li><strong>Single-Link DVI</strong> utilizes three TMDS data channels
+(red, green, and blue) alongside one clock channel. This configuration
+requires only 18 digital pins and provides enough bandwidth to drive
+displays up to 1920×1200 resolution at 60 Hz.</li>
+<li><strong>Dual-Link DVI</strong> adds a second set of three data
+channels, doubling the maximum bandwidth to support resolutions up to
+2560×1600 at 60 Hz or 1080p at 144 Hz. This setup requires all 24
+digital pins arranged in a solid 3×8 grid.</li>
+</ul>
+<h3 id="why-the-center-pins-are-omitted">Why the Center Pins Are
+Omitted</h3>
+<p>The six center pins (specifically pins 4, 5, 12, 13, 19, and 20)
+house the second TMDS data link. Cables that lack these pins are
+strictly single-link cables. Manufacturers omit them for practical
+reasons:</p>
+<ol type="1">
+<li><strong>Manufacturing Cost and Material Efficiency:</strong>
+Producing an internal cable assembly with six fewer shielded copper
+conductors lowers production costs significantly. Omitting the physical
+metal pins on the plug avoids wasting raw materials on pins that have no
+corresponding wires inside the jacket.</li>
+<li><strong>Preventing Misrepresentation:</strong> Including the center
+pins without soldering them to internal wires would create a "dummy"
+dual-link connector. A user plugging this cable into a 1440p or 144 Hz
+monitor would experience blank screens or severe artifacts because the
+display would detect dual-link hardware where only single-link bandwidth
+exists. Leaving the pin block visibly empty provides immediate clarity
+about the cable's capabilities.</li>
+<li><strong>Cable Flexibility and Weight:</strong> Dual-link cables
+require thicker, stiffer bundles of shielded twisted-pair wiring.
+Single-link cables with omitted pins are lighter, thinner, and easier to
+route behind desks and displays.</li>
+</ol>
+<h3 id="compatibility-with-dvi-ports">Compatibility with DVI Ports</h3>
+<p>Graphics cards and monitors almost universally feature full 24-hole
+(plus flat ground bar) dual-link DVI female receptacles. Because a
+single-link DVI-D cable merely omits the unused pins rather than adding
+obstacles, it fits cleanly into these dual-link sockets. The socket
+simply receives no connection on the secondary data channels, prompting
+the hardware to automatically operate in single-link mode.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

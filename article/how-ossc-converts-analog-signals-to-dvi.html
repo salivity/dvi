@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How OSSC Converts Analog Signals to DVI - dvi</title>
+    <meta name="description" content="The Open Source Scan Converter (OSSC) is a low-latency video digitizer and scan converter designed primarily for retro video game consoles and vintage computers. This article explains how the OSSC takes legacy analog video formats—such as RGB, Componen">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-ossc-converts-analog-signals-to-dvi">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How OSSC Converts Analog Signals to DVI - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-ossc-converts-analog-signals-to-dvi" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The Open Source Scan Converter (OSSC) is a low-latency video digitizer and scan converter designed primarily for retro video game consoles and vintage computers. This article explains how the OSSC takes legacy analog video formats—such as RGB, Componen" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-ossc-converts-analog-signals-to-dvi">How OSSC Converts
+Analog Signals to DVI</h1>
+<p>The Open Source Scan Converter (OSSC) is a low-latency video
+digitizer and scan converter designed primarily for retro video game
+consoles and vintage computers. This article explains how the OSSC takes
+legacy analog video formats—such as RGB, Component, and VGA—and converts
+them into modern digital DVI and HDMI formats. You will learn about the
+hardware pipeline, including analog signal digitization,
+line-multiplication processing via an FPGA, and final digital video
+encoding, all performed without introducing input lag.</p>
+<h3 id="1-analog-signal-ingestion-and-conditioning">1. Analog Signal
+Ingestion and Conditioning</h3>
+<p>The process begins when an analog video source connects to one of the
+OSSC's physical inputs: SCART (RGBS/RGsB), Component (YPbPr), or VGA
+(RGBHV).</p>
+<p>Before conversion, the incoming signal passes through input
+conditioning circuitry. This step includes:</p>
+<ul>
+<li><strong>Termination and Attenuation:</strong> Matching standard
+impedance (typically 75 ohms) to preserve signal integrity.</li>
+<li><strong>Low-Pass Filtering (LPF):</strong> Filtering out
+high-frequency noise that can cause artifacts or shimmering in the
+digital image.</li>
+<li><strong>Sync Separation:</strong> Extracting synchronization signals
+(horizontal and vertical sync) from composite sync or sync-on-green
+lines to determine accurate frame boundaries.</li>
+</ul>
+<h3 id="2-analog-to-digital-conversion-adc">2. Analog-to-Digital
+Conversion (ADC)</h3>
+<p>Once conditioned, the analog voltages are sent to a high-speed video
+analog-to-digital converter, specifically the Texas Instruments TVP7002
+chip.</p>
+<p>The ADC samples the continuous analog voltage levels of the red,
+green, and blue (or YPbPr) color channels at exact pixel intervals. It
+translates these voltage levels into raw 24-bit digital parallel data (8
+bits per channel). The sampling clock is synchronized to the source's
+horizontal refresh rate using a phase-locked loop (PLL), ensuring sharp,
+accurately sampled pixels rather than blurred approximations.</p>
+<h3 id="3-fpga-processing-and-line-multiplication">3. FPGA Processing
+and Line Multiplication</h3>
+<p>Unlike conventional scalers that store entire frames in memory
+(introducing several frames of latency), the OSSC relies on an
+Intel/Altera Cyclone IV Field-Programmable Gate Array (FPGA) to process
+video in real time.</p>
+<p>The FPGA holds only a few scanlines in its internal buffer at any
+given time. It processes the digital video using line multiplication
+techniques:</p>
+<ul>
+<li><strong>Line Passthrough (1x):</strong> Sends the digitized
+scanlines directly to the output at their original resolution (useful
+for 480p sources).</li>
+<li><strong>Line Multiplication (Line2x, Line3x, Line4x,
+Line5x):</strong> Re-transmits each horizontal scanline multiple times.
+For example, a 240p signal multiplied by two (Line2x) duplicates each
+line to output a progressive 480p signal. Line5x scales 240p up to 1200p
+or 1080p.</li>
+<li><strong>Scanline Generation:</strong> The FPGA can also insert
+artificial black or dimmed lines between doubled lines to recreate the
+visual appearance of a classic CRT display.</li>
+</ul>
+<p>Because the FPGA acts on the incoming scanlines almost
+instantaneously without waiting for a full frame to buffer, total
+processing lag remains virtually zero (measured in a few scanlines, or
+microseconds).</p>
+<h3 id="4-dvi-encoding-and-transmission">4. DVI Encoding and
+Transmission</h3>
+<p>After line multiplication, the parallel digital video data and
+reconstructed sync pulses are converted into a format suitable for
+modern displays.</p>
+<p>The OSSC formats the data into the DVI-D specification:</p>
+<ul>
+<li><strong>Color Space Conversion:</strong> If the input was YPbPr
+(Component), the FPGA or video encoder converts the colors to digital
+RGB.</li>
+<li><strong>TMDS Serialization:</strong> The digital color and clock
+data are converted into Transition-Minimized Differential Signaling
+(TMDS), the physical layer protocol used by DVI and HDMI.</li>
+<li><strong>Output:</strong> The signals are routed to a physical DVI or
+HDMI-compatible connector.</li>
+</ul>
+<p>Because DVI video is electrically compatible with HDMI video signals,
+the OSSC can output directly to standard modern monitors and televisions
+using a passive adapter or an HDMI cable, delivering a clean,
+low-latency digital picture directly derived from vintage analog
+hardware.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

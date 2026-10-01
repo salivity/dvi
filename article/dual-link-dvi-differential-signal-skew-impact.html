@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Link DVI Differential Signal Skew Impact - dvi</title>
+    <meta name="description" content="Dual-link DVI relies on Transition Minimized Differential Signaling (TMDS) across twelve data conductors to deliver high-resolution video formats, such as 2560x1600 at 60Hz. Differential signal skew—the timing mismatch between complementary differentia">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dual-link-dvi-differential-signal-skew-impact">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dual-Link DVI Differential Signal Skew Impact - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dual-link-dvi-differential-signal-skew-impact" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Dual-link DVI relies on Transition Minimized Differential Signaling (TMDS) across twelve data conductors to deliver high-resolution video formats, such as 2560x1600 at 60Hz. Differential signal skew—the timing mismatch between complementary differentia" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dual-link-dvi-differential-signal-skew-impact">Dual-Link DVI
+Differential Signal Skew Impact</h1>
+<p>Dual-link DVI relies on Transition Minimized Differential Signaling
+(TMDS) across twelve data conductors to deliver high-resolution video
+formats, such as 2560x1600 at 60Hz. Differential signal skew—the timing
+mismatch between complementary differential traces or between separate
+data channels—is one of the most critical limiting factors in
+maintaining signal integrity at these high bandwidths. When skew exceeds
+strict hardware tolerances, it causes bit errors, visual artifacts like
+digital sparkling, display flickering, or total synchronization
+failure.</p>
+<h3 id="understanding-skew-in-dvi-architecture">Understanding Skew in
+DVI Architecture</h3>
+<p>Dual-link DVI doubles the bandwidth of single-link DVI by adding
+three extra differential data pairs, resulting in six data channels
+sharing a single differential clock pair. TMDS transmits data over two
+complementary wires per channel (positive and negative). Skew in this
+system manifests in two distinct forms:</p>
+<ul>
+<li><strong>Intra-Pair Skew:</strong> A timing offset between the true
+and inverted signals within the same differential pair. Because
+differential receivers detect the voltage difference between the two
+conductors to determine logical ones and zeros, intra-pair skew causes
+the edges of the signals to arrive out of sync. This reduces the
+differential amplitude and closes the data "eye" pattern.</li>
+<li><strong>Inter-Pair Skew:</strong> A timing offset between different
+TMDS channels or between a data channel and the shared TMDS clock.
+Dual-link DVI requires the receiver to synchronize six independent data
+streams to a single clock. If the propagation delay varies across pairs,
+data bytes arrive out of order relative to the clock signal.</li>
+</ul>
+<h3 id="how-skew-affects-high-resolution-dual-link-performance">How Skew
+Affects High-Resolution Dual-Link Performance</h3>
+<p>High-resolution displays operate near the upper bandwidth limit of
+the DVI specification, pushing pixel clocks up to 165 MHz per link (330
+MHz total). At these frequencies, the unit interval (the time duration
+of a single bit) drops to less than one nanosecond. As bit intervals
+shrink, tolerance for timing errors disappears, leading to several
+performance issues:</p>
+<h4 id="eye-diagram-closure-and-jitter">Eye Diagram Closure and
+Jitter</h4>
+<p>Intra-pair skew converts common-mode noise into differential noise
+and degrades the rise and fall times of the signal. The receiver's eye
+diagram collapses both horizontally (timing margin) and vertically
+(voltage margin), increasing deterministic jitter and leading to
+erroneous bit decoding.</p>
+<h4 id="pixel-sparkle-and-discoloration">Pixel Sparkle and
+Discoloration</h4>
+<p>When inter-pair or intra-pair skew causes sporadic bit errors, the
+receiver misinterprets specific pixel values. On screen, this typically
+manifests as "sparkle"—tiny red, green, or blue dots flickering across
+high-contrast areas of the image—or random horizontal micro-streaks.</p>
+<h4 id="frame-sync-loss-and-blinking">Frame Sync Loss and Blinking</h4>
+<p>If the skew between the data channels and the clock line exceeds the
+deskew capability of the receiver's Phase-Locked Loop (PLL), the display
+loses line or frame lock. This results in periodic black screens,
+full-display tearing, or an unsupported resolution error from the
+monitor.</p>
+<h3 id="key-factors-causing-skew-in-dual-link-setups">Key Factors
+Causing Skew in Dual-Link Setups</h3>
+<ol type="1">
+<li><strong>Cable Quality and Length:</strong> Manufacturing tolerances
+in twisted-pair cables create slight physical length variations between
+copper conductors. Over longer cable runs (exceeding 3 to 5 meters),
+even millimeter-scale length differences introduce nanoseconds of
+delay.</li>
+<li><strong>PCB Trace Discrepancies:</strong> Inadequate length-matching
+and impedance discontinuities on the graphics card or display controller
+PCB exacerbate inter-pair and intra-pair skew before the signal even
+leaves the connector.</li>
+<li><strong>Dielectric Variations:</strong> Non-uniform insulating
+materials inside the cable assembly cause differential signals to travel
+at different velocities, directly inducing phase shifts over
+distance.</li>
+</ol>
+<h3 id="tolerances-and-mitigation">Tolerances and Mitigation</h3>
+<p>The DVI specification sets an intra-pair skew budget of less than
+0.15 Tbit (approximately 15% of a bit period) and an inter-pair skew
+budget of approximately 0.6 Tpixel. For high-resolution dual-link
+connections, managing skew requires high-grade, low-skew twisted-pair
+cabling with triple shielding, strict serpentine trace matching on
+printed circuit boards, and active equalization or deskew circuitry
+inside the display receiver to realign misaligned data streams before
+decoding.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended TVS Diodes for DVI Port Design - dvi</title>
+    <meta name="description" content="This article provides a concise guide to selecting transient voltage suppression (TVS) diodes for Digital Visual Interface (DVI) port protection. It outlines the essential electrical requirements for safeguarding high-speed Transition Minimized Different">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/recommended-tvs-diodes-for-dvi-port-design">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Recommended TVS Diodes for DVI Port Design - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/recommended-tvs-diodes-for-dvi-port-design" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article provides a concise guide to selecting transient voltage suppression (TVS) diodes for Digital Visual Interface (DVI) port protection. It outlines the essential electrical requirements for safeguarding high-speed Transition Minimized Different" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="recommended-tvs-diodes-for-dvi-port-design">Recommended TVS
+Diodes for DVI Port Design</h1>
+<p>This article provides a concise guide to selecting transient voltage
+suppression (TVS) diodes for Digital Visual Interface (DVI) port
+protection. It outlines the essential electrical requirements for
+safeguarding high-speed Transition Minimized Differential Signaling
+(TMDS) lines as well as slower control signals, highlights
+industry-standard TVS diode models from leading manufacturers, and
+details critical printed circuit board (PCB) layout practices to
+maintain signal integrity during electrostatic discharge (ESD)
+events.</p>
+<h3 id="electrical-requirements-for-dvi-port-protection">Electrical
+Requirements for DVI Port Protection</h3>
+<p>A DVI interface consists of two distinct signal groups, each
+requiring different TVS diode characteristics:</p>
+<ol type="1">
+<li><p><strong>High-Speed TMDS Lines (Clock and Data):</strong></p>
+<ul>
+<li><strong>Ultra-Low Capacitance:</strong> DVI single-link runs up to
+1.65 Gbps, while dual-link reaches 3.3 Gbps. Diode junction capacitance
+must be below 0.5 pF (ideally between 0.2 pF and 0.3 pF) to prevent
+signal degradation, eye-diagram closure, and excessive impedance
+mismatch.</li>
+<li><strong>Low Clamping Voltage:</strong> The clamping voltage should
+be as low as possible during an ESD strike to protect sensitive graphics
+processing units (GPUs) and TMDS receiver/transmitter silicon.</li>
+<li><strong>Reverse Working Voltage (<span
+class="math inline">\(V_{RWM}\)</span>):</strong> A nominal 5V rating
+matches standard line levels.</li>
+</ul></li>
+<li><p><strong>Low-Speed Control and Power Lines (DDC, HPD, and +5V
+Power):</strong></p>
+<ul>
+<li><strong>Display Data Channel (DDC / I²C) and Hot Plug Detect
+(HPD):</strong> These signals operate at lower frequencies where
+capacitance is less critical. Standard diodes with capacitance up to 10
+pF–15 pF and a 5V working voltage are suitable.</li>
+<li><strong>+5V Power Line:</strong> Requires a unidirectional or
+bidirectional TVS diode capable of handling higher surge currents to
+absorb supply transients.</li>
+</ul></li>
+</ol>
+<h3 id="top-recommended-tvs-diode-solutions">Top Recommended TVS Diode
+Solutions</h3>
+<p>Hardware engineers frequently rely on multi-channel, flow-through TVS
+arrays designed specifically for digital video interfaces like DVI and
+HDMI:</p>
+<ul>
+<li><p><strong>Semtech RClamp0524P / RClamp0504P:</strong></p>
+<ul>
+<li>Specifically designed for high-speed differential interfaces.</li>
+<li>Typical line capacitance: ~0.3 pF.</li>
+<li>Features a flow-through DFN package that allows high-speed
+differential traces to run straight through the diode footprint without
+introducing stubs or impedance discontinuities.</li>
+</ul></li>
+<li><p><strong>Texas Instruments TPD4E05U06 / TPD4E001:</strong></p>
+<ul>
+<li>4-channel ultra-low leakage and low-capacitance ESD protection
+arrays.</li>
+<li>The TPD4E05U06 offers an ultra-low capacitance of 0.42 pF to 0.5 pF
+per channel and provides flow-through pin mapping suitable for standard
+100-ohm differential DVI pairs.</li>
+</ul></li>
+<li><p><strong>Nexperia IP4284CZ10-TBR / PESD5V0H1BSF:</strong></p>
+<ul>
+<li>The IP4284CZ10 series integrates rail-to-rail ESD protection diodes
+with integrated Zener clamps for high-speed lines and includes dedicated
+protection for lower-speed lines (DDC/HPD).</li>
+<li>Extremely low channel-to-channel capacitance balance to preserve
+differential signal timing.</li>
+</ul></li>
+<li><p><strong>Littelfuse SP3004 / SP3012 Series:</strong></p>
+<ul>
+<li>Capacitance as low as 0.35 pF per I/O channel.</li>
+<li>Provides protection beyond IEC 61000-4-2 Level 4 standards (±8 kV
+contact discharge, ±15 kV air discharge).</li>
+</ul></li>
+<li><p><strong>onsemi ESD7004 / MG2040:</strong></p>
+<ul>
+<li>4-channel low-capacitance ESD array (~0.35 pF).</li>
+<li>Optimized for HDMI and DVI differential signals with low dynamic
+resistance.</li>
+</ul></li>
+</ul>
+<h3 id="pcb-layout-guidelines-for-dvi-esd-protection">PCB Layout
+Guidelines for DVI ESD Protection</h3>
+<p>To maximize the effectiveness of the chosen TVS diodes:</p>
+<ul>
+<li><strong>Placement:</strong> Position the TVS diodes as physically
+close to the DVI receptacle pins as possible. This suppresses ESD
+transients before they enter the internal PCB layers or propagate toward
+the main controller.</li>
+<li><strong>Flow-Through Routing:</strong> Use TVS packages designed for
+straight-line trace routing. The differential pair traces should enter
+one side of the pin and exit directly out the other to maintain the
+required 100-ohm differential impedance.</li>
+<li><strong>Grounding:</strong> Route the TVS ground pin directly to the
+chassis ground or low-impedance ground plane using multiple micro-vias
+to minimize parasitic ground inductance. Avoid long, thin ground
+traces.</li>
+<li><strong>Avoid Stubs:</strong> Never connect TVS diodes via
+T-junctions or stubs on TMDS traces, as stubs cause signal reflections
+and high-frequency resonance.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

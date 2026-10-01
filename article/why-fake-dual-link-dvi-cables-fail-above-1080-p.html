@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Fake Dual-Link DVI Cables Fail Above 1080p - dvi</title>
+    <meta name="description" content="Fake dual-link DVI cables frequently cause black screens or complete signal loss when attempting to output resolutions higher than 1080p (such as 1440p or 1600p) because they physically lack the internal wiring needed for high-bandwidth data transmission">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-fake-dual-link-dvi-cables-fail-above-1080-p">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Fake Dual-Link DVI Cables Fail Above 1080p - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-fake-dual-link-dvi-cables-fail-above-1080-p" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Fake dual-link DVI cables frequently cause black screens or complete signal loss when attempting to output resolutions higher than 1080p (such as 1440p or 1600p) because they physically lack the internal wiring needed for high-bandwidth data transmission" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-fake-dual-link-dvi-cables-fail-above-1080p">Why Fake
+Dual-Link DVI Cables Fail Above 1080p</h1>
+<p>Fake dual-link DVI cables frequently cause black screens or complete
+signal loss when attempting to output resolutions higher than 1080p
+(such as 1440p or 1600p) because they physically lack the internal
+wiring needed for high-bandwidth data transmission. Although these
+cables feature the full 24-pin connector layout of a genuine dual-link
+DVI-D plug, manufacturers only connect the wires required for
+single-link operation. This article explains the technical differences
+between single-link and dual-link DVI, how these deceptive cables pass
+display handshakes, and why the video stream collapses at higher display
+modes.</p>
+<h3
+id="understanding-dvi-bandwidth-single-link-vs-dual-link">Understanding
+DVI Bandwidth: Single-Link vs. Dual-Link</h3>
+<p>DVI (Digital Visual Interface) transmits uncompressed digital video
+using Transition-Minimized Differential Signaling (TMDS).</p>
+<ul>
+<li><strong>Single-Link DVI:</strong> Uses three TMDS data channels and
+one dedicated clock channel. It is limited to a maximum pixel clock rate
+of 165 MHz, providing an effective digital bandwidth of roughly 3.96
+Gbps. This limits standard output to 1920×1200 at 60 Hz (or 1080p at 60
+Hz).</li>
+<li><strong>Dual-Link DVI:</strong> Adds a second TMDS transmitter that
+provides three additional data channels, sharing the same clock. By
+utilizing six data lines in total, it doubles the available throughput
+to roughly 7.92 Gbps, enabling resolutions such as 2560×1440 or
+2560×1600 at 60 Hz, as well as 1080p at 120 Hz/144 Hz.</li>
+</ul>
+<p>Physically, a single-link DVI-D connector features two 9-pin blocks
+separated by an empty middle section (18 pins total). A dual-link DVI-D
+connector populates this middle section, resulting in a solid grid of 24
+pins.</p>
+<h3 id="the-construction-of-a-fake-dual-link-cable">The Construction of
+a "Fake" Dual-Link Cable</h3>
+<p>To save manufacturing costs on copper, shielding, and soldering
+labor, counterfeit and ultra-budget cable manufacturers use a molded
+24-pin shell to make the cable visually resemble a true dual-link
+cable.</p>
+<p>Inside the cable jacket, however, only the standard 18 wires for
+single-link transmission are included. The central six pins that
+correspond to the second TMDS data link are completely hollow,
+disconnected, or soldered to dummy ground traces.</p>
+<h3 id="why-resolutions-above-1080p-cause-a-black-screen">Why
+Resolutions Above 1080p Cause a Black Screen</h3>
+<p>The failure occurs due to a mismatch between software negotiation and
+physical hardware capabilities:</p>
+<ol type="1">
+<li><strong>Successful EDID Handshake:</strong> The monitor and the
+graphics processing unit (GPU) communicate via the Display Data Channel
+(DDC), an independent I2C bus that uses pins separate from the TMDS
+high-speed lines. The monitor sends its Extended Display Identification
+Data (EDID) to the operating system, confirming it can display
+2560×1440. Because the DDC pins are wired in both single-link and
+dual-link cables, Windows or your GPU driver exposes the higher
+resolution in display settings without any warnings.</li>
+<li><strong>Switching to Dual-Link Mode:</strong> Once a resolution
+exceeding single-link limits (such as 1440p at 60 Hz) is selected, the
+GPU splits the video data across both TMDS links. Half of the pixel data
+is routed through the primary TMDS channels, and the other half is
+routed through the secondary TMDS channels.</li>
+<li><strong>Missing Data Stream:</strong> Because the fake cable lacks
+the physical conductors for the secondary TMDS channels, that half of
+the image data never reaches the monitor.</li>
+<li><strong>Monitor Timing Failure:</strong> The monitor's internal
+scaler expects to interleave two concurrent data streams into a single
+image. Upon receiving only partial data or failing to establish a phase
+lock on the missing channels, the display receiver flags the signal as
+invalid, corrupted, or "Out of Range."</li>
+</ol>
+<p>Rather than rendering half an image or severe static, modern display
+controllers automatically enter a failsafe state, shutting off the
+panel's backlight and displaying a persistent black screen.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

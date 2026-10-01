@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do HDMI to DVI Cables Add Input Lag? - dvi</title>
+    <meta name="description" content="Using an HDMI-to-DVI cable does not introduce any measurable latency into your video pipeline. Because HDMI and DVI utilize the exact same underlying electrical signaling for digital video, a standard adapter cable is completely passive and performs no s">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/do-hdmi-to-dvi-cables-add-input-lag">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Do HDMI to DVI Cables Add Input Lag? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/do-hdmi-to-dvi-cables-add-input-lag" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Using an HDMI-to-DVI cable does not introduce any measurable latency into your video pipeline. Because HDMI and DVI utilize the exact same underlying electrical signaling for digital video, a standard adapter cable is completely passive and performs no s" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="do-hdmi-to-dvi-cables-add-input-lag">Do HDMI to DVI Cables Add
+Input Lag?</h1>
+<p>Using an HDMI-to-DVI cable does not introduce any measurable latency
+into your video pipeline. Because HDMI and DVI utilize the exact same
+underlying electrical signaling for digital video, a standard adapter
+cable is completely passive and performs no signal processing or
+buffering. This article explains the technical reasons why these cables
+add zero input lag, details where perceived latency might actually
+originate, and covers a few non-latency limitations to keep in mind when
+connecting HDMI to DVI.</p>
+<h3 id="why-hdmi-to-dvi-adds-zero-latency">Why HDMI to DVI Adds Zero
+Latency</h3>
+<p>The video transmission standard used by single-link DVI is
+Transition-Minimized Differential Signaling (TMDS), which is the exact
+same protocol used for video data in the HDMI specification.</p>
+<p>Because the video data formats are identical, an HDMI-to-DVI cable
+requires no internal microchips, converters, or digital signal
+processors. The cable merely connects the physical pins of an HDMI plug
+directly to the corresponding pins of a DVI connector through copper
+wires.</p>
+<p>Electricity travels through copper at a significant fraction of the
+speed of light. The physical delay introduced by the length of the cable
+is measured in nanoseconds (billionths of a second). In contrast, one
+frame at 60Hz lasts approximately 16.67 milliseconds (millionths of a
+second). Because there is no frame buffer or conversion chip storing
+data, the signal passes through instantly with zero humanly perceivable
+latency.</p>
+<h3 id="where-perceived-latency-actually-comes-from">Where Perceived
+Latency Actually Comes From</h3>
+<p>If you notice input lag after connecting a display via an HDMI-to-DVI
+cable, the cable is not the source. The delay is almost always caused by
+one of the following factors:</p>
+<ul>
+<li><strong>Display Processing:</strong> Many televisions and some
+monitors apply post-processing effects such as motion smoothing, dynamic
+contrast, or de-interlacing. These features buffer frames to process
+them, introducing tens to hundreds of milliseconds of delay. Switching
+the display to "Game Mode" or "PC Mode" disables these buffers and
+eliminates the lag.</li>
+<li><strong>Internal Scaling:</strong> If your video source outputs a
+resolution that does not match the display's native resolution (for
+example, sending a 720p signal to a 1080p monitor), the display's
+internal scaler must resize each frame, which can introduce minor
+processing delays.</li>
+<li><strong>V-Sync and Software Settings:</strong> Enabling V-Sync
+(Vertical Synchronization) inside games or operating system graphics
+drivers can add 1 to 3 frames of input lag to prevent screen
+tearing.</li>
+</ul>
+<h3 id="considerations-when-using-hdmi-to-dvi">Considerations When Using
+HDMI-to-DVI</h3>
+<p>While latency is not an issue, there are a few practical limitations
+inherent to the DVI format:</p>
+<ul>
+<li><strong>Audio:</strong> Standard DVI was designed strictly for
+video. While some modern graphics cards can output audio over DVI via
+proprietary pinouts, a standard HDMI-to-DVI connection will generally
+transmit only the video signal, requiring a separate audio
+solution.</li>
+<li><strong>Bandwidth and Refresh Rates:</strong> Most HDMI-to-DVI
+cables operate as single-link DVI. This caps the maximum bandwidth,
+usually limiting output to 1920x1200 at 60Hz. If you are attempting to
+achieve high refresh rates (such as 120Hz or 144Hz) or resolutions like
+1440p and 4K, a standard passive HDMI-to-DVI cable will not support
+it.</li>
+<li><strong>Color Space Issues:</strong> HDMI devices commonly output in
+YCbCr color format, whereas DVI displays typically expect RGB. If the
+source does not automatically switch to RGB mode, colors may appear
+washed out or crushed, though this affects visual accuracy rather than
+responsiveness.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

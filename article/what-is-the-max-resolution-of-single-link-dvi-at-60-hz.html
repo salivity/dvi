@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is the Max Resolution of Single-Link DVI at 60 Hz? - dvi</title>
+    <meta name="description" content="The maximum standard resolution supported by a single-link DVI connection at a 60 Hz refresh rate is 1920 × 1200 (WUXGA) using standard CVT reduced-blanking timings, or 1920 × 1080 (Full HD 1080p) using traditional VESA blanking intervals. This limitat">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/what-is-the-max-resolution-of-single-link-dvi-at-60-hz">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="What Is the Max Resolution of Single-Link DVI at 60 Hz? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/what-is-the-max-resolution-of-single-link-dvi-at-60-hz" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The maximum standard resolution supported by a single-link DVI connection at a 60 Hz refresh rate is 1920 × 1200 (WUXGA) using standard CVT reduced-blanking timings, or 1920 × 1080 (Full HD 1080p) using traditional VESA blanking intervals. This limitat" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="what-is-the-max-resolution-of-single-link-dvi-at-60-hz">What Is
+the Max Resolution of Single-Link DVI at 60 Hz?</h1>
+<p>The maximum standard resolution supported by a single-link DVI
+connection at a 60 Hz refresh rate is 1920 × 1200 (WUXGA) using standard
+CVT reduced-blanking timings, or 1920 × 1080 (Full HD 1080p) using
+traditional VESA blanking intervals. This limitation stems directly from
+the standard maximum pixel clock frequency defined in the Digital
+Display Working Group (DDWG) specification.</p>
+<h3 id="understanding-single-link-dvi-bandwidth">Understanding
+Single-Link DVI Bandwidth</h3>
+<p>Digital Visual Interface (DVI) relies on Transition-Minimized
+Differential Signaling (TMDS) to transmit digital video signals. A
+single-link DVI connector utilizes three TMDS data channels (one
+dedicated to each primary color: red, green, and blue) along with a
+single TMDS clock channel.</p>
+<p>Under the original DVI 1.0 specification, a single TMDS link operates
+at a maximum pixel clock rate of 165 MHz. Each TMDS data channel
+transmits 10 bits per pixel cycle, translating to:</p>
+<ul>
+<li><strong>Maximum Pixel Rate:</strong> 165 million pixels per
+second</li>
+<li><strong>Raw Channel Throughput:</strong> 1.65 Gbps per channel</li>
+<li><strong>Total Digital Data Bandwidth:</strong> 4.95 Gbps (with a
+video payload throughput of roughly 3.96 Gbps)</li>
+</ul>
+<p>Because the transmission bandwidth caps at 165 MHz, the maximum
+resolution a single-link connection can output depends on the total
+number of pixels sent per frame, including both visible pixels and
+non-visible blanking intervals.</p>
+<h3 id="blanking-intervals-and-supported-resolutions">Blanking Intervals
+and Supported Resolutions</h3>
+<p>Video signals require blanking intervals between lines and frames for
+synchronization. The timing standard used dictates which resolutions fit
+inside the 165 MHz bandwidth envelope:</p>
+<ul>
+<li><strong>1920 × 1080 at 60 Hz (Standard Timing):</strong> Standard
+timing formats require roughly a 148.5 MHz pixel clock, easily fitting
+within the 165 MHz ceiling.</li>
+<li><strong>1920 × 1200 at 60 Hz (Reduced Blanking):</strong> Under
+traditional blanking intervals, 1920 × 1200 requires a pixel clock of
+approximately 193 MHz, which exceeds single-link capabilities. However,
+VESA Coordinated Video Timings Reduced Blanking (CVT-RB) eliminates
+unnecessary analog-era sync overhead, reducing the required pixel clock
+to roughly 154 MHz. This allows 1920 × 1200 at 60 Hz to operate within
+the 165 MHz limit.</li>
+<li><strong>1600 × 1200 at 60 Hz (UXGA):</strong> Standard 4:3
+high-resolution displays utilize a 162 MHz pixel clock, which remains
+just under the single-link threshold.</li>
+</ul>
+<h3 id="single-link-vs-dual-link-dvi">Single-Link vs. Dual-Link DVI</h3>
+<p>When display requirements exceed 1920 × 1200 at 60 Hz, single-link
+DVI reaches its technical ceiling. Higher resolutions require dual-link
+DVI:</p>
+<ul>
+<li><strong>Dual-Link DVI Architecture:</strong> Dual-link DVI
+incorporates a second set of three TMDS data transmitters using the
+extra pins on the connector, effectively doubling the data lanes to
+six.</li>
+<li><strong>Dual-Link Resolutions:</strong> By bypassing the single-link
+bandwidth ceiling, dual-link DVI accommodates resolutions up to 2560 ×
+1600 (WQXGA) at 60 Hz or higher refresh rates, such as 1920 × 1080 at
+120 Hz to 144 Hz on compatible monitors.</li>
+</ul>
+<p>Connecting a monitor rated for resolutions higher than 1920 × 1200 to
+a single-link DVI source causes the display to either downscale the
+image, restrict the available resolution options in system settings, or
+lower the refresh rate to compensate for the limited bandwidth.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

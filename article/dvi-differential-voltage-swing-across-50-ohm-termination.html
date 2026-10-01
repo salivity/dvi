@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI Differential Voltage Swing Across 50-Ohm Termination - dvi</title>
+    <meta name="description" content="This article examines the differential voltage swing generated across the 50-ohm termination resistors in a Digital Visual Interface (DVI) connection. It details the technical specifications of Transition-Minimized Differential Signaling (TMDS), breaks d">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-differential-voltage-swing-across-50-ohm-termination">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI Differential Voltage Swing Across 50-Ohm Termination - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-differential-voltage-swing-across-50-ohm-termination" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article examines the differential voltage swing generated across the 50-ohm termination resistors in a Digital Visual Interface (DVI) connection. It details the technical specifications of Transition-Minimized Differential Signaling (TMDS), breaks d" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-differential-voltage-swing-across-50-ohm-termination">DVI
+Differential Voltage Swing Across 50-Ohm Termination</h1>
+<p>This article examines the differential voltage swing generated across
+the 50-ohm termination resistors in a Digital Visual Interface (DVI)
+connection. It details the technical specifications of
+Transition-Minimized Differential Signaling (TMDS), breaks down how the
+current-mode driver interacts with receiver terminations, and defines
+both the nominal single-ended and differential peak-to-peak voltage
+values required by the DVI standard.</p>
+<h3 id="tmds-signaling-architecture">TMDS Signaling Architecture</h3>
+<p>DVI relies on Transition-Minimized Differential Signaling (TMDS) to
+transmit high-speed digital video data. The physical layer uses Current
+Mode Logic (CML). In this architecture, the receiver terminates each
+line of a differential pair with a 50-ohm pull-up resistor tied to a
+3.3-volt supply (<span class="math inline">\(AV_{CC}\)</span>).</p>
+<p>The transmitter contains a switched constant-current sink. Rather
+than driving a voltage directly, the transmitter steers current through
+the differential pair to pull the signal lines low relative to the 3.3 V
+reference level.</p>
+<h3 id="current-and-voltage-calculations">Current and Voltage
+Calculations</h3>
+<p>The TMDS transmitter typically sinks a nominal current between 10 mA
+and 12 mA:</p>
+<ul>
+<li><strong>Single-Ended Swing:</strong> When current flows through one
+of the 50-ohm termination resistors, the voltage drop across that
+resistor is calculated using Ohm's Law (<span class="math inline">\(V =
+I \times R\)</span>). With a 10 mA to 12 mA drive current across a
+50-ohm load, the single-ended voltage drop is nominally <strong>500 mV
+to 600 mV</strong> (with an allowable specification range of 400 mV to
+600 mV). This pulls the active line down from 3.3 V to roughly 2.8 V–2.7
+V, while the inactive line remains at 3.3 V.</li>
+<li><strong>Differential Voltage Swing:</strong> Differential voltage
+(<span class="math inline">\(V_{ID}\)</span>) represents the difference
+between the positive and negative conductors (<span
+class="math inline">\(V_+ - V_-\)</span>). Because the current switches
+between the two lines, the differential voltage alternates polarity
+between <span class="math inline">\(+500\text{ mV}\)</span> and <span
+class="math inline">\(-500\text{ mV}\)</span> (nominally).</li>
+</ul>
+<h3 id="final-differential-swing-values">Final Differential Swing
+Values</h3>
+<p>Across the 50-ohm termination resistors, the resulting differential
+swings are:</p>
+<ul>
+<li><strong>Nominal Differential Voltage:</strong> <strong><span
+class="math inline">\(\pm 500\text{ mV}\)</span> to <span
+class="math inline">\(\pm 600\text{ mV}\)</span></strong>
+zero-to-peak.</li>
+<li><strong>Peak-to-Peak Differential Voltage Swing:</strong>
+<strong>1000 mV to 1200 mV (1.0 V to 1.2 V)</strong> peak-to-peak
+differential (<span class="math inline">\(V_{DIFF(p-p)}\)</span>).</li>
+<li><strong>Specification Limits:</strong> The DVI 1.0 specification
+defines the allowable differential input voltage range at the receiver
+between <strong>800 mV and 1200 mV peak-to-peak</strong> (400 mV to 600
+mV single-ended swing per line).</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

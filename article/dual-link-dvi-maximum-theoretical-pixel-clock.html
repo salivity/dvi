@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Link DVI Maximum Theoretical Pixel Clock - dvi</title>
+    <meta name="description" content="This article provides a technical overview of the maximum theoretical pixel clock for dual-link Digital Visual Interface (DVI). While the official standard does not define a theoretical upper ceiling—leaving the maximum clock speed architecturally unli">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dual-link-dvi-maximum-theoretical-pixel-clock">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dual-Link DVI Maximum Theoretical Pixel Clock - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dual-link-dvi-maximum-theoretical-pixel-clock" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article provides a technical overview of the maximum theoretical pixel clock for dual-link Digital Visual Interface (DVI). While the official standard does not define a theoretical upper ceiling—leaving the maximum clock speed architecturally unli" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dual-link-dvi-maximum-theoretical-pixel-clock">Dual-Link DVI
+Maximum Theoretical Pixel Clock</h1>
+<p>This article provides a technical overview of the maximum theoretical
+pixel clock for dual-link Digital Visual Interface (DVI). While the
+official standard does not define a theoretical upper ceiling—leaving
+the maximum clock speed architecturally unlimited—practical hardware,
+silicon design, and physical copper transmission constraints typically
+establish effective operating limits starting at 330 MHz.</p>
+<h3 id="the-architectural-limit-in-the-specification">The Architectural
+Limit in the Specification</h3>
+<p>According to the official DVI 1.0 specification created by the
+Digital Display Working Group (DDWG), there is <strong>no maximum
+theoretical limit</strong> on the pixel clock. The specification
+mandates a minimum operational frequency (25.175 MHz) and sets a minimum
+required upper threshold that single-link transmitters must support (165
+MHz). However, the standard explicitly leaves the upper operational
+frequency open-ended, stating that performance beyond the baseline is
+limited solely by the physical capabilities of the transmitters,
+receivers, and copper cabling.</p>
+<h3 id="single-link-vs-dual-link-architecture">Single-Link vs. Dual-Link
+Architecture</h3>
+<p>A single-link DVI connection utilizes three Transition Minimized
+Differential Signaling (TMDS) data channels (one each for red, green,
+and blue) alongside a dedicated TMDS clock channel. At the standard
+baseline of 165 MHz, single-link DVI provides a maximum throughput of
+4.95 Gbps, which is sufficient for resolutions up to 1920×1200 at 60
+Hz.</p>
+<p>Dual-link DVI expands this interface by adding three additional TMDS
+data channels over extra pins in the connector, bringing the total to
+six data channels. Both links share the single TMDS clock pair. When
+operating in dual-link mode, pixel data is interleaved across both sets
+of data lines:</p>
+<ul>
+<li><strong>Clock Sharing:</strong> The TMDS clock line runs at half the
+rate of the total pixel clock because alternating pixels are split
+across the primary and secondary links.</li>
+<li><strong>Baseline Doubling:</strong> Because dual-link hardware must
+support at least the maximum standard single-link frequency across both
+channels simultaneously, the minimum standard dual-link capability is
+<strong>330 MHz</strong> (effectively 2 × 165 MHz), delivering a
+bandwidth of 9.9 Gbps.</li>
+</ul>
+<h3 id="practical-and-physical-constraints">Practical and Physical
+Constraints</h3>
+<p>Because the theoretical limit within the specification is infinite,
+the practical limits of dual-link DVI are governed by physical
+hardware:</p>
+<ol type="1">
+<li><strong>Silicon Capabilities:</strong> TMDS transmitters and
+receivers built into graphics processing units and monitor scalar chips
+are rated for specific clock frequencies. Most high-performance
+dual-link hardware tops out between <strong>330 MHz and 400
+MHz</strong>.</li>
+<li><strong>Standard High-Resolution Targets:</strong> A pixel clock of
+roughly 268.5 MHz is required to drive 2560×1600 displays at 60 Hz
+(using reduced blanking), easily falling within the dual-link
+capability. Higher refresh rates, such as 1920×1080 at 144 Hz, push the
+pixel clock close to 330–350 MHz.</li>
+<li><strong>Signal Degradation:</strong> Higher clock speeds
+dramatically increase signal attenuation, electromagnetic interference,
+and cable cross-talk. Over standard passive copper cabling, pushing
+beyond 330 MHz to 400 MHz typically leads to severe digital artifacts
+("sparkles") or total signal dropouts without active signal
+amplification.</li>
+</ol>
+<p>In summary, the maximum <em>theoretical</em> pixel clock specified by
+the DVI 1.0 standard is <strong>unlimited</strong>, while the standard
+<em>practical theoretical limit</em> recognized by hardware
+manufacturers is <strong>330 MHz</strong>, with specialized
+implementations occasionally achieving between 380 MHz and 400 MHz.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

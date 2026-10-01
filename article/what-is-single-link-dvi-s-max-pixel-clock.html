@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is Single-Link DVI’s Max Pixel Clock? - dvi</title>
+    <meta name="description" content="The maximum pixel clock frequency officially supported by the single-link Digital Visual Interface (DVI) specification is 165 MHz. This article examines the technical architecture behind that limit, explains how Transition-Minimized Differential Signalin">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/what-is-single-link-dvi-s-max-pixel-clock">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="What Is Single-Link DVI’s Max Pixel Clock? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/what-is-single-link-dvi-s-max-pixel-clock" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The maximum pixel clock frequency officially supported by the single-link Digital Visual Interface (DVI) specification is 165 MHz. This article examines the technical architecture behind that limit, explains how Transition-Minimized Differential Signalin" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="what-is-single-link-dvis-max-pixel-clock">What Is Single-Link
+DVI’s Max Pixel Clock?</h1>
+<p>The maximum pixel clock frequency officially supported by the
+single-link Digital Visual Interface (DVI) specification is 165 MHz.
+This article examines the technical architecture behind that limit,
+explains how Transition-Minimized Differential Signaling (TMDS) handles
+video data, details the maximum resolutions and refresh rates achievable
+within this bandwidth, and highlights how display blanking intervals
+influence what a single-link connection can output.</p>
+<h2 id="the-technical-specification-165-mhz-and-tmds">The Technical
+Specification: 165 MHz and TMDS</h2>
+<p>Defined in 1999 by the Digital Display Working Group (DDWG) in the
+DVI 1.0 specification, single-link DVI relies on Transition-Minimized
+Differential Signaling (TMDS). A single-link DVI connection uses three
+data channels (one each for red, green, and blue) alongside a dedicated
+differential clock channel.</p>
+<p>The clock channel runs at the pixel clock rate, capped at a maximum
+frequency of 165 MHz. Because TMDS utilizes an 8b/10b encoding scheme,
+each 8-bit color component is encoded into a 10-bit symbol per clock
+cycle to maintain DC balance and minimize signal transitions across the
+copper cable. At 165 MHz:</p>
+<ul>
+<li>10 bits per channel are transmitted per clock cycle across each of
+the 3 data channels.</li>
+<li>Each data line operates at a bit rate of 1.65 Gbps (<span
+class="math inline">\(165\text{ MHz} \times 10\text{
+bits}\)</span>).</li>
+<li>Across all three color channels, the raw transmission rate reaches
+4.95 Gbps.</li>
+<li>Subtracting the 8b/10b coding overhead yields a maximum usable video
+payload throughput of 3.96 Gbps (<span class="math inline">\(165\text{
+megapixels/second} \times 24\text{ bits/pixel}\)</span>).</li>
+</ul>
+<h2 id="resolution-and-refresh-rate-capabilities">Resolution and Refresh
+Rate Capabilities</h2>
+<p>Because the limit is bound strictly to the 165 MHz pixel clock rather
+than a fixed grid of pixels, any resolution and refresh rate combination
+whose pixel clock requirement remains at or below 165 MHz can operate
+over a standard single-link connection.</p>
+<p>Under standard VESA Coordinated Video Timings (CVT) and Generalized
+Timing Formula (GTF) standards, single-link DVI easily accommodates
+common legacy and widescreen resolutions:</p>
+<ul>
+<li><strong>1920 × 1080 (1080p) at 60 Hz:</strong> Typically requires a
+pixel clock of approximately 148.5 MHz under standard blanking
+intervals.</li>
+<li><strong>1920 × 1200 (WUXGA) at 60 Hz:</strong> Requires
+approximately 154 MHz when using VESA Reduced Blanking (CVT-RB). Under
+standard CRT-era blanking, this resolution exceeds 165 MHz and requires
+dual-link DVI.</li>
+<li><strong>1600 × 1200 (UXGA) at 60 Hz:</strong> Requires roughly 162
+MHz under standard timings, fitting just under the 165 MHz
+threshold.</li>
+<li><strong>1280 × 1024 (SXGA) at 75 Hz or 85 Hz:</strong> Operates
+comfortably within the 108 MHz to 157.5 MHz range.</li>
+</ul>
+<p>Higher resolutions, such as 2560 × 1440 (QHD) or 2560 × 1600 (WQXGA)
+at 60 Hz, require clock rates well above 200 MHz, necessitating a
+dual-link DVI connection that adds three more TMDS data pairs to double
+throughput.</p>
+<h2 id="the-role-of-reduced-blanking">The Role of Reduced Blanking</h2>
+<p>The pixel clock counts not just active visible pixels, but also
+blanking intervals—the inactive time allocated between horizontal scan
+lines and vertical refresh frames originally required by CRT electron
+guns.</p>
+<p>On modern flat panels, these large pauses are unnecessary. The VESA
+Reduced Blanking standard shrinks non-visible overhead substantially. By
+reducing the number of idle cycles transmitted each second, display
+controllers can push higher active resolutions without crossing the 165
+MHz single-link ceiling, making 1920 × 1200 at 60 Hz viable on standard
+single-link hardware.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

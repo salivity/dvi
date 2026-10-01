@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Does Dual-Link DVI Double Bandwidth? - dvi</title>
+    <meta name="description" content="Dual-link DVI doubles video bandwidth by adding three physical data channels to the digital interface, allowing two pixels to transmit simultaneously during every clock cycle. While a standard single-link connection relies on three Transition-Minimized D">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-does-dual-link-dvi-double-bandwidth">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Does Dual-Link DVI Double Bandwidth? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-does-dual-link-dvi-double-bandwidth" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Dual-link DVI doubles video bandwidth by adding three physical data channels to the digital interface, allowing two pixels to transmit simultaneously during every clock cycle. While a standard single-link connection relies on three Transition-Minimized D" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-does-dual-link-dvi-double-bandwidth">How Does Dual-Link DVI
+Double Bandwidth?</h1>
+<p>Dual-link DVI doubles video bandwidth by adding three physical data
+channels to the digital interface, allowing two pixels to transmit
+simultaneously during every clock cycle. While a standard single-link
+connection relies on three Transition-Minimized Differential Signaling
+(TMDS) data lanes to carry color values sequentially, dual-link
+introduces a second TMDS transmitter that runs in parallel over shared
+timing signals. By interleaving alternating pixels across six total data
+lanes, the interface effectively doubles throughput without requiring
+higher transmission clock frequencies.</p>
+<h2 id="the-architecture-of-single-link-dvi">The Architecture of
+Single-Link DVI</h2>
+<p>To understand how dual-link doubles capacity, it helps to examine how
+single-link DVI operates. Single-link DVI uses four twisted pairs of
+copper wires: three carry the digital color components (Red, Green, and
+Blue), while the fourth carries a dedicated TMDS clock signal.</p>
+<p>Each color channel carries 8 bits of color data per pixel cycle,
+encoded into a 10-bit serialized stream to maintain signal stability
+across the cable. In standard implementations, the pixel clock tops out
+around 165 MHz. At 24 bits per pixel (8 bits per channel), this caps
+single-link throughput at roughly 3.96 Gbps (or 165 million pixels per
+second), which limits displays to resolutions around 1920x1200 at 60
+Hz.</p>
+<h2 id="adding-channels-instead-of-clock-speed">Adding Channels Instead
+of Clock Speed</h2>
+<p>Rather than doubling the clock speed—which would introduce severe
+signal attenuation, electromagnetic interference, and timing jitter over
+passive copper cables—the Digital Display Working Group (DDWG) scaled
+bandwidth horizontally.</p>
+<p>Dual-link DVI adds three additional differential data pairs dedicated
+to pixel transport, bringing the total number of data lanes from three
+to six. These extra lines handle a second stream of Red, Green, and Blue
+data. Crucially, the interface does not add a second clock channel; both
+sets of data lanes operate in lockstep, referencing the original, shared
+TMDS clock signal.</p>
+<h2 id="pixel-interleaving-across-the-dual-links">Pixel Interleaving
+Across the Dual Links</h2>
+<p>The transmission mechanism does not split the screen top-to-bottom or
+left-to-right. Instead, dual-link DVI distributes data by alternating
+pixels along each horizontal scan line:</p>
+<ul>
+<li><strong>Link 1</strong> transmits the odd-numbered pixels (pixel 1,
+3, 5, etc.).</li>
+<li><strong>Link 2</strong> transmits the even-numbered pixels (pixel 2,
+4, 6, etc.).</li>
+</ul>
+<p>Because both transmitters output data simultaneously during each tick
+of the shared clock, the interface delivers 48 bits of pixel information
+per cycle instead of 24 bits. The receiving display or scalar
+reassembles the interleaved pixels back into a coherent raster line
+before presenting the frame to the panel.</p>
+<h2 id="physical-connector-differences">Physical Connector
+Differences</h2>
+<p>The hardware differences between the two formats are visible directly
+on the connector. A standard single-link DVI-D connector features two
+9-pin blocks separated by a blank space in the center, accounting for 18
+digital pins.</p>
+<p>A dual-link DVI-D connector populates this central space, providing a
+solid grid of 24 digital pins (three rows of eight). The six additional
+pins in the center column house the second TMDS link's positive and
+negative data pairs, as well as their corresponding ground shields.</p>
+<h2 id="practical-performance-gains">Practical Performance Gains</h2>
+<p>By doubling the number of parallel data channels, dual-link DVI
+effectively raises the maximum sustained pixel transmission rate to
+roughly 330 million pixels per second. This jump elevated maximum usable
+resolutions from 1080p and 1200p up to 2560x1600 at 60 Hz or 1080p at
+120 Hz, paving the way for high-resolution computing displays before
+modern packet-based standards like DisplayPort and HDMI became
+widespread.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How TDR Detects Internal Breaks in DVI Cables - dvi</title>
+    <meta name="description" content="Time-Domain Reflectometry (TDR) identifies internal breaks in a Digital Visual Interface (DVI) cable by transmitting high-frequency electrical pulses down the cable's conductors and analyzing the signals that bounce back. Much like acoustic or radar echo">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-tdr-detects-internal-breaks-in-dvi-cables">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How TDR Detects Internal Breaks in DVI Cables - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-tdr-detects-internal-breaks-in-dvi-cables" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Time-Domain Reflectometry (TDR) identifies internal breaks in a Digital Visual Interface (DVI) cable by transmitting high-frequency electrical pulses down the cable's conductors and analyzing the signals that bounce back. Much like acoustic or radar echo" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-tdr-detects-internal-breaks-in-dvi-cables">How TDR Detects
+Internal Breaks in DVI Cables</h1>
+<p>Time-Domain Reflectometry (TDR) identifies internal breaks in a
+Digital Visual Interface (DVI) cable by transmitting high-frequency
+electrical pulses down the cable's conductors and analyzing the signals
+that bounce back. Much like acoustic or radar echo-location, TDR
+measures the time delay and waveform shape of these reflected signals to
+determine the exact nature and physical location of a fault. By
+comparing the characteristic impedance of standard DVI wiring against
+unexpected reflections, technicians can locate open circuits, frayed
+strands, and crushed insulation without physically stripping the
+cable.</p>
+<h3 id="the-signal-pulse-and-characteristic-impedance">The Signal Pulse
+and Characteristic Impedance</h3>
+<p>A DVI cable contains multiple shielded twisted pairs for
+Transition-Minimized Differential Signaling (TMDS)—carrying red, green,
+blue, and clock signals—along with single-ended wires for power, ground,
+and display data channels. Each of these lines is manufactured to have a
+specific characteristic impedance (typically 100 ohms differentially for
+TMDS pairs).</p>
+<p>When a TDR instrument connects to a DVI pin, it launches a
+low-voltage pulse with a very fast rise time (often in the picosecond
+range) down the selected conductor. As long as the physical geometry,
+dielectric material, and metallic path of the conductor remain uniform,
+the impedance stays constant, and the pulse travels smoothly toward the
+other end without returning an echo.</p>
+<h3 id="reflections-at-the-fault-point">Reflections at the Fault
+Point</h3>
+<p>Any physical disruption in the copper conductor alters the line's
+impedance. When the traveling pulse encounters an impedance change, part
+or all of the signal reflects back toward the TDR instrument.</p>
+<ul>
+<li><strong>Complete Break (Open Circuit):</strong> If a conductor is
+completely snapped, the impedance at that point shoots toward infinity.
+The pulse hits this barrier and reflects back with the same polarity (a
+positive reflection), appearing as an upward spike on the TDR
+display.</li>
+<li><strong>Short Circuit:</strong> If the conductor has pinched and
+contacted a ground wire or shielding, the impedance drops to zero. This
+causes the signal to reflect with inverted polarity (a negative
+reflection), appearing as a downward dip.</li>
+<li><strong>Partial Break or Frayed Wire:</strong> If only some copper
+strands inside the wire are broken, it creates a localized increase in
+resistance and inductive reactance. This generates a smaller,
+proportional upward reflection, signaling cable stress before a complete
+failure occurs.</li>
+</ul>
+<h3 id="pinpointing-the-distance">Pinpointing the Distance</h3>
+<p>The TDR device measures the round-trip transit time (<span
+class="math inline">\(t\)</span>) between sending the pulse and
+receiving the reflected echo. Because electrical signals travel through
+copper at a known fraction of the speed of light—known as the Velocity
+of Propagation (VoP)—the distance (<span
+class="math inline">\(d\)</span>) to the internal break is calculated
+using the formula:</p>
+<p><span class="math display">\[d = \frac{v \times t}{2}\]</span></p>
+<p>where <span class="math inline">\(v\)</span> is the actual speed of
+the signal through the specific DVI cable dielectric. By dividing the
+total transit time by two, the instrument accounts for the signal
+traveling to the break and back, displaying the fault location in
+centimeters or inches.</p>
+<h3 id="channel-by-channel-diagnostics">Channel-by-Channel
+Diagnostics</h3>
+<p>Because a DVI connector exposes distinct pins for each color channel,
+clock line, and sideband data link, testing can isolate problems down to
+the individual wire. Intermittent display blanking, color tinting, or
+"sparkling" artifacts on a monitor can be mapped to a specific TMDS
+pair. By probing the corresponding pins at the connector interface, TDR
+identifies precisely which internal line is damaged and reveals whether
+the break is near a strain relief boot, along the cable run, or within
+the connector housing itself.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

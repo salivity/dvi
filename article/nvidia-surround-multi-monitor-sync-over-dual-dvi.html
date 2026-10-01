@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nvidia Surround Multi-Monitor Sync Over Dual DVI - dvi</title>
+    <meta name="description" content="Nvidia Surround transformed panoramic PC gaming by spanning a single ultra-wide canvas across multiple independent displays. Achieving a tear-free, seamless experience across separate screens using legacy Dual-Link DVI connections required overcoming sig">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/nvidia-surround-multi-monitor-sync-over-dual-dvi">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nvidia Surround Multi-Monitor Sync Over Dual DVI - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/nvidia-surround-multi-monitor-sync-over-dual-dvi" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Nvidia Surround transformed panoramic PC gaming by spanning a single ultra-wide canvas across multiple independent displays. Achieving a tear-free, seamless experience across separate screens using legacy Dual-Link DVI connections required overcoming sig" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="nvidia-surround-multi-monitor-sync-over-dual-dvi">Nvidia
+Surround Multi-Monitor Sync Over Dual DVI</h1>
+<p>Nvidia Surround transformed panoramic PC gaming by spanning a single
+ultra-wide canvas across multiple independent displays. Achieving a
+tear-free, seamless experience across separate screens using legacy
+Dual-Link DVI connections required overcoming significant hardware and
+software synchronization hurdles. This article explains how Nvidia
+utilized strict timing standards, SLI hardware bridges, driver-level
+display virtualization, and internal clock locking to synchronize
+multi-monitor gaming over dual DVI ports.</p>
+<h3 id="strict-timing-and-edid-matching">Strict Timing and EDID
+Matching</h3>
+<p>Unlike modern display interfaces like DisplayPort, which supports
+packetized data and native multi-stream transport, Digital Visual
+Interface (DVI) relies on a continuous, uncompressed stream of pixel
+data driven by an analog pixel clock generator. To synchronize multiple
+DVI displays without micro-stutter or image drift, Nvidia Surround
+enforced strict display pairing requirements.</p>
+<p>The Nvidia driver checked the Extended Display Identification Data
+(EDID) of all connected monitors. Every display had to share an
+identical native resolution, refresh rate, and sync polarity. By
+matching these parameters, the graphics card’s internal display engines
+could drive identical pixel clocks to each DVI transmitter, ensuring
+that vertical and horizontal blanking intervals fired at precisely the
+same microsecond across all physical connections.</p>
+<h3 id="the-role-of-sli-and-hardware-bridges">The Role of SLI and
+Hardware Bridges</h3>
+<p>During the peak era of DVI gaming (notably the GeForce GTX 400 and
+500 series), a single Nvidia GPU architecture could typically only
+output to two independent display pipelines simultaneously.
+Consequently, a three-monitor Nvidia Surround configuration required a
+multi-GPU Scalable Link Interface (SLI) setup.</p>
+<p>In this configuration, displays were distributed across the dual DVI
+outputs of two separate graphics cards. Synchronization between cards
+was maintained via the physical SLI bridge connector. Rather than
+relying on the relatively high-latency PCI Express bus, the SLI bridge
+provided a dedicated hardware channel that carried swap-barrier signals.
+When a frame was rendered, the master GPU used this bridge to instruct
+the secondary GPU precisely when to execute a front-and-back buffer
+swap. This prevented the screens connected to Card A from falling out of
+phase with the screen connected to Card B.</p>
+<h3 id="unified-driver-level-display-virtualization">Unified
+Driver-Level Display Virtualization</h3>
+<p>To the operating system and game engines, driving three separate DVI
+monitors independently would normally risk out-of-sync frame
+presentation. Nvidia circumvented this by aggregating the displays at
+the driver level into a single virtual canvas (for example, combining
+three 1920x1080 monitors into a single 5760x1080 display surface).</p>
+<p>Because DirectX and OpenGL rendered to this unified viewport, the
+render pipeline treated the array as a solitary display. The Nvidia
+display driver then sliced this single frame buffer and routed the
+corresponding segments to the individual DVI display scan-out hardware.
+Combined with V-Sync (Vertical Synchronization), this guaranteed that
+every frame boundary aligned across the display borders simultaneously,
+eliminating horizontal tearing across the monitor bezels.</p>
+<h3 id="bezel-management-and-frame-lock">Bezel Management and Frame
+Lock</h3>
+<p>Nvidia also built bezel compensation directly into the display
+pipeline. By adjusting the active horizontal resolution to account for
+the physical plastic borders of the monitors, the driver adjusted the
+scan-out timing registers. The GPU held the pixel clocks in phase across
+the DVI links while artificially skipping pixels obscured by the bezels,
+preserving geometric continuity across the panoramic view without
+breaking the hardware sync lock.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

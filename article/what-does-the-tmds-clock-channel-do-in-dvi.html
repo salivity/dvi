@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Does the TMDS Clock Channel Do in DVI? - dvi</title>
+    <meta name="description" content="In a Digital Visual Interface (DVI) connection, the Transition-Minimized Differential Signaling (TMDS) clock channel serves as the foundational timing reference that allows the receiving display to synchronize, sample, and reconstruct digital video data">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/what-does-the-tmds-clock-channel-do-in-dvi">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="What Does the TMDS Clock Channel Do in DVI? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/what-does-the-tmds-clock-channel-do-in-dvi" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="In a Digital Visual Interface (DVI) connection, the Transition-Minimized Differential Signaling (TMDS) clock channel serves as the foundational timing reference that allows the receiving display to synchronize, sample, and reconstruct digital video data" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="what-does-the-tmds-clock-channel-do-in-dvi">What Does the TMDS
+Clock Channel Do in DVI?</h1>
+<p>In a Digital Visual Interface (DVI) connection, the
+Transition-Minimized Differential Signaling (TMDS) clock channel serves
+as the foundational timing reference that allows the receiving display
+to synchronize, sample, and reconstruct digital video data sent across
+separate high-speed data lanes. While the three TMDS data channels carry
+serialized red, green, and blue pixel data, the dedicated differential
+clock channel transmits a continuous frequency reference running at the
+pixel clock rate. Without this dedicated clock lane, the receiver cannot
+determine pixel boundaries, phase alignment, or serial bit positions,
+leading to total signal loss.</p>
+<h3 id="the-architecture-of-a-dvi-tmds-link">The Architecture of a DVI
+TMDS Link</h3>
+<p>A standard single-link DVI cable carries four shielded twisted pairs
+of copper conductors dedicated to digital signaling. Three of these
+pairs are allocated to TMDS Data Channels 0, 1, and 2, which transmit
+serialized color components, display control signals, and
+synchronization pulses (HSync and VSync). The fourth twisted pair is the
+dedicated TMDS Clock Channel.</p>
+<p>Each TMDS data line uses current-mode logic driven over a 100-ohm
+differential impedance environment. Because high-speed serial data
+transmission is prone to inter-symbol interference and phase distortion
+over cable lengths, separating the clock from the data channels ensures
+a clean, jitter-isolated timing reference that tracks hardware frequency
+shifts across the connection.</p>
+<h3 id="the-101-ratio-and-bit-rate-multiplication">The 10:1 Ratio and
+Bit-Rate Multiplication</h3>
+<p>The defining characteristic of the DVI TMDS clock channel is its
+frequency relationship to the data stream. Rather than running at the
+raw bit rate of the serial data, the TMDS clock runs at the character
+rate—commonly referred to as the pixel clock rate (<span
+class="math inline">\(f_{pixel}\)</span>).</p>
+<p>Because TMDS encodes 8-bit color components into 10-bit balanced
+characters to minimize transitions and maintain DC balance, each data
+channel transmits 10 serial bits per clock cycle. The clock channel
+oscillates at <span class="math inline">\(1\times\)</span> the pixel
+frequency, while the data lanes operate at <span
+class="math inline">\(10\times\)</span> the clock frequency. For
+example:</p>
+<ul>
+<li>At a standard 1080p resolution at 60 Hz, the pixel clock frequency
+is approximately 148.5 MHz.</li>
+<li>The TMDS clock channel operates at 148.5 MHz.</li>
+<li>The three TMDS data lanes each transmit serial data at 1.485 Gbps
+(148.5 MHz <span class="math inline">\(\times\)</span> 10 bits),
+providing an aggregate link throughput of 4.455 Gbps.</li>
+</ul>
+<h3 id="phase-locked-loop-synchronization-at-the-receiver">Phase-Locked
+Loop Synchronization at the Receiver</h3>
+<p>The receiving display relies on the incoming TMDS clock to generate
+the internal sampling clocks required to read serial data. Because the
+clock line runs at one-tenth of the bit speed, the display's TMDS
+receiver feeds the incoming differential clock signal into an internal
+Phase-Locked Loop (PLL) and frequency multiplier.</p>
+<p>The PLL performs three key operations:</p>
+<ol type="1">
+<li><strong>Frequency Multiplication:</strong> It multiplies the
+incoming pixel clock frequency by 10 to establish the internal bit-rate
+clock for the serial receivers.</li>
+<li><strong>Phase Alignment:</strong> It dynamically aligns the sampling
+phase to capture data precisely in the center of each serial bit's data
+eye, counteracting skew introduced by cable imperfections.</li>
+<li><strong>Word Framing (De-serialization):</strong> By tracking the
+fundamental character clock cycle, the receiver knows exactly where each
+10-bit serialized word starts and ends. It converts the serial stream
+back into parallel 10-bit symbols, which are then decoded into the
+original 8-bit digital color values.</li>
+</ol>
+<h3 id="handling-cable-skew-and-signal-integrity">Handling Cable Skew
+and Signal Integrity</h3>
+<p>Long DVI cables frequently suffer from inter-pair skew, where
+physical variations in twisted pairs cause signals to travel at slightly
+different propagation speeds. The dedicated TMDS clock channel provides
+a predictable, steady periodic waveform that receiver equalization
+hardware uses to measure and correct this drift. Advanced TMDS receivers
+measure the timing offset between the edges of the clock channel and the
+data transitions on the individual data channels, adjusting internal
+delay lines to ensure all three color streams are captured in lockstep
+before pixel assembly.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

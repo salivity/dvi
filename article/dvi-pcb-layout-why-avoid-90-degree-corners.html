@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI PCB Layout: Why Avoid 90-Degree Corners - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) connections rely on high-speed Transition Minimized Differential Signaling (TMDS) to transmit uncompressed digital video data across printed circuit boards. Designing differential traces for these signals requires strict ad">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-pcb-layout-why-avoid-90-degree-corners">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI PCB Layout: Why Avoid 90-Degree Corners - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-pcb-layout-why-avoid-90-degree-corners" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) connections rely on high-speed Transition Minimized Differential Signaling (TMDS) to transmit uncompressed digital video data across printed circuit boards. Designing differential traces for these signals requires strict ad" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-pcb-layout-why-avoid-90-degree-corners">DVI PCB Layout: Why
+Avoid 90-Degree Corners</h1>
+<p>Digital Visual Interface (DVI) connections rely on high-speed
+Transition Minimized Differential Signaling (TMDS) to transmit
+uncompressed digital video data across printed circuit boards. Designing
+differential traces for these signals requires strict adherence to
+high-frequency layout principles to avoid signal degradation. In DVI PCB
+design, sharp 90-degree corners must be avoided because they introduce
+impedance discontinuities, increase parasitic capacitance, induce
+intra-pair skew, and generate unwanted electromagnetic interference
+(EMI).</p>
+<h3 id="characteristic-impedance-discontinuities">Characteristic
+Impedance Discontinuities</h3>
+<p>DVI interfaces operate with a standard differential impedance of 100
+ohms (or 50 ohms single-ended per trace). When a trace makes a sharp
+90-degree turn, the effective width of the copper trace increases by
+approximately 41.4% at the outer corner. Because characteristic
+impedance is inversely proportional to trace width, this sudden widening
+causes a localized drop in impedance.</p>
+<p>At the multi-gigabit data rates common to DVI, this localized drop
+acts as a transmission line discontinuity. The mismatched impedance
+reflects a portion of the traveling signal back toward the transmitter,
+creating standing waves, ringing, and signal distortion that close the
+data eye diagram and increase bit error rates.</p>
+<h3 id="parasitic-capacitance-and-edge-degradation">Parasitic
+Capacitance and Edge Degradation</h3>
+<p>The localized widening of the conductor at a right-angle corner
+creates a larger surface area directly above the reference plane (ground
+or power). This geometry creates excess parasitic capacitance. As
+high-speed digital pulses travel through the corner, this added
+capacitance acts as a low-pass filter, rounding off the fast rise and
+fall times critical to high-bandwidth TMDS signals. Degraded edge rates
+reduce the timing margins needed by the DVI receiver to latch data
+reliably.</p>
+<h3 id="intra-pair-skew-and-common-mode-noise">Intra-Pair Skew and
+Common-Mode Noise</h3>
+<p>Differential signaling requires the true and inverted signals to
+arrive at the receiver simultaneously so that external noise can be
+canceled out. When a differential pair navigates a sharp bend, the outer
+trace naturally follows a longer physical path than the inner trace.</p>
+<p>Sharp 90-degree turns maximize this path-length discrepancy over a
+very short distance, generating intra-pair skew. This timing mismatch
+prevents the signals from perfectly canceling each other out, converting
+differential-mode signals into common-mode noise, which degrades noise
+immunity and corrupts the video stream.</p>
+<h3 id="electromagnetic-radiation-and-acid-traps">Electromagnetic
+Radiation and Acid Traps</h3>
+<p>Sharp corners concentrate electric fields at their outer points.
+Discontinuous geometries and the resulting common-mode current cause the
+corner to act as an unintended antenna, radiating high-frequency energy.
+This radiation can interfere with neighboring analog or digital circuits
+and cause the device to fail standard electromagnetic compatibility
+(EMC) testing.</p>
+<p>Additionally, sharp internal corners pose a risk during PCB
+manufacturing. They can act as "acid traps," where etchant solutions
+become lodged during the chemical etching process, leading to
+over-etching, trace narrowing, or long-term reliability failures.</p>
+<h3 id="recommended-routing-practices">Recommended Routing
+Practices</h3>
+<p>To maintain signal integrity on DVI lines, designers replace
+90-degree corners with:</p>
+<ul>
+<li><strong>45-Degree Chamfers:</strong> Miters that clip the corner,
+keeping the trace width relatively consistent.</li>
+<li><strong>Curved or Arc Routing:</strong> Smooth bends with a radius
+at least two to three times the trace width, ensuring uniform impedance
+and zero sharp transitions.</li>
+<li><strong>Skew Compensation:</strong> Adding small, tightly matched
+delay meanders near the bend to equalize the electrical length of the
+inner and outer traces.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

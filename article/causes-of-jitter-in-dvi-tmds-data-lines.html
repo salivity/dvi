@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Causes of Jitter in DVI TMDS Data Lines - dvi</title>
+    <meta name="description" content="Jitter in high-speed DVI Transition-Minimized Differential Signaling (TMDS) data lines is the temporal deviation of signal edges from their ideal arrival times, which degrades signal integrity and causes bit errors or display artifacts. In high-bandwidth">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/causes-of-jitter-in-dvi-tmds-data-lines">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Causes of Jitter in DVI TMDS Data Lines - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/causes-of-jitter-in-dvi-tmds-data-lines" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Jitter in high-speed DVI Transition-Minimized Differential Signaling (TMDS) data lines is the temporal deviation of signal edges from their ideal arrival times, which degrades signal integrity and causes bit errors or display artifacts. In high-bandwidth" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="causes-of-jitter-in-dvi-tmds-data-lines">Causes of Jitter in DVI
+TMDS Data Lines</h1>
+<p>Jitter in high-speed DVI Transition-Minimized Differential Signaling
+(TMDS) data lines is the temporal deviation of signal edges from their
+ideal arrival times, which degrades signal integrity and causes bit
+errors or display artifacts. In high-bandwidth video transmission, this
+timing variation arises from a combination of deterministic factors—such
+as intersymbol interference, crosstalk, and impedance mismatches—and
+random physical phenomena, including thermal noise and reference clock
+phase instability. Understanding these sources is essential for
+designing reliable transmitter physical layers, layout routing, and
+receiver equalization circuits.</p>
+<h3 id="intersymbol-interference-isi-and-cable-losses">Intersymbol
+Interference (ISI) and Cable Losses</h3>
+<p>The primary contributor to deterministic jitter in DVI TMDS lines is
+Intersymbol Interference (ISI) caused by frequency-dependent attenuation
+in the transmission medium. At high pixel clocks, skin effect resistance
+and dielectric losses in copper cables attenuate the high-frequency
+components of the digital pulses. As a result, signal edges cannot fully
+transition to their steady-state voltage levels within a single bit
+period. Previous bits influence the timing and threshold crossing of
+subsequent bits, causing significant data-dependent jitter.</p>
+<h3 id="impedance-mismatches-and-reflections">Impedance Mismatches and
+Reflections</h3>
+<p>TMDS relies on a 100-ohm nominal differential impedance across the
+PCB traces, connectors, and cable assemblies. Any discontinuity—such as
+poorly designed PCB vias, solder pads, connector transitions, or
+low-quality cable manufacturing—creates impedance variations. These
+discontinuities reflect portions of the high-speed signal back and forth
+along the transmission line. When reflected waveforms superimpose onto
+incoming data transitions, they distort the signal edges and shift the
+differential zero-crossing points, inducing reflection-based jitter.</p>
+<h3 id="crosstalk-between-differential-pairs">Crosstalk Between
+Differential Pairs</h3>
+<p>A standard single-link DVI interface routes four high-speed
+differential pairs: three color channels (Red, Green, Blue) and one
+clock signal. Due to tight pin spacing in DVI connectors and dense
+routing on printed circuit boards, electromagnetic coupling occurs
+between adjacent pairs. Capacitive and inductive crosstalk injects
+transient noise into victim lines during signal transitions on
+neighboring aggressor lines. This injected noise alters the
+instantaneous voltage of the differential pair, accelerating or delaying
+its threshold transitions.</p>
+<h3 id="transmitter-pll-phase-noise">Transmitter PLL Phase Noise</h3>
+<p>DVI TMDS serializes parallel pixel data using a dedicated
+Phase-Locked Loop (PLL) that multiplies the input pixel clock by a
+factor of 10. Any phase noise, thermal noise, or instability within the
+voltage-controlled oscillator (VCO) inside the transmitter PLL
+translates directly into random clock jitter. Because the serialized
+data transitions are clocked out using this generated signal, any timing
+irregularity in the internal clock is inherently transferred to the
+high-speed data stream.</p>
+<h3 id="power-supply-induced-jitter-psij">Power Supply Induced Jitter
+(PSIJ)</h3>
+<p>Transmitter and receiver integrated circuits are susceptible to noise
+on their power distribution networks. High-speed switching within the
+driver circuitry or neighboring logic creates transient voltage dips and
+ground bounce. This power supply ripple directly affects the drive
+strength, switching speed, and propagation delay of the TMDS output
+buffers. Fluctuations in propagation delay lead to dynamic edge-timing
+variations known as power supply induced jitter.</p>
+<h3 id="intra-pair-skew">Intra-Pair Skew</h3>
+<p>Intra-pair skew occurs when the two conductors comprising a single
+differential pair (TMDS Data+ and TMDS Data-) have unequal physical
+lengths or asymmetrical dielectric environments. When the inverted
+signals do not arrive at precisely the same time, the differential
+crossing point shifts. This asymmetry not only converts differential
+signaling into unwanted common-mode noise, but it also alters the duty
+cycle and broadens the transition region, increasing the overall jitter
+observed by the differential receiver.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DVI Decodes 10-Bit TMDS to 8-Bit Color - dvi</title>
+    <meta name="description" content="A DVI (Digital Visual Interface) receiver converts 10-bit Transition-Minimized Differential Signaling (TMDS) symbols back into original 8-bit color bytes through a hardware pipeline consisting of clock recovery, word alignment, and arithmetic inverse-log">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dvi-decodes-10-bit-tmds-to-8-bit-color">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DVI Decodes 10-Bit TMDS to 8-Bit Color - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dvi-decodes-10-bit-tmds-to-8-bit-color" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A DVI (Digital Visual Interface) receiver converts 10-bit Transition-Minimized Differential Signaling (TMDS) symbols back into original 8-bit color bytes through a hardware pipeline consisting of clock recovery, word alignment, and arithmetic inverse-log" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dvi-decodes-10-bit-tmds-to-8-bit-color">How DVI Decodes
+10-Bit TMDS to 8-Bit Color</h1>
+<p>A DVI (Digital Visual Interface) receiver converts 10-bit
+Transition-Minimized Differential Signaling (TMDS) symbols back into
+original 8-bit color bytes through a hardware pipeline consisting of
+clock recovery, word alignment, and arithmetic inverse-logic decoding.
+After recovering the bit clock and aligning the serial bitstream into
+distinct 10-bit parallel words, the receiver checks whether the incoming
+symbol is a control code or active pixel data. For pixel data, it
+evaluates the two upper signaling bits to undo the DC-balancing
+inversion and reverse the transition-minimizing XOR or XNOR encoding,
+accurately reconstructing the original 8-bit red, green, or blue color
+component.</p>
+<h3 id="step-1-clock-multiplication-and-deserialization">Step 1: Clock
+Multiplication and Deserialization</h3>
+<p>The transmission begins over three differential data lanes alongside
+a dedicated differential clock lane. The DVI clock lane runs at the
+pixel clock frequency, which represents the symbol rate rather than the
+raw bit rate.</p>
+<ol type="1">
+<li><strong>Clock Recovery:</strong> A Phase-Locked Loop (PLL) inside
+the receiver locks onto the pixel clock and multiplies its frequency by
+10 to match the incoming serial bit rate.</li>
+<li><strong>Deserialization (SerDes):</strong> Using this multiplied
+clock, a serial-to-parallel converter samples the high-speed
+differential signal and shifts the serial stream into a 10-bit parallel
+register once per pixel clock cycle.</li>
+</ol>
+<h3 id="step-2-symbol-boundary-alignment-word-alignment">Step 2: Symbol
+Boundary Alignment (Word Alignment)</h3>
+<p>Because serial data streams have no natural packet markers, the
+receiver must establish where each 10-bit symbol starts and ends.</p>
+<p>During the blanking interval (when no active image data is sent), the
+transmitter sends specific 10-bit control characters representing
+synchronization signals (HSync and VSync). These control symbols are
+distinct, transition-rich patterns:</p>
+<ul>
+<li><code>0010101011</code></li>
+<li><code>1101010100</code></li>
+<li><code>0001010101</code></li>
+<li><code>1110101010</code></li>
+</ul>
+<p>A barrel shifter or framing logic monitors the incoming parallel data
+for these exact sequences. Once detected, the receiver locks its word
+boundaries to these patterns, ensuring every subsequent 10-bit capture
+corresponds to an aligned TMDS symbol.</p>
+<h3 id="step-3-differentiating-control-tokens-from-video-data">Step 3:
+Differentiating Control Tokens from Video Data</h3>
+<p>Each 10-bit TMDS word represents either a 2-bit control signal
+(HSync, VSync, or data island preambles) or an 8-bit active video
+byte.</p>
+<p>The receiver compares the received word against the four standardized
+control tokens. If a match is found, the receiver outputs the
+corresponding control signals and suppresses pixel output. If the word
+does not match any control token, it is routed to the color decoding
+logic as active video data.</p>
+<h3 id="step-4-reversing-the-10-bit-tmds-encoding">Step 4: Reversing the
+10-bit TMDS Encoding</h3>
+<p>Active video symbols consist of 10 bits, indexed here as <span
+class="math inline">\(S[9:0]\)</span>.</p>
+<ul>
+<li><strong><span class="math inline">\(S[9]\)</span></strong> is the
+DC-balancing inversion flag.</li>
+<li><strong><span class="math inline">\(S[8]\)</span></strong> indicates
+whether XOR or XNOR logic was used to minimize transitions.</li>
+<li><strong><span class="math inline">\(S[7:0]\)</span></strong> are the
+encoded data bits.</li>
+</ul>
+<p>Decoding reverses the encoding stages in strict reverse order:</p>
+<h4 id="1-reversing-dc-balancing-bit-9">1. Reversing DC Balancing (Bit
+9)</h4>
+<p>The encoder sets <span class="math inline">\(S[9] = 1\)</span> if it
+inverted the data bits to maintain DC balance across the transmission
+line. The receiver checks bit 9:</p>
+<ul>
+<li>If <span class="math inline">\(S[9] == 1\)</span>, the receiver
+inverts the lower eight bits (<span
+class="math inline">\(S[7:0]\)</span>) using a bitwise NOT
+operation.</li>
+<li>If <span class="math inline">\(S[9] == 0\)</span>, the lower eight
+bits (<span class="math inline">\(S[7:0]\)</span>) remain
+untouched.</li>
+</ul>
+<p>Let the resulting 8-bit intermediate value be <span
+class="math inline">\(Q[7:0]\)</span>.</p>
+<h4 id="2-reversing-transition-minimization-bit-8">2. Reversing
+Transition Minimization (Bit 8)</h4>
+<p>Bit 8 identifies whether the original byte was encoded using XOR
+(<span class="math inline">\(S[8] = 1\)</span>) or XNOR (<span
+class="math inline">\(S[8] = 0\)</span>) operations. The original least
+significant bit was never modified, meaning the decoded bit <span
+class="math inline">\(D[0] = Q[0]\)</span>.</p>
+<p>The remaining bits <span class="math inline">\(D[1]\)</span> through
+<span class="math inline">\(D[7]\)</span> are derived iteratively using
+the adjacent intermediate bits:</p>
+<ul>
+<li><p><strong>If <span class="math inline">\(S[8] == 1\)</span> (XOR
+mode):</strong> <span class="math display">\[D[i] = Q[i] \oplus
+Q[i-1]\]</span> <em>(The current decoded bit equals the current
+intermediate bit XORed with the preceding intermediate
+bit).</em></p></li>
+<li><p><strong>If <span class="math inline">\(S[8] == 0\)</span> (XNOR
+mode):</strong> <span class="math display">\[D[i] = \overline{Q[i]
+\oplus Q[i-1]}\]</span> <em>(The current decoded bit equals the current
+intermediate bit XNORed with the preceding intermediate
+bit).</em></p></li>
+</ul>
+<p>Because these operations rely only on the received bits <span
+class="math inline">\(Q[i]\)</span> and <span
+class="math inline">\(Q[i-1]\)</span>, all 8 bits can be calculated
+simultaneously in parallel hardware using combinational logic gates.</p>
+<h3 id="step-5-output-registering">Step 5: Output Registering</h3>
+<p>The resulting 8-bit reconstructed value, <span
+class="math inline">\(D[7:0]\)</span>, represents the raw color
+intensity for that specific channel. The receiver aggregates the decoded
+8-bit bytes from all three data channels simultaneously (Channel 0 for
+Blue, Channel 1 for Green, Channel 2 for Red), yielding a complete
+24-bit RGB pixel per clock cycle for presentation to the display
+controller.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

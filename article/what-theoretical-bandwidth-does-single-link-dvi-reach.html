@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Theoretical Bandwidth Does Single-Link DVI Reach? - dvi</title>
+    <meta name="description" content="Single-link Digital Visual Interface (DVI) provides a maximum theoretical raw transmission rate of 4.95 Gbps and an effective uncompressed video pixel bandwidth of 3.96 Gbps, supporting standard displays up to 1920×1200 at 60 Hz. This article breaks dow">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/what-theoretical-bandwidth-does-single-link-dvi-reach">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="What Theoretical Bandwidth Does Single-Link DVI Reach? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/what-theoretical-bandwidth-does-single-link-dvi-reach" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Single-link Digital Visual Interface (DVI) provides a maximum theoretical raw transmission rate of 4.95 Gbps and an effective uncompressed video pixel bandwidth of 3.96 Gbps, supporting standard displays up to 1920×1200 at 60 Hz. This article breaks dow" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="what-theoretical-bandwidth-does-single-link-dvi-reach">What
+Theoretical Bandwidth Does Single-Link DVI Reach?</h1>
+<p>Single-link Digital Visual Interface (DVI) provides a maximum
+theoretical raw transmission rate of 4.95 Gbps and an effective
+uncompressed video pixel bandwidth of 3.96 Gbps, supporting standard
+displays up to 1920×1200 at 60 Hz. This article breaks down the physical
+signaling architecture behind single-link DVI, explains how 8b/10b
+encoding establishes the difference between raw and effective
+throughput, details practical display limitations, and contrasts
+single-link capabilities with dual-link implementations.</p>
+<h2 id="tmds-architecture-and-clock-limits">TMDS Architecture and Clock
+Limits</h2>
+<p>Single-link DVI relies on Transition Minimized Differential Signaling
+(TMDS) to transmit high-speed digital video data across copper cables.
+The physical interface consists of four differential pairs: three
+dedicated data channels corresponding to Red, Green, and Blue subpixels,
+alongside a single dedicated clock channel.</p>
+<p>According to the DVI 1.0 specification published by the Digital
+Display Working Group (DDWG), the maximum pixel clock frequency defined
+for single-link operation is 165 MHz. Because each clock cycle transfers
+10 bits of serialized data across each of the three TMDS data lanes
+simultaneously, the maximum transmission rate per lane is:</p>
+<p><span class="math display">\[165\text{ MHz} \times 10\text{ bits} =
+1.65\text{ Gbps}\]</span></p>
+<p>Across all three parallel data lines, the raw aggregate bit rate
+reaches:</p>
+<p><span class="math display">\[3 \times 1.65\text{ Gbps} = 4.95\text{
+Gbps}\]</span></p>
+<h2 id="raw-bit-rate-vs-effective-video-bandwidth">Raw Bit Rate vs.
+Effective Video Bandwidth</h2>
+<p>The 4.95 Gbps figure represents the physical signaling rate on the
+wire, but it does not represent pure payload throughput. TMDS utilizes
+an 8b/10b line code, meaning an 8-bit byte of actual color data is
+encoded into a 10-bit transition-minimized symbol to balance DC bias and
+maintain clock synchronization.</p>
+<p>To compute the net theoretical video bandwidth available for display
+data, the 20% encoding overhead must be subtracted:</p>
+<p><span class="math display">\[\text{Effective Bandwidth} = 4.95\text{
+Gbps} \times \left(\frac{8}{10}\right) = 3.96\text{ Gbps}\]</span></p>
+<p>Expressed in megabytes per second:</p>
+<p><span class="math display">\[3.96\text{ Gbps} = 495\text{
+MB/s}\]</span></p>
+<p>At standard 24-bit True Color (8 bits per subpixel across 3 color
+channels), this exact data pipe processes up to 165 million 24-bit
+pixels per second.</p>
+<h2 id="practical-resolutions-and-timing-limits">Practical Resolutions
+and Timing Limits</h2>
+<p>The 165 MHz pixel clock boundary dictates the maximum spatial
+resolution and refresh rate single-link DVI can drive. Because video
+streams must account for blanking intervals (horizontal and vertical
+front porches, back porches, and synchronization pulses), the total
+pixel count per frame exceeds the active display area.</p>
+<p>With standard Coordinated Video Timings (CVT), single-link DVI
+typically maxes out at 1920×1080 at 60 Hz. By applying VESA Coordinated
+Video Timings-Reduced Blanking (CVT-RB), which significantly shortens
+the non-visible transmission intervals, single-link DVI fits a 1920×1200
+image at 60 Hz within a 154 MHz pixel clock, staying safely under the
+165 MHz ceiling. Lower resolutions can run at higher frame rates—such as
+1280×720 at 120 Hz—as long as the aggregate pixel clock remains at or
+below 165 MHz.</p>
+<h2 id="single-link-vs-dual-link-dvi-throughput">Single-Link vs.
+Dual-Link DVI Throughput</h2>
+<p>While single-link DVI fixes its transmitter ceiling at 165 MHz, the
+DVI specification provides an expansion path in the form of dual-link
+DVI:</p>
+<ul>
+<li><strong>Single-Link DVI:</strong> Employs 3 TMDS data lanes, runs at
+a 165 MHz clock cap, and achieves 3.96 Gbps effective bandwidth (4.95
+Gbps raw).</li>
+<li><strong>Dual-Link DVI:</strong> Adds 3 additional TMDS data lanes
+(totalling 6 data lanes) sharing a single clock line. Furthermore,
+dual-link is not bounded by the 165 MHz cap, allowing copper hardware
+implementations to scale past 330 MHz to achieve over 7.92 Gbps
+effective bandwidth, supporting resolutions like 2560×1600 at 60
+Hz.</li>
+</ul>
+<p>For standalone single-link DVI cables and transmitters adhering
+strictly to the base DDWG specification, 4.95 Gbps raw signaling and
+3.96 Gbps effective video throughput remain the definitive theoretical
+thresholds.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

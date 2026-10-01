@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPGA TMDS Synthesis to Drive a DVI Display - dvi</title>
+    <meta name="description" content="Field-Programmable Gate Arrays (FPGAs) can readily synthesize Transition Minimized Differential Signaling (TMDS) to drive DVI and HDMI displays without dedicated external transmitter chips. By leveraging native high-speed differential I/O standards, dedi">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/fpga-tmds-synthesis-to-drive-a-dvi-display">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FPGA TMDS Synthesis to Drive a DVI Display - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/fpga-tmds-synthesis-to-drive-a-dvi-display" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Field-Programmable Gate Arrays (FPGAs) can readily synthesize Transition Minimized Differential Signaling (TMDS) to drive DVI and HDMI displays without dedicated external transmitter chips. By leveraging native high-speed differential I/O standards, dedi" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="fpga-tmds-synthesis-to-drive-a-dvi-display">FPGA TMDS Synthesis
+to Drive a DVI Display</h1>
+<p>Field-Programmable Gate Arrays (FPGAs) can readily synthesize
+Transition Minimized Differential Signaling (TMDS) to drive DVI and HDMI
+displays without dedicated external transmitter chips. By leveraging
+native high-speed differential I/O standards, dedicated serializer
+blocks (SERDES), internal phase-locked loops (PLLs), and straightforward
+digital logic, modern FPGAs can generate the required 8b/10b encoded
+video streams directly. For low-cost FPGAs lacking native TMDS hardware
+support, external passive resistor networks can emulate the signaling
+levels to achieve reliable display output.</p>
+<h2 id="how-tmds-and-dvi-work">How TMDS and DVI Work</h2>
+<p>DVI video transport relies on TMDS, an electrical and logical
+standard comprising four differential pairs: three serial data channels
+(Red, Green, Blue) and one reference clock channel.</p>
+<p>Logically, TMDS converts 8-bit color or control data into a 10-bit
+symbol. This 8b/10b encoding minimizes signal transitions to reduce
+electromagnetic interference (EMI) and maintains DC balance across the
+differential transmission lines.</p>
+<p>Electrically, TMDS is a current-mode logic (CML) interface. The DVI
+display sink provides 50-ohm pull-up resistors to 3.3V on both lines of
+each differential pair. When transmitting, the source pulls one line low
+to create a nominal differential voltage swing between 400 mV and 600
+mV.</p>
+<h2 id="native-fpga-support">Native FPGA Support</h2>
+<p>Most mid-range and modern low-cost FPGAs (such as AMD/Xilinx
+7-Series, Lattice ECP5, and Intel Cyclone 10 LP) support direct TMDS
+output:</p>
+<ul>
+<li><strong>I/O Standards:</strong> Many FPGAs natively define a
+<code>TMDS_33</code> I/O standard in their design suites. When
+configured, the I/O buffer matches the current-sinking characteristics
+needed by the display's 50-ohm pull-ups.</li>
+<li><strong>Serialization Hardware:</strong> A 10-bit parallel-to-serial
+conversion must occur for each TMDS channel. Dedicated blocks, such as
+Xilinx <code>OSERDES</code> or Lattice <code>ODDRX1F</code>, handle 10:1
+or 5:1 double data rate (DDR) serialization directly at the I/O pin,
+avoiding timing closure issues inside the general routing fabric.</li>
+<li><strong>Clock Management:</strong> Generating TMDS requires a pixel
+clock (1x) and a high-speed bit clock (10x, or 5x using DDR). FPGA PLLs
+and mixed-mode clock managers (MMCMs) easily generate these
+phase-aligned clocks from a single reference oscillator.</li>
+</ul>
+<h2 id="emulating-tmds-on-budget-fpgas">Emulating TMDS on Budget
+FPGAs</h2>
+<p>Extremely low-cost FPGAs (such as the Lattice iCE40) may lack native
+TMDS or 3.3V differential output drivers. These chips can still drive
+DVI displays through two common workarounds:</p>
+<ol type="1">
+<li><strong>LVDS Drivers:</strong> If the FPGA supports Low-Voltage
+Differential Signaling (LVDS), an external AC-coupling network or series
+resistors can shift LVDS voltage swings to TMDS-compatible levels.</li>
+<li><strong>Resistor DAC / Passive Attenuation:</strong> Standard 3.3V
+single-ended complementary CMOS outputs can drive the differential lines
+through a simple resistor network (typically 270-ohm series resistors on
+each line). This limits current draw and creates the proper voltage
+differential across the display's internal 50-ohm termination.</li>
+</ol>
+<h2 id="core-internal-modules-required">Core Internal Modules
+Required</h2>
+<p>Synthesizing a working DVI signal requires four core logic blocks
+within the FPGA fabric:</p>
+<ol type="1">
+<li><strong>Video Timing Generator:</strong> A counter-based state
+machine that generates horizontal and vertical sync pulses
+(<code>hsync</code>, <code>vsync</code>), active video blanking
+intervals, and pixel coordinates (<span class="math inline">\(X,
+Y\)</span>).</li>
+<li><strong>Pixel Generator:</strong> The logic or frame buffer memory
+that assigns color values (RGB 8:8:8) to active coordinates.</li>
+<li><strong>TMDS Encoders:</strong> Three parallel logic blocks
+executing the standard DVI transition minimization algorithm and running
+at the 1x pixel clock.</li>
+<li><strong>10:1 Serializers:</strong> Three data serializers and one
+clock output buffer converting parallel data into serial bitstreams
+driven by the high-speed clock.</li>
+</ol>
+<h2 id="resolution-and-bandwidth-limits">Resolution and Bandwidth
+Limits</h2>
+<p>The primary constraint when synthesizing TMDS inside an FPGA is the
+maximum operating frequency of the I/O pins and serializers:</p>
+<ul>
+<li><strong>Standard Definition / 640x480 @ 60Hz:</strong> Requires a
+25.175 MHz pixel clock and a 251.75 Mbps data rate per channel. Almost
+any modern FPGA can handle this frequency with minimal routing
+constraints.</li>
+<li><strong>720p / 1280x720 @ 60Hz:</strong> Requires a 74.25 MHz pixel
+clock and a 742.5 Mbps data rate. This falls comfortably within the
+capabilities of devices with dedicated SERDES primitives.</li>
+<li><strong>1080p / 1920x1080 @ 60Hz:</strong> Requires a 148.5 MHz
+pixel clock and a 1.485 Gbps data rate. Achieving this rate typically
+requires higher-speed-grade FPGAs or devices equipped with multi-gigabit
+transceivers (such as GTX/GTP blocks).</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

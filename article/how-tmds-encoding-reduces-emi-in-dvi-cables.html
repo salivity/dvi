@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How TMDS Encoding Reduces EMI in DVI Cables - dvi</title>
+    <meta name="description" content="Transition Minimized Differential Signaling (TMDS) is the core signaling technology used in DVI and HDMI cables to transfer high-bandwidth digital video while keeping electromagnetic interference (EMI) to a minimum. By using an 8b/10b encoding algorithm">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-tmds-encoding-reduces-emi-in-dvi-cables">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How TMDS Encoding Reduces EMI in DVI Cables - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-tmds-encoding-reduces-emi-in-dvi-cables" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Transition Minimized Differential Signaling (TMDS) is the core signaling technology used in DVI and HDMI cables to transfer high-bandwidth digital video while keeping electromagnetic interference (EMI) to a minimum. By using an 8b/10b encoding algorithm" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-tmds-encoding-reduces-emi-in-dvi-cables">How TMDS Encoding
+Reduces EMI in DVI Cables</h1>
+<p>Transition Minimized Differential Signaling (TMDS) is the core
+signaling technology used in DVI and HDMI cables to transfer
+high-bandwidth digital video while keeping electromagnetic interference
+(EMI) to a minimum. By using an 8b/10b encoding algorithm that minimizes
+signal transitions, maintains direct current (DC) balance, and transmits
+data over complementary differential pairs, TMDS prevents the cable from
+acting as an efficient radiating antenna. This architecture enables
+high-speed data transmission across copper cables without emitting
+excessive electromagnetic radiation that could disrupt nearby electronic
+devices.</p>
+<p>High-frequency electromagnetic radiation in digital cables is
+primarily caused by rapid state changes—switching between logical high
+and low voltages. The steeper and more frequent these voltage
+transitions are, the more high-frequency energy is radiated into the
+surrounding environment. TMDS mitigates this phenomenon through three
+foundational mechanisms:</p>
+<h3 id="transition-minimization">Transition Minimization</h3>
+<p>In the first stage of TMDS encoding, an 8-bit data byte is converted
+into a 10-bit code word. The encoder evaluates the incoming byte and
+determines whether encoding it with XOR or XNOR logic will result in
+fewer transitions between logical zeros and ones. A dedicated ninth bit
+is added to indicate which logic operation was applied so the receiver
+can reconstruct the original byte. By actively selecting the path that
+results in the fewest voltage swings, the frequency of edge transitions
+is substantially lowered, cutting down high-frequency harmonic
+generation and the resulting EMI.</p>
+<h3 id="dc-balancing">DC Balancing</h3>
+<p>Signal lines that experience a disproportionate number of ones or
+zeros over time suffer from DC drift, which generates common-mode
+current—a primary driver of radiated emissions. TMDS solves this by
+evaluating the running disparity, which tracks the cumulative difference
+between transmitted zeros and ones. If too many ones have been sent, the
+encoder sets a tenth bit to invert the encoded data, pulling the average
+signal level back toward neutral. Maintaining this DC balance ensures a
+stable baseline voltage across the transmission medium, eliminating
+common-mode current buildup.</p>
+<h3 id="differential-signaling">Differential Signaling</h3>
+<p>Once the 10-bit symbol is generated, TMDS transmits the signal across
+a shielded twisted-pair wire using differential signaling. Instead of
+referencing a single wire to ground, the signal is sent simultaneously
+over two conductors: one carries the true signal, while the other
+carries an exact inverted counterpart. Because the currents flow in
+equal and opposite directions in tightly twisted wires, their respective
+magnetic fields overlap and cancel each other out. This field
+cancellation prevents radiation from escaping the cable and
+simultaneously renders the transmission immune to external
+electromagnetic noise.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

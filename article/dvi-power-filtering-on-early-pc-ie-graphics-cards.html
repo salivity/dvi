@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI Power Filtering on Early PCIe Graphics Cards - dvi</title>
+    <meta name="description" content="Early PCI Express (PCIe) graphics cards frequently featured dedicated power filtering circuitry around their Digital Visual Interface (DVI) output stages to protect sensitive display signals from severe electrical noise. The shift to the PCIe bus archite">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-power-filtering-on-early-pc-ie-graphics-cards">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI Power Filtering on Early PCIe Graphics Cards - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-power-filtering-on-early-pc-ie-graphics-cards" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Early PCI Express (PCIe) graphics cards frequently featured dedicated power filtering circuitry around their Digital Visual Interface (DVI) output stages to protect sensitive display signals from severe electrical noise. The shift to the PCIe bus archite" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-power-filtering-on-early-pcie-graphics-cards">DVI Power
+Filtering on Early PCIe Graphics Cards</h1>
+<p>Early PCI Express (PCIe) graphics cards frequently featured dedicated
+power filtering circuitry around their Digital Visual Interface (DVI)
+output stages to protect sensitive display signals from severe
+electrical noise. The shift to the PCIe bus architecture coincided with
+rapidly rising GPU power consumption and higher switching frequencies on
+the card’s printed circuit board (PCB). To prevent high-frequency ripple
+from degrading display quality, board designers implemented dedicated
+low-pass filter networks—often composed of inductors, ferrite beads, and
+specialized capacitors—specifically for the DVI physical layer
+transmitters and associated analog converters.</p>
+<h3 id="mitigation-of-high-frequency-switching-noise">Mitigation of
+High-Frequency Switching Noise</h3>
+<p>The migration from AGP to PCI Express introduced high-speed,
+multi-gigabit serial data lanes directly into the graphics card
+substrate. At the same time, mid-2000s GPUs required significantly more
+power, demanding multi-phase voltage regulator modules (VRMs) that
+operated with rapid switching cycles. This environment generated
+substantial electromagnetic interference (EMI) and electrical ripple
+across the ground and power planes. Without dedicated filtering, this
+noise readily propagated into the display output circuitry, introducing
+phase jitter and voltage instability.</p>
+<h3 id="preserving-tmds-signal-integrity">Preserving TMDS Signal
+Integrity</h3>
+<p>DVI relies on Transition-Minimized Differential Signaling (TMDS) to
+transmit high-speed digital pixel data. In early PCIe generations, TMDS
+transmitters were either discrete physical-layer chips (such as those
+from Silicon Image) or newly integrated macro-blocks inside the GPU die.
+These transmitters required a clean, stable DC voltage supply to
+maintain strict differential eye-diagram tolerances.</p>
+<p>Power-rail ripple directly translated into timing jitter on the TMDS
+clock and data lanes. At high display resolutions, such as 1600x1200 or
+1920x1200, jitter caused sync loss, visual artifacts (commonly called
+"sparkles"), or complete signal dropouts. Dedicated LC
+(inductor-capacitor) filter networks or linear low-dropout regulators
+(LDOs) isolated the TMDS power pins from the main 3.3V and 12V rails,
+ensuring the transmitter operated in a clean electrical environment.</p>
+<h3 id="shielding-dvi-i-analog-channels-and-ramdacs">Shielding DVI-I
+Analog Channels and RAMDACs</h3>
+<p>Most early PCIe graphics cards featured DVI-I (Integrated)
+connectors, which carried both digital TMDS signals and legacy analog
+RGB signals for backwards compatibility with VGA monitors via passive
+adapters. The internal Random Access Memory Digital-to-Analog Converters
+(RAMDACs) responsible for generating these analog video waveforms were
+exceptionally sensitive to supply rail fluctuation.</p>
+<p>High-frequency ripple penetrating the RAMDAC manifested as visible
+video defects on CRT and analog LCD displays, such as horizontal bands,
+pixel shimmer, or ghosting. Board manufacturers routed isolated analog
+power planes (typically labeled <code>VDDA</code>) fed through dedicated
+ferrite beads and decoupling capacitors to guarantee that analog display
+outputs remained free of visual interference.</p>
+<h3 id="evolution-and-integration">Evolution and Integration</h3>
+<p>As semiconductor manufacturing nodes matured, display physical-layer
+designs became significantly more resilient to power rail noise. Later
+GPU architectures incorporated on-die low-dropout regulators (internal
+LDOs), advanced spread-spectrum clocking, and improved substrate-level
+decoupling. These architectural advances, paired with higher-density
+multi-layer PCB design techniques, eventually eliminated the need for
+large, discrete external filtering components around the DVI stage in
+subsequent graphics card generations.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

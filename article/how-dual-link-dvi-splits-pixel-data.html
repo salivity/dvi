@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Dual-Link DVI Splits Pixel Data - dvi</title>
+    <meta name="description" content="Dual-link DVI increases display bandwidth by utilizing two physical transmission channels to carry a single high-resolution digital video stream. This article explains the mechanism dual-link DVI uses to divide pixel data across its two links, detailing">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dual-link-dvi-splits-pixel-data">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Dual-Link DVI Splits Pixel Data - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dual-link-dvi-splits-pixel-data" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Dual-link DVI increases display bandwidth by utilizing two physical transmission channels to carry a single high-resolution digital video stream. This article explains the mechanism dual-link DVI uses to divide pixel data across its two links, detailing" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dual-link-dvi-splits-pixel-data">How Dual-Link DVI Splits
+Pixel Data</h1>
+<p>Dual-link DVI increases display bandwidth by utilizing two physical
+transmission channels to carry a single high-resolution digital video
+stream. This article explains the mechanism dual-link DVI uses to divide
+pixel data across its two links, detailing the spatial distribution
+scheme, the shared clock architecture, and how receiving hardware
+reconstructs the final image.</p>
+<h3 id="physical-architecture-of-dual-link-dvi">Physical Architecture of
+Dual-Link DVI</h3>
+<p>A standard Single-Link DVI connection employs Transition-Minimized
+Differential Signaling (TMDS) across four twisted pairs: three pairs
+dedicated to primary color channels (Red, Green, Blue) and one pair
+dedicated to the pixel clock. This configuration is capped at a 165 MHz
+pixel clock, providing enough bandwidth for resolutions up to 1920×1200
+at 60 Hz.</p>
+<p>Dual-Link DVI expands this interface by adding three more TMDS data
+pairs—providing a second RGB data path—while retaining the single
+original clock pair. In total, a dual-link connection utilizes six data
+channels and one shared clock channel.</p>
+<h3 id="the-alternating-pixel-mechanism">The Alternating Pixel
+Mechanism</h3>
+<p>Dual-link DVI divides video data between the two links using a
+horizontal spatial split rather than splitting color components or
+alternating entire frames. The pixel stream is divided sequentially
+along each horizontal scanline:</p>
+<ul>
+<li><strong>Link 1 (Primary Link):</strong> Transmits all odd-numbered
+pixels in a scanline (Pixel 1, Pixel 3, Pixel 5, etc.).</li>
+<li><strong>Link 2 (Secondary Link):</strong> Transmits all
+even-numbered pixels in a scanline (Pixel 2, Pixel 4, Pixel 6,
+etc.).</li>
+</ul>
+<p>Each link carries the complete 24-bit color data (8 bits each of red,
+green, and blue) for its assigned pixel. Because the color data is
+intact per pixel, neither link suffers from chroma subsampling or color
+channel degradation.</p>
+<h3 id="clock-distribution-and-synchronization">Clock Distribution and
+Synchronization</h3>
+<p>Although dual-link DVI doubles the data lines, it does not add a
+second clock channel. Both links run off the same single TMDS clock
+pair.</p>
+<p>Because the pixels alternate between Link 1 and Link 2, each link
+transmits data at half the total pixel rate of the display. For example,
+if a 2560×1600 resolution display requires a composite pixel clock of
+268 MHz, each individual link operates at 134 MHz. The single shared
+clock line carries this halved frequency, ensuring that both data
+streams remain inherently phase-aligned and synchronized from the
+transmitter to the receiver.</p>
+<p>Blanking intervals (horizontal and vertical blanking) are handled
+consistently across both links. During blanking, both links transmit
+synchronization pulses (HSync and VSync) and control data tokens
+simultaneously so the display receiver tracks framing without drift.</p>
+<h3 id="reassembly-at-the-display">Reassembly at the Display</h3>
+<p>Once the signals reach the display's internal scaler or timing
+controller (T-CON), the TMDS receiver decodes the two parallel data
+streams. The controller alternates reading from Link 1 and Link 2 to
+interleave the pixels back into the correct spatial order (1, 2, 3, 4,
+5, 6...) inside a line buffer before writing the full horizontal line to
+the panel.</p>
+<p>If a dual-link connection detects a display resolution that does not
+exceed the single-link threshold (165 MHz), the transmitter
+automatically deactivates Link 2. In this fallback state, Link 1 carries
+all consecutive pixels (odd and even) at the full standard clock
+rate.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI I2C DDC Pull-Up Resistor Values - dvi</title>
+    <meta name="description" content="This article covers the standard pull-up resistor values used for the I2C Display Data Channel (DDC) lines in Digital Visual Interface (DVI) designs. It explains the typical resistor ranges specified by video standards, where these resistors should be pl">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-i-2-c-ddc-pull-up-resistor-values">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI I2C DDC Pull-Up Resistor Values - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-i-2-c-ddc-pull-up-resistor-values" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article covers the standard pull-up resistor values used for the I2C Display Data Channel (DDC) lines in Digital Visual Interface (DVI) designs. It explains the typical resistor ranges specified by video standards, where these resistors should be pl" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-i2c-ddc-pull-up-resistor-values">DVI I2C DDC Pull-Up
+Resistor Values</h1>
+<p>This article covers the standard pull-up resistor values used for the
+I2C Display Data Channel (DDC) lines in Digital Visual Interface (DVI)
+designs. It explains the typical resistor ranges specified by video
+standards, where these resistors should be placed, and the electrical
+constraints—such as bus capacitance and drive strength—that dictate
+their values.</p>
+<h2 id="standard-pull-up-resistor-values">Standard Pull-Up Resistor
+Values</h2>
+<p>In DVI interfaces, the DDC lines (DDC Clock / SCL on pin 6 and DDC
+Data / SDA on pin 7) typically use pull-up resistors valued between
+<strong>1.5 kΩ and 2.2 kΩ</strong>.</p>
+<p>While general-purpose I2C buses operating at standard mode (100 kHz)
+frequently use 4.7 kΩ or 10 kΩ resistors, DVI applications require
+stronger (lower resistance) pull-ups. The most common standard
+recommendation across VESA and DVI transmitter application notes is
+<strong>1.5 kΩ to 2.0 kΩ</strong>.</p>
+<h2 id="voltage-rail">Voltage Rail</h2>
+<p>The DDC pull-up resistors must be tied to the <strong>+5V power
+rail</strong> (provided on Pin 14 of the DVI connector). Although modern
+graphics processors and microcontrollers operate at 3.3V or lower, the
+DVI and VESA E-DDC specifications dictate a 5V signaling environment to
+maintain backward compatibility with standard 5V EDID EEPROMs (such as
+the 24C02). Level shifters or open-drain buffers tolerant to 5V are
+standardly employed between the low-voltage host controller and the DDC
+lines.</p>
+<h2 id="source-vs-sink-placement">Source vs. Sink Placement</h2>
+<ul>
+<li><strong>Source (Transmitter/Graphics Card):</strong> The primary
+pull-up resistors (1.5 kΩ to 2.2 kΩ) must reside on the source device.
+The source supplies the +5V power signal to the cable and pulls the SCL
+and SDA lines high.</li>
+<li><strong>Sink (Receiver/Monitor):</strong> The sink device typically
+contains only the EDID EEPROM. Sinks generally do not include
+low-impedance pull-ups to prevent back-powering or parallel resistance
+drops. If a sink does include pull-ups, they are very weak (typically 47
+kΩ or higher) to avoid pulling down the effective bus resistance when
+connected to the host.</li>
+</ul>
+<h2 id="engineering-considerations-for-resistor-selection">Engineering
+Considerations for Resistor Selection</h2>
+<p>Choosing the correct value within the 1.5 kΩ to 2.2 kΩ range depends
+on two main electrical factors:</p>
+<ul>
+<li><strong>Bus Capacitance and Rise Time:</strong> DVI cables can be
+several meters long, introducing significant parasitic capacitance
+(often approaching or exceeding the standard I2C limit of 400 pF).
+According to the I2C standard-mode specification, maximum allowable
+signal rise time (<span class="math inline">\(t_r\)</span>) is 1000 ns.
+Lower pull-up values (such as 1.5 kΩ) provide the faster rise times
+necessary to overcome this cable capacitance.</li>
+<li><strong>Sink Current Capabilities (<span
+class="math inline">\(I_{OL}\)</span>):</strong> Standard I2C devices
+are rated to sink a minimum of 3 mA while maintaining a low-level output
+voltage (<span class="math inline">\(V_{OL}\)</span>) below 0.4V.
+Pulling up to 5V using a resistor smaller than 1.5 kΩ (<span
+class="math inline">\(5\text{V} / 1.5\text{ k}\Omega \approx 3.33\text{
+mA}\)</span>) risks exceeding the maximum current sink capability of
+standard EDID EEPROMs, which can prevent the lines from being pulled low
+enough to register a valid logic-zero state.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

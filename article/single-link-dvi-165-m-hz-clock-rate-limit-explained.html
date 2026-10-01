@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-Link DVI 165 MHz Clock Rate Limit Explained - dvi</title>
+    <meta name="description" content="The 165 MHz pixel clock ceiling for single-link DVI is defined by the original Digital Display Working Group (DDWG) specification established in 1999. This limit represents a balance between late-1990s silicon manufacturing capabilities, copper cable int">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/single-link-dvi-165-m-hz-clock-rate-limit-explained">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Single-Link DVI 165 MHz Clock Rate Limit Explained - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/single-link-dvi-165-m-hz-clock-rate-limit-explained" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The 165 MHz pixel clock ceiling for single-link DVI is defined by the original Digital Display Working Group (DDWG) specification established in 1999. This limit represents a balance between late-1990s silicon manufacturing capabilities, copper cable int" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="single-link-dvi-165-mhz-clock-rate-limit-explained">Single-Link
+DVI 165 MHz Clock Rate Limit Explained</h1>
+<p>The 165 MHz pixel clock ceiling for single-link DVI is defined by the
+original Digital Display Working Group (DDWG) specification established
+in 1999. This limit represents a balance between late-1990s silicon
+manufacturing capabilities, copper cable integrity over standard
+lengths, and the practical display resolution needs of the era. By
+capping the single-link clock at 165 MHz, hardware manufacturers ensured
+stable, cost-effective digital video transmission capable of supporting
+standard high-resolution displays such as 1920x1200 at 60 Hz.</p>
+<h3 id="the-dvi-10-specification-mandate">The DVI 1.0 Specification
+Mandate</h3>
+<p>When the DDWG finalized the DVI 1.0 specification in April 1999, it
+set clear operational boundaries for hardware compliance. The
+specification dictated that any single Transition Minimized Differential
+Signaling (TMDS) link must support pixel clock frequencies from 25 MHz
+up to 165 MHz. If an application required a pixel clock higher than 165
+MHz, the specification mandated switching to a dual-link
+configuration—adding a second set of TMDS data lines—rather than pushing
+the single link's frequency higher.</p>
+<h3 id="tmds-signaling-and-physical-bandwidth-limits">TMDS Signaling and
+Physical Bandwidth Limits</h3>
+<p>DVI uses TMDS to transmit visual data across three separate
+differential pairs (representing red, green, and blue/sync channels),
+alongside a dedicated clock pair. Because TMDS utilizes a 10-bit
+encoding scheme for every 8-bit color byte to minimize electromagnetic
+interference (EMI) and maintain DC balance, the actual serial data rate
+on each lane is ten times the clock rate:</p>
+<ul>
+<li><strong>Pixel Clock:</strong> 165 MHz</li>
+<li><strong>Data Rate per Channel:</strong> 1.65 Gbps (165 MHz × 10
+bits)</li>
+<li><strong>Total Bandwidth across 3 Channels:</strong> 4.95 Gbps</li>
+</ul>
+<p>In 1999, operating digital signals over copper cables at 1.65 Gbps
+per lane approached the limits of mainstream consumer hardware. Beyond
+165 MHz, copper attenuation, skin effect, skew between wire pairs, and
+high-frequency jitter significantly degraded signal integrity over
+standard 5-meter cables. Overcoming these issues would have required
+expensive active equalizers, high-grade shielding, and costly silicon
+transceivers.</p>
+<h3 id="resolution-requirements-of-the-era">Resolution Requirements of
+the Era</h3>
+<p>The 165 MHz limit was purposefully chosen to accommodate the highest
+display resolutions commercially viable at the time. With standard
+display timing intervals:</p>
+<ul>
+<li><strong>UXGA (1600 × 1200 at 60 Hz)</strong> requires approximately
+a 162 MHz pixel clock using standard VESA timings.</li>
+<li><strong>WUXGA (1920 × 1200 at 60 Hz)</strong> requires a 154 MHz
+pixel clock when using VESA Coordinated Video Timings with Reduced
+Blanking (CVT-RB).</li>
+<li><strong>Full HD (1920 × 1080 at 60 Hz)</strong> requires roughly
+148.5 MHz.</li>
+</ul>
+<p>Because 165 MHz comfortably met the demands of the mainstream
+high-end display market, there was no commercial incentive to push the
+manufacturing tolerances of single-link transceivers any higher.</p>
+<h3 id="standardization-of-silicon">Standardization of Silicon</h3>
+<p>Because the DVI 1.0 specification designated 165 MHz as the upper
+limit for single-link certification, silicon vendors standardized their
+receiver and transmitter chips around this frequency. Foundational
+hardware of the era—such as the Silicon Image Sil164 receiver—was
+hard-coded and validated for up to 165 MHz operation. Any display,
+cable, or graphics card that adhered to this baseline guaranteed
+plug-and-play interoperability across different manufacturers without
+the risk of pixel dropouts, visual artifacts, or handshake failures.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

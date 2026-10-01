@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Early DVI Monitors Fail to Play Blu-ray Video - dvi</title>
+    <meta name="description" content="Many early DVI computer monitors fail to display commercial Blu-ray video because they lack support for High-bandwidth Digital Content Protection (HDCP). When a Blu-ray player or computer attempts to send protected high-definition content to a display, i">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-early-dvi-monitors-fail-to-play-blu-ray-video">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Early DVI Monitors Fail to Play Blu-ray Video - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-early-dvi-monitors-fail-to-play-blu-ray-video" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Many early DVI computer monitors fail to display commercial Blu-ray video because they lack support for High-bandwidth Digital Content Protection (HDCP). When a Blu-ray player or computer attempts to send protected high-definition content to a display, i" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-early-dvi-monitors-fail-to-play-blu-ray-video">Why Early DVI
+Monitors Fail to Play Blu-ray Video</h1>
+<p>Many early DVI computer monitors fail to display commercial Blu-ray
+video because they lack support for High-bandwidth Digital Content
+Protection (HDCP). When a Blu-ray player or computer attempts to send
+protected high-definition content to a display, it requires a secure,
+encrypted link between the source and the monitor. If an early DVI
+monitor does not contain the dedicated hardware required to perform this
+security handshake, the system blocks the video output, resulting in a
+black screen or an HDCP error message.</p>
+<h3 id="the-missing-link-hdcp-compliance">The Missing Link: HDCP
+Compliance</h3>
+<p>The Digital Visual Interface (DVI) standard was introduced in 1999 to
+transmit uncompressed digital video to computer displays. At the time of
+its creation, PC monitors were primarily intended for general computing
+tasks rather than viewing copyrighted commercial video. Consequently,
+early DVI implementations did not require content protection.</p>
+<p>When the Blu-ray format launched, movie studios implemented the
+Advanced Access Content System (AACS). AACS rules require that whenever
+protected high-definition video is transmitted across a digital
+interface like DVI or HDMI, it must be encrypted using HDCP.</p>
+<h3 id="how-the-hdcp-handshake-works">How the HDCP Handshake Works</h3>
+<p>When playing a commercial Blu-ray disc:</p>
+<ol type="1">
+<li><strong>Authentication:</strong> The playback device (such as a
+Blu-ray drive, graphics card, or standalone player) sends an
+authentication request to the display.</li>
+<li><strong>Key Exchange:</strong> The display must respond with a
+unique set of cryptographic keys stored on an internal HDCP receiver
+chip.</li>
+<li><strong>Encryption:</strong> If the keys are verified as valid and
+unrevoked, the source encrypts the video stream and begins transmission,
+which the display then decrypts in real time.</li>
+</ol>
+<p>Because early DVI monitors lack the internal HDCP hardware chip and
+firmware, they cannot respond to the authentication request.</p>
+<h3 id="the-result-of-handshake-failure">The Result of Handshake
+Failure</h3>
+<p>When the playback device realizes the monitor is not HDCP-compliant,
+AACS rules dictate immediate action to prevent digital video piracy.
+Depending on the player software, operating system, and hardware
+configuration, one of the following occurs:</p>
+<ul>
+<li><strong>Complete Black Screen:</strong> The video window or the
+entire display turns completely black, often with audio still playing in
+the background.</li>
+<li><strong>Error Messages:</strong> Dedicated playback software (such
+as PowerDVD) halts playback and displays an error code indicating that
+the display environment is not secure.</li>
+<li><strong>Resolution Downgrade:</strong> In rare early implementations
+featuring an active Image Constraint Token (ICT), the player would
+downscale the image to standard definition (540p or 480p) rather than
+blocking it entirely, though outright blocking is the standard
+behavior.</li>
+</ul>
+<h3 id="why-newer-monitors-do-not-have-this-problem">Why Newer Monitors
+Do Not Have This Problem</h3>
+<p>As high-definition media consumption shifted toward personal
+computers, display manufacturers began integrating HDCP compliance into
+DVI ports. By the late 2000s, almost all computer monitors featuring
+DVI, HDMI, or DisplayPort connections shipped with built-in HDCP
+decryption hardware, resolving the incompatibility with protected media
+formats like Blu-ray.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

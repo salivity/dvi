@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Test if a Dual-Link DVI Cable Is Fully Wired - dvi</title>
+    <meta name="description" content="Dual-link DVI cables require all 24 digital signal pins to be electrically connected inside the cable to deliver high resolutions and high refresh rates. However, many low-cost cables feature the full 24-pin physical connector while internally wiring onl">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-to-test-if-a-dual-link-dvi-cable-is-fully-wired">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How to Test if a Dual-Link DVI Cable Is Fully Wired - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-to-test-if-a-dual-link-dvi-cable-is-fully-wired" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Dual-link DVI cables require all 24 digital signal pins to be electrically connected inside the cable to deliver high resolutions and high refresh rates. However, many low-cost cables feature the full 24-pin physical connector while internally wiring onl" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-to-test-if-a-dual-link-dvi-cable-is-fully-wired">How to Test
+if a Dual-Link DVI Cable Is Fully Wired</h1>
+<p>Dual-link DVI cables require all 24 digital signal pins to be
+electrically connected inside the cable to deliver high resolutions and
+high refresh rates. However, many low-cost cables feature the full
+24-pin physical connector while internally wiring only the 18 pins used
+for single-link DVI. This guide outlines the two most reliable ways to
+verify that your DVI cable is genuinely wired for dual-link operation:
+an electrical continuity test with a multimeter and a functional
+high-bandwidth display test.</p>
+<h2 id="method-1-the-multimeter-continuity-test">Method 1: The
+Multimeter Continuity Test</h2>
+<p>The most definitive way to verify internal wiring without stripping
+the cable jacket is by testing continuity between both ends of the cable
+using a digital multimeter.</p>
+<h3 id="tools-needed">Tools Needed</h3>
+<ul>
+<li>A digital multimeter with a continuity mode (beep function) or
+low-resistance mode (<span class="math inline">\(\Omega\)</span>).</li>
+<li>Two thin paperclips, needles, or safety pins (standard multimeter
+probes are typically too thick to fit inside the DVI pin
+receptacles).</li>
+</ul>
+<h3 id="pinout-identification">Pinout Identification</h3>
+<p>Looking directly at the male DVI connector with the flat ground blade
+on the right:</p>
+<ul>
+<li><strong>Top Row (Pins 1–8):</strong> Pin 1 is top-left, Pin 8 is
+top-right (next to the ground blade).</li>
+<li><strong>Middle Row (Pins 9–16):</strong> Pin 9 is middle-left, Pin
+16 is middle-right.</li>
+<li><strong>Bottom Row (Pins 17–24):</strong> Pin 17 is bottom-left, Pin
+24 is bottom-right.</li>
+</ul>
+<p>A single-link DVI cable connects only Link 1 data and clock signals.
+A dual-link cable adds <strong>Link 2 data lines</strong>, which occupy
+six specific pins:</p>
+<ul>
+<li><strong>Pin 4:</strong> TMDS Data 0/5 Shield (or Data 4-)</li>
+<li><strong>Pin 5:</strong> TMDS Data 4+</li>
+<li><strong>Pin 12:</strong> TMDS Data 3-</li>
+<li><strong>Pin 13:</strong> TMDS Data 3+</li>
+<li><strong>Pin 20:</strong> TMDS Data 5-</li>
+<li><strong>Pin 21:</strong> TMDS Data 5+</li>
+</ul>
+<h3 id="testing-steps">Testing Steps</h3>
+<ol type="1">
+<li>Set the multimeter to <strong>Continuity mode</strong> (audio tone)
+or lowest resistance (ohms).</li>
+<li>Insert a paperclip into <strong>Pin 4</strong> on one end of the
+cable.</li>
+<li>Insert the second paperclip into <strong>Pin 4</strong> on the
+opposite end.</li>
+<li>Touch the multimeter probes to the two paperclips.</li>
+<li>If the meter beeps or shows near-zero resistance (less than a few
+ohms), Pin 4 is connected internally.</li>
+<li>Repeat this process for <strong>Pin 5, Pin 12, Pin 13, Pin 20, and
+Pin 21</strong>.</li>
+</ol>
+<p><strong>Result:</strong> If these six dual-link pins lack continuity,
+the cable is only wired for single-link operation, regardless of having
+24 physical metal pins visible on the outside.</p>
+<hr />
+<h2 id="method-2-high-bandwidth-display-test">Method 2: High-Bandwidth
+Display Test</h2>
+<p>If you do not have access to a multimeter, you can perform an active
+bandwidth test using compatible hardware.</p>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>A graphics card with a confirmed Dual-Link DVI-D or DVI-I
+output.</li>
+<li>A monitor that accepts Dual-Link DVI input and supports resolutions
+exceeding single-link limits (e.g., 2560×1440 at 60Hz, 2560×1600 at
+60Hz, or 1920×1080 at 120Hz/144Hz).</li>
+</ul>
+<h3 id="testing-steps-1">Testing Steps</h3>
+<ol type="1">
+<li>Connect the monitor directly to the graphics card using the cable
+under test without adapters.</li>
+<li>Open your operating system's display settings or graphics control
+panel (NVIDIA Control Panel, AMD Software, or Intel Command
+Center).</li>
+<li>Attempt to select <strong>2560×1440 @ 60Hz</strong> or
+<strong>1920×1080 @ 120Hz/144Hz</strong>.</li>
+</ol>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Single-link DVI bandwidth caps out at 1920×1200 at 60Hz. If the
+cable only has 18 wires connected, the monitor will show "No Signal,"
+produce severe visual artifacts/sparkles, or display settings will
+restrict the maximum resolution to 1080p at 60Hz.</li>
+<li>If the display cleanly outputs 1440p or 120Hz+, all 24 pins are
+fully wired and functional.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

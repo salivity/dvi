@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Flight Simulators Use Multi-Channel DVI Outputs - dvi</title>
+    <meta name="description" content="Modern flight simulators rely on multi-channel Digital Visual Interface (DVI) outputs to deliver high-resolution, uncompressed video feeds to multiple cockpit instruments and external visual channels simultaneously. This article examines how flight simul">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-flight-simulators-use-multi-channel-dvi-outputs">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Flight Simulators Use Multi-Channel DVI Outputs - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-flight-simulators-use-multi-channel-dvi-outputs" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Modern flight simulators rely on multi-channel Digital Visual Interface (DVI) outputs to deliver high-resolution, uncompressed video feeds to multiple cockpit instruments and external visual channels simultaneously. This article examines how flight simul" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-flight-simulators-use-multi-channel-dvi-outputs">How Flight
+Simulators Use Multi-Channel DVI Outputs</h1>
+<p>Modern flight simulators rely on multi-channel Digital Visual
+Interface (DVI) outputs to deliver high-resolution, uncompressed video
+feeds to multiple cockpit instruments and external visual channels
+simultaneously. This article examines how flight simulation host
+computers utilize dedicated multi-channel graphics hardware, frame
+synchronization, signal distribution, and custom resolution management
+to power Primary Flight Displays (PFDs), Multi-Function Displays (MFDs),
+and panoramic out-of-the-window visual systems with zero perceptible
+latency.</p>
+<h3 id="dedicated-image-generators-and-multi-channel-gpus">Dedicated
+Image Generators and Multi-Channel GPUs</h3>
+<p>Flight simulator architectures typically deploy centralized image
+generator (IG) computers equipped with specialized, multi-output
+graphics hardware. Rather than relying on multiple independent computers
+to render separate screens, a single high-performance system utilizes
+graphics cards with dual- or quad-channel DVI outputs. Each DVI port
+operates as an independent display pipe, enabling the computer to render
+distinct views—such as the captain’s PFD, the engine-indicating and
+crew-alerting system (EICAS), and copilot navigation instruments—from a
+single hardware platform.</p>
+<h3 id="frame-locking-and-hardware-synchronization">Frame Locking and
+Hardware Synchronization</h3>
+<p>To prevent visual tearing and frame desynchronization across adjacent
+displays, multi-channel DVI configurations implement hardware frame
+locking (framelock) and genlocking. Graphics hardware synchronizes the
+vertical refresh cycles across every DVI channel. When an aircraft
+maneuvers, all synthetic horizon indicators, terrain maps, and
+peripheral instrumentation update on the exact same vertical blanking
+interval. This tight coupling eliminates micro-stutters and temporal
+mismatches that could otherwise induce simulator sickness or disrupt
+pilot training fidelity.</p>
+<h3 id="uncompressed-digital-signal-integrity">Uncompressed Digital
+Signal Integrity</h3>
+<p>Cockpit instruments require razor-sharp visual clarity so pilots can
+read fine alphanumeric text, altitude scales, and synthetic vision
+symbology instantly. DVI-D (digital-only) protocols transmit
+pixel-for-pixel, uncompressed digital video data directly from the frame
+buffer to the target monitor. Unlike analog signals, digital DVI
+prevents ghosting, chromatic aberration, and noise interference caused
+by the extensive electrical wiring typically found inside a flight deck
+replica.</p>
+<h3 id="edid-management-and-custom-resolutions">EDID Management and
+Custom Resolutions</h3>
+<p>Cockpit replicas frequently use non-standard LCD panels designed to
+mirror proprietary avionics form factors, such as square 1:1 aspect
+ratios or specialized portrait configurations. Multi-channel DVI
+hardware incorporates programmable Extended Display Identification Data
+(EDID) management. Simulator engineers force each DVI channel to output
+fixed, custom resolutions and refresh rates (often 60 Hz or 120 Hz)
+regardless of whether a display disconnects or experiences a power
+cycle. This stability prevents the simulation host operating system from
+reorganizing display layouts or resetting desktop resolutions during
+training sessions.</p>
+<h3 id="signal-extension-and-cabling-architecture">Signal Extension and
+Cabling Architecture</h3>
+<p>Because simulation computing racks are usually situated outside the
+motion platform or cockpit shell, DVI signals must travel extended
+distances without degradation. Engineers pair multi-channel DVI outputs
+with fiber-optic or active copper DVI extenders. These units convert the
+electrical DVI signals into optical pulses, transmitting them over
+several dozen meters to the cockpit enclosure where local receivers
+convert them back to native DVI inputs behind each panel-mounted
+display.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

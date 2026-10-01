@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Removing Analog Pins from a DVI-I Cable - dvi</title>
+    <meta name="description" content="Removing the analog pins from a DVI-I cable to force it into a DVI-D port can theoretically allow the cable to transmit a digital signal, but it is rarely a smooth solution. While removing these pins eliminates the analog video paths without disabling th">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/removing-analog-pins-from-a-dvi-i-cable">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Removing Analog Pins from a DVI-I Cable - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/removing-analog-pins-from-a-dvi-i-cable" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Removing the analog pins from a DVI-I cable to force it into a DVI-D port can theoretically allow the cable to transmit a digital signal, but it is rarely a smooth solution. While removing these pins eliminates the analog video paths without disabling th" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="removing-analog-pins-from-a-dvi-i-cable">Removing Analog Pins
+from a DVI-I Cable</h1>
+<p>Removing the analog pins from a DVI-I cable to force it into a DVI-D
+port can theoretically allow the cable to transmit a digital signal, but
+it is rarely a smooth solution. While removing these pins eliminates the
+analog video paths without disabling the digital pins, physical
+connector differences and the risk of damaging your ports make this
+modification risky and largely impractical compared to using a dedicated
+DVI-D cable.</p>
+<h3 id="the-technical-pin-differences">The Technical Pin
+Differences</h3>
+<p>A DVI-I (Integrated) connector carries both digital and analog
+signals. The digital data travels through the main grid of 18 or 24 pins
+(Single-Link or Dual-Link). The analog signal relies entirely on the
+cross-shaped section on the side: a flat horizontal blade surrounded by
+four individual pins (labeled C1 through C4). These four pins carry the
+analog red, green, blue, and horizontal sync signals.</p>
+<p>A DVI-D (Digital) female port lacks the four pinholes surrounding the
+horizontal slot to ensure analog-only devices cannot be connected. If
+you remove the four analog pins from a DVI-I cable, the digital lines
+(TMDS channels, clock, and DDC data) remain intact. As long as both your
+video source and monitor are communicating via digital signals, the
+cable can still transmit video.</p>
+<h3 id="the-ground-blade-problem">The Ground Blade Problem</h3>
+<p>Simply clipping or pulling out the four analog pins is often not
+enough to make the connector fit. On standard DVI-I male connectors, the
+flat horizontal blade (ground) is wider and thicker than the horizontal
+slot on a DVI-D female port.</p>
+<p>Because of this size difference, the connector will still not plug
+into a DVI-D port even after the four pins are removed. Users who
+attempt this modification are often forced to file down or snap off the
+flat blade as well. Modifying or removing this blade removes an analog
+ground reference, though it does not strictly prevent digital
+transmission.</p>
+<h3 id="potential-risks-and-failures">Potential Risks and Failures</h3>
+<p>Modifying a cable with pliers, cutters, or files introduces several
+failure points:</p>
+<ul>
+<li><strong>Port Damage:</strong> Forcing an altered connector into a
+DVI-D port can bend internal contacts, crack the plastic housing of the
+female port, or permanently damage the graphics card or monitor.</li>
+<li><strong>Short Circuits:</strong> Breaking or cutting pins inside the
+connector head can cause loose metal fragments or jagged edges to bridge
+adjacent pins, potentially causing an electrical short.</li>
+<li><strong>Cable Failure:</strong> Excessive force applied to the pins
+can dislodge internal solder joints or sever the delicate wiring inside
+the molded connector housing, rendering the entire cable
+non-functional.</li>
+<li><strong>Permanent Modification:</strong> The cable will permanently
+lose its ability to carry VGA/analog signals via passive DVI-to-VGA
+adapters.</li>
+</ul>
+<h3 id="the-verdict">The Verdict</h3>
+<p>If performed cleanly—and if the flat blade is either narrow enough or
+filed down to fit the DVI-D slot—the cable will function as a standard
+DVI-D digital cable. However, because modern DVI-D cables and
+DVI-to-HDMI adapters are inexpensive and widely available, altering the
+hardware physically carries an unnecessary risk of damaging expensive
+display equipment.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

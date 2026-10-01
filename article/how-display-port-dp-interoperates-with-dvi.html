@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DisplayPort DP++ Interoperates with DVI - dvi</title>
+    <meta name="description" content="DisplayPort Dual-Mode, commonly designated as DP++, allows a DisplayPort source to directly drive single-link DVI displays using a simple, low-cost passive adapter. Instead of requiring an active protocol converter, a DP++ enabled graphics output detects">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-display-port-dp-interoperates-with-dvi">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DisplayPort DP++ Interoperates with DVI - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-display-port-dp-interoperates-with-dvi" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="DisplayPort Dual-Mode, commonly designated as DP++, allows a DisplayPort source to directly drive single-link DVI displays using a simple, low-cost passive adapter. Instead of requiring an active protocol converter, a DP++ enabled graphics output detects" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-displayport-dp-interoperates-with-dvi">How DisplayPort DP++
+Interoperates with DVI</h1>
+<p>DisplayPort Dual-Mode, commonly designated as DP++, allows a
+DisplayPort source to directly drive single-link DVI displays using a
+simple, low-cost passive adapter. Instead of requiring an active
+protocol converter, a DP++ enabled graphics output detects the passive
+DVI adapter, changes its internal transmission mode from native
+DisplayPort packetized signals to Transition-Minimized Differential
+Signaling (TMDS), and remaps its physical pins to transmit DVI-compliant
+video and control signals.</p>
+<h3 id="detection-via-the-cable-adapter-detect-pin">Detection via the
+Cable Adapter Detect Pin</h3>
+<p>The interoperability process begins at the physical connection layer.
+In standard DisplayPort operation, Pin 13 acts as a configuration pin
+(Config1). When an adapter is connected, the DP++ source checks the
+electrical state of Pin 13, known in this context as the Cable Adapter
+Detect (CAD) pin.</p>
+<p>A passive DP++ to DVI adapter pulls Pin 13 to ground or pulls it low
+through a specific resistor. When the graphics processing unit (GPU)
+senses this low logic state, it identifies that a DVI (or HDMI) passive
+adapter is attached rather than a native DisplayPort sink, triggering
+the source to switch into TMDS mode.</p>
+<h3 id="tmds-mode-and-pin-remapping">TMDS Mode and Pin Remapping</h3>
+<p>Native DisplayPort uses an AC-coupled, micro-packet architecture,
+whereas DVI relies on a DC-coupled, continuous streaming protocol called
+TMDS. When switched to dual-mode operation for single-link DVI, the
+source remaps its high-speed lanes and sideband channels:</p>
+<ul>
+<li><strong>Main Link Lanes 0, 1, and 2:</strong> The three primary
+differential data pairs used for DisplayPort data are reconfigured to
+carry TMDS Data Channels 0, 1, and 2 (transmitting the blue, green, and
+red color components).</li>
+<li><strong>Main Link Lane 3:</strong> In native DP mode, this lane
+carries data packets. Under DP++, it is remapped to transmit the
+continuous TMDS Clock signal required by DVI receivers.</li>
+<li><strong>AUX Channel to DDC:</strong> DisplayPort's bidirectional,
+differential Auxiliary (AUX) channel (Pins 5 and 7) is remapped to
+standard Display Data Channel (DDC) lines—I2C-based clock (SCL) and data
+(SDA) lines. This allows the source to read the monitor’s Extended
+Display Identification Data (EDID) and negotiate HDCP encryption.</li>
+<li><strong>Hot Plug Detect (HPD):</strong> Pin 18 continues to handle
+Hot Plug Detect signaling to notify the GPU when a monitor is attached
+or powered on.</li>
+</ul>
+<h3 id="electrical-adaptation-and-level-shifting">Electrical Adaptation
+and Level Shifting</h3>
+<p>Although a DP++ GPU generates the TMDS logic protocol, its physical
+PHY outputs operate at lower DisplayPort voltages (typically around 0.4V
+to 1.2V peak-to-peak with AC coupling). Single-link DVI displays require
+standard 3.3V DC-coupled termination voltages.</p>
+<p>Because of this difference, a passive DP++ to DVI adapter is not
+purely mechanical wire-routing; it contains a built-in level-shifter
+circuit. This simple hardware translates the source's low-voltage TMDS
+signals to the standard 3.3V signal levels expected by the DVI monitor,
+while also buffering the 3.3V DDC lines from the 5V pull-ups often found
+in DVI devices.</p>
+<h3 id="bandwidth-and-limitations">Bandwidth and Limitations</h3>
+<p>DP++ interoperability with single-link DVI adheres to the standard
+single-link DVI specification:</p>
+<ul>
+<li><strong>Clock Speed:</strong> The pixel clock is limited to a
+maximum of 165 MHz under the baseline Type 1 DP++ standard.</li>
+<li><strong>Resolution:</strong> This clock limit natively accommodates
+resolutions up to 1920x1200 at 60 Hz or 1080p.</li>
+<li><strong>Dual-Link Incompatibility:</strong> DP++ cannot drive
+dual-link DVI passively. Dual-link DVI requires six data channels plus a
+clock (seven differential pairs total), whereas DisplayPort connectors
+only route four high-speed differential pairs. Driving dual-link
+resolutions (such as 2560x1600) from any DisplayPort requires an
+externally powered, active adapter that converts the native DisplayPort
+stream into two multiplexed DVI links.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

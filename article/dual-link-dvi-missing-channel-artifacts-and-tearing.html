@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Link DVI Missing Channel Artifacts and Tearing - dvi</title>
+    <meta name="description" content="When a dual-link DVI connection loses one or more of its secondary data channels, the resulting visual output exhibits severe image corruption, most notably vertical column interleaving, horizontal tearing, and color-specific artifacting. This article ex">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dual-link-dvi-missing-channel-artifacts-and-tearing">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dual-Link DVI Missing Channel Artifacts and Tearing - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dual-link-dvi-missing-channel-artifacts-and-tearing" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="When a dual-link DVI connection loses one or more of its secondary data channels, the resulting visual output exhibits severe image corruption, most notably vertical column interleaving, horizontal tearing, and color-specific artifacting. This article ex" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dual-link-dvi-missing-channel-artifacts-and-tearing">Dual-Link
+DVI Missing Channel Artifacts and Tearing</h1>
+<p>When a dual-link DVI connection loses one or more of its secondary
+data channels, the resulting visual output exhibits severe image
+corruption, most notably vertical column interleaving, horizontal
+tearing, and color-specific artifacting. This article explains how the
+dual-link DVI architecture distributes pixel data, why missing or
+damaged physical channels manifest as distinct "interlaced" or torn
+visual patterns, and how to identify whether a display anomaly stems
+from a hardware channel failure.</p>
+<h3 id="the-architecture-of-dual-link-dvi">The Architecture of Dual-Link
+DVI</h3>
+<p>To understand the visual defects, it is necessary to examine how
+dual-link DVI handles bandwidth. A single DVI link uses three
+Transition-Minimized Differential Signaling (TMDS) data channels
+(carrying Red, Green, and Blue) and one clock channel, supporting up to
+1920×1200 at 60 Hz.</p>
+<p>To support higher resolutions (such as 2560×1600) or higher refresh
+rates, dual-link DVI introduces a second set of three TMDS data channels
+(pins 4, 5, 12, 13, 20, and 21) while sharing the same continuous clock
+line.</p>
+<p>Instead of splitting the image into top and bottom halves, the DVI
+specification uses an alternating pixel architecture:</p>
+<ul>
+<li><strong>Link 1</strong> transmits odd-numbered horizontal pixels (1,
+3, 5, etc.).</li>
+<li><strong>Link 2</strong> transmits even-numbered horizontal pixels
+(2, 4, 6, etc.).</li>
+</ul>
+<h3 id="vertical-interlacing-artifacts-the-comb-effect">Vertical
+"Interlacing" Artifacts (The Comb Effect)</h3>
+<p>The most prominent visual defect caused by missing dual-link channels
+is vertical striping, often mistakenly referred to as interlacing.</p>
+<p>Traditional interlacing alternates horizontal scanlines over time.
+However, when the secondary link fails completely due to a bent pin,
+broken wire, or faulty multiplexer:</p>
+<ul>
+<li>The display panel attempts to assemble the full resolution image
+using data from both links.</li>
+<li>Link 1 correctly renders every odd pixel column.</li>
+<li>Link 2 provides no data, zeroed values, or random noise for every
+even pixel column.</li>
+</ul>
+<p>This results in a distinct "jailbar," "comb," or "pinstripe" effect
+across the entire panel. Every other vertical line of pixels will appear
+pitch black, solid bright, or stuck at a static color. While this
+visually mimics an interlaced video stream that has failed to
+de-interlace, the pattern is oriented vertically rather than
+horizontally.</p>
+<h3 id="micro-tearing-and-phase-desynchronization">Micro-Tearing and
+Phase Desynchronization</h3>
+<p>When dual-link channels are partially damaged or suffer from severe
+signal degradation (attenuation or skew), true tearing occurs across the
+screen.</p>
+<p>Because both links rely on a single shared clock, any propagation
+delay or phase shift between Link 1 and Link 2 creates timing mismatches
+inside the display’s receiver controller. If the receiver cannot
+synchronize the pixel pairs within the allowed horizontal blanking
+interval:</p>
+<ul>
+<li><strong>Horizontal Pixel Shearing:</strong> Individual pixel pairs
+fall out of alignment, causing fine, microscopic horizontal tears along
+high-contrast edges and text.</li>
+<li><strong>Buffer Swapping Tears:</strong> Displays buffering frames
+internally may update odd pixel columns on a different frame cycle than
+even pixel columns. During rapid on-screen movement, this causes
+temporal shearing where moving objects appear simultaneously in two
+different spatial locations across alternating vertical columns.</li>
+</ul>
+<h3 id="color-specific-banding-and-sparkling">Color-Specific Banding and
+"Sparkling"</h3>
+<p>A failure does not always take down the entire secondary link; it can
+isolate a single sub-channel:</p>
+<ul>
+<li><strong>Missing Color Data:</strong> If only the second Red channel
+(Channel 3) is severed, the display still receives Green and Blue data
+for even pixels. Consequently, every second column will lack red
+intensity, causing the entire display to show alternating stripes of
+normal color and heavy cyan or green tints.</li>
+<li><strong>Pixel Sparkle/Snow:</strong> A marginal connection that
+intermittently drops differential voltage levels causes high-frequency
+noise. Because the secondary link handles alternating pixels, this noise
+manifests as localized "sparkling" or shimmering confined strictly to
+even-numbered pixel columns.</li>
+</ul>
+<h3 id="resolution-fallback-vs-raw-artifacting">Resolution Fallback vs.
+Raw Artifacting</h3>
+<p>Modern monitors and graphics cards negotiate link configurations via
+Display Data Channel (DDC) and Extended Display Identification Data
+(EDID).</p>
+<p>If the GPU detects during the handshake that the secondary link is
+completely non-functional, it may automatically prevent these visual
+tearing and interleaving effects by downscaling the output to a standard
+single-link resolution (such as 1920×1080 at 60 Hz). The severe vertical
+interleaving and tearing artifacts primarily appear when the GPU
+forcefully transmits a dual-link raster across a physically degraded
+cable or when pins detach while a high-resolution session is actively
+running.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

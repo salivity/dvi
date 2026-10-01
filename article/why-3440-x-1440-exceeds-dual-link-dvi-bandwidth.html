@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why 3440x1440 Exceeds Dual-Link DVI Bandwidth - dvi</title>
+    <meta name="description" content="Running an ultrawide resolution of 3440x1440 pushes legacy digital video connections beyond their architectural limits. This article examines the technical constraints of Dual-Link DVI, detailing why the pixel clock requirements, raw data throughput, and">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-3440-x-1440-exceeds-dual-link-dvi-bandwidth">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why 3440x1440 Exceeds Dual-Link DVI Bandwidth - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-3440-x-1440-exceeds-dual-link-dvi-bandwidth" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Running an ultrawide resolution of 3440x1440 pushes legacy digital video connections beyond their architectural limits. This article examines the technical constraints of Dual-Link DVI, detailing why the pixel clock requirements, raw data throughput, and" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-3440x1440-exceeds-dual-link-dvi-bandwidth">Why 3440x1440
+Exceeds Dual-Link DVI Bandwidth</h1>
+<p>Running an ultrawide resolution of 3440x1440 pushes legacy digital
+video connections beyond their architectural limits. This article
+examines the technical constraints of Dual-Link DVI, detailing why the
+pixel clock requirements, raw data throughput, and physical transmission
+limitations of the interface make reliably driving a 3440x1440 display
+at standard refresh rates practically impossible.</p>
+<h3 id="the-bandwidth-math-of-3440x1440">The Bandwidth Math of
+3440x1440</h3>
+<p>Digital video interfaces transmit uncompressed video frames along
+with blanking intervals used for display synchronization. For a display
+operating at 3440x1440 resolution at a standard 60 Hz refresh rate:</p>
+<ul>
+<li><strong>Active Pixels:</strong> 3440 × 1440 = 4,953,600 pixels per
+frame.</li>
+<li><strong>Frame Rate:</strong> 60 frames per second = 297,216,000
+active pixels per second.</li>
+<li><strong>Blanking Overhead:</strong> Video standards such as VESA
+CVT-RB (Coordinated Video Timings - Reduced Blanking) require additional
+timing overhead for horizontal and vertical blanking intervals. With
+reduced blanking, the total pixel requirement typically rises to roughly
+319.75 MHz to 330 MHz of pixel clock frequency. With standard
+(non-reduced) blanking, the required pixel clock exceeds 380 MHz.</li>
+</ul>
+<p>At standard 24-bit color (8 bits per channel across red, green, and
+blue), a 320 MHz pixel clock translates to a continuous uncompressed
+video data rate of roughly 7.68 Gbps. When accounting for 8b/10b
+Transition-Minimized Differential Signaling (TMDS) encoding, the
+physical interface must carry approximately 9.6 Gbps of raw
+bandwidth.</p>
+<h3 id="dual-link-dvi-specifications-and-limits">Dual-Link DVI
+Specifications and Limits</h3>
+<p>Dual-Link DVI expands the bandwidth of single-link DVI by adding
+three extra differential data pairs, effectively doubling the interface
+from three data lanes to six while sharing a single clock lane.</p>
+<p>Under the formal DVI 1.0 specification:</p>
+<ul>
+<li>A single link is rated up to a maximum pixel clock of 165 MHz
+(around 3.96 Gbps raw TMDS bandwidth).</li>
+<li>Dual-link mode theoretically removes the strict 165 MHz frequency
+cap, allowing the transmitter to run at the maximum frequency permitted
+by the copper wire and silicon transmitters.</li>
+</ul>
+<p>In practice, most Dual-Link DVI transmitters, receivers, and cables
+are validated to a maximum pixel clock of 330 MHz (165 MHz per link).
+This provides a theoretical maximum throughput of approximately 7.92
+Gbps of usable payload data (9.9 Gbps total TMDS bandwidth).</p>
+<h3 id="the-reliability-problem-physical-layer-degradation">The
+Reliability Problem: Physical Layer Degradation</h3>
+<p>While 3440x1440 at 60 Hz with aggressive reduced blanking (~320 MHz)
+technically sits just below the theoretical 330 MHz ceiling of
+high-grade Dual-Link DVI hardware, it consistently fails in practice due
+to physical layer constraints:</p>
+<ol type="1">
+<li><strong>Dedicated Clock Skew:</strong> DVI relies on a separate,
+dedicated physical clock channel. At frequencies exceeding 300 MHz,
+maintaining precise phase alignment between the high-speed data lanes
+and the clock lane over copper cabling becomes extremely difficult. Any
+phase misalignment causes pixel jitter, "sparkling" artifacts, or total
+signal dropout.</li>
+<li><strong>Lack of Adaptive Equalization:</strong> Modern standards
+like DisplayPort and HDMI 2.0+ utilize modern receiver equalization,
+forward error correction, and link training to compensate for signal
+attenuation across cables. DVI lacks these automated mechanisms, making
+it hypersensitive to cable length, gauge, and electromagnetic
+interference.</li>
+<li><strong>Hardware Implementation Ceilings:</strong> Most DVI receiver
+chips embedded in monitors and graphics cards were built around standard
+2560x1440 or 2560x1600 resolutions (roughly 241 MHz to 268 MHz pixel
+clocks). Silicon vendors rarely certified DVI hardware pipelines for
+sustained operation past 300 MHz.</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>A resolution of 3440x1440 demands a sustained transmission speed that
+operates on the extreme theoretical edge of Dual-Link DVI's physical
+capabilities. Due to the lack of modern error correction, severe
+attenuation at high frequencies, and timing constraints over copper
+lines, Dual-Link DVI cannot reliably sustain 3440x1440 at 60 Hz,
+necessitating the use of DisplayPort or HDMI 2.0 and newer.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

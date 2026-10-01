@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single-Link DVI TMDS Clock Frequency for 1080p60 - dvi</title>
+    <meta name="description" content="For a standard 1080p display running at 60 Hz (1080p60), a single-link DVI Transition-Minimized Differential Signaling (TMDS) clock operates at 148.5 MHz. This article details how this exact clock rate is calculated using standard video timing intervals,">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/single-link-dvi-tmds-clock-frequency-for-1080-p-60">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Single-Link DVI TMDS Clock Frequency for 1080p60 - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/single-link-dvi-tmds-clock-frequency-for-1080-p-60" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="For a standard 1080p display running at 60 Hz (1080p60), a single-link DVI Transition-Minimized Differential Signaling (TMDS) clock operates at 148.5 MHz. This article details how this exact clock rate is calculated using standard video timing intervals," />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="single-link-dvi-tmds-clock-frequency-for-1080p60">Single-Link
+DVI TMDS Clock Frequency for 1080p60</h1>
+<p>For a standard 1080p display running at 60 Hz (1080p60), a
+single-link DVI Transition-Minimized Differential Signaling (TMDS) clock
+operates at <strong>148.5 MHz</strong>. This article details how this
+exact clock rate is calculated using standard video timing intervals,
+explains the relationship between the TMDS clock and actual data
+throughput, and examines how this operational frequency compares against
+the physical limits of the single-link DVI specification.</p>
+<h3 id="the-math-behind-the-1485-mhz-frequency">The Math Behind the
+148.5 MHz Frequency</h3>
+<p>The TMDS clock frequency directly mirrors the display's underlying
+pixel clock rate. Video signals require horizontal and vertical blanking
+intervals—periods originally used by CRT displays to reposition the
+electron beam, now used for synchronization and control data.</p>
+<p>Under the standard CTA-861/SMPTE timing for 1080p60:</p>
+<ul>
+<li><strong>Horizontal Total:</strong> 1920 active pixels + 280 blanking
+pixels = 2,200 total pixels per line</li>
+<li><strong>Vertical Total:</strong> 1080 active lines + 45 blanking
+lines = 1,125 total lines per frame</li>
+<li><strong>Refresh Rate:</strong> 60 frames per second (Hz)</li>
+</ul>
+<p>Multiplying these parameters calculates the required pixel
+frequency:</p>
+<p><span class="math display">\[\text{Pixel Clock} = 2{,}200 \times
+1{,}125 \times 60 = 148{,}500{,}000\text{ Hz} = 148.5\text{
+MHz}\]</span></p>
+<p>In single-link DVI, 24-bit RGB (8 bits per channel) uses an exact 1:1
+ratio between the pixel clock and the physical TMDS clock line.
+Therefore, the TMDS clock channel toggles at 148.5 MHz.</p>
+<h3 id="clock-frequency-vs-data-bitrate">Clock Frequency vs. Data
+Bitrate</h3>
+<p>While the reference clock line runs at 148.5 MHz, the three
+differential data lanes (representing Red, Green, and Blue) run at a 10x
+multiplier:</p>
+<ul>
+<li><strong>Serialization Factor:</strong> DVI encodes each 8-bit color
+byte into a 10-bit symbol to balance DC and minimize transitions (8b/10b
+encoding).</li>
+<li><strong>Per-Lane Bitrate:</strong> <span
+class="math inline">\(148.5\text{ MHz} \times 10\text{ bits} =
+1.485\text{ Gbps}\)</span> per lane.</li>
+<li><strong>Aggregate Bitrate:</strong> Across all three data channels,
+the combined bandwidth equals <span class="math inline">\(4.455\text{
+Gbps}\)</span> (<span class="math inline">\(1.485\text{ Gbps} \times
+3\)</span>).</li>
+</ul>
+<h3 id="single-link-dvi-specification-headroom">Single-Link DVI
+Specification Headroom</h3>
+<p>The official DVI 1.0 specification defines the upper operational
+ceiling for single-link mode at a 165 MHz pixel clock, providing a
+maximum aggregate transmission bandwidth of 4.95 Gbps.</p>
+<p>Because standard 1080p60 demands 148.5 MHz, it operates safely
+beneath the 165 MHz hardware threshold. Consequently, standard Full HD
+at 60 Hz can be transmitted reliably over a standard single-link DVI
+connection without requiring the extra pins, lanes, or dual transmitters
+of a dual-link DVI setup.</p>
+<h3 id="reduced-blanking-variations">Reduced Blanking Variations</h3>
+<p>When utilizing VESA Coordinated Video Timings with Reduced Blanking
+(CVT-RB)—a format commonly found on PC monitors rather than
+televisions—the blanking interval is shortened to 2080 total pixels by
+1111 total lines. In this specific mode, the TMDS clock drops to
+<strong>138.5 MHz</strong>, reducing the signal demands even further.
+However, 148.5 MHz remains the industry-wide baseline standard for
+1080p60 video transport.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can Dual-Link DVI Run 3440x1440 at 60Hz? - dvi</title>
+    <meta name="description" content="Dual-link DVI cannot officially support an ultrawide resolution of 3440x1440 at 60 Hz due to hardware bandwidth and pixel clock limitations. While dual-link DVI provides substantial bandwidth for older high-resolution displays, it maxes out below the req">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-dual-link-dvi-run-3440-x-1440-at-60-hz">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can Dual-Link DVI Run 3440x1440 at 60Hz? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-dual-link-dvi-run-3440-x-1440-at-60-hz" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Dual-link DVI cannot officially support an ultrawide resolution of 3440x1440 at 60 Hz due to hardware bandwidth and pixel clock limitations. While dual-link DVI provides substantial bandwidth for older high-resolution displays, it maxes out below the req" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-dual-link-dvi-run-3440x1440-at-60hz">Can Dual-Link DVI Run
+3440x1440 at 60Hz?</h1>
+<p>Dual-link DVI cannot officially support an ultrawide resolution of
+3440x1440 at 60 Hz due to hardware bandwidth and pixel clock
+limitations. While dual-link DVI provides substantial bandwidth for
+older high-resolution displays, it maxes out below the requirements of a
+21:9 UWQHD monitor running at a full 60 Hz refresh rate. To achieve this
+resolution at 60 Hz or higher, you must use modern connection standards
+such as DisplayPort or HDMI.</p>
+<h3 id="the-bandwidth-and-pixel-clock-limit">The Bandwidth and Pixel
+Clock Limit</h3>
+<p>The dual-link DVI specification was engineered with an official
+maximum pixel clock limit around 165 MHz per link, totaling 330 MHz
+under ideal transmitter conditions, though standard implementations
+usually cap video output at a maximum resolution of 2560x1600 at 60
+Hz.</p>
+<p>A 3440x1440 display running at 60 Hz requires a pixel clock frequency
+of roughly 320 MHz to 340 MHz, even when utilizing modern reduced
+blanking timings (CVT-RB). Because standard graphics drivers and DVI
+transmitter chips strictly enforce the legacy DVI specification limits,
+the interface cannot reliably transmit the data required for 3440x1440
+at 60 Hz without artifacting, signal degradation, or outright signal
+failure.</p>
+<h3 id="lack-of-physical-support-and-adapter-constraints">Lack of
+Physical Support and Adapter Constraints</h3>
+<p>Ultrawide 3440x1440 displays do not feature native DVI inputs.
+Connecting a DVI output from a graphics card to a modern monitor
+requires an adapter or conversion cable.</p>
+<ul>
+<li><strong>Passive Adapters:</strong> Passive DVI-to-HDMI or
+DVI-to-DisplayPort adapters are hard-limited to single-link DVI speeds,
+which only support up to 1920x1200 at 60 Hz.</li>
+<li><strong>Active Adapters:</strong> Active dual-link DVI converters
+generally max out at 2560x1440 or 2560x1600 at 60 Hz and cannot process
+the custom timings or pixel clocks required for 3440x1440p
+displays.</li>
+</ul>
+<h3 id="workarounds-at-lower-refresh-rates">Workarounds at Lower Refresh
+Rates</h3>
+<p>While 60 Hz is not attainable, running 3440x1440 over dual-link DVI
+is sometimes possible if you lower the refresh rate:</p>
+<ul>
+<li><strong>30 Hz Refresh Rate:</strong> Cutting the refresh rate to 30
+Hz roughly halves the required pixel clock (to around 160 MHz), allowing
+the resolution to fit comfortably within DVI bandwidth limits.</li>
+<li><strong>40 Hz to 50 Hz via Custom Timings:</strong> Some graphics
+control panels allow the creation of custom resolutions with severe
+blanking reductions. Depending on your GPU's exact transmitter hardware,
+you may achieve between 40 Hz and 50 Hz, but this often causes hardware
+instability and is not guaranteed.</li>
+</ul>
+<h3 id="recommended-alternatives">Recommended Alternatives</h3>
+<p>To drive a 3440x1440 ultrawide monitor at 60 Hz or higher with full
+stability and color depth, use:</p>
+<ul>
+<li><strong>DisplayPort 1.2 or newer:</strong> Natively supports
+3440x1440 at up to 75–120 Hz.</li>
+<li><strong>HDMI 2.0 or newer:</strong> Natively supports 3440x1440 at
+up to 100 Hz (HDMI 1.4 can only manage 3440x1440 at 30 Hz or 50 Hz with
+reduced blanking).</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

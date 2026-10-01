@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Wayland Handles Legacy DVI Differently Than Xorg - dvi</title>
+    <meta name="description" content="Wayland and Xorg process legacy display connections like Digital Visual Interface (DVI) differently due to a fundamental shift in display architecture, driver interaction, and mode-setting responsibility. While Xorg traditionally relied on userspace driv">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-wayland-handles-legacy-dvi-differently-than-xorg">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Wayland Handles Legacy DVI Differently Than Xorg - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-wayland-handles-legacy-dvi-differently-than-xorg" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Wayland and Xorg process legacy display connections like Digital Visual Interface (DVI) differently due to a fundamental shift in display architecture, driver interaction, and mode-setting responsibility. While Xorg traditionally relied on userspace driv" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-wayland-handles-legacy-dvi-differently-than-xorg">Why
+Wayland Handles Legacy DVI Differently Than Xorg</h1>
+<p>Wayland and Xorg process legacy display connections like Digital
+Visual Interface (DVI) differently due to a fundamental shift in display
+architecture, driver interaction, and mode-setting responsibility. While
+Xorg traditionally relied on userspace drivers and manual display
+configurations capable of overriding hardware limitations, Wayland
+delegates display configuration entirely to the Linux kernel via Direct
+Rendering Manager (DRM) and Kernel Mode Setting (KMS). This structural
+divergence results in stricter hardware validation, less tolerance for
+broken legacy handshakes, and reduced direct control over non-standard
+DVI timings under Wayland.</p>
+<h3 id="kernel-mode-setting-vs-userspace-mode-setting">Kernel Mode
+Setting vs. Userspace Mode Setting</h3>
+<p>The primary technical difference lies in where the display
+configuration logic resides. In traditional Xorg setups, display
+configuration was managed via Userspace Mode Setting (UMS) or through
+dedicated Xorg hardware drivers (such as <code>xf86-video-intel</code>
+or <code>xf86-video-nouveau</code>). These drivers talked directly to
+the graphics hardware and could independently initialize display
+pipelines.</p>
+<p>Wayland, by contrast, is not a display server with its own hardware
+drivers; it is a display protocol. A Wayland compositor (such as Mutter,
+KWin, or Sway) relies completely on the modern Linux DRM/KMS subsystem.
+The kernel is solely responsible for detecting outputs, negotiating
+links, and setting resolutions. If the kernel's DRM driver cannot
+cleanly initialize a legacy DVI port or negotiate a TMDS
+(Transition-Minimized Differential Signaling) link, the Wayland
+compositor cannot intervene to force an unvalidated signal.</p>
+<h3 id="handling-of-edid-and-custom-modelines">Handling of EDID and
+Custom Modelines</h3>
+<p>Legacy DVI monitors frequently suffer from missing, corrupted, or
+non-standard Extended Display Identification Data (EDID). Under Xorg,
+users could easily bypass broken EDID information:</p>
+<ul>
+<li><strong>Dynamic Custom Modelines:</strong> Tools like
+<code>xrandr</code> allowed users to generate new video timings on the
+fly and apply them directly to an active DVI output.</li>
+<li><strong>Static Configuration Overrides:</strong> The
+<code>xorg.conf</code> file allowed users to manually declare horizontal
+and vertical sync ranges, forcing the display into specific modes
+regardless of what the monitor reported.</li>
+</ul>
+<p>Under Wayland, compositors do not expose a unified interface like
+<code>xrandr</code> for creating runtime modelines. Because Wayland
+compositors trust the kernel's KMS state, any EDID override must
+typically be applied at the kernel level using kernel boot parameters
+(such as <code>drm.edid_firmware</code>) or custom kernel patches. If a
+legacy DVI monitor fails to present a valid EDID to KMS, Wayland
+compositors will often fail to display an image or will fall back to
+safe, low-resolution defaults.</p>
+<h3 id="dual-link-dvi-and-pixel-clock-limits">Dual-Link DVI and Pixel
+Clock Limits</h3>
+<p>Single-link DVI is limited to a pixel clock of 165 MHz, sufficient
+for 1920x1200 at 60Hz. Higher resolutions, such as 2560x1440 or
+2560x1600, require Dual-Link DVI, which uses two parallel TMDS
+transmitters.</p>
+<p>Xorg's older drivers included specific vendor hacks to detect or
+force secondary TMDS links, and allowed users to overclock single-link
+pixel clocks beyond 165 MHz if the hardware supported it. Modern DRM/KMS
+drivers enforce strict hardware specifications. If a modern graphics
+card connects to an older Dual-Link DVI monitor via an adapter (such as
+active DisplayPort-to-DVI), the kernel may only negotiate a single-link
+connection due to missing link-training signals. Because Wayland cannot
+override the kernel's pixel clock limits, displays that previously
+worked at high resolutions under Xorg may be capped at standard 1080p
+under Wayland.</p>
+<h3 id="fallback-behavior-and-hotplugging">Fallback Behavior and
+Hotplugging</h3>
+<p>Xorg handled hotplugging and display state through internal polling
+and userspace event loops. If a DVI signal dropped momentarily due to
+cable degradation or loose pins, Xorg often retained the display
+pipeline state.</p>
+<p>Wayland compositors react strictly to DRM uevents sent by the kernel.
+Because legacy DVI interfaces lack the advanced hotplug detection
+mechanisms found in modern DisplayPort and HDMI standards, voltage
+fluctuations on a DVI link can cause KMS to report an output
+disconnection. A Wayland compositor immediately destroys the associated
+virtual output, rearranging open windows and desktop layouts—a behavior
+rarely observed under Xorg's more forgiving legacy state management.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

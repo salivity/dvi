@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which DVI Pins Make Contact First When Plugged In? - dvi</title>
+    <meta name="description" content="When plugging in a DVI (Digital Visual Interface) connector, physical and electrical connections occur in a specific order to protect sensitive electronics from electrostatic discharge (ESD) and ensure stable signal transmission. This article explains th">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/which-dvi-pins-make-contact-first-when-plugged-in">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Which DVI Pins Make Contact First When Plugged In? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/which-dvi-pins-make-contact-first-when-plugged-in" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="When plugging in a DVI (Digital Visual Interface) connector, physical and electrical connections occur in a specific order to protect sensitive electronics from electrostatic discharge (ESD) and ensure stable signal transmission. This article explains th" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="which-dvi-pins-make-contact-first-when-plugged-in">Which DVI
+Pins Make Contact First When Plugged In?</h1>
+<p>When plugging in a DVI (Digital Visual Interface) connector, physical
+and electrical connections occur in a specific order to protect
+sensitive electronics from electrostatic discharge (ESD) and ensure
+stable signal transmission. This article explains the physical mating
+sequence of a DVI connector, detailing which components make contact
+first, the role of ground connections, and how the Hot Plug Detect
+mechanism functions during insertion.</p>
+<h3 id="the-metal-shield-makes-contact-first">The Metal Shield Makes
+Contact First</h3>
+<p>Before any individual electrical pins touch, the outer metal
+connector shell (chassis ground) makes contact with the mating
+receptacle. The shroud of the plug is engineered to engage the female
+housing first. This mechanical design diverts any accumulated
+electrostatic charge harmlessly to the system chassis ground, preventing
+static electricity from damaging the delicate Transition-Minimized
+Differential Signaling (TMDS) semiconductor lines inside the display and
+graphics card.</p>
+<h3 id="pin-length-and-internal-pin-contact">Pin Length and Internal Pin
+Contact</h3>
+<p>Inside the DVI housing, the internal signal and power pins are
+generally manufactured to uniform lengths. Unlike standards such as USB,
+which feature explicitly staggered pin lengths inside the plug, DVI
+relies primarily on the outer shell for pre-mating ground
+protection.</p>
+<p>When the male pins enter the female receptacle:</p>
+<ul>
+<li><strong>Digital and Analog Grounds:</strong> Pins providing ground
+reference—such as Pin 15 (Ground for +5V), Pin 7 (DDC Ground), and the
+TMDS Data Shield pins (Pins 3, 11, and 19)—mate simultaneously with the
+active data lines.</li>
+<li><strong>Large Ground Blade (DVI-I):</strong> In DVI-I
+configurations, the flat, horizontal blade (C5) and its surrounding
+analog RGB pins provide analog ground and shielding. The grounding tabs
+around this blade often make early contact within the socket to further
+stabilize the ground plane for analog signals.</li>
+</ul>
+<h3 id="logical-last-contact-hot-plug-detect-pin-16">Logical Last
+Contact: Hot Plug Detect (Pin 16)</h3>
+<p>While most internal pins make physical contact at approximately the
+same time, the connection sequence is functionally completed by
+<strong>Pin 16: Hot Plug Detect (HPD)</strong>.</p>
+<p>The graphics source supplies power via Pin 14 (+5V), which powers the
+display's Extended Display Identification Data (EDID) EEPROM chip. Once
+the display receives power and senses a stable connection, it pulls the
+HPD line on Pin 16 high. Even if physical contact across the pin array
+happens nearly simultaneously, the graphics card waits for this HPD
+voltage transition before attempting digital handshakes, clock
+synchronization, or video transmission. This ensures all power and
+ground pins are fully seated before active data begins flowing.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

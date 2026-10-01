@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why DVI Uses 8b/10b Encoding on Data Lines - dvi</title>
+    <meta name="description" content="The Digital Visual Interface (DVI) relies on an 8b/10b encoding mechanism—specifically implemented through Transition-Minimized Differential Signaling (TMDS)—to transmit uncompressed digital video over copper cables. By expanding every 8-bit byte of">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-dvi-uses-8-b-10-b-encoding-on-data-lines">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why DVI Uses 8b/10b Encoding on Data Lines - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-dvi-uses-8-b-10-b-encoding-on-data-lines" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The Digital Visual Interface (DVI) relies on an 8b/10b encoding mechanism—specifically implemented through Transition-Minimized Differential Signaling (TMDS)—to transmit uncompressed digital video over copper cables. By expanding every 8-bit byte of" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-dvi-uses-8b10b-encoding-on-data-lines">Why DVI Uses 8b/10b
+Encoding on Data Lines</h1>
+<p>The Digital Visual Interface (DVI) relies on an 8b/10b encoding
+mechanism—specifically implemented through Transition-Minimized
+Differential Signaling (TMDS)—to transmit uncompressed digital video
+over copper cables. By expanding every 8-bit byte of pixel data into a
+10-bit symbol, DVI solves fundamental physical transmission challenges
+inherent to high-speed serial data links. This encoding guarantees
+direct-current (DC) balance across the line, minimizes electromagnetic
+interference (EMI), ensures reliable clock recovery at the receiver, and
+provides a method to send synchronization and control signals alongside
+active video data.</p>
+<h3 id="dc-balance-and-eliminating-baseline-wander">DC Balance and
+Eliminating Baseline Wander</h3>
+<p>High-speed serial links like DVI are often AC-coupled or operate
+using differential signaling where voltage offsets matter. If a stream
+contains an uneven number of ones and zeros, charge accumulates on the
+transmission line and coupling capacitors. This phenomenon, known as
+baseline wander, shifts the signal's reference voltage and causes the
+receiver to misinterpret logic levels, leading to high bit-error
+rates.</p>
+<p>The 10-bit TMDS encoding prevents this by tracking the "running
+disparity"—the cumulative difference between transmitted 1s and 0s. When
+disparity leans too far in one direction, the encoder selectively
+inverts the data bits and flags this inversion using the tenth bit. This
+maintains an average voltage of zero over time, preserving signal
+integrity across long cables.</p>
+<h3 id="reducing-electromagnetic-interference-emi">Reducing
+Electromagnetic Interference (EMI)</h3>
+<p>DVI cables carry high-frequency signals that can act as antennas,
+radiating electromagnetic energy that interferes with other electronics
+and fails regulatory compliance tests. TMDS addresses this during its
+first stage of encoding, which converts the 8-bit input into a 9-bit
+intermediate code using either XOR or XNOR operations.</p>
+<p>The encoder analyzes the input byte and selects the operation that
+results in the fewest logical transitions (switching from 0 to 1 or 1 to
+0). Fewer signal transitions directly translate to lower high-frequency
+harmonics, significantly reducing radiated EMI without requiring bulky
+shielding.</p>
+<h3 id="clock-recovery-and-phase-alignment">Clock Recovery and Phase
+Alignment</h3>
+<p>Although DVI carries a dedicated reference clock pair alongside its
+three data channels, the receiver must continuously synchronize its
+internal phase-locked loop (PLL) with the actual bit boundaries on each
+individual data line.</p>
+<p>If raw 8-bit data were transmitted directly, long sequences of
+identical bits (such as solid black screens of all 0s or solid white
+screens of all 1s) would produce a flatline signal. Without state
+transitions, the receiver cannot track drift caused by temperature or
+cable skew. The 10-bit format guarantees that sufficient transitions
+occur regularly, preventing the receiver's data-recovery circuits from
+losing lock.</p>
+<h3 id="control-signals-and-out-of-band-signaling">Control Signals and
+Out-of-Band Signaling</h3>
+<p>An 8-bit system offers only 256 possible states, all of which are
+needed to represent color values (0–255). Expanding the symbol size to
+10 bits expands the available state space to 1,024 possible
+combinations.</p>
+<p>DVI takes advantage of these extra states to encode display timing
+controls, such as horizontal synchronization (HSync) and vertical
+synchronization (VSync), during the video blanking intervals. Four
+dedicated 10-bit control characters are defined with high transition
+densities, making them instantly distinguishable from active pixel data.
+This enables the interface to transmit essential display timing commands
+over the exact same differential pairs without adding dedicated sync
+pins to the cable.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

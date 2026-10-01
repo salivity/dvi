@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Passive DVI Splitters Affect GPU Electrical Load - dvi</title>
+    <meta name="description" content="Passive DVI mirror splitters physically bridge a single graphics card output to two displays without using external power or active amplification. This mechanical duplication forces the graphics processing unit (GPU) to drive two physical receivers simul">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-passive-dvi-splitters-affect-gpu-electrical-load">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Passive DVI Splitters Affect GPU Electrical Load - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-passive-dvi-splitters-affect-gpu-electrical-load" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Passive DVI mirror splitters physically bridge a single graphics card output to two displays without using external power or active amplification. This mechanical duplication forces the graphics processing unit (GPU) to drive two physical receivers simul" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-passive-dvi-splitters-affect-gpu-electrical-load">How
+Passive DVI Splitters Affect GPU Electrical Load</h1>
+<p>Passive DVI mirror splitters physically bridge a single graphics card
+output to two displays without using external power or active
+amplification. This mechanical duplication forces the graphics
+processing unit (GPU) to drive two physical receivers simultaneously,
+significantly altering the transmission line's electrical
+characteristics. By placing two display inputs in parallel, passive
+splitters double the current demand on the GPU's transmitter circuitry,
+halve the line impedance, cause severe signal degradation, and place
+unintended thermal and electrical stress on the graphics hardware.</p>
+<h3 id="tmds-signaling-and-termination-basics">TMDS Signaling and
+Termination Basics</h3>
+<p>Digital Visual Interface (DVI) relies on Transition-Minimized
+Differential Signaling (TMDS) to transmit high-speed video data. A
+standard TMDS link uses Current Mode Logic (CML). In a standard,
+compliant connection:</p>
+<ul>
+<li>The GPU acts as a current-sinking transmitter.</li>
+<li>The monitor acts as the receiver, featuring internal <span
+class="math inline">\(50\,\Omega\)</span> pull-up resistors tied to a
+<span class="math inline">\(+3.3\,\text{V}\)</span> rail for each
+differential line.</li>
+<li>The characteristic impedance of the transmission cable is matched at
+<span class="math inline">\(100\,\Omega\)</span> differentially (<span
+class="math inline">\(50\,\Omega\)</span> single-ended).</li>
+</ul>
+<p>When the transmitter switches, it pulls current through these
+termination resistors to generate a differential voltage swing
+(typically between <span class="math inline">\(400\,\text{mV}\)</span>
+and <span class="math inline">\(600\,\text{mV}\)</span>) that the
+receiver decodes as digital ones and zeros.</p>
+<h3 id="the-parallel-load-halving-input-impedance">The Parallel Load:
+Halving Input Impedance</h3>
+<p>A passive splitter simply solders the copper traces of one DVI plug
+to two DVI receptacles. When two monitors are connected, their internal
+termination resistors are placed in parallel:</p>
+<p><span class="math display">\[\frac{1}{R_{\text{total}}} =
+\frac{1}{R_1} + \frac{1}{R_2} = \frac{1}{50\,\Omega} +
+\frac{1}{50\,\Omega} = \frac{1}{25\,\Omega}\]</span></p>
+<p>The effective DC termination load presented to the GPU’s output
+driver drops from <span class="math inline">\(50\,\Omega\)</span> to
+<span class="math inline">\(25\,\Omega\)</span>.</p>
+<p>Because the transmitter is a constant-current sink designed to drop a
+specific voltage across a <span
+class="math inline">\(50\,\Omega\)</span> load, halving the resistance
+reduces the amplitude of the differential voltage swing by roughly half
+(<span class="math inline">\(200\,\text{mV}\)</span> to <span
+class="math inline">\(300\,\text{mV}\)</span>). Consequently, the signal
+often falls below the minimum detection threshold of the monitors' TMDS
+receivers, leading to digital noise, dropped frames, or complete signal
+loss.</p>
+<h3 id="increased-current-and-driver-stress">Increased Current and
+Driver Stress</h3>
+<p>To maintain signaling, the GPU's output physical layer (PHY) must
+sink current through two pull-up networks simultaneously.</p>
+<ul>
+<li>Under normal conditions, the driver sinks approximately <span
+class="math inline">\(10\,\text{mA}\)</span> to <span
+class="math inline">\(12\,\text{mA}\)</span> per differential pair.</li>
+<li>With two parallel loads tied to <span
+class="math inline">\(+3.3\,\text{V}\)</span>, the required current draw
+doubles to approximately <span
+class="math inline">\(20\,\text{mA}\)</span> to <span
+class="math inline">\(24\,\text{mA}\)</span> per line.</li>
+</ul>
+<p>This excess current forces the output transistors on the GPU die to
+operate outside their engineered specifications. While modern GPUs
+feature over-current protection mechanisms for primary power rails,
+individual display output lines typically lack active current limiters.
+Operating in this state causes elevated localized heat dissipation on
+the silicon die where the display PHY resides, accelerating
+electromigration and risking permanent degradation of the output
+stage.</p>
+<h3 id="impedance-mismatch-and-signal-reflections">Impedance Mismatch
+and Signal Reflections</h3>
+<p>High-speed video transmission requires strict impedance matching
+across the entire signal path to prevent signal degradation. The nominal
+<span class="math inline">\(100\,\Omega\)</span> differential impedance
+is disrupted at the physical junction of the passive splitter:</p>
+<ul>
+<li>The impedance discontinuity creates a high Voltage Standing Wave
+Ratio (VSWR).</li>
+<li>High-frequency energy reflects back toward the GPU transmitter
+instead of being fully absorbed by the display.</li>
+<li>These reflections create constructive and destructive interference,
+causing severe jitter, eye-diagram closure, and ringing on the
+line.</li>
+</ul>
+<p>The reflected energy creates reverse voltage spikes that stress the
+output diodes and electrostatic discharge (ESD) protection arrays
+integrated into the GPU's display port circuitry.</p>
+<h3 id="ddc-and-hot-plug-detect-contention">DDC and Hot-Plug Detect
+Contention</h3>
+<p>Beyond the high-speed TMDS lines, DVI relies on auxiliary lines for
+display detection and configuration:</p>
+<ul>
+<li><strong>I²C / DDC (Display Data Channel):</strong> Passive splitters
+connect the DDC lines of both monitors together. When the GPU queries
+display information (EDID), both monitors attempt to respond
+simultaneously over the same I²C bus. This creates bus contention,
+driving logic levels to indeterminate voltages and potentially
+overloading the GPU's low-power <span
+class="math inline">\(5\,\text{V}\)</span> I²C pull-up circuitry.</li>
+<li><strong>Hot-Plug Detect (HPD):</strong> The HPD pin uses a <span
+class="math inline">\(5\,\text{V}\)</span> signal to notify the GPU of a
+display's presence. Parallel connections can drive unexpected current
+levels into the GPU's sensing pin if the two monitors have slightly
+different reference ground potentials.</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>Passive DVI splitters do not safely divide digital signals; they
+violate TMDS specifications by doubling the current load on the GPU's
+transmitter and cutting transmission impedance in half. This leads to
+severe signal degradation and places the GPU's display controller under
+sustained electrical and thermal stress. Reliable multi-display output
+requires active splitters or distribution amplifiers, which isolate the
+GPU with a single standard load and use powered logic to regenerate
+signals for secondary displays.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

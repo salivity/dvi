@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI Monitor Out of Range Error: Causes and Fixes - dvi</title>
+    <meta name="description" content="An "out-of-range" error on a DVI monitor occurs when the video signal transmitted from your computer's graphics card exceeds the display's supported resolution, refresh rate, or signal bandwidth capabilities. Because the monitor cannot interpret or rende">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-monitor-out-of-range-error-causes-and-fixes">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI Monitor Out of Range Error: Causes and Fixes - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-monitor-out-of-range-error-causes-and-fixes" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="An "out-of-range" error on a DVI monitor occurs when the video signal transmitted from your computer's graphics card exceeds the display's supported resolution, refresh rate, or signal bandwidth capabilities. Because the monitor cannot interpret or rende" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-monitor-out-of-range-error-causes-and-fixes">DVI Monitor Out
+of Range Error: Causes and Fixes</h1>
+<p>An "out-of-range" error on a DVI monitor occurs when the video signal
+transmitted from your computer's graphics card exceeds the display's
+supported resolution, refresh rate, or signal bandwidth capabilities.
+Because the monitor cannot interpret or render this incompatible timing
+data, it enters a protective fallback mode and displays a black screen
+with an error prompt. This guide explains the technical reasons behind
+this display conflict, the specific limitations of DVI connections, and
+the exact steps required to resolve the issue and restore your visual
+output.</p>
+<h3 id="understanding-the-out-of-range-error">Understanding the
+Out-of-Range Error</h3>
+<p>Monitors operate within fixed physical limitations determined by
+their internal scaler, panel hardware, and display controller. These
+limits define a strict range for horizontal scan frequency (kHz) and
+vertical refresh rate (Hz). When your operating system or graphics card
+attempts to send a video signal outside these parameters—most commonly a
+refresh rate or resolution that is too high—the monitor cannot
+synchronize with the incoming data. Rather than risking hardware damage
+or displaying a corrupted image, the monitor cuts the video feed and
+outputs the "Out of Range" or "Input Signal Out of Range" message.</p>
+<h3 id="why-it-happens-on-dvi-connections">Why It Happens on DVI
+Connections</h3>
+<p>Digital Visual Interface (DVI) cables and ports come in several
+variants, each with distinct bandwidth thresholds:</p>
+<ul>
+<li><strong>Single-Link DVI:</strong> Operates with a maximum pixel
+clock rate of 165 MHz, effectively capping output at 1920x1200 at 60 Hz.
+Attempting to push higher resolutions (such as 2560x1440) or higher
+refresh rates (such as 120 Hz or 144 Hz) through a Single-Link
+connection triggers an out-of-range state.</li>
+<li><strong>Dual-Link DVI:</strong> Employs a second data transmitter to
+double the available bandwidth, supporting up to 2560x1600 at 60 Hz or
+1920x1080 at 144 Hz. If you configure these higher specs while using a
+Single-Link DVI cable in a Dual-Link port, the monitor will register an
+out-of-range signal.</li>
+<li><strong>Driver Configuration Changes:</strong> Video games, driver
+updates, or changing graphics settings can inadvertently force your
+system into a display mode unsupported by your specific DVI
+monitor.</li>
+</ul>
+<h3 id="how-to-fix-an-out-of-range-error">How to Fix an Out-of-Range
+Error</h3>
+<p>To resolve the error, you must force your operating system to output
+a resolution and refresh rate that your monitor natively supports.</p>
+<h4 id="1-boot-into-low-resolution-mode-or-safe-mode">1. Boot into
+Low-Resolution Mode or Safe Mode</h4>
+<p>Since you cannot see the screen under normal operation, you need a
+basic display signal to change your settings:</p>
+<ol type="1">
+<li>Restart your computer.</li>
+<li>During startup, interrupt Windows boot three times in a row (by
+pressing the power button during the loading sequence) to access the
+<strong>Windows Recovery Environment (WinRE)</strong>.</li>
+<li>Select <strong>Troubleshoot</strong> &gt; <strong>Advanced
+options</strong> &gt; <strong>Startup Settings</strong> &gt;
+<strong>Restart</strong>.</li>
+<li>Upon reboot, select option <strong>3</strong> (Enable low-resolution
+video) or option <strong>4</strong> (Enable Safe Mode).</li>
+</ol>
+<h4 id="2-reset-resolution-and-refresh-rate">2. Reset Resolution and
+Refresh Rate</h4>
+<p>Once your desktop loads in basic video mode:</p>
+<ol type="1">
+<li>Right-click the desktop and choose <strong>Display
+settings</strong>.</li>
+<li>Scroll to <strong>Display resolution</strong> and select the native
+resolution specified by your monitor manufacturer (typically 1920x1080
+for standard DVI panels).</li>
+<li>Click <strong>Advanced display settings</strong>, then open
+<strong>Display adapter properties</strong>.</li>
+<li>Go to the <strong>Monitor</strong> tab and set the <strong>Screen
+refresh rate</strong> to <strong>60 Hertz</strong>.</li>
+<li>Click <strong>Apply</strong>, then <strong>OK</strong>, and restart
+your computer normally.</li>
+</ol>
+<h4 id="3-verify-hardware-and-cables">3. Verify Hardware and Cables</h4>
+<p>If the error persists after resetting software settings, inspect your
+physical connection:</p>
+<ul>
+<li>Ensure you are using the correct cable. If your monitor supports
+1440p or 144 Hz over DVI, you must use a physical <strong>Dual-Link
+DVI-D</strong> cable (identifiable by a solid 24-pin grid without a
+horizontal gap in the center).</li>
+<li>If using an adapter (such as HDMI-to-DVI or DisplayPort-to-DVI),
+confirm that the adapter is active and rated for the intended resolution
+and refresh rate. Most standard passive adapters only support
+Single-Link bandwidth.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

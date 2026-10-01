@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DVI KVM Switches Emulate EDID Data - dvi</title>
+    <meta name="description" content="Modern DVI KVM switches maintain stable display configurations across multiple computers by actively emulating Extended Display Identification Data (EDID) on all channels, including inactive ones. Without this emulation, switching away from a computer se">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dvi-kvm-switches-emulate-edid-data">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DVI KVM Switches Emulate EDID Data - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dvi-kvm-switches-emulate-edid-data" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Modern DVI KVM switches maintain stable display configurations across multiple computers by actively emulating Extended Display Identification Data (EDID) on all channels, including inactive ones. Without this emulation, switching away from a computer se" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dvi-kvm-switches-emulate-edid-data">How DVI KVM Switches
+Emulate EDID Data</h1>
+<p>Modern DVI KVM switches maintain stable display configurations across
+multiple computers by actively emulating Extended Display Identification
+Data (EDID) on all channels, including inactive ones. Without this
+emulation, switching away from a computer severs the communication link
+with the monitor, causing operating systems to drop resolutions,
+rearrange open application windows, or disconnect displays entirely. By
+continuously presenting cloned or synthetic monitor profiles to every
+connected host, these switches ensure seamless, uninterrupted video
+workflows when toggling between systems.</p>
+<h3 id="the-role-of-edid-and-the-switching-problem">The Role of EDID and
+the Switching Problem</h3>
+<p>EDID is a standardized VESA data format transmitted over the Display
+Data Channel (DDC)—a two-wire I2C serial bus embedded within the DVI
+specification. When a computer connects to a display, it queries this
+128-byte (or 256-byte extended) data structure to identify the monitor's
+native resolution, refresh rates, color space, and manufacturer
+specifications.</p>
+<p>In basic or legacy KVM switches, toggling channels mechanically
+breaks the physical DDC and Hot Plug Detect (HPD) lines on the inactive
+channel. The operating system interprets this as an unmonitored
+disconnect, leading to desktop rearrangement and resolution reset loops
+upon switching back.</p>
+<h3 id="dedicated-per-port-emulation-hardware">Dedicated Per-Port
+Emulation Hardware</h3>
+<p>Modern DVI KVM switches prevent these disruptions by deploying
+dedicated microcontroller units (MCUs) or video ASICs on every
+individual input port. Instead of physically routing the monitor’s
+single DDC line to one computer at a time, the KVM decouples the
+computers from the physical monitor entirely at the signaling level.</p>
+<ol type="1">
+<li><strong>EDID Read and Caching:</strong> During boot-up or
+hot-plugging of the physical display, the KVM queries the monitor via
+the primary DDC line and reads its exact EDID block into non-volatile
+internal memory (EEPROM or flash storage).</li>
+<li><strong>Virtual DDC Responders:</strong> Each inactive input port
+features an independent I2C slave interface. When an inactive computer
+polls the DDC bus for display metadata, the local MCU immediately serves
+the cached EDID data table, perfectly mimicking a physical display.</li>
+</ol>
+<h3 id="continuous-hot-plug-detect-hpd-assertion">Continuous Hot Plug
+Detect (HPD) Assertion</h3>
+<p>A critical component of EDID emulation is the management of the Hot
+Plug Detect signal (pin 16 on a standard DVI-D connector). Under
+standard operation, the monitor applies +5V to the HPD line to signal
+that it is present and ready for communication.</p>
+<p>Advanced DVI KVM switches feature active HPD management that keeps
+this pin pulled high to a continuous +5V logic state on all channels at
+all times. Because the host computer’s graphics processing unit (GPU)
+detects a steady voltage on the HPD line alongside an active DDC bus,
+the operating system registers the display as constantly powered and
+attached, preventing any re-enumeration of the video sub-system.</p>
+<h3 id="dynamic-vs-static-edid-emulation">Dynamic vs. Static EDID
+Emulation</h3>
+<p>DVI KVM switches typically handle emulation using one of two primary
+methods:</p>
+<ul>
+<li><strong>Static (Pre-Programmed) Emulation:</strong> The switch ships
+with factory-default EDID profiles representing common standard
+resolutions (such as 1920x1080 or 1920x1200 at 60 Hz). While reliable
+for standard office displays, it may fail to support non-standard aspect
+ratios, higher refresh rates, or custom timings.</li>
+<li><strong>Dynamic (True DDC) Cloning:</strong> The switch dynamically
+mirrors the connected monitor’s native capabilities directly to all
+ports. When a new monitor is attached, the switch automatically updates
+the stored cache across all input channels. This approach guarantees
+full compatibility with specialized features such as ultrawide aspect
+ratios, dual-link DVI bandwidth limits, and embedded audio channels (if
+using DVI-to-HDMI adapters).</li>
+</ul>
+<p>By combining independent per-port microcontrollers, sustained Hot
+Plug Detect signals, and dynamic EDID caching, modern DVI KVM switches
+maintain the illusion of an unbroken hardware connection, allowing
+computers on inactive channels to render desktops stably and swap inputs
+instantaneously.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

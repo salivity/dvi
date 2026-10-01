@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can DVI Support 10-Bit or 12-Bit Deep Color? - dvi</title>
+    <meta name="description" content="The Digital Visual Interface (DVI) standard does not support 10-bit or 12-bit Deep Color data under its official specifications. While DVI shares underlying electrical similarities with early HDMI formats, the formal DVI standard strictly confines video">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-dvi-support-10-bit-or-12-bit-deep-color">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can DVI Support 10-Bit or 12-Bit Deep Color? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-dvi-support-10-bit-or-12-bit-deep-color" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The Digital Visual Interface (DVI) standard does not support 10-bit or 12-bit Deep Color data under its official specifications. While DVI shares underlying electrical similarities with early HDMI formats, the formal DVI standard strictly confines video" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-dvi-support-10-bit-or-12-bit-deep-color">Can DVI Support
+10-Bit or 12-Bit Deep Color?</h1>
+<p>The Digital Visual Interface (DVI) standard does not support 10-bit
+or 12-bit Deep Color data under its official specifications. While DVI
+shares underlying electrical similarities with early HDMI formats, the
+formal DVI standard strictly confines video transmission to standard
+8-bit color depth (24-bit True Color). This article details the
+technical limits of the DVI 1.0 specification, explains why higher color
+depths are excluded, and clarifies the requirements for transmitting
+Deep Color.</p>
+<h3 id="the-dvi-10-specification-baseline">The DVI 1.0 Specification
+Baseline</h3>
+<p>The Digital Display Working Group (DDWG) released the DVI 1.0
+specification in 1999, and it was never officially updated before the
+working group disbanded. DVI relies on Transition-Minimized Differential
+Signaling (TMDS) to transmit digital video data.</p>
+<p>Under the DVI 1.0 standard:</p>
+<ul>
+<li>Video data is strictly encoded as 8 bits per color channel across
+three TMDS channels (Red, Green, and Blue).</li>
+<li>This provides a total color depth of 24 bits per pixel (bpp),
+commonly referred to as True Color, enabling roughly 16.7 million
+distinct colors.</li>
+<li>The standard contains no protocol definition for packetized
+metadata, pixel packing, or higher bit depths such as 10-bit (30-bit
+color) or 12-bit (36-bit color).</li>
+</ul>
+<h3 id="dual-link-dvi-bandwidth-vs-color-depth">Dual-Link DVI Bandwidth
+vs. Color Depth</h3>
+<p>A common misconception is that Dual-Link DVI provides the extra
+bandwidth needed to transmit 10-bit or 12-bit color.</p>
+<p>A Dual-Link DVI connection adds a second TMDS transmitter link,
+doubling the potential pixel clock rate and bandwidth. However, the DVI
+specification strictly allocates this additional bandwidth toward
+carrying higher display resolutions (such as 2560×1600 at 60 Hz) or
+higher refresh rates. It alternates pixels across the two links rather
+than allocating extra bits per channel. Because the underlying protocol
+remains restricted to an 8-bit-per-channel structure, Dual-Link DVI
+cannot officially deliver Deep Color.</p>
+<h3 id="the-introduction-of-deep-color">The Introduction of Deep
+Color</h3>
+<p>Deep Color capabilities—encompassing 10-bit, 12-bit, and 16-bit color
+channels—were officially standardized years after DVI's inception:</p>
+<ul>
+<li><strong>HDMI:</strong> Introduced Deep Color with the HDMI 1.3
+specification in 2006. It modified the TMDS data packaging to squeeze
+extra bits per pixel across the link using higher clock
+frequencies.</li>
+<li><strong>DisplayPort:</strong> Built native support for deep bit
+depths directly into the DisplayPort 1.0 and 1.1 packet-based
+architecture.</li>
+</ul>
+<p>Because DVI 1.0 receivers lack the logic to unpack HDMI 1.3 Deep
+Color TMDS streams, sending high-bit-depth data using standard DVI
+communication results in an unreadable signal or a forced fallback to
+8-bit.</p>
+<h3 id="proprietary-exceptions-vs-standard-compliance">Proprietary
+Exceptions vs. Standard Compliance</h3>
+<p>In certain non-standard scenarios, users may observe a 10-bit signal
+traveling across a physical DVI connection:</p>
+<ol type="1">
+<li><strong>HDMI over DVI Connector:</strong> Some graphics cards and
+monitors permit HDMI-compliant signaling over physical DVI-D ports. In
+this state, the source transmits HDMI 1.3+ packets, and the display
+processes them as HDMI, completely bypassing the DVI standard despite
+using the physical DVI connector.</li>
+<li><strong>Specialized Workstation Hardware:</strong> Select legacy
+medical imaging or enterprise systems utilized proprietary, non-standard
+DVI signaling formats to transmit 10-bit grayscale or color to dedicated
+displays.</li>
+</ol>
+<p>Neither of these exceptions falls within standard DVI
+specifications.</p>
+<h3 id="summary">Summary</h3>
+<p>Under the standard DVI 1.0 specification, DVI cannot carry 10-bit or
+12-bit Deep Color data. To reliably transmit Deep Color for HDR
+workflows, professional color grading, or wide-gamut monitors, native
+DisplayPort or HDMI connections are required.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

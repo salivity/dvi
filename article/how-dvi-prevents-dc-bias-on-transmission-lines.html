@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DVI Prevents DC Bias on Transmission Lines - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) prevents direct current (DC) bias on its differential transmission lines by utilizing Transition Minimized Differential Signaling (TMDS) with an integrated 8b/10b encoding scheme. By continuously tracking the cumulative cou">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dvi-prevents-dc-bias-on-transmission-lines">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DVI Prevents DC Bias on Transmission Lines - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dvi-prevents-dc-bias-on-transmission-lines" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) prevents direct current (DC) bias on its differential transmission lines by utilizing Transition Minimized Differential Signaling (TMDS) with an integrated 8b/10b encoding scheme. By continuously tracking the cumulative cou" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dvi-prevents-dc-bias-on-transmission-lines">How DVI Prevents
+DC Bias on Transmission Lines</h1>
+<p>Digital Visual Interface (DVI) prevents direct current (DC) bias on
+its differential transmission lines by utilizing Transition Minimized
+Differential Signaling (TMDS) with an integrated 8b/10b encoding scheme.
+By continuously tracking the cumulative count of transmitted ones and
+zeros—a metric known as running disparity—the TMDS transmitter
+dynamically inverts data words to maintain an equal ratio of high and
+low signal states over time. This active balancing prevents charge
+accumulation across the differential lines, eliminates signal baseline
+wander, and ensures reliable signal decoding at the receiver.</p>
+<h3 id="the-problem-of-dc-bias-in-high-speed-data">The Problem of DC
+Bias in High-Speed Data</h3>
+<p>In high-speed differential transmission, signals are transmitted as
+voltage differences between two complementary conductors. If a data
+stream contains significantly more logical ones than zeros (or vice
+versa) over an extended period, a net direct current develops across the
+link.</p>
+<p>This DC bias creates severe transmission problems:</p>
+<ul>
+<li><strong>Baseline Wander:</strong> The average DC voltage drifts,
+shifting the reference threshold and causing the receiver to
+misinterpret bit transitions.</li>
+<li><strong>Capacitor Saturation:</strong> Many differential systems use
+AC-coupling capacitors to isolate ground loops and different supply
+voltages. A sustained DC bias charges these capacitors, distorting the
+signal waveforms.</li>
+<li><strong>Increased Electromagnetic Interference (EMI):</strong>
+Unequal current flow unbalances the differential pair, compromising the
+natural noise-canceling properties of differential signaling.</li>
+</ul>
+<h3 id="the-tmds-8b10b-encoding-mechanism">The TMDS 8b/10b Encoding
+Mechanism</h3>
+<p>To eliminate DC bias, DVI uses TMDS encoders that convert standard
+8-bit pixel data into 10-bit symbols before transmission across the
+differential channels (Red, Green, Blue, and Clock). This encoding takes
+place in two sequential stages:</p>
+<h4 id="1-transition-minimization-the-9th-bit">1. Transition
+Minimization (The 9th Bit)</h4>
+<p>The encoder first determines whether an XOR or XNOR operation will
+result in fewer logical transitions (switching from 0 to 1, or 1 to 0).
+Minimizing transitions lowers the high-frequency content of the signal,
+thereby reducing EMI.</p>
+<p>The 9th bit is added to the byte to signal to the receiver whether
+XOR or XNOR logic was applied, allowing the receiver to reconstruct the
+original 8-bit data.</p>
+<h4 id="2-dc-balancing-via-running-disparity-the-10th-bit">2. DC
+Balancing via Running Disparity (The 10th Bit)</h4>
+<p>The final stage of the encoder enforces DC balance. The transmitter
+maintains an internal counter called the <strong>Running
+Disparity</strong>, which represents the cumulative historical
+difference between the total number of transmitted ones and zeros.</p>
+<p>When preparing to send a 10-bit symbol, the encoder evaluates:</p>
+<ol type="1">
+<li>The current state of the Running Disparity counter (positive,
+negative, or neutral).</li>
+<li>The number of ones versus zeros in the candidate 9-bit word.</li>
+</ol>
+<p>If transmitting the candidate word without alteration would push the
+running disparity further away from zero, the encoder inverts the first
+eight bits of the symbol. It then sets the 10th bit to <code>1</code> to
+indicate that an inversion occurred. If transmitting the word naturally
+pulls the running disparity back toward zero (or keeps it neutral), the
+encoder leaves the data un-inverted and sets the 10th bit to
+<code>0</code>.</p>
+<p>Once the decision is made, the running disparity counter is updated
+to reflect the new cumulative balance.</p>
+<h3 id="control-and-blanking-periods">Control and Blanking Periods</h3>
+<p>Video streams contain periodic blanking intervals (horizontal and
+vertical sync periods) where no active pixel data is sent. DVI handles
+these intervals using dedicated 10-bit control characters representing
+sync signals (HSYNC and VSYNC).</p>
+<p>The TMDS standard assigns four specific, high-transition 10-bit
+patterns to these control states. Each of these control tokens contains
+an equal distribution of zeros and ones or operates in complementary
+pairs, ensuring that the link remains perfectly DC-balanced even when
+active video frames are not being transmitted.</p>
+<h3 id="result-at-the-receiver">Result at the Receiver</h3>
+<p>Because the TMDS encoder continuously drives the net DC voltage to
+zero, the differential signal stays centered around the common-mode
+voltage. When the differential pair arrives at the receiver, the
+termination resistors and differential amplifiers can recover the clock
+and data accurately without experiencing signal degradation caused by
+baseline drift.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

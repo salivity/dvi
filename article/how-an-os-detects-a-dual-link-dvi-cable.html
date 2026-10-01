@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How an OS Detects a Dual-Link DVI Cable - dvi</title>
+    <meta name="description" content="A computer operating system does not directly interact with physical display cables; instead, it determines whether a dual-link DVI connection is active through a combination of monitor handshake data (EDID), graphics driver management, and physical term">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-an-os-detects-a-dual-link-dvi-cable">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How an OS Detects a Dual-Link DVI Cable - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-an-os-detects-a-dual-link-dvi-cable" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A computer operating system does not directly interact with physical display cables; instead, it determines whether a dual-link DVI connection is active through a combination of monitor handshake data (EDID), graphics driver management, and physical term" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-an-os-detects-a-dual-link-dvi-cable">How an OS Detects a
+Dual-Link DVI Cable</h1>
+<p>A computer operating system does not directly interact with physical
+display cables; instead, it determines whether a dual-link DVI
+connection is active through a combination of monitor handshake data
+(EDID), graphics driver management, and physical termination sensing
+performed by the graphics hardware. When a display requires a bandwidth
+that exceeds the capabilities of a single-link connection, the graphics
+hardware verifies the presence of the secondary TMDS lines and signals
+the operating system that dual-link operation is available.</p>
+<h3 id="display-data-channel-ddc-and-edid">Display Data Channel (DDC)
+and EDID</h3>
+<p>The identification process begins when the monitor is connected to
+the computer. Regardless of whether the cable is single-link or
+dual-link, standard DVI interfaces include dedicated I2C pins known as
+the Display Data Channel (DDC).</p>
+<p>Through the DDC, the graphics card reads the monitor's Extended
+Display Identification Data (EDID). The EDID contains crucial
+specifications, including:</p>
+<ul>
+<li>The monitor’s supported native resolutions and refresh rates.</li>
+<li>The maximum supported pixel clock rate.</li>
+<li>Whether the display hardware specifically supports dual-link TMDS
+signals.</li>
+</ul>
+<p>If the EDID indicates that a resolution requires a pixel clock higher
+than 165 MHz (such as 2560x1600 at 60 Hz), the graphics driver
+identifies that dual-link bandwidth is necessary.</p>
+<h3 id="physical-link-and-termination-sensing">Physical Link and
+Termination Sensing</h3>
+<p>While the EDID tells the system what the monitor <em>can</em> do, the
+computer must verify that the cable physically contains the wiring for
+dual-link operation. A single-link DVI cable contains only three TMDS
+data pairs and one clock pair, leaving the center pins omitted or
+disconnected. A dual-link DVI cable populates the additional six pins
+(pins 4, 5, 12, 13, 20, and 21) to provide three secondary TMDS data
+channels.</p>
+<p>The graphics processing unit (GPU) or display transmitter detects
+whether these additional lines are physically wired through
+hardware-level termination sensing:</p>
+<ol type="1">
+<li><strong>Load Detection:</strong> The secondary TMDS transmitters
+inside the GPU send a low-voltage test signal or sense current on the
+extra pin pairs.</li>
+<li><strong>Resistor Termination:</strong> When a dual-link monitor and
+cable are connected, the monitor’s receiver circuit presents standard
+50-ohm termination pull-up resistors on the secondary TMDS lanes.</li>
+<li><strong>Hardware Status Register:</strong> The GPU’s internal
+transmitter detects the presence of this load and updates an internal
+hardware status register indicating that physical secondary lines are
+present and connected.</li>
+</ol>
+<h3 id="operating-system-and-driver-coordination">Operating System and
+Driver Coordination</h3>
+<p>Once the hardware validates the physical link and reads the EDID, the
+graphics driver communicates the connection state to the operating
+system's display subsystem (such as the Windows Display Driver Model or
+Linux Direct Rendering Manager):</p>
+<ol type="1">
+<li><strong>Querying Available Modes:</strong> The operating system
+queries the graphics driver for a list of valid display modes.</li>
+<li><strong>Filtering by Capabilities:</strong> If the monitor requests
+high resolutions requiring &gt;165 MHz, but the GPU transmitter detects
+no termination on the secondary pins (indicating a single-link cable),
+the driver filters out those modes or marks them unsupported.</li>
+<li><strong>Activating Dual-Link Mode:</strong> If both the EDID demands
+the bandwidth and the GPU detects the secondary physical connection, the
+OS approves the high-resolution mode. The driver then commands the GPU
+to split pixel data across both TMDS links simultaneously, effectively
+doubling the bandwidth to accommodate high-resolution output.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

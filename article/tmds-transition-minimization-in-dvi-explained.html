@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDS Transition Minimization in DVI Explained - dvi</title>
+    <meta name="description" content="Transition Minimized Differential Signaling (TMDS) is the physical and logical layer protocol that enables high-speed digital video transmission in Digital Visual Interface (DVI) cables. The "transition minimization" aspect of TMDS refers to an algorithm">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/tmds-transition-minimization-in-dvi-explained">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TMDS Transition Minimization in DVI Explained - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/tmds-transition-minimization-in-dvi-explained" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Transition Minimized Differential Signaling (TMDS) is the physical and logical layer protocol that enables high-speed digital video transmission in Digital Visual Interface (DVI) cables. The "transition minimization" aspect of TMDS refers to an algorithm" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="tmds-transition-minimization-in-dvi-explained">TMDS Transition
+Minimization in DVI Explained</h1>
+<p>Transition Minimized Differential Signaling (TMDS) is the physical
+and logical layer protocol that enables high-speed digital video
+transmission in Digital Visual Interface (DVI) cables. The "transition
+minimization" aspect of TMDS refers to an algorithmic encoding technique
+that reduces the frequency of voltage state changes (shifts from binary
+0 to 1 or 1 to 0) across copper conductors. By converting 8-bit pixel
+color data into 10-bit symbols, the protocol limits electromagnetic
+interference (EMI), reduces crosstalk, and maintains high signal
+integrity over high-bandwidth serial links without requiring heavy
+physical shielding.</p>
+<h3 id="the-purpose-of-minimizing-transitions">The Purpose of Minimizing
+Transitions</h3>
+<p>In high-speed serial data transmission, every transition between a
+logic low and a logic high represents a sharp change in voltage. These
+rapid transitions produce high-frequency harmonics, which generate
+electromagnetic radiation and increase capacitive charging losses in
+cables.</p>
+<p>By systematically reducing the number of state changes per
+transmitted byte, TMDS lowers the overall radio frequency emissions of
+the cable. This ensures the transmission system complies with strict
+regulatory EMI standards while minimizing signal degradation, jitter,
+and skew across neighboring differential wire pairs.</p>
+<h3 id="how-the-algorithm-works">How the Algorithm Works</h3>
+<p>TMDS achieves transition minimization through a two-stage encoding
+process. The transition minimization itself occurs during the first
+stage, which converts an 8-bit data byte into a 9-bit intermediate code
+using either Boolean XOR or XNOR logic.</p>
+<ol type="1">
+<li><strong>Analysis of Input Data:</strong> The TMDS encoder evaluates
+the incoming 8-bit color byte to determine the number of binary 1s
+present and the state of the least significant bit (LSB).</li>
+<li><strong>Logic Selection:</strong>
+<ul>
+<li>If the input byte contains more than four 1s (or contains four 1s
+and the LSB is 0), the encoder applies a cumulative
+<strong>XNOR</strong> operation to the bits sequentially.</li>
+<li>If the input byte contains fewer than four 1s (or contains four 1s
+and the LSB is 1), the encoder applies a cumulative <strong>XOR</strong>
+operation.</li>
+</ul></li>
+<li><strong>Sequential Processing:</strong> Starting from the LSB (which
+passes through unchanged), each subsequent bit in the output is
+determined by performing the chosen logic operation between the current
+input bit and the preceding encoded output bit.</li>
+<li><strong>The Ninth Bit Indicator:</strong> The encoder appends a 9th
+bit to the output stream to identify which operation was performed. A
+value of 1 indicates an XOR operation was used, while a value of 0
+indicates XNOR.</li>
+</ol>
+<p>Because XOR and XNOR operations produce inverted transition
+behaviors, choosing the optimal operation dynamically ensures that the
+resulting 8 bits of data contain no more than four transitions between
+adjacent bits. When the 9th bit is added, the total number of
+transitions across the 9 bits is strictly kept to four or fewer.</p>
+<h3 id="decoding-at-the-receiver">Decoding at the Receiver</h3>
+<p>At the display end of the DVI connection, the receiver reconstructs
+the original video data using the 9th bit:</p>
+<ul>
+<li>If the 9th bit is 1, the receiver performs an inverse XOR operation
+sequentially along the bits to recover the original byte.</li>
+<li>If the 9th bit is 0, the receiver performs an inverse XNOR
+operation.</li>
+</ul>
+<p>Because the process relies entirely on deterministic Boolean logic,
+reconstruction is instantaneous and does not introduce latency or data
+loss.</p>
+<h3 id="distinction-from-dc-balancing">Distinction from DC
+Balancing</h3>
+<p>Transition minimization is often confused with DC balancing, but they
+are two distinct steps in TMDS:</p>
+<ul>
+<li><strong>Bits 0–8 (Transition Minimization):</strong> Focuses solely
+on reducing logic switches to control EMI and line reflections.</li>
+<li><strong>Bit 9 (DC Balancing):</strong> The 10th bit in the stream
+evaluates the running running disparity (the cumulative difference
+between transmitted 1s and 0s). If the transmission line begins to drift
+toward a continuous DC bias, the encoder selectively inverts the first 8
+bits and sets the 10th bit as a flag, preventing signal baseline wander
+across AC-coupling capacitors.</li>
+</ul>
+<p>Together, the minimized transitions and DC balancing ensure that
+high-resolution video signals travel reliably through DVI interfaces
+without signal corruption.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

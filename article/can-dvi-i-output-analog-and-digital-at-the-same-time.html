@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can DVI-I Output Analog and Digital at the Same Time? - dvi</title>
+    <meta name="description" content="A DVI-I (Digital Video Interface - Integrated) port cannot output both independent analog and digital video signals simultaneously to drive two separate displays. Although the physical DVI-I connector contains separate pins dedicated to digital (TMDS) an">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-dvi-i-output-analog-and-digital-at-the-same-time">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can DVI-I Output Analog and Digital at the Same Time? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-dvi-i-output-analog-and-digital-at-the-same-time" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A DVI-I (Digital Video Interface - Integrated) port cannot output both independent analog and digital video signals simultaneously to drive two separate displays. Although the physical DVI-I connector contains separate pins dedicated to digital (TMDS) an" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-dvi-i-output-analog-and-digital-at-the-same-time">Can DVI-I
+Output Analog and Digital at the Same Time?</h1>
+<p>A DVI-I (Digital Video Interface - Integrated) port cannot output
+both independent analog and digital video signals simultaneously to
+drive two separate displays. Although the physical DVI-I connector
+contains separate pins dedicated to digital (TMDS) and analog (VGA)
+signals, standard consumer graphics cards and motherboards are not
+engineered to power both signal pathways on a single port at the same
+time. This article explains the technical limitations of DVI-I ports,
+why passive splitters will not provide dual independent desktops, and
+the appropriate alternatives for multi-monitor setups.</p>
+<h3 id="understanding-the-dvi-i-connector">Understanding the DVI-I
+Connector</h3>
+<p>DVI-I is a hybrid standard designed for backward compatibility during
+the transition from cathode-ray tube (CRT) monitors to digital flat
+panels. The connector houses two distinct sets of pins:</p>
+<ul>
+<li><strong>Digital Pins:</strong> The 24-pin grid carries digital
+Transition-Minimized Differential Signaling (TMDS), which transmits
+digital data directly to digital monitors (DVI-D or HDMI via an
+adapter).</li>
+<li><strong>Analog Pins:</strong> The four pins surrounding the flat
+blade on the side carry analog RGB signals and synchronization pulses,
+equivalent to a standard VGA connection.</li>
+</ul>
+<p>While both sets of pins exist side-by-side in the same physical plug,
+their purpose is versatility, not dual-stream capability.</p>
+<h3 id="why-simultaneous-output-does-not-work">Why Simultaneous Output
+Does Not Work</h3>
+<p>The limitation lies inside the graphics processing unit (GPU), not
+the cable. A standard GPU links each physical port to a single internal
+display pipeline (display engine). When you boot a system or connect a
+screen, the graphics card uses the Display Data Channel (DDC) to read
+the monitor’s Extended Display Identification Data (EDID).</p>
+<p>Through this handshake, the GPU determines whether the attached
+monitor requires an analog or digital signal:</p>
+<ul>
+<li>If an analog display is detected, the GPU routes video data through
+a Random Access Memory Digital-to-Analog Converter (RAMDAC) to the
+analog pins.</li>
+<li>If a digital display is detected, the GPU routes data to the TMDS
+transmitter.</li>
+</ul>
+<p>Because only one display pipeline is assigned to the DVI-I port, the
+hardware cannot drive both the RAMDAC and the TMDS transmitter
+simultaneously for that port. It must choose one signal path.</p>
+<h3 id="what-happens-with-dvi-i-splitter-cables">What Happens with DVI-I
+Splitter Cables?</h3>
+<p>Passive "DVI-I to DVI-D and VGA" splitter cables exist on the market,
+but their functionality is widely misunderstood. These cables merely
+separate the analog pins to a VGA connector and the digital pins to a
+DVI-D connector.</p>
+<p>If you connect two monitors to a single DVI-I port using one of these
+splitters:</p>
+<ol type="1">
+<li><strong>EDID Conflicts:</strong> The graphics card will typically
+read the EDID handshake of only one display (often the digital one by
+default).</li>
+<li><strong>One Active Display:</strong> Only one monitor will receive
+an active signal. The secondary monitor will remain black or display a
+"No Signal" prompt.</li>
+<li><strong>No Extended Desktop:</strong> Even in the rare event of
+hardware quirkiness, the GPU cannot render two distinct framebuffers
+through one port. You cannot achieve an extended desktop layout.</li>
+</ol>
+<h3 id="dvi-i-vs-dms-59">DVI-I vs. DMS-59</h3>
+<p>A common point of confusion is the DMS-59 port, an interface
+frequently found on low-profile, business-class graphics cards. While
+DMS-59 looks somewhat similar to a DVI port, it is explicitly designed
+to carry two independent video channels—either two digital signals, two
+analog signals, or one of each—using a dedicated "Y-splitter" cable.
+Standard DVI-I lacks this internal wiring and will not function in this
+manner.</p>
+<h3 id="how-to-achieve-dual-displays">How to Achieve Dual Displays</h3>
+<p>To run two independent displays from a computer relying on legacy
+ports, consider the following alternatives:</p>
+<ul>
+<li><strong>Use Multiple Native GPU Ports:</strong> The most reliable
+method is to connect one monitor to the DVI-I port and the second
+monitor to another available output on your graphics card or motherboard
+(such as a secondary DVI, HDMI, or DisplayPort).</li>
+<li><strong>DisplayPort Multi-Stream Transport (MST):</strong> If your
+system has a modern DisplayPort output, you can daisy-chain monitors or
+use an MST hub to drive multiple distinct displays from a single
+port.</li>
+<li><strong>USB Display Adapters:</strong> If no other video ports are
+available on your system, an external USB-to-VGA or USB-to-HDMI adapter
+powered by DisplayLink technology can provide a secondary video
+output.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

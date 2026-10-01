@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why DVI to VGA Adapters Cause Ghosting and Reflections - dvi</title>
+    <meta name="description" content="Ghosting and signal reflections on monitors connected via DVI-to-VGA adapters are primarily caused by electrical impedance mismatches, poor cable shielding, and high-frequency signal degradation. Because VGA relies on an analog waveform rather than a dig">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-dvi-to-vga-adapters-cause-ghosting-and-reflections">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why DVI to VGA Adapters Cause Ghosting and Reflections - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-dvi-to-vga-adapters-cause-ghosting-and-reflections" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Ghosting and signal reflections on monitors connected via DVI-to-VGA adapters are primarily caused by electrical impedance mismatches, poor cable shielding, and high-frequency signal degradation. Because VGA relies on an analog waveform rather than a dig" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-dvi-to-vga-adapters-cause-ghosting-and-reflections">Why DVI
+to VGA Adapters Cause Ghosting and Reflections</h1>
+<p>Ghosting and signal reflections on monitors connected via DVI-to-VGA
+adapters are primarily caused by electrical impedance mismatches, poor
+cable shielding, and high-frequency signal degradation. Because VGA
+relies on an analog waveform rather than a digital bitstream, any
+disruption to the electrical path directly manifests as visual artifacts
+on the screen. Understanding why these issues occur requires looking at
+the physical transmission line between your graphics card and your
+display.</p>
+<h3 id="characteristic-impedance-mismatch">Characteristic Impedance
+Mismatch</h3>
+<p>The primary culprit behind ghosting is an impedance mismatch. The VGA
+standard strictly requires a continuous characteristic impedance of 75
+ohms across the entire transmission path, including the graphics card
+output, the adapter, the cable, and the monitor's input termination.</p>
+<p>When a video signal travels down a conductor and encounters a sudden
+change in impedance—often caused by poor trace design or substandard
+components inside cheap passive DVI-I to VGA adapters—a portion of the
+electrical signal is reflected backward toward the source. When this
+reflected energy hits the graphics card, it bounces forward again toward
+the monitor with a slight delay. Because the monitor draws lines in real
+time, this delayed reflection is rendered slightly to the right of the
+original image, appearing as a faint, duplicated "ghost" silhouette.</p>
+<h3 id="propagation-delay-and-visual-distance">Propagation Delay and
+Visual Distance</h3>
+<p>The severity and visual distance of the ghost from the primary image
+depend directly on cable length. Electrical signals travel through
+copper at roughly two-thirds the speed of light. If a reflection travels
+back and forth along a standard cable, the round trip takes several
+nanoseconds. At higher display resolutions and refresh rates, the pixel
+clock runs extremely fast, meaning a delay of just a few nanoseconds
+corresponds to several pixels of horizontal displacement on the screen.
+Longer cables exacerbate this delay, making the ghosted image stand out
+further from sharp edges.</p>
+<h3 id="inadequate-shielding-and-ground-loops">Inadequate Shielding and
+Ground Loops</h3>
+<p>VGA carries analog red, green, and blue (RGB) color data along
+separate coaxial lines. In low-quality DVI-to-VGA adapters:</p>
+<ul>
+<li><strong>Internal Crosstalk:</strong> The individual RGB lines and
+horizontal/vertical sync lines are often poorly shielded or routed too
+close to one another without dedicated ground planes, leading to
+cross-channel interference.</li>
+<li><strong>External EMI/RFI:</strong> Lack of proper foil or braided
+shielding leaves the analog signal vulnerable to electromagnetic
+interference from power supplies, Wi-Fi antennas, and nearby
+electronics.</li>
+<li><strong>Poor Ground Reference:</strong> An unstable or shared ground
+connection between the adapter and the chassis can introduce ground
+loops, visible as rolling horizontal bars, smearing, or ringing
+artifacts along high-contrast borders.</li>
+</ul>
+<h3 id="high-capacitance-and-slew-rate-attenuation">High Capacitance and
+Slew Rate Attenuation</h3>
+<p>Cheap adapters often introduce stray capacitance and inductance due
+to poor internal soldering and low-grade pin materials. High capacitance
+rounds off the sharp transitions between dark and light pixels (the
+signal's slew rate). Instead of instantaneous color changes, the voltage
+slopes gradually, resulting in fuzzy text, smearing, and trailing
+artifacts that resemble signal reflections.</p>
+<h3 id="how-to-eliminate-ghosting">How to Eliminate Ghosting</h3>
+<p>To resolve ghosting caused by DVI-to-VGA connections:</p>
+<ol type="1">
+<li><strong>Use Direct DVI-A/DVI-I to VGA Cables:</strong> Replace
+multi-piece adapter setups with a single, well-shielded DVI-to-VGA cable
+with integrated ferrite chokes on both ends to suppress high-frequency
+noise.</li>
+<li><strong>Shorten the Cable Run:</strong> Keep the analog cable run
+under 6 feet (1.8 meters) to minimize propagation delays and reduce
+signal attenuation.</li>
+<li><strong>Use an Active Converter:</strong> If your output is DVI-D
+(pure digital), ensure you are using an active converter that
+regenerates a fresh 75-ohm analog signal using an internal
+digital-to-analog converter (DAC) rather than passively splitting
+wires.</li>
+<li><strong>Transition to Native Digital:</strong> Whenever possible,
+bypass analog VGA entirely by connecting via native DVI, HDMI, or
+DisplayPort, which are immune to impedance-based ghosting and
+reflections.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESD Protection Components for DVI Inputs - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) ports are vulnerable to electrostatic discharge (ESD) due to frequent user contact and cable hot-plugging. Effective ESD protection for DVI inputs requires specialized components tailored to both high-speed differential sig">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/esd-protection-components-for-dvi-inputs">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ESD Protection Components for DVI Inputs - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/esd-protection-components-for-dvi-inputs" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) ports are vulnerable to electrostatic discharge (ESD) due to frequent user contact and cable hot-plugging. Effective ESD protection for DVI inputs requires specialized components tailored to both high-speed differential sig" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="esd-protection-components-for-dvi-inputs">ESD Protection
+Components for DVI Inputs</h1>
+<p>Digital Visual Interface (DVI) ports are vulnerable to electrostatic
+discharge (ESD) due to frequent user contact and cable hot-plugging.
+Effective ESD protection for DVI inputs requires specialized components
+tailored to both high-speed differential signal paths and lower-speed
+control lines. This article details the standard ESD suppression devices
+used across DVI interfaces, including ultra-low capacitance TVS diode
+arrays, discrete TVS diodes, and supporting passive components.</p>
+<h2 id="ultra-low-capacitance-tvs-diode-arrays">Ultra-Low Capacitance
+TVS Diode Arrays</h2>
+<p>The primary protection mechanism for DVI inputs is the Transient
+Voltage Suppressor (TVS) diode array. DVI relies on Transition-Minimized
+Differential Signaling (TMDS) lines operating at bandwidths up to 1.65
+Gbps (single-link) or higher, making signal integrity a major
+concern.</p>
+<ul>
+<li><strong>Capacitance Requirements:</strong> Standard silicon diodes
+introduce too much parasitic capacitance, which distorts high-frequency
+eye diagrams and causes impedance mismatches. Therefore, TMDS data and
+clock lines utilize ultra-low capacitance TVS arrays, typically rated
+between 0.3 pF and 0.8 pF per channel.</li>
+<li><strong>Steering Diode Architecture:</strong> These arrays typically
+use a rail-to-rail configuration consisting of low-capacitance steering
+diodes coupled with an integrated avalanche or Zener clamping diode.
+When an ESD strike occurs, the steering diodes route the surge away from
+the receiver IC toward the power rail or ground.</li>
+<li><strong>Flow-Through Packaging:</strong> Modern TVS components for
+TMDS lines are packaged in flow-through housings (such as DFN or DSON
+packages). This design enables differential PCB traces to route directly
+through the device pins, eliminating parasitic stubs and maintaining a
+strict 100-ohm differential impedance.</li>
+</ul>
+<h2 id="discrete-tvs-diodes-for-low-speed-lines">Discrete TVS Diodes for
+Low-Speed Lines</h2>
+<p>DVI ports include several low-speed, single-ended control signals
+that require protection against direct user contact:</p>
+<ul>
+<li><strong>DDC Lines (I2C):</strong> The Display Data Channel uses
+Serial Clock (SCL) and Serial Data (SDA) lines running at relatively low
+frequencies (typically 100 kHz). These lines do not demand ultra-low
+capacitance, allowing the use of standard TVS diodes or general-purpose
+ESD protection arrays with capacitances between 5 pF and 15 pF.</li>
+<li><strong>Hot Plug Detect (HPD):</strong> The HPD pin detects monitor
+connection states. Standard unidirectional or bidirectional TVS diodes
+with clamping voltages rated for 5V logic are placed here to suppress
+transients.</li>
+</ul>
+<h2 id="overvoltage-clamping-on-the-5v-power-pin">Overvoltage Clamping
+on the +5V Power Pin</h2>
+<p>The DVI specification provides a +5V power pin from the source to
+power the receiver's DDC circuitry.</p>
+<ul>
+<li><strong>Power TVS Diodes:</strong> A unidirectional TVS diode with a
+reverse standoff voltage slightly above 5V (typically 5.5V to 6V) is
+placed directly on this line.</li>
+<li><strong>Current Limiting Passives:</strong> Designers often pair
+this TVS diode with a resettable fuse (PTC) or series resistor to
+protect against sustained overcurrent or short-circuit events while the
+TVS diode clamps transient overvoltage spikes.</li>
+</ul>
+<h2 id="polymer-based-esd-suppressors">Polymer-Based ESD
+Suppressors</h2>
+<p>In select designs, polymer-based ESD suppressors (PESDs) are chosen
+over semiconductor TVS diodes for TMDS lines:</p>
+<ul>
+<li><strong>Features:</strong> Polymer devices exhibit extremely low
+capacitance (down to 0.05 pF), virtually eliminating signal attenuation
+on ultra-high-speed traces.</li>
+<li><strong>Trade-offs:</strong> While they offer low capacitance,
+polymer devices generally have higher clamping voltages and slower
+response times than silicon-based TVS diodes, meaning more residual
+voltage reaches the protected DVI receiver silicon. Consequently,
+low-capacitance silicon TVS arrays remain the preferred industry
+standard.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

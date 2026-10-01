@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisplayPort Packets vs DVI Raster Stream - dvi</title>
+    <meta name="description" content="DisplayPort and Digital Visual Interface (DVI) represent two fundamentally different approaches to transmitting digital video signals from a source to a display. While DVI relies on a continuous, timing-dependent raster stream derived from legacy cathode">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/display-port-packets-vs-dvi-raster-stream">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DisplayPort Packets vs DVI Raster Stream - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/display-port-packets-vs-dvi-raster-stream" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="DisplayPort and Digital Visual Interface (DVI) represent two fundamentally different approaches to transmitting digital video signals from a source to a display. While DVI relies on a continuous, timing-dependent raster stream derived from legacy cathode" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="displayport-packets-vs-dvi-raster-stream">DisplayPort Packets vs
+DVI Raster Stream</h1>
+<p>DisplayPort and Digital Visual Interface (DVI) represent two
+fundamentally different approaches to transmitting digital video signals
+from a source to a display. While DVI relies on a continuous,
+timing-dependent raster stream derived from legacy cathode-ray tube
+(CRT) mechanisms, DisplayPort utilizes a modular, packetized data
+architecture modeled after modern local area networks. Understanding the
+structural differences between these two standards explains why
+DisplayPort offers superior bandwidth efficiency, multi-display support,
+and feature extensibility compared to traditional DVI.</p>
+<h3 id="dvi-and-raster-stream-transmission">DVI and Raster Stream
+Transmission</h3>
+<p>DVI uses Transition-Minimized Differential Signaling (TMDS) to
+transmit uncompressed video data across fixed data lanes. This method is
+fundamentally a serialized digital representation of an analog video
+raster.</p>
+<ul>
+<li><strong>Line-by-Line Serial Transmission:</strong> Video data is
+transmitted pixel by pixel, row by row, in a continuous stream matching
+the exact scan pattern of the target monitor.</li>
+<li><strong>Preserved Blanking Intervals:</strong> Raster transmission
+explicitly preserves legacy CRT timing intervals, specifically the
+horizontal blanking interval (HBI) and vertical blanking interval (VBI).
+During these intervals, the pixel data lanes transmit synchronization
+pulses and idle states, effectively wasting a significant portion of the
+total link bandwidth on empty timing buffers.</li>
+<li><strong>Dedicated Clock Channel:</strong> DVI requires a separate,
+physical differential pair dedicated solely to transmitting the pixel
+clock. The data lines rely entirely on this hardware clock to latch and
+synchronize data at the receiver.</li>
+<li><strong>Point-to-Point Limitation:</strong> Because the stream is an
+uninterrupted sequence of raw pixels mapped to a specific physical
+timing sequence, a DVI connection is strictly point-to-point, supporting
+only a single display per physical interface.</li>
+</ul>
+<h3 id="displayport-and-micro-packet-architecture">DisplayPort and
+Micro-Packet Architecture</h3>
+<p>DisplayPort replaces the rigid raster pipeline with an extensible
+packet-based transport layer, abstracting the physical transmission
+layer from the underlying data content.</p>
+<ul>
+<li><strong>Micro-Packet Encapsulation:</strong> DisplayPort breaks down
+video frames, multi-channel audio, and secondary data (such as HDR
+metadata and device management commands) into discrete data units called
+micro-packets. These packets are multiplexed across scalable, high-speed
+data lanes (typically 1, 2, or 4 lanes).</li>
+<li><strong>Embedded Clock Signaling:</strong> Unlike DVI, DisplayPort
+does not use a dedicated clock lane. Instead, the clock signal is
+embedded directly within the data payload using line coding (such as
+8b/10b or 128b/132b). The receiver recovers the clock using a
+Phase-Locked Loop (PLL) circuit, freeing up physical pins for higher
+data throughput.</li>
+<li><strong>Elimination of Dead Bandwidth:</strong> While DisplayPort
+can generate virtual blanking intervals to maintain software
+compatibility with video rendering standards, it does not waste
+transmission capacity. Blanking periods are repurposed to send
+packetized audio streams, auxiliary device communication, or
+power-saving states.</li>
+<li><strong>Multi-Stream Transport (MST):</strong> Because data is
+packetized and tagged with headers, DisplayPort can route multiple
+independent video and audio streams over a single physical cable. An MST
+hub or daisy-chained monitors can read packet headers, extract the
+streams assigned to them, and ignore or forward the rest.</li>
+</ul>
+<h3 id="summary-of-core-differences">Summary of Core Differences</h3>
+<ul>
+<li><strong>Transmission Format:</strong> DVI transmits a raw,
+continuous pixel stream directly bound to display timing; DisplayPort
+transmits structured data packets containing headers, payload, and
+error-correction codes.</li>
+<li><strong>Clocking Method:</strong> DVI requires a dedicated physical
+clock line, whereas DisplayPort embeds the clock within the data
+streams.</li>
+<li><strong>Efficiency:</strong> DVI leaves blanking intervals empty,
+leading to unused overhead; DisplayPort utilizes empty periods to
+interleave auxiliary data, audio, and metadata.</li>
+<li><strong>Topology:</strong> DVI supports only single-panel, direct
+connections; DisplayPort packet routing natively enables daisy-chaining
+and multi-monitor setups over one port.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

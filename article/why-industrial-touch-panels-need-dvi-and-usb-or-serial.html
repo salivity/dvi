@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Industrial Touch Panels Need DVI and USB or Serial - dvi</title>
+    <meta name="description" content="Industrial touch panels require both a DVI connection and an independent serial or USB port because visual output and touch input are handled by two fundamentally different hardware systems. While DVI transmits high-resolution video signals from the comp">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-industrial-touch-panels-need-dvi-and-usb-or-serial">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Industrial Touch Panels Need DVI and USB or Serial - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-industrial-touch-panels-need-dvi-and-usb-or-serial" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Industrial touch panels require both a DVI connection and an independent serial or USB port because visual output and touch input are handled by two fundamentally different hardware systems. While DVI transmits high-resolution video signals from the comp" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-industrial-touch-panels-need-dvi-and-usb-or-serial">Why
+Industrial Touch Panels Need DVI and USB or Serial</h1>
+<p>Industrial touch panels require both a DVI connection and an
+independent serial or USB port because visual output and touch input are
+handled by two fundamentally different hardware systems. While DVI
+transmits high-resolution video signals from the computer to the
+monitor, it lacks a bi-directional data channel to return touch
+coordinates to the operating system. Consequently, a dedicated data
+interface—either USB or an RS-232 serial connection—must be paired with
+the video cable to transmit touch input commands, ensure system
+stability, and maintain compatibility across diverse industrial
+environments.</p>
+<h3 id="dvi-is-exclusively-a-video-interface">DVI is Exclusively a Video
+Interface</h3>
+<p>The Digital Visual Interface (DVI) was engineered specifically to
+transmit uncompressed digital video from a host controller to a display
+panel. The communication protocol within DVI relies on Transition
+Minimized Differential Signaling (TMDS) channels that flow in one
+direction: from the graphics card to the screen. Although DVI contains a
+low-bandwidth I2C channel (DDC/EDID), this channel is strictly reserved
+for the monitor to identify its resolution capabilities to the computer.
+It cannot carry the continuous, high-frequency bidirectional data
+required by human interface devices (HID).</p>
+<h3
+id="touchscreens-function-as-independent-input-hardware">Touchscreens
+Function as Independent Input Hardware</h3>
+<p>An industrial touch monitor consists of two distinct components
+integrated into a single chassis: the display panel (LCD or OLED) and
+the touch digitizer (resistive, capacitive, or surface acoustic wave).
+While the display receives rendering instructions, the digitizer acts as
+a separate peripheral—identical in function to an external mouse or
+trackpad. When an operator interacts with the screen, the digitizer
+controller converts the physical contact into X/Y coordinates. Because
+the DVI pipeline cannot receive this data, the digitizer requires its
+own direct communication bus back to the industrial PC (IPC).</p>
+<h3 id="the-functions-of-usb-and-serial-rs-232">The Functions of USB and
+Serial (RS-232)</h3>
+<p>Manufacturers provide either USB or RS-232 serial ports—and often
+both—to carry touch coordinate data back to the host system:</p>
+<ul>
+<li><strong>USB Connections:</strong> USB is standard in modern
+industrial systems utilizing operating systems like Windows or Linux. It
+provides plug-and-play capability, supports native HID drivers, and
+delivers the high polling rates necessary for modern projected
+capacitive (PCAP) multi-touch gestures.</li>
+<li><strong>Serial (RS-232) Connections:</strong> Serial interfaces
+remain widespread in heavy industrial automation, legacy PLC setups, and
+specialized embedded systems. RS-232 provides superior electrical noise
+immunity in high-interference environments and supports cable runs far
+exceeding the standard 5-meter limit of passive USB cables.
+Additionally, many real-time operating systems (RTOS) interact with
+simple COM port data streams more reliably than complex USB stacks.</li>
+</ul>
+<h3 id="modularity-and-system-reliability">Modularity and System
+Reliability</h3>
+<p>Separating the video stream from the touch data enhances overall
+operational reliability. In mission-critical factory automation,
+maintaining display continuity is vital. If electrical noise, cable
+damage, or driver issues disrupt the touch input channel, the DVI video
+feed continues to display critical machine metrics uninterrupted.
+Furthermore, this modularity allows engineers to easily service,
+replace, or adapt either the display technology or the touch controller
+without redesigning the entire human-machine interface (HMI)
+architecture.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

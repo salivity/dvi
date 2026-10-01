@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is a DVI KVM Switch and How Does It Work? - dvi</title>
+    <meta name="description" content="A DVI KVM switch is a specialized hardware device that enables a user to control multiple computers from a single console setup consisting of a DVI monitor, a keyboard, and a mouse. This article breaks down the purpose of a DVI KVM switch, how it handles">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/what-is-a-dvi-kvm-switch-and-how-does-it-work">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="What Is a DVI KVM Switch and How Does It Work? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/what-is-a-dvi-kvm-switch-and-how-does-it-work" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A DVI KVM switch is a specialized hardware device that enables a user to control multiple computers from a single console setup consisting of a DVI monitor, a keyboard, and a mouse. This article breaks down the purpose of a DVI KVM switch, how it handles" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="what-is-a-dvi-kvm-switch-and-how-does-it-work">What Is a DVI KVM
+Switch and How Does It Work?</h1>
+<p>A DVI KVM switch is a specialized hardware device that enables a user
+to control multiple computers from a single console setup consisting of
+a DVI monitor, a keyboard, and a mouse. This article breaks down the
+purpose of a DVI KVM switch, how it handles and routes keyboard and
+mouse data, and the technical process of directing digital and analog
+video signals across multiple host machines without system
+disruption.</p>
+<h3 id="understanding-the-dvi-kvm-switch">Understanding the DVI KVM
+Switch</h3>
+<p>A KVM (Keyboard, Video, Mouse) switch consolidates workspace hardware
+by connecting several computer towers to one peripheral hub. The "DVI"
+designation refers to the switch's native video interface: Digital
+Visual Interface. Depending on the model, these switches support DVI-D
+(pure digital signals), DVI-A (pure analog signals), or DVI-I
+(integrated digital and analog signals). By eliminating the need for
+dedicated monitors and input devices for every machine, the switch
+reduces desktop clutter, lowers power consumption, and streamlines
+workflow.</p>
+<h3 id="routing-keyboard-and-mouse-signals">Routing Keyboard and Mouse
+Signals</h3>
+<p>Keyboard and mouse routing typically relies on standard USB
+connections, though older legacy switches may use PS/2 ports. When input
+data is transmitted, the KVM switch processes it using one of two
+primary methods:</p>
+<ul>
+<li><strong>USB Hub Switching (Passive Routing):</strong> The switch
+acts as a physical multiplexer. When switching from Computer A to
+Computer B, it physically disconnects the keyboard and mouse from the
+first machine and connects them to the second. While functional, this
+method forces the target computer to detect and re-enumerate the USB
+devices each time, causing a slight delay.</li>
+<li><strong>Emulation Switching (Active Routing):</strong> Advanced KVM
+switches utilize full USB emulation or Dynamic Device Mapping (DDM). The
+switch actively mimics a continuously connected keyboard and mouse to
+all connected computers simultaneously. When the user switches between
+systems, the keystrokes and mouse movements are routed instantly with
+zero latency or re-enumeration delay.</li>
+</ul>
+<h3 id="routing-dvi-video-signals">Routing DVI Video Signals</h3>
+<p>The video pipeline requires precise bandwidth management, as DVI
+cables carry high-bandwidth uncompressed video data. Single-link DVI
+supports resolutions up to 1920x1200 at 60 Hz, whereas dual-link DVI
+doubles the transmission bandwidth to support resolutions up to
+2560x1600.</p>
+<p>Video routing involves two key functions:</p>
+<ul>
+<li><strong>TMDS Signal Routing:</strong> Digital DVI video uses
+Transition Minimized Differential Signaling (TMDS) to transmit color
+data. The switch contains internal crosspoint ICs (integrated circuits)
+that direct the high-speed differential signal lanes from the selected
+computer to the switch’s output DVI port.</li>
+<li><strong>EDID Management:</strong> Extended Display Identification
+Data (EDID) communicates the monitor’s resolution, refresh rate, and
+color characteristics to the graphics card. Advanced DVI KVM switches
+employ EDID emulation or passthrough caching. By feeding constant EDID
+data to all connected computers, the switch prevents background machines
+from changing screen resolutions or rearranging desktop icons when the
+active video channel is switched away.</li>
+</ul>
+<h3 id="control-and-switching-methods">Control and Switching
+Methods</h3>
+<p>The user selects which computer to control using built-in mechanisms
+that trigger the routing logic simultaneously across video, input, and
+often integrated 3.5mm analog audio channels. Common switching methods
+include:</p>
+<ul>
+<li><strong>Front-Panel Push Buttons:</strong> Physical toggles on the
+device chassis for manual channel selection.</li>
+<li><strong>Keyboard Hotkeys:</strong> Configurable keyboard shortcuts
+(such as pressing <code>Scroll Lock</code> twice followed by a number)
+that instruct the internal microprocessor to change ports.</li>
+<li><strong>Mouse Wheel Triggers:</strong> Specific click-and-scroll
+combinations detected by the switch’s emulation software.</li>
+<li><strong>RS-232 / Remote Control:</strong> Serial commands used
+primarily in server racks, broadcast environments, or automated
+enterprise systems.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

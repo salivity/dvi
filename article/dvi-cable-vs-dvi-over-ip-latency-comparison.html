@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI Cable vs DVI-over-IP: Latency Comparison - dvi</title>
+    <meta name="description" content="Native DVI copper cables deliver virtually instantaneous signal transmission with latency measured in nanoseconds, while DVI-over-IP extenders introduce measurable delay ranging from sub-millisecond figures to over 100 milliseconds. This difference stems">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-cable-vs-dvi-over-ip-latency-comparison">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI Cable vs DVI-over-IP: Latency Comparison - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-cable-vs-dvi-over-ip-latency-comparison" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Native DVI copper cables deliver virtually instantaneous signal transmission with latency measured in nanoseconds, while DVI-over-IP extenders introduce measurable delay ranging from sub-millisecond figures to over 100 milliseconds. This difference stems" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-cable-vs-dvi-over-ip-latency-comparison">DVI Cable vs
+DVI-over-IP: Latency Comparison</h1>
+<p>Native DVI copper cables deliver virtually instantaneous signal
+transmission with latency measured in nanoseconds, while DVI-over-IP
+extenders introduce measurable delay ranging from sub-millisecond
+figures to over 100 milliseconds. This difference stems from how each
+technology handles video data: native copper utilizes direct electrical
+conductivity over short distances, whereas DVI-over-IP requires signal
+conversion, compression, network packetization, and decoding to send
+data across an Ethernet network.</p>
+<h3 id="latency-in-native-dvi-copper-cables">Latency in Native DVI
+Copper Cables</h3>
+<p>A native DVI copper cable transmits digital red, green, blue, and
+clock signals via Transition-Minimized Differential Signaling (TMDS).
+Because this process involves no conversion, compression, or processing
+buffers, transmission speed is dictated entirely by the propagation
+speed of electricity through copper.</p>
+<p>Electricity travels through copper cable at roughly two-thirds the
+speed of light, yielding a propagation delay of approximately 5
+nanoseconds per meter. Over a standard 5-meter (16-foot) DVI cable, the
+total transmission delay is roughly 25 nanoseconds. From a human
+perspective and for any standard computing hardware, native DVI operates
+at true "zero latency," making it the ideal standard for real-time
+interactivity, precision mouse tracking, competitive gaming, and local
+desktop use. However, native copper cables are limited to short runs,
+usually degrading in signal quality past 5 to 10 meters without active
+amplification.</p>
+<h3 id="latency-in-dvi-over-ip-extenders">Latency in DVI-over-IP
+Extenders</h3>
+<p>DVI-over-IP systems bypass the distance limits of copper by
+converting video frames into network packets, enabling distribution over
+local area networks (LANs) across hundreds of meters or across campus
+networks. This flexibility introduces several stages of processing
+delay:</p>
+<ul>
+<li><strong>Capture and Compression:</strong> The transmitter hardware
+captures the incoming TMDS stream and, depending on the bandwidth
+architecture, compresses the video. Lightweight compression schemes
+(such as JPEG-XS or proprietary wavelet codecs) take less than a
+millisecond, while high-efficiency codecs (such as H.264 or H.265)
+require full-frame buffers, adding anywhere from 16 milliseconds (one
+frame at 60 Hz) to over 60 milliseconds.</li>
+<li><strong>Packetization and Switching:</strong> The encoded stream is
+packaged into standard IP packets (often UDP/RTP) and transmitted over
+standard Ethernet switches. Network switches, queuing mechanisms, and
+network jitter buffers add an additional 1 to 5 milliseconds.</li>
+<li><strong>Depacketization and Decoding:</strong> The receiver unpacks
+the network stream, buffers the video data to account for network
+jitter, decodes the frames back into a native video signal, and outputs
+it to the display.</li>
+</ul>
+<p>Because of these variables, latency across DVI-over-IP systems falls
+into two distinct categories:</p>
+<ol type="1">
+<li><strong>Ultra-Low Latency / Uncompressed (typically 10GbE):</strong>
+Systems using high-bandwidth 10-Gigabit networks often transmit
+uncompressed video or use minimal line-based compression. These models
+deliver latency between 0.1 milliseconds and 5 milliseconds (less than
+one-third of a frame), which is visually imperceptible to most users for
+standard desktop and interactive tasks.</li>
+<li><strong>Standard Network / Compressed (typically 1GbE):</strong>
+Systems engineered to fit existing 1-Gigabit infrastructure rely on
+heavier compression algorithms. Total end-to-end latency for these
+systems commonly ranges from 30 to 150 milliseconds. At this level,
+users experience noticeable mouse lag, visual delay during interactive
+input, and lip-sync synchronization issues if audio is not carefully
+aligned.</li>
+</ol>
+<h3 id="summary-comparison">Summary Comparison</h3>
+<p>Native DVI copper provides true zero-latency performance
+(nanoseconds) but cannot span long physical distances without signal
+degradation. DVI-over-IP enables virtually unlimited transmission range
+and routing flexibility over network infrastructure, but it incurs a
+latency penalty ranging from a fraction of a millisecond on high-end
+10GbE systems to several frames on bandwidth-constrained 1GbE
+networks.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DVI Implements EDID Communication - dvi</title>
+    <meta name="description" content="This article explains how the Digital Visual Interface (DVI) communicates Extended Display Identification Data (EDID) between a computer and a monitor. It covers the physical pinout used for data transmission, the underlying I2C protocol, the role of the">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dvi-implements-edid-communication">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DVI Implements EDID Communication - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dvi-implements-edid-communication" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article explains how the Digital Visual Interface (DVI) communicates Extended Display Identification Data (EDID) between a computer and a monitor. It covers the physical pinout used for data transmission, the underlying I2C protocol, the role of the" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dvi-implements-edid-communication">How DVI Implements EDID
+Communication</h1>
+<p>This article explains how the Digital Visual Interface (DVI)
+communicates Extended Display Identification Data (EDID) between a
+computer and a monitor. It covers the physical pinout used for data
+transmission, the underlying I2C protocol, the role of the Display Data
+Channel (DDC), and the sequence of events that allows an operating
+system to automatically detect and configure display settings.</p>
+<h3 id="the-physical-layer-dedicated-ddc-pins">The Physical Layer:
+Dedicated DDC Pins</h3>
+<p>DVI establishes EDID communication through an auxiliary channel
+separate from the Transition-Minimized Differential Signaling (TMDS)
+channels that carry the actual video stream. This channel relies on the
+VESA Display Data Channel (specifically DDC2B) standard and utilizes
+four dedicated pins on the DVI connector:</p>
+<ul>
+<li><strong>Pin 6 (DDC Clock / SCL):</strong> The clock line that
+synchronizes serial data transfer.</li>
+<li><strong>Pin 7 (DDC Data / SDA):</strong> The bidirectional data line
+that carries the request and transmission bits.</li>
+<li><strong>Pin 14 (+5V Power):</strong> A 5-volt power feed provided by
+the computer's graphics card.</li>
+<li><strong>Pin 15 (Ground):</strong> The ground reference for the +5V
+supply and the DDC signals.</li>
+</ul>
+<p>In addition to these pins, <strong>Pin 16 (Hot Plug Detect /
+HPD)</strong> plays a vital role by signaling to the host system that a
+display has been connected.</p>
+<h3 id="the-communication-protocol-i2c-and-ddc2b">The Communication
+Protocol: I2C and DDC2B</h3>
+<p>EDID transfer operates over the standard I2C (Inter-Integrated
+Circuit) two-wire serial bus. In this relationship:</p>
+<ul>
+<li>The computer's graphics processing unit (GPU) acts as the
+<strong>I2C Master</strong>.</li>
+<li>An EEPROM chip inside the monitor acts as the <strong>I2C
+Slave</strong>.</li>
+</ul>
+<p>The monitor's EDID EEPROM is assigned a standardized 7-bit I2C slave
+address of <code>0x50</code> (represented as <code>0xA0</code> for write
+operations and <code>0xA1</code> for read operations in 8-bit
+notation).</p>
+<p>Because the computer supplies +5V power via Pin 14, the monitor's
+EEPROM chip can be powered and read even when the monitor is turned off
+or unplugged from an AC power outlet, ensuring the operating system can
+always identify the display hardware.</p>
+<h3 id="step-by-step-edid-retrieval-process">Step-by-Step EDID Retrieval
+Process</h3>
+<ol type="1">
+<li><strong>Connection and Detection:</strong> When the DVI cable is
+plugged in, the monitor asserts a high signal (typically around +5V via
+a pull-up resistor) on the Hot Plug Detect line (Pin 16).</li>
+<li><strong>Read Request Initiation:</strong> Detecting the voltage
+change on the HPD pin, the host graphics driver generates a start
+condition on the I2C bus (pulling SDA low while SCL is high) and
+transmits the address <code>0x50</code> along with a write command to
+set the memory offset to <code>0x00</code>.</li>
+<li><strong>Data Transmission:</strong> The host restarts the bus and
+issues a read command (<code>0xA1</code>). The monitor's EEPROM
+acknowledges the request and begins clocking out the EDID data
+byte-by-byte across Pin 7 in sync with the clock pulses provided by the
+GPU on Pin 6.</li>
+<li><strong>Data Validation:</strong> The host receives the baseline
+128-byte data block (or 256 bytes if CEA-861 extension blocks are
+present). The graphics driver verifies the block's integrity using an
+8-bit checksum stored in the final byte.</li>
+<li><strong>Display Configuration:</strong> Once verified, the graphics
+driver parses the data—extracting supported native resolutions, refresh
+rates, color profiles, and timing parameters—and configures the digital
+TMDS links to drive the display at an optimal, supported video
+mode.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

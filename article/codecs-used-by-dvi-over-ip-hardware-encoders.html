@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codecs Used by DVI-over-IP Hardware Encoders - dvi</title>
+    <meta name="description" content="DVI-over-IP hardware encoders convert digital visual interface (DVI) video signals into data packets for transmission across standard Ethernet networks. To balance visual fidelity, network bandwidth, and transmission latency, these devices utilize variou">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/codecs-used-by-dvi-over-ip-hardware-encoders">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Codecs Used by DVI-over-IP Hardware Encoders - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/codecs-used-by-dvi-over-ip-hardware-encoders" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="DVI-over-IP hardware encoders convert digital visual interface (DVI) video signals into data packets for transmission across standard Ethernet networks. To balance visual fidelity, network bandwidth, and transmission latency, these devices utilize variou" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="codecs-used-by-dvi-over-ip-hardware-encoders">Codecs Used by
+DVI-over-IP Hardware Encoders</h1>
+<p>DVI-over-IP hardware encoders convert digital visual interface (DVI)
+video signals into data packets for transmission across standard
+Ethernet networks. To balance visual fidelity, network bandwidth, and
+transmission latency, these devices utilize various video compression
+standards ranging from uncompressed stream processing to highly
+compressed inter-frame algorithms. This article examines the most common
+codecs implemented in DVI-over-IP systems, detailing their technical
+performance characteristics and practical deployment environments.</p>
+<h3 id="h264-mpeg-4-avc">H.264 (MPEG-4 AVC)</h3>
+<p>H.264 is among the most widely supported codecs in legacy and
+standard DVI-over-IP deployments. It utilizes discrete cosine transform
+(DCT) and inter-frame predictive compression, allowing high-definition
+DVI video to stream over low-bandwidth infrastructure, typically between
+5 Mbps and 30 Mbps per stream.</p>
+<ul>
+<li><strong>Primary Use Case:</strong> Enterprise digital signage,
+educational streaming, and campus-wide AV distribution where network
+bandwidth is limited or transmission over WANs is necessary.</li>
+<li><strong>Latency Profile:</strong> Moderate to high (typically 50 ms
+to 250 ms), making it less ideal for high-precision, real-time mouse
+interaction in KVM environments.</li>
+</ul>
+<h3 id="h265-hevc">H.265 (HEVC)</h3>
+<p>High Efficiency Video Coding (HEVC) provides roughly 50% better data
+compression efficiency compared to H.264 at equivalent quality levels.
+In modern DVI-over-IP hardware, H.265 is often selected when
+high-resolution, high-frame-rate DVI sources must be routed over
+standard 1 Gbps or sub-gigabit corporate networks.</p>
+<ul>
+<li><strong>Primary Use Case:</strong> Bandwidth-constrained deployments
+requiring higher fidelity or simultaneous distribution of multiple
+high-definition channels.</li>
+<li><strong>Latency Profile:</strong> Similar to or slightly higher than
+H.264 due to the computational complexity required for encoding and
+decoding.</li>
+</ul>
+<h3 id="jpeg-2000">JPEG 2000</h3>
+<p>JPEG 2000 is an intra-frame, wavelet-based compression standard
+extensively used in professional AV-over-IP ecosystems designed for 1
+Gbps networks. Because it compresses each frame independently without
+temporal prediction, it avoids the motion artifacts common to
+inter-frame codecs.</p>
+<ul>
+<li><strong>Primary Use Case:</strong> Mission-critical control rooms,
+broadcast monitoring, and medical environments where frame integrity,
+low latency, and artifact-free static imagery (such as text, schematics,
+and UI elements) are paramount.</li>
+<li><strong>Latency Profile:</strong> Low latency (typically 1 to 2
+frames, approximately 16 ms to 35 ms).</li>
+<li><strong>Bandwidth Requirements:</strong> High-efficiency profiles
+typically consume 100 Mbps to 800 Mbps per stream.</li>
+</ul>
+<h3 id="jpeg-xs">JPEG-XS</h3>
+<p>JPEG-XS is an ultra-low-latency intra-frame codec designed
+specifically for production networks and high-end AV installations
+operating over 1 Gbps and 10 Gbps networks. It provides visually
+lossless compression at low compression ratios (typically between 2:1
+and 10:1).</p>
+<ul>
+<li><strong>Primary Use Case:</strong> Real-time interactive systems,
+high-end KVM extension, and live event distribution where near-zero lag
+is mandatory.</li>
+<li><strong>Latency Profile:</strong> Sub-millisecond (end-to-end
+latency measured in microsecond or fractional-frame scales).</li>
+</ul>
+<h3 id="uncompressed-and-sdvoe-aptovision-blueriver">Uncompressed and
+SDVoE (AptoVision BlueRiver)</h3>
+<p>Certain enterprise DVI-over-IP encoders bypass traditional lossy
+compression entirely or utilize minimal pixel-pipeline compression over
+10 Gbps Ethernet infrastructure, such as platforms standardized under
+Software Defined Video Over Ethernet (SDVoE).</p>
+<ul>
+<li><strong>Primary Use Case:</strong> Medical imaging, flight
+simulation, and zero-latency command centers where exact pixel
+replication and real-time interaction are required.</li>
+<li><strong>Latency Profile:</strong> True zero-frame latency (under 100
+microseconds).</li>
+<li><strong>Bandwidth Requirements:</strong> Requires dedicated 10 Gbps
+network switches and cabling.</li>
+</ul>
+<h3 id="proprietary-lightweight-codecs">Proprietary Lightweight
+Codecs</h3>
+<p>Several ProAV manufacturers implement proprietary intra-frame or
+run-length encoding algorithms within specialized FPGAs or ASICs. These
+custom codecs focus on computer-generated graphics common to DVI
+interfaces, optimizing the compression of solid color blocks, fonts, and
+desktop GUIs rather than continuous motion video.</p>
+<ul>
+<li><strong>Primary Use Case:</strong> Specialized KVM extenders and
+industrial workstation management.</li>
+<li><strong>Latency Profile:</strong> Sub-frame latency (typically 5 ms
+to 15 ms) with minimal CPU and network overhead.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

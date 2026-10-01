@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Passive DVI-D Splitters Ruin Video Signals - dvi</title>
+    <meta name="description" content="Connecting two monitors to a single passive DVI-D splitter frequently results in corrupted video, flickering, or a complete loss of signal on both screens. Because passive splitters lack internal power and processing circuitry, wiring two digital receive">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-passive-dvi-d-splitters-ruin-video-signals">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Passive DVI-D Splitters Ruin Video Signals - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-passive-dvi-d-splitters-ruin-video-signals" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Connecting two monitors to a single passive DVI-D splitter frequently results in corrupted video, flickering, or a complete loss of signal on both screens. Because passive splitters lack internal power and processing circuitry, wiring two digital receive" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-passive-dvi-d-splitters-ruin-video-signals">Why Passive
+DVI-D Splitters Ruin Video Signals</h1>
+<p>Connecting two monitors to a single passive DVI-D splitter frequently
+results in corrupted video, flickering, or a complete loss of signal on
+both screens. Because passive splitters lack internal power and
+processing circuitry, wiring two digital receivers in parallel
+drastically alters electrical impedance, halves signal strength, and
+creates communication conflicts between the display devices and the
+graphics source. Understanding the underlying physics and protocol
+requirements of DVI-D clarifies why these inexpensive adapters often
+fail to function.</p>
+<h3 id="the-nature-of-digital-signals-tmds">The Nature of Digital
+Signals (TMDS)</h3>
+<p>DVI-D relies on Transition-Minimized Differential Signaling (TMDS) to
+transmit high-speed digital data. Unlike older analog video standards
+(such as VGA), which merely display a dimmer image when the signal
+degrades, digital signals operate on strict voltage thresholds. TMDS
+encodes data into transitions between binary states at gigahertz
+frequencies. If the signal integrity drops below a precise decodable
+threshold—known as the "digital cliff"—the monitor's receiver cannot
+reconstruct the bits, resulting in severe artifacting, "sparkles," or a
+completely black screen.</p>
+<h3 id="impedance-mismatch-and-signal-reflections">Impedance Mismatch
+and Signal Reflections</h3>
+<p>High-speed digital transmission lines are designed with a specific
+characteristic impedance, typically 100 ohms differential (50 ohms per
+trace). The graphics card's transmitter and the monitor's receiver are
+calibrated to match this impedance to prevent signal degradation.</p>
+<p>When you place two monitors in parallel using a passive splitter, the
+equivalent load impedance is cut in half (down to approximately 50 ohms
+differential). This abrupt impedance mismatch creates electrical
+reflections. The signal pulses bounce back and forth between the
+splitter and the receivers, colliding with incoming data packets. These
+reflections introduce severe jitter and distort the clean square waves
+needed for the monitor to accurately interpret the digital clock and
+color data.</p>
+<h3 id="signal-voltage-attenuation">Signal Voltage Attenuation</h3>
+<p>A standard DVI-D output port is designed to supply current to a
+single receiving termination. When the output current is split between
+two separate monitors, the available electrical current to each monitor
+is effectively halved. This drop in current leads to significant voltage
+attenuation, compressing the differential voltage swing. Without an
+active amplifier to regenerate the signal, the weakened pulses fall
+beneath the sensitivity threshold of the monitors' internal TMDS
+receivers.</p>
+<h3 id="ddc-and-edid-handshake-conflicts">DDC and EDID Handshake
+Conflicts</h3>
+<p>DVI-D is not merely a one-way video feed; it includes an I2C-based
+bidirectional communication channel known as the Display Data Channel
+(DDC). The source graphics card uses the DDC to read the monitor’s
+Extended Display Identification Data (EDID), which communicates
+supported resolutions, refresh rates, and color profiles.</p>
+<p>When two monitors are connected via a passive splitter:</p>
+<ul>
+<li>Both monitors share the same clock and data lines for the DDC.</li>
+<li>If both displays attempt to transmit their EDID data simultaneously,
+the signals collide, producing corrupt data that the graphics card
+cannot parse.</li>
+<li>If the monitors have different native resolutions or timing
+parameters, the source cannot negotiate a valid display mode.</li>
+<li>If High-bandwidth Digital Content Protection (HDCP) is involved, the
+cryptographic handshake fails completely because the protocol strictly
+prohibits unauthenticated branching of encrypted content over a single
+channel.</li>
+</ul>
+<h3 id="the-correct-alternative">The Correct Alternative</h3>
+<p>To duplicate a DVI-D output across two displays reliably, an active,
+powered DVI-D distribution amplifier (often called an active splitter)
+is required. An active splitter terminates the incoming signal properly,
+reads the EDID from a primary display, and uses dedicated internal
+circuitry and an external power supply to generate two entirely
+separate, full-strength, impedance-matched TMDS output signals.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

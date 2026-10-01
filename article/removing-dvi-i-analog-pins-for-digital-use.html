@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Removing DVI-I Analog Pins for Digital Use - dvi</title>
+    <meta name="description" content="Removing the analog pins from a DVI-I cable will allow it to physically fit into a DVI-D port and successfully transmit digital signals, provided the digital pins remain undamaged and the cable is fully wired internally. This guide explains how the pinou">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/removing-dvi-i-analog-pins-for-digital-use">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Removing DVI-I Analog Pins for Digital Use - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/removing-dvi-i-analog-pins-for-digital-use" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Removing the analog pins from a DVI-I cable will allow it to physically fit into a DVI-D port and successfully transmit digital signals, provided the digital pins remain undamaged and the cable is fully wired internally. This guide explains how the pinou" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="removing-dvi-i-analog-pins-for-digital-use">Removing DVI-I
+Analog Pins for Digital Use</h1>
+<p>Removing the analog pins from a DVI-I cable will allow it to
+physically fit into a DVI-D port and successfully transmit digital
+signals, provided the digital pins remain undamaged and the cable is
+fully wired internally. This guide explains how the pinouts function,
+why this hardware modification works, and the practical caveats to
+consider before altering a cable.</p>
+<h3 id="understanding-dvi-i-vs-dvi-d-pinouts">Understanding DVI-I vs.
+DVI-D Pinouts</h3>
+<p>Digital Visual Interface (DVI) cables fall into two main display
+standards:</p>
+<ul>
+<li><strong>DVI-I (Integrated):</strong> Transmits both digital (TMDS)
+and analog (VGA) signals.</li>
+<li><strong>DVI-D (Digital):</strong> Transmits strictly digital
+signals.</li>
+</ul>
+<p>The primary physical difference lies on the side of the connector
+containing the flat blade. A DVI-I male connector features four
+additional cross pins surrounding the flat blade (designated as pins C1,
+C2, C3, and C4). These four pins carry the analog Red, Green, Blue, and
+horizontal synchronization signals. DVI-D female receptacles lack the
+holes for these four pins, which prevents a standard DVI-I cable from
+plugging into a DVI-D device.</p>
+<h3 id="why-digital-signals-still-transmit">Why Digital Signals Still
+Transmit</h3>
+<p>Digital video transmission in a DVI connection relies entirely on the
+main block of 24 pins arranged in an 8x3 grid. These pins carry:</p>
+<ul>
+<li><strong>TMDS Data Channels:</strong> The primary digital video
+bitstream.</li>
+<li><strong>TMDS Clock:</strong> Synchronization for the digital
+stream.</li>
+<li><strong>DDC (Display Data Channel):</strong> Digital handshake and
+EDID data so the source recognizes the display.</li>
+<li><strong>+5V Power and Hot Plug Detect:</strong> Power and connection
+signaling.</li>
+</ul>
+<p>Because the analog pins (C1–C4) operate on completely separate,
+isolated electrical lines, severing or removing them does not disrupt
+the digital pathways. As long as the digital pins (1 through 24) and
+their ground lines are intact, the digital video signal transmits
+normally at its standard resolution and refresh rate.</p>
+<h3 id="physical-constraints-the-flat-ground-blade">Physical
+Constraints: The Flat Ground Blade</h3>
+<p>Before removing the four analog pins, verify the dimensions of the
+horizontal flat blade (pin C5):</p>
+<ul>
+<li>In some DVI-I connectors, the flat blade is slightly wider than the
+horizontal slot on certain DVI-D female ports.</li>
+<li>Standard DVI-D female ports typically include a slot that accepts
+the blade, but tight manufacturing tolerances may cause friction.</li>
+<li>Do not remove or cut the flat blade unless necessary, as it serves
+as a ground shield. If the blade does not fit the slot smoothly, forcing
+it can crack the female receptacle on your display or graphics
+card.</li>
+</ul>
+<h3 id="risks-and-considerations">Risks and Considerations</h3>
+<p>While modifying the cable functions electronically, several risks
+exist:</p>
+<ul>
+<li><strong>Internal Wire Shorts:</strong> Bending or breaking pins by
+hand can cause internal wires to short against the connector housing if
+not cleanly snapped. Use needle-nose pliers to pull the pins straight
+out rather than snapping them sideways.</li>
+<li><strong>DVI-A Cables:</strong> Ensure the cable is a genuine DVI-I
+cable. Pure DVI-A (Analog) cables share the same physical shell but lack
+internal wiring for the 24 digital pins. Removing the analog pins on a
+DVI-A cable renders it completely non-functional.</li>
+<li><strong>Physical Damage to Ports:</strong> Jagged remnants of
+clipped pins can scratch or bend the internal contacts of a female DVI-D
+port.</li>
+</ul>
+<p>Removing the four analog pins is an effective temporary workaround.
+For long-term reliability and signal integrity, replacing the modified
+cable with a dedicated DVI-D cable or using a certified passive adapter
+remains the optimal solution.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

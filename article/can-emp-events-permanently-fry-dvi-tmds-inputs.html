@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can EMP Events Permanently Fry DVI TMDS Inputs? - dvi</title>
+    <meta name="description" content="An intense electromagnetic pulse (EMP) event is fully capable of permanently destroying the Transition-Minimized Differential Signaling (TMDS) input stages of a Digital Visual Interface (DVI) port. DVI interfaces rely on high-speed, low-voltage silicon r">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-emp-events-permanently-fry-dvi-tmds-inputs">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can EMP Events Permanently Fry DVI TMDS Inputs? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-emp-events-permanently-fry-dvi-tmds-inputs" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="An intense electromagnetic pulse (EMP) event is fully capable of permanently destroying the Transition-Minimized Differential Signaling (TMDS) input stages of a Digital Visual Interface (DVI) port. DVI interfaces rely on high-speed, low-voltage silicon r" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-emp-events-permanently-fry-dvi-tmds-inputs">Can EMP Events
+Permanently Fry DVI TMDS Inputs?</h1>
+<p>An intense electromagnetic pulse (EMP) event is fully capable of
+permanently destroying the Transition-Minimized Differential Signaling
+(TMDS) input stages of a Digital Visual Interface (DVI) port. DVI
+interfaces rely on high-speed, low-voltage silicon receivers that
+operate within strict electrical tolerances. When an EMP occurs, the
+rapid, high-amplitude electromagnetic field couples into attached cables
+and printed circuit board traces, generating transient voltages that
+vastly exceed the breakdown thresholds of the receiver circuitry. This
+article explains the mechanisms behind EMP-induced electrical failure,
+why TMDS receivers are particularly susceptible, and why the resulting
+hardware damage is permanent.</p>
+<p>DVI interfaces use TMDS to transmit digital video data over four
+differential pairs consisting of three data channels and one clock line.
+These differential pairs operate at low voltage swings—typically around
+500 millivolts centered near a 3.3-volt DC bias. To achieve the
+multi-gigabit bandwidth necessary for high-resolution video, the input
+stages inside the display controller or receiver chip are fabricated
+using extremely small CMOS or BiCMOS transistors with ultra-thin gate
+oxide layers. These miniature geometries minimize input capacitance but
+offer virtually zero intrinsic resistance to high-voltage surges.</p>
+<p>The primary mechanism of damage during an EMP event—such as the fast
+E1 component of a high-altitude nuclear EMP (HEMP) or a localized
+non-nuclear EMP (NNEMP)—is conductive and radiative coupling. Because
+DVI cables contain multiple unshielded or partially shielded conductors
+spanning several feet, they act as effective antennas. The intense
+electromagnetic field induces large common-mode and differential-mode
+voltage transients along the internal copper lines. The rise time of an
+E1 pulse is under a few nanoseconds, producing voltage spikes reaching
+hundreds or even thousands of volts directly at the connector pins.</p>
+<p>Commercial DVI ports typically feature basic electrostatic discharge
+(ESD) suppression components, such as transient voltage suppression
+(TVS) diodes or varistors. However, standard commercial ESD protection
+is designed to handle human-body discharges characterized by microjoules
+of total energy. An EMP transient can easily deliver current surges that
+exceed the clamping capacity and response speed of these TVS diodes.
+When the protection components are overwhelmed, they either fail
+open-circuit or short directly to ground, allowing the remaining
+high-energy pulse to enter the receiver IC unimpeded.</p>
+<p>When this transient voltage hits the TMDS input stage, it causes
+immediate physical destruction within the silicon. The massive electric
+field punctures the gate dielectric of the input transistors, resulting
+in dielectric breakdown. Simultaneously, the surge of current causes
+localized ohmic heating, which melts microscopic silicon junctions,
+fuses bond wires, or burns out internal termination resistors (typically
+50-ohm pull-up resistors).</p>
+<p>Once gate oxide rupture or junction melting occurs, the physical
+layout of the semiconductor is permanently altered. The damaged TMDS
+receiver cannot read differential voltage states, causing total loss of
+the digital video signal, corrupted colors, or an inability to detect a
+connected display device. Because the damage is physical rather than
+logical, the DVI port cannot be recovered via software resets or power
+cycles; the receiver IC or the entire circuit board must be physically
+replaced.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

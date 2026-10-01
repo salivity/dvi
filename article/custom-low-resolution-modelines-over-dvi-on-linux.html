@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Low-Resolution Modelines over DVI on Linux - dvi</title>
+    <meta name="description" content="Modern Linux distributions can output custom low-resolution modelines over DVI, but the implementation depends heavily on whether the connection uses analog or digital DVI, GPU hardware limits, and the choice between X11 and Wayland. While native low res">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/custom-low-resolution-modelines-over-dvi-on-linux">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Custom Low-Resolution Modelines over DVI on Linux - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/custom-low-resolution-modelines-over-dvi-on-linux" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Modern Linux distributions can output custom low-resolution modelines over DVI, but the implementation depends heavily on whether the connection uses analog or digital DVI, GPU hardware limits, and the choice between X11 and Wayland. While native low res" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="custom-low-resolution-modelines-over-dvi-on-linux">Custom
+Low-Resolution Modelines over DVI on Linux</h1>
+<p>Modern Linux distributions can output custom low-resolution modelines
+over DVI, but the implementation depends heavily on whether the
+connection uses analog or digital DVI, GPU hardware limits, and the
+choice between X11 and Wayland. While native low resolutions like 240p
+or 480i are achievable for retro gaming or CRT monitors, overcoming
+driver-level pixel clock minimums and modern display server restrictions
+requires specific configuration methods such as custom EDID overrides or
+horizontal super-resolutions.</p>
+<h3 id="dvi-i-analog-vs-dvi-d-digital-limitations">DVI-I (Analog) vs.
+DVI-D (Digital) Limitations</h3>
+<p>The physical interface dictates what signals the graphics card can
+send:</p>
+<ul>
+<li><strong>DVI-I (Integrated Analog and Digital):</strong> When paired
+with a passive DVI-to-VGA adapter, DVI-I functions as an analog RGB
+source. Analog signals have no strict lower limit on pixel clocks,
+allowing true low native resolutions (e.g., 320x240 at 15 kHz or 60 Hz)
+commonly used for CRT monitors and arcade setups.</li>
+<li><strong>DVI-D (Digital Only):</strong> Digital DVI operates via
+Transition-Minimized Differential Signaling (TMDS). The TMDS
+specification and modern GPU transmitters enforce a minimum pixel
+clock—typically around 25 MHz. Because a standard resolution like
+320x240 @ 60 Hz requires a pixel clock of only ~6.4 MHz, modern graphics
+drivers will reject the mode over a digital link.</li>
+</ul>
+<h3 id="bypassing-digital-limits-with-super-resolutions">Bypassing
+Digital Limits with Super-Resolutions</h3>
+<p>To display a low vertical resolution over digital DVI without falling
+below the 25 MHz hardware clock floor, you must use
+"super-resolutions."</p>
+<p>By dramatically expanding the horizontal resolution while keeping the
+vertical line count low (for example, 2560x240 @ 60 Hz), the pixel clock
+rises above 30 MHz. The monitor processes the image as a valid
+high-frequency digital signal, while the vertical refresh and line count
+remain low enough to match 240p timing characteristics without
+downscaling artifacts.</p>
+<h3 id="x11-implementation-via-xrandr">X11 Implementation via
+XRandR</h3>
+<p>Under the traditional X11 display server, custom modelines can be
+injected dynamically at runtime:</p>
+<ol type="1">
+<li><strong>Generate the Modeline:</strong> Use utilities like
+<code>cvt</code> or <code>gtf</code> with the <code>--reduced</code>
+blanking flag, or use arcade-oriented calculators to define precise
+timings.</li>
+<li><strong>Register the Mode:</strong> Add the calculated modeline to
+X11 using <code>xrandr --newmode</code>.</li>
+<li><strong>Assign to Output:</strong> Associate the mode with the
+target DVI port using
+<code>xrandr --addmode &lt;Output-Name&gt; &lt;Mode-Name&gt;</code>.</li>
+<li><strong>Apply the Resolution:</strong> Switch to the target
+resolution using
+<code>xrandr --output &lt;Output-Name&gt; --mode &lt;Mode-Name&gt;</code>.</li>
+</ol>
+<p>If the driver's Kernel Mode Setting (KMS) layer deems the pixel clock
+invalid for that specific port, the <code>xrandr</code> command will
+return an error, necessitating an EDID-level workaround.</p>
+<h3 id="wayland-and-kernel-level-configuration-kms">Wayland and
+Kernel-Level Configuration (KMS)</h3>
+<p>Modern distributions increasingly default to Wayland, which does not
+support dynamic runtime mode injection via tools like
+<code>xrandr</code>. Instead, custom resolutions must be defined at the
+Linux kernel level via Direct Rendering Manager (DRM) and Kernel Mode
+Setting (KMS):</p>
+<ul>
+<li><strong>Custom EDID Injection:</strong> Generate a custom binary
+EDID containing the required low-resolution timing using tools like
+<code>Custom Resolution Utility</code> (CRU) or
+<code>edid-generator</code>. Place the <code>.bin</code> file in
+<code>/lib/firmware/edid/</code>.</li>
+<li><strong>Kernel Parameters:</strong> Instruct the kernel to force the
+custom EDID on boot by adding parameters to your bootloader (e.g.,
+GRUB):
+<code>drm.edid_firmware=DVI-I-1:edid/custom_240p.bin video=DVI-I-1:e</code></li>
+<li><strong>Video Command Line Overrides:</strong> In some setups, basic
+mode forcing can be declared directly using
+<code>video=DVI-I-1:640x480@60</code> in the kernel parameters, though
+custom arbitrary timings still require a full EDID profile.</li>
+</ul>
+<h3 id="gpu-driver-considerations">GPU Driver Considerations</h3>
+<ul>
+<li><strong>Open-Source AMD/Intel Drivers (<code>amdgpu</code>,
+<code>radeon</code>, <code>i915</code>):</strong> These drivers offer
+the highest flexibility for custom modes and 15 kHz output, especially
+when patched with community retro-gaming kernels (such as the Linux CRT
+Emudriver forks).</li>
+<li><strong>NVIDIA Proprietary Drivers:</strong> NVIDIA's proprietary
+driver uses its own internal mode validation engine and often ignores
+standard KMS EDID overrides, requiring configuration via custom
+<code>xorg.conf</code> blocks with <code>ModeValidation</code> flags set
+to disable clock and frequency checks.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

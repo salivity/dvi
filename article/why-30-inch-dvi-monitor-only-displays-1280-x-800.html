@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why 30-Inch DVI Monitor Only Displays 1280x800 - dvi</title>
+    <meta name="description" content="Connecting a 30-inch monitor to a single-link DVI port results in a maximum resolution of 1280x800 rather than its native 2560x1600 due to hardware bandwidth constraints and the lack of an internal scaling chip. Single-link DVI cannot transmit enough dat">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-30-inch-dvi-monitor-only-displays-1280-x-800">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why 30-Inch DVI Monitor Only Displays 1280x800 - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-30-inch-dvi-monitor-only-displays-1280-x-800" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Connecting a 30-inch monitor to a single-link DVI port results in a maximum resolution of 1280x800 rather than its native 2560x1600 due to hardware bandwidth constraints and the lack of an internal scaling chip. Single-link DVI cannot transmit enough dat" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-30-inch-dvi-monitor-only-displays-1280x800">Why 30-Inch DVI
+Monitor Only Displays 1280x800</h1>
+<p>Connecting a 30-inch monitor to a single-link DVI port results in a
+maximum resolution of 1280x800 rather than its native 2560x1600 due to
+hardware bandwidth constraints and the lack of an internal scaling chip.
+Single-link DVI cannot transmit enough data to power a 2560x1600 display
+at standard refresh rates. Because older 30-inch panels were engineered
+without built-in hardware scalers to reduce input lag, the display falls
+back to a clean half-resolution of 1280x800 to maintain a 16:10 aspect
+ratio using basic pixel doubling.</p>
+<h3 id="bandwidth-limitations-of-single-link-dvi">Bandwidth Limitations
+of Single-Link DVI</h3>
+<p>A standard 30-inch computer monitor features a native resolution of
+2560x1600 pixels at a 60 Hz refresh rate. Transmitting this uncompressed
+video signal requires a pixel clock of approximately 268 MHz, which
+demands roughly 7.4 Gbps of bandwidth.</p>
+<p>Single-link DVI utilizes a single digital transmitter with a pixel
+clock capped at 165 MHz, limiting its maximum bandwidth to 3.96 Gbps.
+This allows a maximum resolution of 1920x1200 at 60 Hz. Because
+2560x1600 exceeds the maximum throughput of single-link DVI, the
+connection cannot negotiate the monitor’s full resolution. To achieve
+2560x1600, a dual-link DVI interface is mandatory, which employs a
+second transmitter to double the available data lanes.</p>
+<h3 id="the-missing-scaler-and-the-1280x800-fallback">The Missing Scaler
+and the 1280x800 Fallback</h3>
+<p>While single-link DVI theoretically supports 1920x1200, a 30-inch
+monitor plugged into a single-link source defaults to 1280x800 instead.
+This occurs because early high-resolution 30-inch displays (such as the
+Apple Cinema HD Display 30" or the Dell UltraSharp 3007WFP) were
+manufactured without an internal display scaler.</p>
+<p>Display scalers convert non-native video input signals to fit the
+panel's physical pixel grid. Incorporating a scaler capable of
+processing 2560x1600 was prohibitively expensive and introduced
+noticeable input latency during that hardware era.</p>
+<p>Without a scaler, the monitor can only accept two types of
+signals:</p>
+<ul>
+<li><strong>Full Native Resolution (2560x1600):</strong> Each pixel in
+the incoming frame corresponds to one physical pixel on the panel.</li>
+<li><strong>Exact Half-Resolution (1280x800):</strong> Each incoming
+pixel maps cleanly to a 2x2 block of physical pixels (2560 ÷ 2 = 1280;
+1600 ÷ 2 = 800).</li>
+</ul>
+<p>Because 1920x1200 cannot be divided evenly into 2560x1600, mapping
+that resolution without an internal scaler would require complex
+interpolation that the panel hardware simply cannot perform. The
+monitor's Extended Display Identification Data (EDID) consequently
+exposes 1280x800 as its primary single-link fallback resolution to
+preserve the 16:10 aspect ratio and guarantee a functional picture.</p>
+<h3 id="how-to-achieve-native-2560x1600-resolution">How to Achieve
+Native 2560x1600 Resolution</h3>
+<p>To drive the monitor at its full 2560x1600 resolution, the entire
+video chain must support dual-link bandwidth:</p>
+<ol type="1">
+<li><strong>Verify the DVI Cable:</strong> Ensure the cable is a genuine
+Dual-Link DVI-D cable. A dual-link cable features a solid 24-pin grid (3
+rows of 8 pins), whereas a single-link cable has a visible gap between
+two 9-pin blocks.</li>
+<li><strong>Verify the Video Output:</strong> The source port on the
+graphics card must be a dual-link DVI port.</li>
+<li><strong>Use Active Converters for Modern Ports:</strong> If
+connecting the monitor to a modern DisplayPort, Mini DisplayPort, USB-C,
+or HDMI output, a standard passive adapter will only deliver a
+single-link DVI signal. An active dual-link adapter—typically powered by
+an auxiliary USB connection—is required to synthesize the full dual-link
+signal required to unlock 2560x1600.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

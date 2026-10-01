@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How ATI Implemented Audio Over DVI to HDMI Dongles - dvi</title>
+    <meta name="description" content="Starting with the Radeon HD 2000 series, ATI (later AMD) introduced a method to deliver full digital audio through standard DVI ports using specialized DVI-to-HDMI adapters. Rather than using external jumper cables, ATI combined an integrated on-die audi">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-ati-implemented-audio-over-dvi-to-hdmi-dongles">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How ATI Implemented Audio Over DVI to HDMI Dongles - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-ati-implemented-audio-over-dvi-to-hdmi-dongles" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Starting with the Radeon HD 2000 series, ATI (later AMD) introduced a method to deliver full digital audio through standard DVI ports using specialized DVI-to-HDMI adapters. Rather than using external jumper cables, ATI combined an integrated on-die audi" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-ati-implemented-audio-over-dvi-to-hdmi-dongles">How ATI
+Implemented Audio Over DVI to HDMI Dongles</h1>
+<p>Starting with the Radeon HD 2000 series, ATI (later AMD) introduced a
+method to deliver full digital audio through standard DVI ports using
+specialized DVI-to-HDMI adapters. Rather than using external jumper
+cables, ATI combined an integrated on-die audio processor, standard TMDS
+video signaling, and an internal EEPROM handshake inside a proprietary
+dongle to switch the DVI port into a native HDMI transmitter.</p>
+<h3 id="the-challenge-of-dvi-and-audio">The Challenge of DVI and
+Audio</h3>
+<p>The Digital Visual Interface (DVI) specification was created solely
+for video transmission. While both single-link DVI and HDMI utilize
+Transition-Minimized Differential Signaling (TMDS) across three data
+channels and one clock channel, standard DVI does not officially support
+audio. HDMI, by contrast, embeds audio and auxiliary metadata packets
+into the "data islands" located within the horizontal and vertical
+blanking intervals between video frames.</p>
+<p>Transmitting HDMI-formatted audio down a standard DVI connection
+risks sending unsupported packet formats to legacy DVI monitors, which
+often results in a corrupted image, pink/green tinting, or no signal at
+all.</p>
+<h3 id="on-die-audio-controller">On-Die Audio Controller</h3>
+<p>Prior to ATI's approach, PC graphics cards capable of routing audio
+over digital outputs required an internal S/PDIF cable connected from
+the motherboard or sound card directly to the graphics card.</p>
+<p>ATI bypassed this limitation by embedding a hardware High Definition
+Audio (Azalia-compliant) controller directly onto the graphics
+processing unit. The operating system recognized the GPU as a distinct,
+standalone audio device. This allowed the GPU to ingest, process, and
+synchronize uncompressed LPCM or compressed multi-channel bitstream
+audio internally, without routing extra cables across the
+motherboard.</p>
+<h3 id="proprietary-dongle-detection-via-eeprom">Proprietary Dongle
+Detection via EEPROM</h3>
+<p>To ensure that audio-bearing HDMI signals were only transmitted to
+capable displays, ATI introduced custom-keyed DVI-to-HDMI adapters.
+Standard passive DVI-to-HDMI adapters only remap physical pins, leaving
+the GPU to assume a legacy DVI monitor is attached.</p>
+<p>ATI's proprietary adapters contained a tiny onboard EEPROM chip wired
+to the Display Data Channel (DDC/I2C) lines. During the initial
+connection handshake:</p>
+<ol type="1">
+<li>The graphics driver queries the I2C bus over the DDC pins.</li>
+<li>The driver checks for a specific ATI vendor signature stored inside
+the dongle's EEPROM.</li>
+<li>If the signature is absent, the GPU restricts the port to standard
+DVI signaling with no audio output.</li>
+<li>If the signature is verified, the driver enables native HDMI
+signaling over the DVI physical connector.</li>
+</ol>
+<h3 id="tmds-multiplexing-and-pin-passthrough">TMDS Multiplexing and Pin
+Passthrough</h3>
+<p>Once HDMI mode is enabled, the GPU multiplexes the audio data from
+the on-die sound controller directly into the TMDS data blanking
+intervals alongside the video data.</p>
+<p>Because single-link DVI-D and standard HDMI use identical
+differential signaling schemes (Data 0, Data 1, Data 2, and Clock), no
+active digital-to-analog or signal conversion is required inside the
+dongle. The adapter physically routes the corresponding DVI pins
+directly to the HDMI connector pins. The connected HDMI television or
+receiver interprets the stream as a standard, native HDMI signal
+carrying synchronized digital audio and high-definition video.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

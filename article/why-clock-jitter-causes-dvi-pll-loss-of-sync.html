@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Clock Jitter Causes DVI PLL Loss of Sync - dvi</title>
+    <meta name="description" content="This article examines why clock jitter in a Digital Visual Interface (DVI) cable disrupts the receiver's Phase-Locked Loop (PLL). When electrical degradation within the cable introduces excessive phase variations onto the transmission clock line, the rec">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-clock-jitter-causes-dvi-pll-loss-of-sync">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Clock Jitter Causes DVI PLL Loss of Sync - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-clock-jitter-causes-dvi-pll-loss-of-sync" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article examines why clock jitter in a Digital Visual Interface (DVI) cable disrupts the receiver's Phase-Locked Loop (PLL). When electrical degradation within the cable introduces excessive phase variations onto the transmission clock line, the rec" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-clock-jitter-causes-dvi-pll-loss-of-sync">Why Clock Jitter
+Causes DVI PLL Loss of Sync</h1>
+<p>This article examines why clock jitter in a Digital Visual Interface
+(DVI) cable disrupts the receiver's Phase-Locked Loop (PLL). When
+electrical degradation within the cable introduces excessive phase
+variations onto the transmission clock line, the receiver's internal PLL
+cannot accurately track the shifts. This breakdown in frequency and
+phase tracking shrinks the receiver's timing margins, eventually forcing
+the loop out of lock and causing visual artifacts, dropped frames, or a
+complete loss of the video signal.</p>
+<h3 id="the-role-of-the-pll-in-dvi-architecture">The Role of the PLL in
+DVI Architecture</h3>
+<p>DVI relies on Transition Minimized Differential Signaling (TMDS) to
+transmit digital video data. Unlike interfaces that embed the clock
+within the data stream, standard DVI dedicates a specific twisted pair
+to carry an external reference clock. This clock runs at the pixel rate
+(1x), while the three accompanying data channels transmit pixel
+components at ten times the clock rate (10x).</p>
+<p>To read incoming data correctly, the DVI receiver utilizes a
+Phase-Locked Loop (PLL). The PLL locks onto the incoming 1x clock
+signal, multiplies its frequency by a factor of 10, and generates an
+internal sampling clock. This high-speed internal clock determines the
+exact moment the receiver samples each bit within the incoming serial
+data streams.</p>
+<h3 id="how-cable-jitter-strains-the-pll">How Cable Jitter Strains the
+PLL</h3>
+<p>As the clock signal travels along a DVI cable, it encounters physical
+imperfections, including conductor resistance, dielectric loss, skin
+effect, and inadequate shielding. These factors induce both
+deterministic jitter (such as inter-symbol interference and crosstalk
+from adjacent data pairs) and random jitter (thermal noise). This jitter
+manifests as temporal displacement, meaning the clock's voltage
+transitions occur earlier or later than their ideal points in time.</p>
+<p>The receiver's PLL is designed with a specific loop bandwidth, which
+defines its ability to track phase variations:</p>
+<ul>
+<li><strong>Low-Frequency Jitter (Wander):</strong> If the phase
+variations occur at a frequency lower than the PLL loop bandwidth, the
+PLL adjusts its Voltage-Controlled Oscillator (VCO) to follow the
+jitter. The internal sampling clock shifts alongside the reference
+clock.</li>
+<li><strong>High-Frequency Jitter:</strong> If the cable introduces
+high-frequency jitter that exceeds the loop bandwidth, the PLL's Phase
+Frequency Detector (PFD) and loop filter cannot react quickly enough to
+track the rapid shifts.</li>
+</ul>
+<h3 id="the-threshold-of-desynchronization">The Threshold of
+Desynchronization</h3>
+<p>When high-frequency jitter or severe cycle-to-cycle phase deviations
+occur, the Phase Frequency Detector receives clock edges outside of its
+expected phase comparison window. If the timing discrepancy surpasses
+the phase detector's dynamic operating range, the error voltage
+delivered to the VCO fluctuates wildly.</p>
+<p>Once the cumulative jitter exceeds the lock range (or tracking range)
+of the PLL, two primary failure modes occur:</p>
+<ol type="1">
+<li><strong>Phase Margin Collapse:</strong> Even if the PLL remains
+nominally locked to the fundamental frequency, the jitter creates a
+phase offset between the multiplied sampling clock and the data
+channels. This closes the "data eye," meaning the receiver samples the
+data lines during transition states rather than during stable intervals,
+leading to pixel sparkling and digital noise.</li>
+<li><strong>Total Loop Unlock:</strong> When the phase error becomes too
+erratic or large for the charge pump and loop filter to correct, the
+feedback loop breaks down entirely. The VCO frequency drifts away from
+the target frequency, forcing the PLL out of lock.</li>
+</ol>
+<p>When the PLL loses lock, the receiver cannot reconstruct the serial
+data into coherent pixel words. The display controller detects the
+absence of a stable clock, forcing the receiver to reset the TMDS link.
+The visible result is a momentary screen blackout or a persistent "No
+Signal" state until the jitter subsides and the PLL successfully
+re-acquires synchronization.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

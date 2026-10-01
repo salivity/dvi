@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can DVI Carry Touchscreen Calibration Data? - dvi</title>
+    <meta name="description" content="DVI (Digital Visual Interface) cannot carry touchscreen calibration data or touch input signals across standard pinouts. Designed strictly as a display transmission standard, DVI carries digital video streams, optional analog video, and limited display i">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-dvi-carry-touchscreen-calibration-data">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can DVI Carry Touchscreen Calibration Data? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-dvi-carry-touchscreen-calibration-data" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="DVI (Digital Visual Interface) cannot carry touchscreen calibration data or touch input signals across standard pinouts. Designed strictly as a display transmission standard, DVI carries digital video streams, optional analog video, and limited display i" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-dvi-carry-touchscreen-calibration-data">Can DVI Carry
+Touchscreen Calibration Data?</h1>
+<p>DVI (Digital Visual Interface) cannot carry touchscreen calibration
+data or touch input signals across standard pinouts. Designed strictly
+as a display transmission standard, DVI carries digital video streams,
+optional analog video, and limited display identification data. Because
+standard DVI architectures lack dedicated data channels for human
+interface device (HID) communication, touchscreens require a separate,
+secondary connection—such as USB or RS-232—to transmit calibration and
+coordinate data to the host computer.</p>
+<h3 id="the-purpose-of-standard-dvi-pinouts">The Purpose of Standard DVI
+Pinouts</h3>
+<p>The Digital Display Working Group (DDWG) specified DVI exclusively
+for transmitting visual display data from a host graphics card to a
+monitor. A standard DVI connector (whether DVI-D, DVI-A, or DVI-I)
+allocates its pins to specific roles:</p>
+<ul>
+<li><strong>Transition Minimized Differential Signaling (TMDS):</strong>
+Multiple digital channels carry the primary high-speed serialized RGB
+video pixel data and clock signals.</li>
+<li><strong>Analog Lines (in DVI-A and DVI-I):</strong> Dedicated pins
+transmit traditional analog RGB video signals and horizontal/vertical
+sync.</li>
+<li><strong>Display Data Channel (DDC):</strong> A low-speed I2C-based
+communication bus consists of a clock line (SCL), a data line (SDA), and
+a 5V power line.</li>
+</ul>
+<p>None of these pins are architected to function as general-purpose
+bidirectional data channels for peripheral hardware.</p>
+<h3 id="why-ddc-cannot-handle-touch-calibration">Why DDC Cannot Handle
+Touch Calibration</h3>
+<p>Some display standards use the I2C-based DDC lines for monitor
+configuration, which leads to the misconception that any peripheral data
+can travel across these pins. However, DDC standard protocols (such as
+EDID and DDC/CI) are constrained in two critical ways:</p>
+<ol type="1">
+<li><strong>Hardware Routing:</strong> The DDC lines connect directly
+from the monitor's display controller to the host's Graphics Processing
+Unit (GPU). The GPU driver reads this bus strictly to detect screen
+resolutions, refresh rates, and color profiles (EDID), or to adjust
+settings like brightness and contrast (DDC/CI).</li>
+<li><strong>Lack of OS HID Integration:</strong> Operating systems do
+not monitor graphics card DDC channels for HID inputs or touch
+controller calibration payloads. Routing touch coordinate or calibration
+data through the GPU's display bus would require proprietary,
+non-standard driver architectures and custom silicon at both ends,
+violating standard DVI compliance.</li>
+</ol>
+<h3 id="how-touchscreens-handle-data-and-calibration">How Touchscreens
+Handle Data and Calibration</h3>
+<p>Touchscreen hardware operates independently of the visual display
+panel, even though both components reside in the same physical chassis.
+A touchscreen assembly features a digitizer layer and an independent
+touch controller board.</p>
+<p>Touch calibration data—which maps physical digitizer coordinates to
+the corresponding visual pixels on the screen—resides either in the
+non-volatile memory of the external touch controller or within the host
+operating system's driver configuration. To transfer this data,
+touchscreens rely on dedicated peripheral interfaces:</p>
+<ul>
+<li><strong>USB:</strong> The universal modern standard, using USB HID
+protocols to deliver both real-time touch events and bidirectional
+calibration commands.</li>
+<li><strong>Serial (RS-232):</strong> Frequently used in legacy,
+point-of-sale (POS), and industrial touchscreen installations.</li>
+<li><strong>Direct Bus Protocols (I2C/SPI):</strong> Typically reserved
+for embedded internal displays, such as smartphones or tablets, rather
+than external DVI monitor connections.</li>
+</ul>
+<p>Using standard DVI pinouts guarantees only the transmission of
+display output. Any touch-enabled monitor utilizing a DVI input will
+always require an auxiliary data cable plugged into the host system to
+carry calibration, coordinate, and gesture data.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nvidia SPDIF Passthrough Cable for DVI Explained - dvi</title>
+    <meta name="description" content="Before graphics cards had integrated digital audio processors, Nvidia used an internal two-pin SPDIF passthrough cable to transmit audio alongside video over DVI and HDMI connections. Connecting directly between the motherboard or sound card and the grap">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/nvidia-spdif-passthrough-cable-for-dvi-explained">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nvidia SPDIF Passthrough Cable for DVI Explained - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/nvidia-spdif-passthrough-cable-for-dvi-explained" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Before graphics cards had integrated digital audio processors, Nvidia used an internal two-pin SPDIF passthrough cable to transmit audio alongside video over DVI and HDMI connections. Connecting directly between the motherboard or sound card and the grap" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="nvidia-spdif-passthrough-cable-for-dvi-explained">Nvidia SPDIF
+Passthrough Cable for DVI Explained</h1>
+<p>Before graphics cards had integrated digital audio processors, Nvidia
+used an internal two-pin SPDIF passthrough cable to transmit audio
+alongside video over DVI and HDMI connections. Connecting directly
+between the motherboard or sound card and the graphics card, this cable
+allowed digital stereo or compressed surround sound to be injected into
+the video stream. This guide explains why the cable existed, how it
+functioned, and why it eventually became obsolete.</p>
+<h2 id="the-technical-problem">The Technical Problem</h2>
+<p>During the mid-to-late 2000s—prominently during the era of the
+GeForce 8, 9, and early 200 series—televisions with HDMI inputs became
+the standard display for home theater PCs and gaming setups. While HDMI
+carried both high-definition video and audio on a single cable, PC
+graphics cards typically featured dual-link DVI ports.</p>
+<p>Although DVI and HDMI share the exact same digital video signaling
+(TMDS), standard DVI did not natively support audio transmission.
+Furthermore, older Nvidia graphics processing units (GPUs) lacked an
+integrated high-definition audio controller. Competing ATI/AMD Radeon
+cards (starting with the Radeon HD 2000 series) resolved this by
+embedding an independent audio processor directly onto the GPU silicon,
+but Nvidia opted for a hardware workaround to avoid redesigning their
+GPU architecture.</p>
+<h2 id="how-the-spdif-passthrough-cable-worked">How the SPDIF
+Passthrough Cable Worked</h2>
+<p>Nvidia's solution was a simple, internal two-wire cable. One wire
+carried the digital S/PDIF (Sony/Philips Digital Interface) audio
+signal, and the other served as the electrical ground.</p>
+<p>To set it up, users had to:</p>
+<ol type="1">
+<li>Locate the internal S/PDIF digital audio output pins on their
+motherboard or dedicated sound card.</li>
+<li>Connect one end of the two-pin lead to the motherboard’s
+<code>SPDIF_OUT</code> and <code>GND</code> headers.</li>
+<li>Plug the other end into a small white or black two-pin header
+located near the top edge or power connectors of the Nvidia graphics
+card.</li>
+</ol>
+<p>Once connected, the graphics card did not process or decode the
+audio. Instead, it acted as a multiplexer. The GPU took the incoming
+digital audio stream and interleaved the audio packets into the blanking
+intervals of the DVI or HDMI video signal. When a user attached a
+proprietary DVI-to-HDMI adapter or plugged directly into an onboard HDMI
+port, the connected television or AV receiver received both digital
+picture and sound through a single HDMI cable.</p>
+<h2 id="limitations-of-the-setup">Limitations of the Setup</h2>
+<p>While functional, this approach had several constraints:</p>
+<ul>
+<li><strong>Format Limitations:</strong> Because S/PDIF has limited
+bandwidth, it could only transmit uncompressed 2-channel stereo PCM or
+compressed bitstream formats such as Dolby Digital and DTS 5.1. It could
+not carry uncompressed multi-channel LPCM or high-bitrate formats like
+Dolby TrueHD or DTS-HD Master Audio.</li>
+<li><strong>Complex Installation:</strong> Users often had to verify
+motherboard pinouts manually, as plugging the ground and data pins
+backward could prevent audio delivery.</li>
+<li><strong>Operating System Configuration:</strong> The operating
+system had to be manually configured to use the motherboard's S/PDIF
+digital output as the default playback device rather than regular analog
+speaker outputs.</li>
+</ul>
+<h2 id="obsolescence">Obsolescence</h2>
+<p>The need for the external SPDIF jumper cable ended as Nvidia
+redesigned its hardware. Entry-level cards like the GeForce GT 210 and
+GT 220 were among the first to feature built-in HD audio controllers. By
+the launch of the GeForce 400 series (Fermi architecture) in 2010,
+native internal audio controllers became standard across all Nvidia
+graphics cards, enabling plug-and-play audio over native HDMI and
+DisplayPort interfaces without extra internal wiring.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

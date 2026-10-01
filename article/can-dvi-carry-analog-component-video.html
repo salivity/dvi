@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can DVI Carry Analog Component Video? - dvi</title>
+    <meta name="description" content="While standard DVI specifications do not natively support traditional YPbPr component video, DVI can carry analog video signals through specific variants like DVI-I and DVI-A. By default, the analog pins on a DVI connector transmit RGBHV (VGA-style) sign">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-dvi-carry-analog-component-video">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can DVI Carry Analog Component Video? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-dvi-carry-analog-component-video" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="While standard DVI specifications do not natively support traditional YPbPr component video, DVI can carry analog video signals through specific variants like DVI-I and DVI-A. By default, the analog pins on a DVI connector transmit RGBHV (VGA-style) sign" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-dvi-carry-analog-component-video">Can DVI Carry Analog
+Component Video?</h1>
+<p>While standard DVI specifications do not natively support traditional
+YPbPr component video, DVI can carry analog video signals through
+specific variants like DVI-I and DVI-A. By default, the analog pins on a
+DVI connector transmit RGBHV (VGA-style) signals rather than standard
+three-cable component video. However, certain hardware devices allow
+component signals to be passed over these analog pins using passive
+breakout adapters, while others require active signal transcoders.</p>
+<h3 id="dvi-connector-types-and-analog-capabilities">DVI Connector Types
+and Analog Capabilities</h3>
+<p>To understand how DVI handles analog signals, it is essential to
+distinguish between the three primary DVI formats:</p>
+<ul>
+<li><strong>DVI-D (Digital Only):</strong> Contains only digital pins
+and cannot output or receive any analog signal, including component
+video.</li>
+<li><strong>DVI-A (Analog Only):</strong> Rare format that only carries
+analog video.</li>
+<li><strong>DVI-I (Integrated):</strong> Combines digital and analog
+transmission. It features the four cross-blade pins on the side of the
+connector dedicated entirely to carrying analog signals.</li>
+</ul>
+<p>Only DVI-I and DVI-A connectors physically have the wiring to handle
+analog video transmission.</p>
+<h3 id="rgbhv-vs-ypbpr-component-video">RGBHV vs. YPbPr Component
+Video</h3>
+<p>The primary barrier to running analog component video through DVI is
+the signaling standard:</p>
+<ul>
+<li><strong>RGBHV:</strong> The official analog standard for DVI-I and
+DVI-A. It splits video into separate Red, Green, and Blue color
+channels, alongside separate Horizontal and Vertical sync channels
+(identical to standard VGA).</li>
+<li><strong>YPbPr (Component):</strong> Splits video into three
+channels: Luminance (Y, which includes sync), Blue-difference (Pb), and
+Red-difference (Pr).</li>
+</ul>
+<p>Because DVI was designed around RGBHV color space and timing,
+standard DVI-compliant ports do not output or interpret YPbPr component
+video natively.</p>
+<h3 id="when-can-dvi-carry-component-video">When Can DVI Carry Component
+Video?</h3>
+<p>Despite standard specifications, DVI can carry YPbPr component video
+in specific scenarios:</p>
+<ol type="1">
+<li><strong>Hardware-Enabled Video Cards and Projectors:</strong>
+Certain older graphics cards (such as select ATI Radeon and NVIDIA
+GeForce models) and select home theater projectors were designed with
+multi-format DVI-I ports. These devices can detect a DVI-to-RCA adapter
+and internally switch the DVI-I analog pins from RGBHV output to YPbPr
+component output. In this case, a passive DVI-to-Component breakout
+cable will work.</li>
+<li><strong>Using an Active Converter:</strong> If the transmitting
+device strictly outputs digital DVI or standard RGBHV analog video, a
+passive cable will not work. In these cases, an active converter or
+transcoder is required to translate the digital DVI-D signal or analog
+RGBHV signal into an analog YPbPr component signal.</li>
+</ol>
+<p>In summary, a standard DVI connection natively carries analog RGB,
+not component video. A DVI port can only carry analog component video if
+it is a DVI-I connector and the connected hardware specifically supports
+YPbPr transmission over its analog pins.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

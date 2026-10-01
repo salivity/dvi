@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overclocking Single-Link DVI Past 165 MHz - dvi</title>
+    <meta name="description" content="While the official DVI 1.0 specification caps single-link DVI at a 165 MHz pixel clock, graphics cards from both AMD and NVIDIA have historically allowed users to bypass this limit. The physical hardware transmitters inside modern GPUs were capable of mu">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/overclocking-single-link-dvi-past-165-m-hz">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Overclocking Single-Link DVI Past 165 MHz - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/overclocking-single-link-dvi-past-165-m-hz" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="While the official DVI 1.0 specification caps single-link DVI at a 165 MHz pixel clock, graphics cards from both AMD and NVIDIA have historically allowed users to bypass this limit. The physical hardware transmitters inside modern GPUs were capable of mu" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="overclocking-single-link-dvi-past-165-mhz">Overclocking
+Single-Link DVI Past 165 MHz</h1>
+<p>While the official DVI 1.0 specification caps single-link DVI at a
+165 MHz pixel clock, graphics cards from both AMD and NVIDIA have
+historically allowed users to bypass this limit. The physical hardware
+transmitters inside modern GPUs were capable of much higher speeds, but
+software drivers enforced the 165 MHz limit. Through the use of
+third-party driver patchers and custom resolution tools, enthusiasts
+successfully overclocked single-link DVI outputs well beyond 165 MHz to
+achieve higher refresh rates and resolutions.</p>
+<h3 id="the-165-mhz-specification-ceiling">The 165 MHz Specification
+Ceiling</h3>
+<p>Under the DVI 1.0 specification established by the Digital Display
+Working Group (DDWG), a single-link DVI interface utilizes three
+Transition-Minimized Differential Signaling (TMDS) data channels
+operating at a maximum clock frequency of 165 MHz. This provided a
+maximum bandwidth of 4.95 Gbps (3.96 Gbps data rate), which was
+sufficient for standard resolutions such as 1920x1200 at 60 Hz or 1080p
+at 60 Hz. According to the original standard, anything requiring a
+higher pixel clock necessitated switching to dual-link DVI, which
+doubled the data channels to six.</p>
+<h3 id="hardware-capability-vs-driver-restrictions">Hardware Capability
+vs. Driver Restrictions</h3>
+<p>The hardware transmitters inside graphics cards quickly outgrew the
+165 MHz limit because DVI and HDMI share the same underlying TMDS
+physical signaling architecture. When graphics cards integrated HDMI 1.3
+and 1.4 transmitters capable of up to 340 MHz pixel clocks, the physical
+single-link TMDS transmitters on the GPU silicon inherited those higher
+frequency capabilities.</p>
+<p>Despite the silicon being physically capable of transmitting
+single-link TMDS signals up to 300 MHz or higher, AMD and NVIDIA drivers
+intentionally clamped single-link DVI connections to the standard 165
+MHz limit to maintain compliance with DVI specifications and prevent
+signal degradation on cheap cables.</p>
+<h3 id="nvidia-graphics-cards">NVIDIA Graphics Cards</h3>
+<p>NVIDIA graphics cards—spanning from the GeForce 8000 and 9000 series
+through the GTX 400, 500, 600, 700, 900, and 10-series—had the hardware
+capability to exceed 165 MHz on single-link DVI. However, the official
+NVIDIA graphics drivers hard-coded a 165 MHz maximum limit for
+single-link DVI connections.</p>
+<p>To overcome this, community developers created software
+modifications, most notably the NVIDIA Pixel Clock Patcher. This utility
+modified the GPU driver binaries (<code>nvlddmkm.sys</code>) in memory
+or on disk to remove the software-enforced pixel clock cap. Once
+patched, users could use the NVIDIA Control Panel or utilities like
+Custom Resolution Utility (CRU) to push single-link DVI pixel clocks
+past 200 MHz, allowing 1080p resolutions at 75 Hz, 85 Hz, or even 120 Hz
+over single-link connections.</p>
+<h3 id="amd--ati-graphics-cards">AMD / ATI Graphics Cards</h3>
+<p>ATI/AMD Radeon cards (notably the Radeon HD 5000, 6000, 7000 series,
+and the R7/R9 series) also housed TMDS transmitters capable of exceeding
+165 MHz on a single link. AMD drivers similarly imposed a strict
+software limit of 165 MHz for standard single-link DVI connections.</p>
+<p>Just as with NVIDIA, AMD users utilized the AMD/ATI Pixel Clock
+Patcher to modify <code>atikmdag.sys</code>. Removing the driver check
+allowed the card to drive single-link signals well above 165 MHz. In
+some specialized cases and with specific older Catalyst driver
+revisions, custom EDID overrides alone were sufficient to bypass the
+lock on AMD hardware without direct kernel patching.</p>
+<h3 id="practical-limitations">Practical Limitations</h3>
+<p>While graphics cards could reliably transmit single-link DVI signals
+past 165 MHz, success depended on two other factors:</p>
+<ol type="1">
+<li><strong>Cable Quality:</strong> Single-link DVI cables were not
+guaranteed to maintain signal integrity at frequencies significantly
+above 165 MHz. Overclocking past 200–225 MHz often led to digital
+"sparkles," flickering, or a total loss of sync unless a high-grade,
+well-shielded cable was used.</li>
+<li><strong>Monitor TMDS Receivers:</strong> Overclocking required the
+monitor's internal scaler or receiver chip to accept out-of-spec
+single-link frequencies. Many standard monitors actively rejected
+single-link DVI pixel clocks exceeding 165 MHz, while specialized Korean
+IPS/PLS monitors (such as those from Qnix and Yamakasi) lacked
+traditional scalers and easily accepted extreme TMDS overclocks.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

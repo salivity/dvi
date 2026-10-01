@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Passive DVI Splitters Cause Display Issues - dvi</title>
+    <meta name="description" content="Passive DVI splitter cables frequently cause frustrating problems, including signal degradation, digital artifacts, screen flickering, and unwanted display mirroring. These issues stem from fundamental electrical limitations and the way digital video sta">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-passive-dvi-splitters-cause-display-issues">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Passive DVI Splitters Cause Display Issues - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-passive-dvi-splitters-cause-display-issues" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Passive DVI splitter cables frequently cause frustrating problems, including signal degradation, digital artifacts, screen flickering, and unwanted display mirroring. These issues stem from fundamental electrical limitations and the way digital video sta" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-passive-dvi-splitters-cause-display-issues">Why Passive DVI
+Splitters Cause Display Issues</h1>
+<p>Passive DVI splitter cables frequently cause frustrating problems,
+including signal degradation, digital artifacts, screen flickering, and
+unwanted display mirroring. These issues stem from fundamental
+electrical limitations and the way digital video standards communicate.
+Because a passive cable merely splices copper wires without any internal
+processing or power amplification, it violates standard video
+transmission protocols, leading to signal loss, communication conflicts,
+and an inability to extend desktop displays.</p>
+<h3 id="signal-degradation-and-electrical-attenuation">Signal
+Degradation and Electrical Attenuation</h3>
+<p>DVI (Digital Visual Interface) relies on Transition-Minimized
+Differential Signaling (TMDS) to transmit high-speed digital data. TMDS
+requires precise voltage levels and matched impedance (typically 100
+ohms) to interpret binary ones and zeros accurately.</p>
+<p>When a passive splitter cable branches one physical connection into
+two, it alters the electrical characteristics of the transmission
+line:</p>
+<ul>
+<li><strong>Voltage Drop:</strong> Splicing the wire splits the
+electrical current between two receiving displays, halving the signal
+power available to each.</li>
+<li><strong>Impedance Mismatch and Signal Reflections:</strong>
+Connecting two loads to a single output causes impedance mismatches.
+This causes portions of the high-frequency electrical wave to bounce
+back toward the source, introducing jitter, electromagnetic
+interference, and digital noise.</li>
+</ul>
+<p>The result of this degradation is either "digital snow" (sparkling
+pixels), severe image distortion, intermittent flickering, or a complete
+loss of signal where the monitor reports "No Signal."</p>
+<h3 id="communication-conflicts-edid-and-hdcp">Communication Conflicts:
+EDID and HDCP</h3>
+<p>Digital displays do not just passively receive video; they constantly
+communicate back to the graphics processing unit (GPU). A passive
+splitter disrupts this two-way communication channel:</p>
+<ul>
+<li><strong>EDID Contention:</strong> The graphics card reads Extended
+Display Identification Data (EDID) from the monitor over an I2C line
+(Display Data Channel, or DDC) to detect native resolution, color depth,
+and refresh rates. When two monitors are wired passively to the same DDC
+line, both attempt to transmit their data simultaneously. This causes
+packet collisions, leading the GPU to receive corrupted data. Often, the
+system defaults to a generic low resolution (such as 640x480 or 800x600)
+or fails to display an image altogether.</li>
+<li><strong>HDCP Handshake Failure:</strong> High-bandwidth Digital
+Content Protection (HDCP) encrypts protected media. The GPU performs a
+cryptographic handshake with the display to confirm it is an authorized
+receiver. A passive splitter cannot negotiate two separate cryptographic
+handshakes over one channel, causing protected media (and frequently the
+entire desktop) to black out.</li>
+</ul>
+<h3 id="why-passive-splitters-only-mirror-and-cannot-extend">Why Passive
+Splitters Only Mirror (and Cannot Extend)</h3>
+<p>A single DVI port on a computer’s graphics card transmits only one
+video stream at a time. The graphics card cannot split a single DVI
+output into two independent display channels.</p>
+<p>Because a passive splitter only duplicates the physical copper pins,
+both displays are forced to receive identical electrical signals.
+Consequently, it is physically impossible to achieve an "Extended
+Desktop" mode using a passive DVI cable. The only achievable result is
+identical, mirrored output—and even then, both monitors must support the
+exact same resolution and timing parameters without degrading the signal
+beyond usability.</p>
+<h3 id="the-correct-alternatives">The Correct Alternatives</h3>
+<p>To reliably distribute or expand a DVI output, hardware must handle
+the signaling actively:</p>
+<ul>
+<li><strong>Active DVI Splitters (Distribution Amplifiers):</strong>
+Powered devices that read the incoming TMDS signal, regenerate and
+amplify it, and isolate the EDID handshake so that identical images can
+be mirrored to multiple screens without signal loss.</li>
+<li><strong>Multiple Display Outputs:</strong> To extend the desktop
+across multiple independent monitors, each display must be connected to
+its own dedicated video port (such as DVI, DisplayPort, or HDMI) on the
+computer's graphics card, or through an active multi-stream adapter
+designed for modern display standards.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

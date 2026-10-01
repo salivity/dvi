@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DVI Signal Timing Enabled Dual-Screen Splitting - dvi</title>
+    <meta name="description" content="Before modern multi-display graphics cards became standard, hardware devices like the Matrox DualHead2Go enabled computers to drive two separate monitors using a single video output port. This feat was made possible by manipulating Digital Visual Interfa">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dvi-signal-timing-enabled-dual-screen-splitting">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DVI Signal Timing Enabled Dual-Screen Splitting - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dvi-signal-timing-enabled-dual-screen-splitting" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Before modern multi-display graphics cards became standard, hardware devices like the Matrox DualHead2Go enabled computers to drive two separate monitors using a single video output port. This feat was made possible by manipulating Digital Visual Interfa" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dvi-signal-timing-enabled-dual-screen-splitting">How DVI
+Signal Timing Enabled Dual-Screen Splitting</h1>
+<p>Before modern multi-display graphics cards became standard, hardware
+devices like the Matrox DualHead2Go enabled computers to drive two
+separate monitors using a single video output port. This feat was made
+possible by manipulating Digital Visual Interface (DVI) signal timings
+and rasterization rules. By advertising a non-standard, double-width
+resolution to the host graphics card, external hardware could intercept
+a single continuous digital pixel stream, buffer individual scanlines,
+and reconstruct the standard timing signals required to feed two
+independent displays simultaneously.</p>
+<h3 id="the-foundation-of-dvi-rasterization">The Foundation of DVI
+Rasterization</h3>
+<p>DVI transmits uncompressed digital video over Transition Minimized
+Differential Signaling (TMDS) channels. The video data is structured
+identically to traditional analog CRT scanning: pixels are transmitted
+sequentially from left to right, line by line, from top to bottom.</p>
+<p>Every frame is governed by strict timing intervals defined by VESA
+standards:</p>
+<ul>
+<li><strong>Active Video:</strong> The actual pixel payload displayed on
+screen.</li>
+<li><strong>Horizontal Blanking Interval (H-Blank):</strong> The pause
+between the end of one horizontal line and the start of the next,
+consisting of the Front Porch, Sync Pulse (HSync), and Back Porch.</li>
+<li><strong>Vertical Blanking Interval (V-Blank):</strong> The pause
+between the bottom of one frame and the top of the next (VSync).</li>
+<li><strong>Pixel Clock:</strong> The frequency at which individual
+pixels are transmitted over the physical interface.</li>
+</ul>
+<p>Because DVI is a streaming protocol without packet-based frame
+routing (unlike modern DisplayPort), the receiving display relies
+strictly on the continuous pixel clock and sync pulses to know where
+each pixel belongs.</p>
+<h3 id="edid-spoofing-and-framebuffer-doubling">EDID Spoofing and
+Framebuffer Doubling</h3>
+<p>To begin the process, the external splitter presents a custom
+Extended Display Identification Data (EDID) profile to the computer’s
+graphics card. Instead of identifying as a standard monitor, it reports
+itself as a single, ultra-wide display. For example, if two 1024×768
+monitors are connected, the splitter requests a 2048×768 resolution at
+60 Hz.</p>
+<p>The operating system and GPU treat this as a single unified desktop
+surface. The GPU renders the entire combined desktop into one contiguous
+framebuffer and streams it out of the DVI port as a continuous raster
+line containing 2,048 active pixels per row.</p>
+<h3 id="bandwidth-and-pixel-clock-synchronization">Bandwidth and Pixel
+Clock Synchronization</h3>
+<p>Transmitting twice the horizontal resolution at standard refresh
+rates requires scaling the pixel clock. For Single-Link DVI, the maximum
+standard pixel clock is capped at 165 MHz. Doubling the horizontal
+active pixels while maintaining traditional blanking intervals would
+easily exceed this limit on higher resolutions:</p>
+<p><span class="math display">\[\text{Pixel Clock} = \text{Total
+Horizontal Pixels} \times \text{Total Vertical Lines} \times
+\text{Refresh Rate}\]</span></p>
+<p>To accommodate the increased throughput, two methods were
+employed:</p>
+<ol type="1">
+<li><strong>Dual-Link DVI:</strong> Utilizing a second physical set of
+TMDS data lines built into the DVI-I and DVI-D specifications,
+effectively doubling the bandwidth and accommodating pixel clocks well
+beyond 300 MHz.</li>
+<li><strong>Reduced Blanking:</strong> Compressing the horizontal and
+vertical blanking intervals to allocate the vast majority of the clock
+cycles strictly to active pixel data, keeping the transmission within
+Single-Link boundaries for moderate resolutions.</li>
+</ol>
+<h3 id="line-buffering-and-timing-demultiplexing">Line Buffering and
+Timing Demultiplexing</h3>
+<p>Once the high-bandwidth DVI signal leaves the GPU, it enters the
+external splitting hardware (typically an FPGA or dedicated ASIC).
+Because the incoming data arrives in a continuous line from left to
+right, the splitter cannot immediately send the pixels directly to two
+separate monitors without modifying their time domains.</p>
+<p>The hardware utilizes internal high-speed line buffers (SRAM) to
+deconstruct the signal:</p>
+<ol type="1">
+<li><strong>Splitting the Scanline:</strong> As the incoming scanline
+arrives, the first half of the active pixels (e.g., pixels 1 through
+1024) are assigned to the left monitor, and the second half (pixels 1025
+through 2048) are assigned to the right monitor.</li>
+<li><strong>Clock Domain Translation:</strong> The incoming stream runs
+at a higher clock frequency than what a single output display expects.
+The FPGA writes incoming pixels into memory at the master clock rate and
+reads them out to the two output transmitters at a lower, standard
+single-panel clock rate.</li>
+</ol>
+<h3 id="reconstructing-standard-video-timings">Reconstructing Standard
+Video Timings</h3>
+<p>A standard monitor will reject a signal if its horizontal and
+vertical blanking intervals do not adhere to standard VESA timings. If a
+scanline simply stopped halfway through without proper signaling, the
+display would lose sync.</p>
+<p>The external hardware acts as a digital timing generator for both
+outputs:</p>
+<ul>
+<li>For the <strong>left monitor</strong>, the hardware transmits the
+first half of the pixels, immediately synthesizes a standard H-Blank
+interval (Front Porch, HSync, Back Porch), and ignores the second half
+of the incoming GPU scanline while that monitor resets to the next
+line.</li>
+<li>For the <strong>right monitor</strong>, the hardware holds the
+display in blanking while the GPU transmits the left image data, then
+begins transmitting the second half of the line as active video,
+followed by a synthesized H-Blank interval.</li>
+<li><strong>Vertical Sync (VSync):</strong> Because both halves of the
+desktop share the same vertical height and line count, vertical refresh
+occurs concurrently. When the GPU sends a VSync pulse at the end of the
+full frame, the hardware duplicates this pulse across both output
+channels simultaneously.</li>
+</ul>
+<p>By intercepting the sequential stream, dividing the raster lines
+across internal memory buffers, and fabricating new VESA-compliant
+blanking intervals on the fly, external hardware transformed a single
+wide DVI signal into two electrically distinct, perfectly synchronized
+monitor outputs without requiring multi-display support from the host
+machine.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

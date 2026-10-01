@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase-Locked Loops in DVI Pixel Clock Recovery - dvi</title>
+    <meta name="description" content="In Digital Visual Interface (DVI) systems, accurate video transmission depends on the receiver's ability to precisely sample incoming high-speed serial data. Because DVI transmits a reference pixel clock at one-tenth of the actual bit rate rather than em">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/phase-locked-loops-in-dvi-pixel-clock-recovery">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Phase-Locked Loops in DVI Pixel Clock Recovery - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/phase-locked-loops-in-dvi-pixel-clock-recovery" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="In Digital Visual Interface (DVI) systems, accurate video transmission depends on the receiver's ability to precisely sample incoming high-speed serial data. Because DVI transmits a reference pixel clock at one-tenth of the actual bit rate rather than em" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="phase-locked-loops-in-dvi-pixel-clock-recovery">Phase-Locked
+Loops in DVI Pixel Clock Recovery</h1>
+<p>In Digital Visual Interface (DVI) systems, accurate video
+transmission depends on the receiver's ability to precisely sample
+incoming high-speed serial data. Because DVI transmits a reference pixel
+clock at one-tenth of the actual bit rate rather than embedding the
+clock inside the data lines, a Phase-Locked Loop (PLL) at the receiver
+is essential. This article explains how the PLL acts as a frequency
+multiplier, phase aligner, and jitter filter to reconstruct the
+high-speed bit clock and the stable pixel clock required for proper
+video deserialization.</p>
+<h3 id="the-tmds-clock-architecture">The TMDS Clock Architecture</h3>
+<p>DVI relies on Transition-Minimized Differential Signaling (TMDS)
+across four differential pairs: three carry serial red, green, and blue
+video data, while the fourth carries a continuous reference clock.
+Unlike modern display standards that embed the clock within the data
+stream, DVI separates them.</p>
+<p>TMDS encodes each 8-bit color component into a 10-bit character to
+balance DC bias and minimize signal transitions. As a result, ten serial
+data bits are transmitted per channel for every single pixel clock
+cycle. To save transmission bandwidth and reduce electromagnetic
+interference (EMI), the physical clock channel carries only the base 1x
+pixel clock (ranging from 25 MHz to 165 MHz in single-link DVI), rather
+than the full 10x bit-rate clock.</p>
+<h3 id="frequency-multiplication">Frequency Multiplication</h3>
+<p>The primary role of the PLL in the DVI receiver is frequency
+multiplication. The deserialization hardware requires a high-speed
+bit-rate clock operating at ten times the frequency of the transmitted
+pixel clock.</p>
+<p>Inside the PLL:</p>
+<ol type="1">
+<li>A voltage-controlled oscillator (VCO) generates a high-speed
+internal clock.</li>
+<li>A divide-by-10 feedback divider scales down this generated
+clock.</li>
+<li>A phase detector compares the divided signal with the incoming
+reference clock from the cable.</li>
+<li>A charge pump and loop filter adjust the VCO's control voltage until
+the frequency and phase match the input.</li>
+</ol>
+<p>By multiplying the reference clock by a factor of 10, the PLL
+produces the localized bit clock (up to 1.65 GHz in single-link
+configurations) needed to latch individual bits.</p>
+<h3 id="phase-alignment-and-skew-compensation">Phase Alignment and Skew
+Compensation</h3>
+<p>Beyond multiplication, the PLL aligns the phase of the internal
+sampling clock with the incoming data streams. Cables, connectors, and
+board traces introduce delay and phase shifts between the clock channel
+and the data channels (inter-pair skew).</p>
+<p>The PLL dynamically adjusts the phase of the generated bit-rate clock
+to place the sampling strobe directly in the center of each incoming
+data bit's "eye diagram." Some advanced DVI receivers use multi-phase
+PLLs or combine the main PLL with delay-locked loops (DLLs) on
+individual data channels to adjust for channel-to-channel timing
+variations independently.</p>
+<h3 id="jitter-filtering">Jitter Filtering</h3>
+<p>Signal degradation over copper cables introduces high-frequency
+jitter onto the reference clock. If passed directly to the sampling
+circuits, this timing instability would cause bit errors and visual
+artifacts such as pixel noise or dropped frames.</p>
+<p>The loop filter within the PLL acts as a low-pass filter for phase
+variations. It suppresses high-frequency jitter present on the incoming
+clock line, allowing the VCO to generate a clean, stable internal clock
+that tracks only the low-frequency, intentional drift of the video
+source.</p>
+<h3 id="driving-deserialization">Driving Deserialization</h3>
+<p>Once the PLL locks to the incoming signal, it delivers two
+synchronized clocks to the receiver logic: the 10x serial bit clock and
+the recovered 1x parallel pixel clock. The 10x clock drives the shift
+registers that sample and shift in the serial bits from the three TMDS
+data lanes. Once ten bits are gathered, the recovered 1x pixel clock
+latches the entire 10-bit parallel word into the TMDS decoder, where it
+is converted back into uncompressed 8-bit RGB color data for the display
+panel.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDCP Handshake Process Over DVI Explained - dvi</title>
+    <meta name="description" content="High-bandwidth Digital Content Protection (HDCP) over a Digital Visual Interface (DVI) connection is a hardware-based cryptographic protocol designed to prevent unauthorized copying of digital video. Before protected media is transmitted, the video trans">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/hdcp-handshake-process-over-dvi-explained">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HDCP Handshake Process Over DVI Explained - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/hdcp-handshake-process-over-dvi-explained" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="High-bandwidth Digital Content Protection (HDCP) over a Digital Visual Interface (DVI) connection is a hardware-based cryptographic protocol designed to prevent unauthorized copying of digital video. Before protected media is transmitted, the video trans" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="hdcp-handshake-process-over-dvi-explained">HDCP Handshake
+Process Over DVI Explained</h1>
+<p>High-bandwidth Digital Content Protection (HDCP) over a Digital
+Visual Interface (DVI) connection is a hardware-based cryptographic
+protocol designed to prevent unauthorized copying of digital video.
+Before protected media is transmitted, the video transmitter (source)
+and the display (sink) perform an HDCP handshake to verify that the
+receiving hardware is authorized to display the content. This article
+details the specific steps of the HDCP handshake over DVI, from key
+exchange to real-time stream encryption.</p>
+<h2 id="the-physical-communication-path">The Physical Communication
+Path</h2>
+<p>DVI carries video data over high-speed Transition Minimized
+Differential Signaling (TMDS) lines, but the HDCP handshake itself
+occurs over the Display Data Channel (DDC). The DDC is an I²C bus that
+connects the source and the sink, traditionally used for transmitting
+Extended Display Identification Data (EDID). When HDCP is active, the
+source communicates with the HDCP registers on the sink device at I²C
+slave address <code>0x74</code>.</p>
+<h2 id="step-1-initial-key-exchange-and-verification">Step 1: Initial
+Key Exchange and Verification</h2>
+<p>The handshake begins when the source detects that protected content
+needs to be transmitted.</p>
+<ol type="1">
+<li><strong>Initiation:</strong> The source generates a 64-bit
+pseudo-random value called <span class="math inline">\(A_n\)</span> and
+transmits it across the DDC bus to the sink, accompanied by the source's
+40-bit Key Selection Vector (<span
+class="math inline">\(A_{ksv}\)</span>).</li>
+<li><strong>Sink Response:</strong> The sink receives these values and
+responds by sending its own Key Selection Vector (<span
+class="math inline">\(B_{ksv}\)</span>) back to the source, along with a
+repeater status bit (indicating whether the device is a final display or
+an intermediate repeater/switch).</li>
+<li><strong>Revocation Check:</strong> The source verifies that the
+received <span class="math inline">\(B_{ksv}\)</span> contains exactly
+twenty '1's and twenty '0's (a basic mathematical validity rule for HDCP
+KSVs). The source also checks the <span
+class="math inline">\(B_{ksv}\)</span> against an internal System
+Renewability List (SRL) to confirm the sink's keys have not been revoked
+due to security compromises.</li>
+</ol>
+<h2 id="step-2-shared-secret-generation">Step 2: Shared Secret
+Generation</h2>
+<p>Both the source and the sink possess a set of forty secret 56-bit
+device keys provided by the licensing authority (Digital Content
+Protection LLC):</p>
+<ul>
+<li>The source uses its private device keys combined with the sink's
+public <span class="math inline">\(B_{ksv}\)</span> to compute a 56-bit
+shared secret key (<span class="math inline">\(K_m\)</span>).</li>
+<li>Simultaneously, the sink uses its private device keys combined with
+the source's public <span class="math inline">\(A_{ksv}\)</span> to
+compute its own version of the shared secret (<span
+class="math inline">\(K_m&#39;\)</span>).</li>
+</ul>
+<p>Because of the underlying mathematical properties of the HDCP key
+exchange algorithm, if both devices have valid, uncompromised keys,
+<span class="math inline">\(K_m\)</span> will equal <span
+class="math inline">\(K_m&#39;\)</span>.</p>
+<h2 id="step-3-link-verification-r_0-check">Step 3: Link Verification
+(<span class="math inline">\(R_0\)</span> Check)</h2>
+<p>To confirm that both devices arrived at the same secret without
+exposing it over the DDC bus, they generate verification values:</p>
+<ol type="1">
+<li>Both devices feed their shared secret into their internal HDCP
+cipher engines, deriving a 16-bit response value (<span
+class="math inline">\(R_0\)</span> on the source, <span
+class="math inline">\(R_0&#39;\)</span> on the sink).</li>
+<li>The sink writes <span class="math inline">\(R_0&#39;\)</span> to its
+DDC registers.</li>
+<li>The source reads <span class="math inline">\(R_0&#39;\)</span>
+within 100 milliseconds of sending <span
+class="math inline">\(A_k\)</span>.</li>
+<li>If <span class="math inline">\(R_0\)</span> matches <span
+class="math inline">\(R_0&#39;\)</span>, authentication is successful,
+and the source enables content transmission. If the values do not match
+or the read operation times out, the handshake fails, resulting in a
+blank screen or an HDCP error message.</li>
+</ol>
+<h2 id="step-4-stream-encryption-and-continuous-authentication">Step 4:
+Stream Encryption and Continuous Authentication</h2>
+<p>Once authentication succeeds, the source initiates video
+transmission:</p>
+<ul>
+<li><strong>Frame Encryption:</strong> The HDCP cipher engine on the
+source generates a pseudo-random bitstream that is XORed with the native
+24-bit RGB/YCbCr video data on the TMDS lines before transmission. The
+sink's cipher engine generates an identical bitstream to decrypt the
+incoming data in real time.</li>
+<li><strong>Cyclic Verification (<span
+class="math inline">\(R_i\)</span> Check):</strong> To prevent an
+unauthorized device from being swapped in mid-stream, the source reads a
+new 16-bit verification value (<span
+class="math inline">\(R_i&#39;\)</span>) from the sink every 128 frames
+(approximately every two seconds). If the sink's <span
+class="math inline">\(R_i&#39;\)</span> does not match the source's
+calculated <span class="math inline">\(R_i\)</span>, encryption stops
+immediately and the display blanks until a full re-authentication
+occurs.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

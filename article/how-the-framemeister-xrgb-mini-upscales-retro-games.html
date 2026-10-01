@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How the Framemeister XRGB-mini Upscales Retro Games - dvi</title>
+    <meta name="description" content="The Micomsoft Framemeister XRGB-mini is a specialized video processor designed to adapt low-resolution analog signals from classic video game consoles into high-definition digital signals suitable for modern displays. This article explains how the device">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-the-framemeister-xrgb-mini-upscales-retro-games">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How the Framemeister XRGB-mini Upscales Retro Games - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-the-framemeister-xrgb-mini-upscales-retro-games" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The Micomsoft Framemeister XRGB-mini is a specialized video processor designed to adapt low-resolution analog signals from classic video game consoles into high-definition digital signals suitable for modern displays. This article explains how the device" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-the-framemeister-xrgb-mini-upscales-retro-games">How the
+Framemeister XRGB-mini Upscales Retro Games</h1>
+<p>The Micomsoft Framemeister XRGB-mini is a specialized video processor
+designed to adapt low-resolution analog signals from classic video game
+consoles into high-definition digital signals suitable for modern
+displays. This article explains how the device captures legacy inputs,
+resolves unique retro display quirks like 240p progressive scan video,
+applies low-latency deinterlacing and image enhancements via its
+internal hardware, and outputs a clean, synchronized DVI or HDMI
+signal.</p>
+<h3 id="analog-signal-acquisition">Analog Signal Acquisition</h3>
+<p>The Framemeister accepts various legacy analog video formats through
+dedicated physical ports:</p>
+<ul>
+<li><strong>RGB (via RGB21/SCART adapter):</strong> Offers the cleanest
+color separation and detail by carrying individual Red, Green, Blue, and
+sync lines.</li>
+<li><strong>Component Video (via D-Terminal):</strong> Splits brightness
+(<span class="math inline">\(Y\)</span>) and color differences (<span
+class="math inline">\(Pb/Pr\)</span>).</li>
+<li><strong>S-Video and Composite:</strong> Separates
+luminance/chrominance or combines them across a single line, handled via
+internal comb filtering.</li>
+</ul>
+<p>Upon entry, an Analog-to-Digital Converter (ADC) samples the analog
+electrical voltages and converts them into an uncompressed digital color
+stream.</p>
+<h3 id="native-240p-handling">Native 240p Handling</h3>
+<p>Most modern televisions mistake the non-standard 240p format used by
+consoles like the NES, Genesis, and SNES for standard 480i interlaced
+video. This typically results in blurred visuals, comb-like interlacing
+artifacts, and heavy input latency.</p>
+<p>The Framemeister's firmware is explicitly programmed to recognize
+240p as an intentional progressive format. Instead of treating
+alternating fields as interlaced halves of a moving image, it processes
+every field as a full, distinct, 240-line frame. This keeps pixel art
+razor-sharp and prevents unnecessary deinterlacing delays.</p>
+<h3 id="processing-via-the-marvell-qdeo-engine">Processing via the
+Marvell Qdeo Engine</h3>
+<p>Once digitized, the video signal is fed into the onboard Marvell
+Kyoto G2 processor, which runs Marvell's Qdeo video processing
+algorithms. This engine performs several critical tasks:</p>
+<ol type="1">
+<li><strong>Deinterlacing:</strong> For genuine interlaced sources (such
+as 480i on the PlayStation 2 or GameCube), the processor applies
+motion-adaptive deinterlacing to eliminate flicker without smearing
+moving objects.</li>
+<li><strong>Color Space Conversion and Filtering:</strong> The system
+converts analog color variations into standard digital color spaces
+(such as RGB or YCbCr), offering granular controls for saturation,
+brightness, and sharpness.</li>
+<li><strong>Scanline Emulation:</strong> Because retro games were
+designed for cathode-ray tube (CRT) monitors, the processor can overlay
+customizable artificial scanlines to recreate the intended look and mask
+pixelation on modern screens.</li>
+</ol>
+<h3 id="frame-buffering-and-scaling">Frame Buffering and Scaling</h3>
+<p>Unlike simple line doublers that output video instantly without a
+frame buffer, the Framemeister buffers frames in its internal memory.
+This introduces roughly 1 to 1.5 frames of input latency (around 20 to
+24 milliseconds), but it provides key advantages:</p>
+<ul>
+<li><strong>Arbitrary Scaling:</strong> It can cleanly upscale
+non-standard retro resolutions to standard widescreen output formats,
+including 480p, 720p, and 1080p.</li>
+<li><strong>Aspect Ratio Correction:</strong> It preserves the authentic
+4:3 display ratio within a modern 16:9 frame using horizontal and
+vertical scaling controls.</li>
+<li><strong>Sync Stabilization:</strong> It normalizes irregular sync
+rates emitted by vintage hardware so modern televisions can display the
+image without dropping the connection.</li>
+</ul>
+<h3 id="digital-output-generation">Digital Output Generation</h3>
+<p>Finally, the upscaled, buffered digital video is encoded into a
+standard HDMI or DVI-D output stream. The Framemeister's transmitter
+formats the pixel clock, color data, and audio (which is digitized
+alongside the video) into Transition-Minimized Differential Signaling
+(TMDS) channels. Modern flat panels read this stable, standardized
+digital stream natively, producing a sharp, bright, and correctly
+proportioned retro gaming image over an HDMI cable.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

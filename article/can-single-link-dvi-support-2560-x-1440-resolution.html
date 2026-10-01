@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can Single-Link DVI Support 2560x1440 Resolution? - dvi</title>
+    <meta name="description" content="Standard single-link DVI cannot support a 2560x1440 resolution using standard display timings. The maximum bandwidth permitted by the official single-link DVI specification is fundamentally insufficient to transmit the data required for a 1440p image at">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-single-link-dvi-support-2560-x-1440-resolution">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can Single-Link DVI Support 2560x1440 Resolution? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-single-link-dvi-support-2560-x-1440-resolution" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Standard single-link DVI cannot support a 2560x1440 resolution using standard display timings. The maximum bandwidth permitted by the official single-link DVI specification is fundamentally insufficient to transmit the data required for a 1440p image at" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-single-link-dvi-support-2560x1440-resolution">Can
+Single-Link DVI Support 2560x1440 Resolution?</h1>
+<p>Standard single-link DVI cannot support a 2560x1440 resolution using
+standard display timings. The maximum bandwidth permitted by the
+official single-link DVI specification is fundamentally insufficient to
+transmit the data required for a 1440p image at standard refresh rates.
+Achieving 2560x1440 over DVI requires either a dual-link DVI connection
+or non-standard configurations involving reduced refresh rates and
+custom timings.</p>
+<h3 id="the-bandwidth-limitations-of-single-link-dvi">The Bandwidth
+Limitations of Single-Link DVI</h3>
+<p>The Digital Visual Interface (DVI) specification dictates that a
+standard single-link connection operates using three TMDS
+(Transition-Minimized Differential Signaling) data channels and one
+clock channel. The maximum pixel clock frequency defined for standard
+single-link DVI is 165 MHz.</p>
+<p>At a 165 MHz pixel clock, single-link DVI achieves a maximum
+theoretical data throughput of 4.95 Gbps, with a usable video bandwidth
+of approximately 3.96 Gbps. This limits standard single-link DVI to a
+maximum resolution of 1920x1200 at 60 Hz using standard VESA
+timings.</p>
+<h3 id="why-2560x1440-fails-on-standard-single-link-dvi">Why 2560x1440
+Fails on Standard Single-Link DVI</h3>
+<p>A resolution of 2560x1440 (commonly known as QHD or 1440p) requires
+significantly more bandwidth than single-link DVI can provide:</p>
+<ul>
+<li><strong>Standard Timings (60 Hz):</strong> Standard VESA Coordinated
+Video Timings (CVT) for 2560x1440 require a pixel clock of roughly 312
+MHz.</li>
+<li><strong>Reduced Blanking (CVT-RB at 60 Hz):</strong> Even when using
+VESA Reduced Blanking to minimize non-visible overhead, a 2560x1440
+resolution at 60 Hz requires a pixel clock of approximately 241.5
+MHz.</li>
+</ul>
+<p>Because 241.5 MHz is far higher than the single-link hardware limit
+of 165 MHz, a standard single-link DVI connection cannot display
+2560x1440 at 60 Hz. The display will either report an "Out of Range"
+error or display a black screen.</p>
+<h3 id="the-role-of-custom-timings">The Role of Custom Timings</h3>
+<p>The only way a single-link connection can theoretically drive a
+2560x1440 display is through aggressive custom timings that lower the
+refresh rate:</p>
+<ul>
+<li>By manually reducing the refresh rate to approximately 30 Hz to 40
+Hz, the pixel clock can be forced down beneath the 165 MHz limit.</li>
+<li>Some modern graphics cards allow "pixel clock overclocking" over
+single-link DVI, pushing the transmitter past 165 MHz, but this is out
+of specification and display compatibility is rare.</li>
+</ul>
+<p>Without actively configuring these custom timings, the display
+pipeline relies on standardized EDID handshakes, which will
+automatically limit the output to 1080p or 1200p.</p>
+<h3 id="required-solutions-for-2560x1440">Required Solutions for
+2560x1440</h3>
+<p>To achieve a native 2560x1440 resolution at 60 Hz without custom
+timings or clock overclocking, use one of the following interfaces:</p>
+<ul>
+<li><strong>Dual-Link DVI:</strong> Adds a second set of TMDS data
+channels to double the bandwidth, natively supporting 2560x1440 at 60
+Hz.</li>
+<li><strong>DisplayPort:</strong> Supports 2560x1440 natively from
+DisplayPort 1.2 onward at high refresh rates.</li>
+<li><strong>HDMI:</strong> Standard HDMI 1.4 or higher supports
+2560x1440 at 60 Hz natively.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

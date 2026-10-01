@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why AMD Eyefinity Required DisplayPort with DVI - dvi</title>
+    <meta name="description" content="When AMD introduced Eyefinity technology with the Radeon HD 5000 series, it allowed gamers and professionals to span a single desktop across three or more monitors. However, users quickly discovered that running three displays required at least one nativ">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-amd-eyefinity-required-display-port-with-dvi">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why AMD Eyefinity Required DisplayPort with DVI - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-amd-eyefinity-required-display-port-with-dvi" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="When AMD introduced Eyefinity technology with the Radeon HD 5000 series, it allowed gamers and professionals to span a single desktop across three or more monitors. However, users quickly discovered that running three displays required at least one nativ" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-amd-eyefinity-required-displayport-with-dvi">Why AMD
+Eyefinity Required DisplayPort with DVI</h1>
+<p>When AMD introduced Eyefinity technology with the Radeon HD 5000
+series, it allowed gamers and professionals to span a single desktop
+across three or more monitors. However, users quickly discovered that
+running three displays required at least one native DisplayPort
+connection alongside standard DVI or HDMI ports. This requirement was
+not an arbitrary design choice; it was driven by the physical
+limitations of the GPU's internal clock generators, which could only
+support two legacy digital outputs simultaneously, making packet-based
+DisplayPort essential for any additional screen.</p>
+<h3 id="the-clock-generator-bottleneck">The Clock Generator
+Bottleneck</h3>
+<p>Legacy display standards such as DVI, HDMI, and VGA rely on
+Transition-Minimized Differential Signaling (TMDS) or analog signals
+that require a dedicated pixel clock. To output a TMDS signal, the
+graphics processing unit (GPU) must synchronize the data stream using an
+internal hardware component called a Phase-Locked Loop (PLL), or clock
+generator.</p>
+<p>Because of silicon real estate, power constraints, and cost, consumer
+GPUs of that era—including AMD's Evergreen architecture—were equipped
+with only two integrated clock generators. Consequently, no matter how
+many physical DVI, HDMI, or VGA ports were built onto the graphics card,
+the GPU could only independently drive two of them at any given moment.
+Pairing two DVI monitors exhausted the card's available clock
+generators, leaving no timing resource for a third legacy display.</p>
+<h3 id="displayports-packet-based-architecture">DisplayPort's
+Packet-Based Architecture</h3>
+<p>DisplayPort was designed under a fundamentally different architecture
+than DVI and HDMI. Rather than transmitting a continuous stream of data
+tied directly to an internal pixel clock, DisplayPort transmits data in
+micro-packets across fixed-frequency lanes, similar to modern networking
+protocols like Ethernet or PCI Express.</p>
+<p>Because the clock frequency is embedded directly into the data
+stream, a DisplayPort connection does not require an independent,
+dedicated PLL inside the GPU core for each attached monitor. The GPU can
+drive DisplayPort outputs using a shared, fixed-frequency reference
+clock, bypassing the two-clock limit entirely. This architecture allowed
+AMD graphics cards to support a third display—and in specialized
+configurations, up to six displays—without needing additional silicon
+dedicated to legacy clock generation.</p>
+<h3 id="passive-vs-active-adapters">Passive vs. Active Adapters</h3>
+<p>This architectural limitation also explained why inexpensive
+"passive" DisplayPort-to-DVI adapters failed to enable three
+monitors.</p>
+<p>DisplayPort outputs often feature "Dual-Mode DisplayPort" (DP++),
+which detects when a passive adapter is plugged in and switches the port
+to output native TMDS signals for DVI or HDMI. However, running in DP++
+mode forces the port to consume one of the graphics card's two internal
+clock generators. If two DVI monitors were already plugged in, a passive
+adapter would fail to output an image on the third screen.</p>
+<p>To overcome this, users without a native DisplayPort monitor had to
+purchase an "active" DisplayPort adapter. Active adapters receive the
+native DisplayPort packet stream and use an onboard, external clock
+synthesizer chip inside the dongle itself to convert the signal to TMDS.
+By generating the required timing signal externally, active adapters
+allowed users to run a third DVI monitor without demanding an
+unavailable internal clock from the GPU.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

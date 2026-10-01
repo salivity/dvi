@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimum DVI Receiver Front and Back Porch Timings - dvi</title>
+    <meta name="description" content="This article examines the minimum horizontal and vertical front and back porch timings supported by vintage Digital Visual Interface (DVI) receivers. Vintage receivers—such as the Silicon Image SiI 164 and Texas Instruments TFP401—rely on specific ti">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/minimum-dvi-receiver-front-and-back-porch-timings">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Minimum DVI Receiver Front and Back Porch Timings - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/minimum-dvi-receiver-front-and-back-porch-timings" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article examines the minimum horizontal and vertical front and back porch timings supported by vintage Digital Visual Interface (DVI) receivers. Vintage receivers—such as the Silicon Image SiI 164 and Texas Instruments TFP401—rely on specific ti" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="minimum-dvi-receiver-front-and-back-porch-timings">Minimum DVI
+Receiver Front and Back Porch Timings</h1>
+<p>This article examines the minimum horizontal and vertical front and
+back porch timings supported by vintage Digital Visual Interface (DVI)
+receivers. Vintage receivers—such as the Silicon Image SiI 164 and Texas
+Instruments TFP401—rely on specific timing thresholds within the TMDS
+(Transition Minimized Differential Signaling) link to process the Data
+Enable (DE) signal, decode sync tokens, and maintain phase-locked loop
+(PLL) synchronization. Understanding these hardware floors is critical
+when configuring custom modelines or attempting aggressive
+reduced-blanking configurations on legacy display hardware.</p>
+<h2 id="dvi-architecture-and-the-data-enable-de-signal">DVI Architecture
+and the Data Enable (DE) Signal</h2>
+<p>Unlike legacy analog VGA where cathode-ray guns require physical
+beam-retrace time, DVI receivers process video digitally. Active video
+is defined strictly by the Data Enable (DE) signal. During blanking
+periods (when DE is low), the receiver transmits four distinct 10-bit
+control tokens per channel, representing HSync and VSync on TMDS Channel
+0, alongside optional control data.</p>
+<p>Vintage DVI receivers feature internal state machines that sample the
+edges of DE to delineate active lines, calculate frame geometry, and
+align internal pixel pipelines. If the intervals flanking the sync
+pulses—the front porch and back porch—are set too narrow, the receiver's
+internal pipeline buffers can overflow or misalign, leading to dropped
+frames, horizontal tearing, or loss of signal lock.</p>
+<h2 id="horizontal-timing-constraints">Horizontal Timing
+Constraints</h2>
+<p>The horizontal blanking interval is partitioned into the front porch,
+the horizontal synchronization (HSync) pulse, and the back porch.</p>
+<h3 id="horizontal-front-porch-hfp">Horizontal Front Porch (HFP)</h3>
+<p>The horizontal front porch provides a transition zone between the
+falling edge of active video (DE going low) and the leading edge of
+HSync.</p>
+<ul>
+<li><strong>Absolute Receiver Minimum:</strong> 8 to 16 pixel clock
+cycles.</li>
+<li><strong>Operational Reality:</strong> Vintage receivers require at
+least 8 to 12 clock cycles for the TMDS phase alignment logic and
+internal FIFO queues to register that active data transmission has
+halted before processing sync state changes. Dropping HFP below 8 pixel
+clocks frequently triggers horizontal sync jitter or causes the receiver
+to interpret video data as control data.</li>
+<li><strong>Safe Floor:</strong> 16 pixel clocks (or a minimum duration
+of 160–200 ns at lower clock rates).</li>
+</ul>
+<h3 id="horizontal-back-porch-hbp">Horizontal Back Porch (HBP)</h3>
+<p>The horizontal back porch follows the trailing edge of HSync and
+precedes the rising edge of DE (the start of active video).</p>
+<ul>
+<li><strong>Absolute Receiver Minimum:</strong> 16 to 32 pixel clock
+cycles.</li>
+<li><strong>Operational Reality:</strong> The back porch is structurally
+more critical than the front porch. During this period, the receiver
+must settle internal state transitions, verify intra-pair and inter-pair
+deskew, and prime the output pixel bus (usually 24-bit or 48-bit
+RGB/YCbCr). Vintage architectures (such as the SiI 154 and early
+revision TFP401) typically fail to lock if the back porch provides fewer
+than 24 to 32 pixel clocks.</li>
+<li><strong>Safe Floor:</strong> 40 to 48 pixel clocks (conforming to
+the VESA Coordinated Video Timings Reduced Blanking standard).</li>
+</ul>
+<h3 id="total-horizontal-blanking-window">Total Horizontal Blanking
+Window</h3>
+<p>Even if individual porches are pushed to their theoretical minimums,
+the total horizontal blanking period (<span class="math inline">\(H_{FP}
++ H_{Sync} + H_{BP}\)</span>) must generally meet an absolute minimum of
+80 to 96 pixel clocks to accommodate receiver deskewing loops across the
+three data channels.</p>
+<h2 id="vertical-timing-constraints">Vertical Timing Constraints</h2>
+<p>Vertical timings are measured in horizontal scan lines rather than
+clock cycles. The vertical blanking interval dictates the time between
+the last active line of one frame and the first active line of the
+next.</p>
+<h3 id="vertical-front-porch-vfp">Vertical Front Porch (VFP)</h3>
+<ul>
+<li><strong>Absolute Receiver Minimum:</strong> 1 scan line.</li>
+<li><strong>Operational Reality:</strong> The vertical front porch needs
+only to ensure that the vertical sync transition does not coincide
+directly with the final line of active video. Vintage DVI receivers
+universally tolerate a vertical front porch of 1 line, as line counting
+registers reset after processing the trailing line's DE low cycle.</li>
+<li><strong>Safe Floor:</strong> 1 to 3 scan lines.</li>
+</ul>
+<h3 id="vertical-back-porch-vbp">Vertical Back Porch (VBP)</h3>
+<ul>
+<li><strong>Absolute Receiver Minimum:</strong> 2 to 3 scan lines.</li>
+<li><strong>Operational Reality:</strong> Following VSync assertion,
+internal logic in legacy DVI hardware requires time to clear the
+vertical line counters and reinitialize the internal phase tracking for
+the subsequent field. While modern displays can accept a single-line
+back porch, vintage receivers frequently drop frames or fail the
+vertical lock phase when VBP is below 3 lines.</li>
+<li><strong>Safe Floor:</strong> 3 to 6 scan lines for reduced blanking;
+20+ scan lines for standard VESA DMT profiles.</li>
+</ul>
+<h2 id="summary-of-safe-hardware-minimums">Summary of Safe Hardware
+Minimums</h2>
+<p>To ensure signal stability on legacy DVI receivers (e.g., SiI 164,
+TFP401, AD988x series), custom timings should adhere to the following
+baseline constraints:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Absolute Silicon Minimum</th>
+<th style="text-align: left;">Stable Legacy Threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Horizontal Front
+Porch</strong></td>
+<td style="text-align: left;">8 pixel clocks</td>
+<td style="text-align: left;">16 pixel clocks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Horizontal Sync
+Pulse</strong></td>
+<td style="text-align: left;">16 pixel clocks</td>
+<td style="text-align: left;">32 pixel clocks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Horizontal Back
+Porch</strong></td>
+<td style="text-align: left;">16 pixel clocks</td>
+<td style="text-align: left;">40–48 pixel clocks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total Horizontal
+Blanking</strong></td>
+<td style="text-align: left;">64 pixel clocks</td>
+<td style="text-align: left;">80–128 pixel clocks</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vertical Front Porch</strong></td>
+<td style="text-align: left;">1 line</td>
+<td style="text-align: left;">1–3 lines</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vertical Sync Pulse</strong></td>
+<td style="text-align: left;">1 line</td>
+<td style="text-align: left;">3–5 lines</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Vertical Back Porch</strong></td>
+<td style="text-align: left;">2 lines</td>
+<td style="text-align: left;">3–6 lines</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total Vertical
+Blanking</strong></td>
+<td style="text-align: left;">5 lines</td>
+<td style="text-align: left;">8–15 lines (Reduced Blanking)</td>
+</tr>
+</tbody>
+</table>
+<p>Configuring timings below these thresholds risks parity errors on the
+TMDS decoder, false DE transitions, and complete loss of picture sync on
+first- and second-generation DVI receiver chips.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

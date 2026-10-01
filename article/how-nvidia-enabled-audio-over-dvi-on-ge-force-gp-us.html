@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Nvidia Enabled Audio Over DVI on GeForce GPUs - dvi</title>
+    <meta name="description" content="This article explains how Nvidia enabled standard digital audio transmission through DVI ports on the GeForce 200-series and subsequent graphics cards. While the original DVI specification only accounts for video, Nvidia bridged this gap by taking advant">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-nvidia-enabled-audio-over-dvi-on-ge-force-gp-us">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Nvidia Enabled Audio Over DVI on GeForce GPUs - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-nvidia-enabled-audio-over-dvi-on-ge-force-gp-us" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article explains how Nvidia enabled standard digital audio transmission through DVI ports on the GeForce 200-series and subsequent graphics cards. While the original DVI specification only accounts for video, Nvidia bridged this gap by taking advant" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-nvidia-enabled-audio-over-dvi-on-geforce-gpus">How Nvidia
+Enabled Audio Over DVI on GeForce GPUs</h1>
+<p>This article explains how Nvidia enabled standard digital audio
+transmission through DVI ports on the GeForce 200-series and subsequent
+graphics cards. While the original DVI specification only accounts for
+video, Nvidia bridged this gap by taking advantage of the physical
+compatibility between DVI and HDMI, transitioning from external S/PDIF
+passthrough cables to dedicated, on-die High Definition Audio
+controllers that packetize audio directly into the video stream.</p>
+<h3 id="the-underlying-signal-compatibility">The Underlying Signal
+Compatibility</h3>
+<p>The Digital Visual Interface (DVI) and High-Definition Multimedia
+Interface (HDMI) share the exact same physical layer for transmitting
+digital video: Transition-Minimized Differential Signaling (TMDS).</p>
+<p>HDMI expands upon the basic DVI standard by utilizing the "blanking
+intervals"—the brief pauses between transmitting lines and frames of
+video data—as "Data Island periods." In HDMI, these intervals carry
+packetized auxiliary data, including multi-channel audio and metadata.
+Because the physical pins and signaling voltages of single-link DVI and
+HDMI are identical, a DVI port can electrically transmit HDMI packets,
+provided the graphics processor’s display controller is capable of
+encoding the data in the HDMI format.</p>
+<h3 id="the-early-implementation-spdif-passthrough">The Early
+Implementation: S/PDIF Passthrough</h3>
+<p>Before integrating native audio processors into their GPUs, Nvidia
+implemented audio over DVI using an external bridge. Early GeForce
+200-series flagships (such as the GTX 260 and GTX 280), along with the
+GeForce 8 and 9 series before them, lacked an onboard audio processing
+unit.</p>
+<p>To output sound over DVI:</p>
+<ol type="1">
+<li>Users connected a two-pin internal S/PDIF cable from the motherboard
+or a discrete sound card to a header on the graphics card.</li>
+<li>The GPU’s display controller accepted this incoming digital audio
+stream and multiplexed it into the TMDS stream during the blanking
+intervals.</li>
+<li>When using a passive DVI-to-HDMI adapter or cable, an HDMI-capable
+display could receive and decode the audio seamlessly.</li>
+</ol>
+<p>However, this method was limited to two-channel uncompressed stereo
+PCM or lossy compressed surround sound (such as standard Dolby Digital
+or DTS) due to S/PDIF bandwidth constraints.</p>
+<h3 id="the-shift-in-the-200-series-integrated-hd-audio">The Shift in
+the 200-Series: Integrated HD Audio</h3>
+<p>Nvidia fundamentally modernized this architecture mid-generation with
+the introduction of 40nm revisions in the 200-series, specifically the
+GeForce G210, GT 220, and GT 240.</p>
+<p>These cards were the first Nvidia GPUs to incorporate an internal,
+hardware-level High Definition Audio controller (compatible with the
+Intel Azalia specification) directly onto the GPU silicon. By
+integrating the audio processor:</p>
+<ul>
+<li>The need for external S/PDIF jumper cables was eliminated.</li>
+<li>The GPU appeared to the operating system as an independent,
+plug-and-play audio output device.</li>
+<li>Audio bandwidth increased significantly, allowing support for
+multi-channel LPCM and modern high-definition audio bitstreaming.</li>
+</ul>
+<p>This integrated audio hardware architecture became the standard
+design baseline for all subsequent Nvidia architectures, starting fully
+with the GeForce 400-series (Fermi).</p>
+<h3 id="software-negotiation-and-edid-handshaking">Software Negotiation
+and EDID Handshaking</h3>
+<p>To deliver audio reliably over a DVI connector without damaging or
+confusing legacy DVI monitors, Nvidia implemented automatic protocol
+switching via Extended Display Identification Data (EDID).</p>
+<p>When a display is plugged in, the Nvidia graphics driver reads the
+display’s EDID over the I²C-based Display Data Channel (DDC). If the
+EDID contains an HDMI Vendor-Specific Data Block (VSDB), the GPU
+identifies that the receiving display can process HDMI signals. The
+display pipeline then automatically switches its output mode from legacy
+DVI signaling to HDMI framing over the physical DVI port. If a standard
+DVI monitor is detected instead, the GPU operates in standard DVI mode
+and suppresses audio transmission.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

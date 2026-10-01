@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DVI Handles Progressive vs Interlaced Video Timing - dvi</title>
+    <meta name="description" content="A Digital Visual Interface (DVI) receiver processes progressive and interlaced video by decoding raw pixel clocks and synchronization pulses transmitted over Transition-Minimized Differential Signaling (TMDS) channels. While progressive signals deliver c">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dvi-handles-progressive-vs-interlaced-video-timing">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DVI Handles Progressive vs Interlaced Video Timing - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dvi-handles-progressive-vs-interlaced-video-timing" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A Digital Visual Interface (DVI) receiver processes progressive and interlaced video by decoding raw pixel clocks and synchronization pulses transmitted over Transition-Minimized Differential Signaling (TMDS) channels. While progressive signals deliver c" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dvi-handles-progressive-vs-interlaced-video-timing">How DVI
+Handles Progressive vs Interlaced Video Timing</h1>
+<p>A Digital Visual Interface (DVI) receiver processes progressive and
+interlaced video by decoding raw pixel clocks and synchronization pulses
+transmitted over Transition-Minimized Differential Signaling (TMDS)
+channels. While progressive signals deliver complete frames sequentially
+with fixed horizontal and vertical sync relationships, interlaced video
+delivers alternating odd and even fields differentiated by half-line
+timing offsets. By measuring the precise phase relationship between
+Horizontal Sync (HSync) and Vertical Sync (VSync), the DVI receiver
+identifies the scan format, determines field polarity, and routes the
+data to internal buffers for direct display or deinterlacing.</p>
+<h3 id="tmds-signaling-and-sync-decoding">TMDS Signaling and Sync
+Decoding</h3>
+<p>DVI relies on three TMDS data lanes and one dedicated clock lane.
+Video timing is dictated by control tokens transmitted during the
+blanking intervals when the Data Enable (DE) signal is low. These tokens
+encode the horizontal and vertical synchronization states:</p>
+<ul>
+<li><strong>HSync:</strong> Defines the boundary and line rate of
+individual raster lines.</li>
+<li><strong>VSync:</strong> Defines the boundary and refresh rate of
+frames or fields.</li>
+<li><strong>DE (Data Enable):</strong> High only during active pixel
+data transmission; low during horizontal and vertical blanking
+intervals.</li>
+</ul>
+<p>The receiver's phase-locked loop (PLL) locks onto the TMDS clock,
+allowing the digital logic to continuously monitor the state and edge
+transitions of HSync, VSync, and DE.</p>
+<h3 id="progressive-video-handling">Progressive Video Handling</h3>
+<p>In a progressive video stream (such as 720p or 1080p), the receiver
+encounters a continuous sequence of complete frames:</p>
+<ul>
+<li><strong>Sync Alignment:</strong> VSync transitions maintain a
+static, identical phase alignment relative to HSync for every single
+frame. The VSync pulse consistently falls at the beginning of a
+horizontal blanking interval.</li>
+<li><strong>Line Counting:</strong> The number of active video lines per
+frame between successive VSync assertions is constant and matches the
+native vertical resolution.</li>
+<li><strong>Pixel Streaming:</strong> The receiver maps the incoming
+active data directly to the display pipeline line by line. Since modern
+digital displays (LCD, OLED) are natively progressive, minimal
+processing is required beyond color conversion and scaling.</li>
+</ul>
+<h3 id="interlaced-video-handling">Interlaced Video Handling</h3>
+<p>Interlaced video formats (such as 1080i) split each frame into two
+distinct, vertically interleaved fields: Field 1 (odd lines) and Field 2
+(even lines). Handling this timing requires the receiver to identify
+alternating line offsets:</p>
+<ul>
+<li><strong>Half-Line Timing Offset:</strong> Because an interlaced
+frame contains an odd number of total lines (including blanking), each
+field contains a fractional line count ending in a half-line period
+(<span class="math inline">\(0.5 \times H\)</span>).</li>
+<li><strong>Field 1 (Odd Field):</strong> VSync transitions
+simultaneously with the leading edge of HSync.</li>
+<li><strong>Field 2 (Even Field):</strong> VSync transitions exactly
+halfway through the horizontal line period relative to HSync.</li>
+</ul>
+<h3 id="field-detection-and-processing-architecture">Field Detection and
+Processing Architecture</h3>
+<p>To correctly parse interlaced video, modern DVI receiver
+architectures implement dedicated timing logic:</p>
+<ol type="1">
+<li><strong>Phase Comparison Counter:</strong> An internal counter
+clocked by the pixel clock measures the duration between the leading
+edge of HSync and the leading edge of VSync. If the counter detects a
+consistent zero-offset, the signal is locked as progressive. If the
+duration alternates between zero and half a line period, the receiver
+flags the incoming stream as interlaced.</li>
+<li><strong>Field Identification:</strong> The phase relationship
+directly sets a field identification bit (Field 1 vs. Field 2) in the
+receiver's status registers. This bit informs downstream hardware which
+lines (odd or even) are currently arriving.</li>
+<li><strong>Deinterlacing and Buffering:</strong> Unlike CRTs, modern
+digital panels cannot scan lines natively in fields. The DVI receiver's
+output is routed to a video processing unit where consecutive fields are
+written to an external frame buffer (SDRAM). Deinterlacing
+algorithms—ranging from simple spatial weaving or bobbing to
+motion-adaptive temporal filtering—reconstruct full progressive frames
+at the native panel refresh rate.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

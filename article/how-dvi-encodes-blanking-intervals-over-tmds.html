@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How DVI Encodes Blanking Intervals Over TMDS - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) relies on Transition Minimized Differential Signaling (TMDS) to transmit high-speed digital video streams over physical copper links. Rather than carrying pixel data continuously, the interface alternates between active vid">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-dvi-encodes-blanking-intervals-over-tmds">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How DVI Encodes Blanking Intervals Over TMDS - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-dvi-encodes-blanking-intervals-over-tmds" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) relies on Transition Minimized Differential Signaling (TMDS) to transmit high-speed digital video streams over physical copper links. Rather than carrying pixel data continuously, the interface alternates between active vid" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-dvi-encodes-blanking-intervals-over-tmds">How DVI Encodes
+Blanking Intervals Over TMDS</h1>
+<p>Digital Visual Interface (DVI) relies on Transition Minimized
+Differential Signaling (TMDS) to transmit high-speed digital video
+streams over physical copper links. Rather than carrying pixel data
+continuously, the interface alternates between active video periods and
+blanking intervals. This article explains how horizontal blanking
+intervals (HBI) and vertical blanking intervals (VBI) are structured and
+encoded across the three primary TMDS data channels, detailing the
+mapping of synchronization signals into specialized 10-bit control
+characters.</p>
+<h3 id="active-video-vs-control-periods">Active Video vs. Control
+Periods</h3>
+<p>A standard single-link DVI connection consists of four differential
+pairs: three data channels (Channels 0, 1, and 2) and one dedicated
+clock channel. The TMDS transmitter operates in one of two fundamental
+operating states:</p>
+<ol type="1">
+<li><strong>Video Data Period:</strong> Active pixel values (8 bits per
+channel) are encoded into 10-bit TMDS characters designed to minimize
+signal transitions and maintain DC balance.</li>
+<li><strong>Control Period (Blanking):</strong> During horizontal and
+vertical blanking, active pixel transmission stops. Instead of video
+data, the transmitter encodes 2-bit control signals per channel into
+specialized 10-bit control characters.</li>
+</ol>
+<p>Both the Horizontal Blanking Interval (between active lines) and the
+Vertical Blanking Interval (between active frames) are transmitted
+strictly as Control Periods.</p>
+<h3 id="channel-allocation-for-control-signals">Channel Allocation for
+Control Signals</h3>
+<p>During blanking, each of the three TMDS data channels accepts a 2-bit
+input (<span class="math inline">\(C0, C1\)</span>) on every pixel clock
+cycle. These 2-bit signals represent display synchronization and
+interface control lines:</p>
+<ul>
+<li><strong>Channel 0:</strong> Carries Horizontal Sync
+(<code>HSync</code> on <span class="math inline">\(C0\)</span>) and
+Vertical Sync (<code>VSync</code> on <span
+class="math inline">\(C1\)</span>).</li>
+<li><strong>Channel 1:</strong> Carries control signals <span
+class="math inline">\(CTL0\)</span> (on <span
+class="math inline">\(C0\)</span>) and <span
+class="math inline">\(CTL1\)</span> (on <span
+class="math inline">\(C1\)</span>).</li>
+<li><strong>Channel 2:</strong> Carries control signals <span
+class="math inline">\(CTL2\)</span> (on <span
+class="math inline">\(C0\)</span>) and <span
+class="math inline">\(CTL3\)</span> (on <span
+class="math inline">\(C1\)</span>).</li>
+</ul>
+<p>In basic DVI-D implementations, Channels 1 and 2 typically tie their
+control bits to logical <code>00</code>, as <span
+class="math inline">\(CTL0\)</span> through <span
+class="math inline">\(CTL3\)</span> are primarily reserved for protocol
+extensions (such as HDCP signaling or HDMI preambles). Consequently,
+Channel 0 is the primary vehicle for defining the boundaries of HBI and
+VBI via standard raster timing.</p>
+<h3 id="the-10-bit-control-character-encoding">The 10-Bit Control
+Character Encoding</h3>
+<p>While active video uses transition-minimization logic (employing
+XOR/XNOR operations) to reduce electromagnetic interference, blanking
+periods intentionally discard minimization. Instead, the 2-bit control
+inputs are mapped to four predefined 10-bit control tokens that maximize
+transitions.</p>
+<p>The four standard 10-bit control characters are:</p>
+<ul>
+<li><strong><code>00</code></strong> <span
+class="math inline">\(\rightarrow\)</span> <code>1101010100</code> (or
+<code>0010101011</code> depending on starting bit order/polarity)</li>
+<li><strong><code>01</code></strong> <span
+class="math inline">\(\rightarrow\)</span> <code>0010101011</code></li>
+<li><strong><code>10</code></strong> <span
+class="math inline">\(\rightarrow\)</span> <code>0101010100</code></li>
+<li><strong><code>11</code></strong> <span
+class="math inline">\(\rightarrow\)</span> <code>1010101011</code></li>
+</ul>
+<p>These sequences are specifically selected for three key functional
+reasons:</p>
+<ol type="1">
+<li><strong>High Transition Density:</strong> Each character contains
+seven signal transitions. This rapid edge switching provides the
+Phase-Locked Loop (PLL) in the receiver with continuous frequency and
+phase references, preventing clock drift during blanking.</li>
+<li><strong>Word Boundary Alignment:</strong> These control tokens are
+asymmetric and completely distinct from any valid active video 10-bit
+character. The receiver's deserializer uses these unique patterns to
+establish and lock onto 10-bit word boundaries (character framing).</li>
+<li><strong>Inherent DC Balancing:</strong> Each pair of control symbols
+is balanced in terms of high and low states, maintaining baseline DC
+balance across the differential pair without requiring a running
+disparity accumulator.</li>
+</ol>
+<h3 id="distinguishing-horizontal-and-vertical-blanking">Distinguishing
+Horizontal and Vertical Blanking</h3>
+<p>From an encoding standpoint, TMDS does not have separate "HBI" and
+"VBI" command packets. Instead, blanking intervals are defined purely by
+the state of <code>HSync</code> and <code>VSync</code> transmitted on
+Channel 0:</p>
+<ul>
+<li><strong>Horizontal Blanking (HBI):</strong> At the end of an active
+line, the transmitter switches from pixel encoding to control character
+encoding. Channel 0 transmits the control token for
+<code>C0=0, C1=0</code> (front porch), transitions to
+<code>C0=1, C1=0</code> (active HSync pulse), and returns to
+<code>C0=0, C1=0</code> (back porch) before the next line of pixels
+begins.</li>
+<li><strong>Vertical Blanking (VBI):</strong> At the end of a field or
+frame, the transmitter enters a sustained Control Period across hundreds
+of line periods. Channel 0 continues to output periodic
+<code>HSync</code> transitions, but asserts <code>VSync</code>
+(<code>C1=1</code>) during the vertical sync window.</li>
+</ul>
+<p>Because both intervals use the exact same four-token control
+mechanism, the display receiver decodes raster timing identically to an
+analog CRT or VGA interface, reconstructing line and frame sync based on
+the decoded values of Channel 0.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

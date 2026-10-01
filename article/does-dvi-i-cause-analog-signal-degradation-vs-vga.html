@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Does DVI-I Cause Analog Signal Degradation vs VGA? - dvi</title>
+    <meta name="description" content="A DVI-I port does not inherently introduce analog signal degradation when compared to a standard native VGA (DE-15) port. Because DVI-I carries an uncompressed, native analog RGBHV signal alongside its digital signal, connecting a VGA display to a DVI-I">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/does-dvi-i-cause-analog-signal-degradation-vs-vga">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Does DVI-I Cause Analog Signal Degradation vs VGA? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/does-dvi-i-cause-analog-signal-degradation-vs-vga" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A DVI-I port does not inherently introduce analog signal degradation when compared to a standard native VGA (DE-15) port. Because DVI-I carries an uncompressed, native analog RGBHV signal alongside its digital signal, connecting a VGA display to a DVI-I" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="does-dvi-i-cause-analog-signal-degradation-vs-vga">Does DVI-I
+Cause Analog Signal Degradation vs VGA?</h1>
+<p>A DVI-I port does not inherently introduce analog signal degradation
+when compared to a standard native VGA (DE-15) port. Because DVI-I
+carries an uncompressed, native analog RGBHV signal alongside its
+digital signal, connecting a VGA display to a DVI-I port via a passive
+adapter routes the exact same electrical signals without active
+processing. While physical factors such as adapter build quality and
+connector wear can introduce minor interference, the port specification
+itself performs identically to—and often better shielded than—a standard
+VGA port.</p>
+<h3 id="how-dvi-i-handles-analog-video">How DVI-I Handles Analog
+Video</h3>
+<p>The "I" in DVI-I stands for "Integrated," meaning the connector
+supports both digital and analog video transmissions. The analog portion
+of the interface is handled by four dedicated pins located around the
+flat ground blade on the side of the connector:</p>
+<ul>
+<li><strong>C1:</strong> Red video signal</li>
+<li><strong>C2:</strong> Green video signal</li>
+<li><strong>C3:</strong> Blue video signal</li>
+<li><strong>C4:</strong> Horizontal sync</li>
+<li><strong>Flat Blade (C5):</strong> Analog ground return</li>
+</ul>
+<p>These pins tap directly into the graphics card’s internal RAMDAC
+(Random Access Memory Digital-to-Analog Converter), which is the exact
+same component responsible for driving a traditional VGA port. Because
+the signal generation process is identical, the source output quality
+from a DVI-I port matches that of a native VGA connector on the same
+hardware.</p>
+<h3 id="passive-adapters-vs-active-conversion">Passive Adapters vs.
+Active Conversion</h3>
+<p>Connecting a VGA monitor to a DVI-I port requires only a passive
+pin-to-pin adapter or a DVI-I-to-VGA cable. There is no signal
+processing, scaling, or digital-to-analog conversion occurring within
+the adapter. The adapter merely reshapes the physical pin arrangement of
+the DVI-I analog pins to match the standard 15-pin VGA layout. Because
+the signal remains untouched in the analog domain, no digital latency or
+processing degradation is introduced.</p>
+<h3 id="potential-factors-in-real-world-performance">Potential Factors
+in Real-World Performance</h3>
+<p>While the DVI-I port itself introduces no degradation, subtle
+variations in video quality can occur in practical setups due to
+external hardware factors:</p>
+<ul>
+<li><strong>Contact Resistance:</strong> Every physical break in a cable
+creates a junction where signal reflection and impedance mismatch can
+occur. Adding a passive adapter introduces one extra mechanical junction
+compared to a direct VGA-to-VGA connection, which can theoretically
+cause minor signal attenuation over long cable runs.</li>
+<li><strong>Shielding and Manufacturing Quality:</strong> DVI connectors
+are built to stricter high-frequency shielding standards than many
+budget VGA connectors. In many instances, the analog signal path through
+a well-shielded DVI-I port exhibits less electromagnetic interference
+(EMI) and ghosting than a poorly shielded native VGA port.</li>
+<li><strong>Resolution and Refresh Rates:</strong> Analog signals
+degrade naturally as bandwidth demands increase. At high resolutions
+(such as 1920x1200 at 60Hz or higher refresh rates), analog video
+becomes increasingly susceptible to noise and pixel jitter. In these
+scenarios, any minor impedance flaw in an adapter or cable becomes
+visible, though the fault lies with the analog transmission medium
+itself rather than the DVI-I interface.</li>
+</ul>
+<p>Under normal operating conditions and standard cable lengths,
+outputting an analog signal through a DVI-I port yields a picture that
+is indistinguishable from a standard VGA port.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

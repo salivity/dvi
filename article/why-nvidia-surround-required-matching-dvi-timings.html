@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Nvidia Surround Required Matching DVI Timings - dvi</title>
+    <meta name="description" content="Early multi-monitor gaming via Nvidia Surround strictly required all connected monitors to share identical display timings—including resolution, refresh rate, sync polarity, and blanking intervals. This article explains the technical reasons behind thi">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-nvidia-surround-required-matching-dvi-timings">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why Nvidia Surround Required Matching DVI Timings - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-nvidia-surround-required-matching-dvi-timings" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Early multi-monitor gaming via Nvidia Surround strictly required all connected monitors to share identical display timings—including resolution, refresh rate, sync polarity, and blanking intervals. This article explains the technical reasons behind thi" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-nvidia-surround-required-matching-dvi-timings">Why Nvidia
+Surround Required Matching DVI Timings</h1>
+<p>Early multi-monitor gaming via Nvidia Surround strictly required all
+connected monitors to share identical display timings—including
+resolution, refresh rate, sync polarity, and blanking intervals. This
+article explains the technical reasons behind this requirement,
+detailing how GPU display pipelines, unpacketized DVI transmission, and
+hardware-level frame synchronization operated to create a single
+seamless desktop across multiple physical displays.</p>
+<h3 id="the-single-large-surface-architecture">The Single Large Surface
+Architecture</h3>
+<p>Nvidia Surround does not operate like standard multi-monitor desktop
+configurations. In a standard setup, the operating system's window
+manager coordinates distinct frame buffers for each display, allowing
+different refresh rates, scalers, and timings.</p>
+<p>In contrast, Nvidia Surround merges multiple physical panels into a
+Single Large Surface (SLS). The GPU presents three physical monitors to
+the operating system as one contiguous display (such as 5760x1080).
+Because the 3D rendering engine and graphics pipeline render a single
+massive frame buffer, the GPU’s internal display controllers must scan
+out that single frame simultaneously across all active display
+outputs.</p>
+<h3 id="continuous-stream-protocols-vs-packetized-data">Continuous
+Stream Protocols vs. Packetized Data</h3>
+<p>The strict timing requirement was largely a consequence of the DVI
+(Digital Visual Interface) standard. DVI utilizes Transition-Minimized
+Differential Signaling (TMDS) to transmit uncompressed raster graphics
+in real-time.</p>
+<p>Unlike modern DisplayPort connections, which transmit data in
+discrete micro-packets with built-in metadata and internal buffering,
+DVI relies on a constant, rigid pixel clock. In a DVI transmission:</p>
+<ul>
+<li><strong>Active Video:</strong> Pixels are drawn continuously from
+left to right, top to bottom.</li>
+<li><strong>Blanking Intervals:</strong> Horizontal and vertical
+blanking intervals (front porch, sync width, back porch) dictate when
+the beam or digital address resets.</li>
+<li><strong>Sync Pulses:</strong> Polarity and timing pulses signal the
+physical panel to prepare for the next line or frame.</li>
+</ul>
+<p>Because DVI does not buffer frames inside the monitor to compensate
+for timing variations, the display controller on the graphics card
+dictates the exact microsecond each pixel arrives.</p>
+<h3 id="synchronized-scanout-and-buffer-swapping">Synchronized Scanout
+and Buffer Swapping</h3>
+<p>To display a single rendered frame across three monitors without
+horizontal misalignments or tearing between bezels, the display pipeline
+requires synchronized scanout.</p>
+<p>When a frame finishes rendering, the GPU performs a buffer swap (page
+flip) during the Vertical Blanking Interval (VBI). If three connected
+monitors have even minor variations in their total vertical pixel lines
+or blanking intervals:</p>
+<ol type="1">
+<li><strong>VBI Desynchronization:</strong> Monitor A might enter its
+blanking interval while Monitor B is still scanning the bottom rows of
+the active image.</li>
+<li><strong>Scanline Drift:</strong> Without matching pixel clocks, the
+monitors inevitably drift apart over time. One monitor will complete a
+refresh cycle micro- or milliseconds faster than the adjacent
+panel.</li>
+<li><strong>Tear Artifacts:</strong> Swapping frame buffers globally
+across an SLS array when scanout cycles do not align causes severe
+screen tearing along the borders of the monitors.</li>
+</ol>
+<p>To prevent this desynchronization, Nvidia’s display driver locked the
+internal hardware timing generators to a single master clock. The GPU
+could only generate one unified timing sequence. If one monitor used
+positive vertical polarity with a 45-pixel back porch, while an adjacent
+panel expected negative polarity with a 30-pixel back porch, the GPU
+could not satisfy both panels simultaneously from its shared timing
+engine.</p>
+<h3 id="the-impact-of-3d-vision-surround">The Impact of 3D Vision
+Surround</h3>
+<p>The timing restriction was doubly enforced by Nvidia 3D Vision
+Surround. Stereoscopic 3D required active-shutter glasses synchronized
+to an external infrared or RF emitter operating at 120Hz (60Hz per
+eye).</p>
+<p>For the shutter lenses to open and close seamlessly across three
+panels, every monitor had to display the left-eye and right-eye frames
+at the exact same physical instant. Any timing variance between panels
+via DVI would cause one eye to receive a partial frame from one monitor
+while receiving a black blanking phase from another, breaking the
+stereoscopic illusion entirely.</p>
+<h3 id="evolution-away-from-strict-timings">Evolution Away from Strict
+Timings</h3>
+<p>Modern multi-display solutions are significantly more forgiving due
+to architectural evolutions. Modern GPUs feature independent timing
+generators for each display pipe, and modern display interfaces like
+DisplayPort utilize packetized data transmission with internal panel
+frame buffers. These modern architectures decouple the GPU's internal
+scanout mechanism from the panel's physical refresh cycle, allowing
+software and display hardware to negotiate synchronization without
+demanding perfectly cloned modelines down to the individual blanking
+pixel.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

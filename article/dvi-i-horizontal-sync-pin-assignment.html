@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI-I Horizontal Sync Pin Assignment - dvi</title>
+    <meta name="description" content="This guide provides a direct breakdown of the horizontal synchronization (H-Sync) pin assignment on a DVI-I (Digital Visual Interface – Integrated) connector. Because DVI-I carries both high-definition digital signals and legacy analog video, specific">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-i-horizontal-sync-pin-assignment">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI-I Horizontal Sync Pin Assignment - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-i-horizontal-sync-pin-assignment" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This guide provides a direct breakdown of the horizontal synchronization (H-Sync) pin assignment on a DVI-I (Digital Visual Interface – Integrated) connector. Because DVI-I carries both high-definition digital signals and legacy analog video, specific" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-i-horizontal-sync-pin-assignment">DVI-I Horizontal Sync Pin
+Assignment</h1>
+<p>This guide provides a direct breakdown of the horizontal
+synchronization (H-Sync) pin assignment on a DVI-I (Digital Visual
+Interface – Integrated) connector. Because DVI-I carries both
+high-definition digital signals and legacy analog video, specific
+designated pins handle the RGB and synchronization channels. Below, you
+will find the exact pin location for the horizontal sync signal and its
+role within the DVI-I pinout architecture.</p>
+<h2 id="the-horizontal-sync-pin-location">The Horizontal Sync Pin
+Location</h2>
+<p>On a standard DVI-I connector, the <strong>Analog Horizontal
+Sync</strong> signal is assigned to <strong>Pin C4</strong>.</p>
+<p>A DVI-I connector features a main grid of 24 digital pins alongside a
+distinct analog cluster separated to one side. This analog cluster
+contains four pins surrounding a flat ground bar:</p>
+<ul>
+<li><strong>Pin C1:</strong> Analog Red</li>
+<li><strong>Pin C2:</strong> Analog Green</li>
+<li><strong>Pin C3:</strong> Analog Blue</li>
+<li><strong>Pin C4: Analog Horizontal Sync</strong></li>
+<li><strong>Pin C5:</strong> Analog Ground (the wide horizontal
+blade)</li>
+</ul>
+<h2 id="pin-layout-and-functionality">Pin Layout and Functionality</h2>
+<p>Pin C4 is located immediately below the flat ground blade (Pin C5) on
+the analog side of the connector, positioned on the outer vertical
+column.</p>
+<p>When a DVI-I port outputs an analog signal—such as through a passive
+DVI-to-VGA adapter—Pin C4 transmits the horizontal synchronization
+pulses. These timing pulses dictate when a monitor completes a
+horizontal scan line and begins the next.</p>
+<p>For the complete synchronization circuit, Pin C4 works in tandem
+with:</p>
+<ul>
+<li><strong>Pin 8 (Analog Vertical Sync):</strong> Located in the main
+24-pin grid at the end of the top row.</li>
+<li><strong>Pin C5 (Analog Ground):</strong> Serves as the return path
+for both the RGB video and sync signals.</li>
+</ul>
+<p>Because horizontal sync is an analog timing function, Pin C4 is only
+active when an analog display or adapter is in use. Digital DVI
+connections (DVI-D) do not utilize Pin C4, as timing data is embedded
+directly into the digital TMDS data streams.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

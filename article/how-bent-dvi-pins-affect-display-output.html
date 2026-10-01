@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Bent DVI Pins Affect Display Output - dvi</title>
+    <meta name="description" content="Bent pins inside a DVI connector interrupt or alter the physical connection required to transmit video data from a graphics card to a monitor. Depending on which specific pin is bent, the consequences range from minor color tinting and flickering to inco">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-bent-dvi-pins-affect-display-output">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Bent DVI Pins Affect Display Output - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-bent-dvi-pins-affect-display-output" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Bent pins inside a DVI connector interrupt or alter the physical connection required to transmit video data from a graphics card to a monitor. Depending on which specific pin is bent, the consequences range from minor color tinting and flickering to inco" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-bent-dvi-pins-affect-display-output">How Bent DVI Pins
+Affect Display Output</h1>
+<p>Bent pins inside a DVI connector interrupt or alter the physical
+connection required to transmit video data from a graphics card to a
+monitor. Depending on which specific pin is bent, the consequences range
+from minor color tinting and flickering to incorrect resolution
+detection or a complete loss of video signal. In severe cases, a bent
+pin touching an adjacent pin can cause an electrical short that risks
+damaging the connected hardware.</p>
+<h3 id="complete-signal-loss-no-signal">Complete Signal Loss ("No
+Signal")</h3>
+<p>A monitor will typically display a "No Signal" or "Cable
+Disconnected" error if the bent pin is responsible for primary data
+transmission or synchronization. In digital DVI (DVI-D and DVI-I), this
+happens when the TMDS (Transition Minimized Differential Signaling)
+clock pins or multiple data lane pins fail to make contact. Without a
+synchronized clock signal, the monitor cannot decode the incoming
+digital video stream.</p>
+<h3 id="color-tints-and-missing-color-channels">Color Tints and Missing
+Color Channels</h3>
+<p>DVI connectors use dedicated channels to carry color information. The
+impact of a bent pin depends on the signal type in use:</p>
+<ul>
+<li><strong>Analog Signals (DVI-A / DVI-I):</strong> There are dedicated
+pins for Red, Green, and Blue analog signals (located around the flat
+blade on the side). If the Red pin is bent and fails to connect, the
+image will display with a heavy cyan tint. If Green is missing, the
+screen appears magenta; if Blue is missing, the screen appears
+yellow.</li>
+<li><strong>Digital Signals (DVI-D / DVI-I):</strong> Digital data is
+transmitted in packets across differential pairs. Losing one side of a
+differential pair can corrupt color values, leading to static color
+tinting, inverted colors, or bands of mismatched color across the
+screen.</li>
+</ul>
+<h3 id="sparkles-noise-and-screen-flickering">"Sparkles," Noise, and
+Screen Flickering</h3>
+<p>High-speed digital signals are sensitive to impedance mismatches. A
+pin that is slightly bent may still make partial or loose contact. This
+weak connection introduces digital noise, commonly seen as bright,
+pixel-sized dots ("sparkles") dancing across dark areas of the screen.
+It can also cause the screen to flicker intermittently or black out for
+several seconds whenever the cable shifts or experiences electromagnetic
+interference.</p>
+<h3 id="resolution-caps-and-detection-failures">Resolution Caps and
+Detection Failures</h3>
+<p>DVI connectors include Display Data Channel (DDC) pins, which use the
+I2C protocol to read the monitor’s Extended Display Identification Data
+(EDID).</p>
+<ul>
+<li>If the DDC clock or data pins are bent, the computer cannot identify
+the monitor's make, model, supported resolutions, or refresh rates.</li>
+<li>As a result, the operating system may label the display as a
+"Generic Non-PnP Monitor" and restrict the output to low fallback
+resolutions, such as 640x480 or 1024x768.</li>
+</ul>
+<h3 id="dropped-dual-link-capabilities">Dropped Dual-Link
+Capabilities</h3>
+<p>A Dual-Link DVI connector features a central block of pins that
+provides a second TMDS transmitter link. This second link is required
+for resolutions higher than 1920x1200 at 60Hz (such as 2560x1440 or
+144Hz 1080p). If a pin within this center cluster is bent, the cable
+falls back to Single-Link mode, causing the display to either drop its
+refresh rate, reduce its maximum resolution, or show severe visual
+distortion at higher display settings.</p>
+<h3 id="short-circuits-and-hardware-risk">Short Circuits and Hardware
+Risk</h3>
+<p>A pin that is bent flat against the connector housing can touch an
+adjacent pin or the metal shielding. If the +5V power pin (Pin 14, used
+to power the monitor's EDID chip when the screen is turned off) shorts
+against a data pin or ground, it can trip protection circuits on the
+graphics card or permanently damage the DVI output port.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

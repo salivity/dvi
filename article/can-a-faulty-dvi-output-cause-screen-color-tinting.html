@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can a Faulty DVI Output Cause Screen Color Tinting? - dvi</title>
+    <meta name="description" content="A faulty DVI transmitter or output stage on a graphics processing unit (GPU) can cause full-screen color tinting, though the exact symptoms depend heavily on whether the connection is running an analog or digital signal. This article covers how hardware">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/can-a-faulty-dvi-output-cause-screen-color-tinting">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Can a Faulty DVI Output Cause Screen Color Tinting? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/can-a-faulty-dvi-output-cause-screen-color-tinting" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A faulty DVI transmitter or output stage on a graphics processing unit (GPU) can cause full-screen color tinting, though the exact symptoms depend heavily on whether the connection is running an analog or digital signal. This article covers how hardware" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="can-a-faulty-dvi-output-cause-screen-color-tinting">Can a Faulty
+DVI Output Cause Screen Color Tinting?</h1>
+<p>A faulty DVI transmitter or output stage on a graphics processing
+unit (GPU) can cause full-screen color tinting, though the exact
+symptoms depend heavily on whether the connection is running an analog
+or digital signal. This article covers how hardware degradation in the
+GPU’s display engine shifts screen colors, the behavioral differences
+between analog and digital DVI failures, and how to verify if the
+transmitter hardware is at fault.</p>
+<h3 id="analog-vs-digital-dvi-transmission">Analog vs. Digital DVI
+Transmission</h3>
+<p>DVI ports fall into three categories: DVI-A (purely analog), DVI-D
+(purely digital), and DVI-I (integrated, carrying both analog and
+digital signals). The mechanism causing a color tint depends directly on
+which signal type is active:</p>
+<ul>
+<li><strong>Analog Signals (DVI-A / DVI-I using a VGA adapter):</strong>
+Analog video uses separate color channels for Red, Green, and Blue via
+the GPU's internal RAMDAC (Digital-to-Analog Converter). If a
+transmitter pin, solder joint, or the internal DAC for a specific
+channel degrades or loses continuity, that color will drop out entirely
+or weaken. For example, a dead red channel results in a heavy cyan tint,
+a dead blue channel results in a yellow tint, and a dead green channel
+creates a magenta/purple tint across the entire screen.</li>
+<li><strong>Digital Signals (DVI-D / DVI-I native digital):</strong>
+Digital DVI uses Transition Minimized Differential Signaling (TMDS)
+across dedicated digital lanes (Data 0, 1, and 2 for Blue, Green, and
+Red, plus a clock lane). A damaged digital transmitter rarely produces a
+smooth, uniform color wash. Instead, digital transmitter degradation
+usually manifests as "sparkles" (pixels flickering in the wrong color),
+horizontal colored lines, cycling color snow, or a complete loss of sync
+("No Signal"). However, if the GPU’s display PHY (physical layer) or
+serialization logic degrades in a way that consistently corrupts bit
+interpretation for a specific channel, uniform color balance shifts can
+occasionally occur.</li>
+</ul>
+<h3 id="causes-of-transmitter-hardware-failure">Causes of Transmitter
+Hardware Failure</h3>
+<p>When a GPU's DVI transmitter fails, it is typically caused by:</p>
+<ol type="1">
+<li><strong>Cracked Solder Joints (BGA/Connector):</strong> Thermal
+cycling over years of use can crack the solder joints under the GPU die
+or break the physical pins connecting the DVI port to the graphics card
+PCB.</li>
+<li><strong>Damaged Surface-Mount Components:</strong> Inline
+capacitors, inductors, or electrostatic discharge (ESD) protection
+diodes located directly behind the DVI port can short-circuit or blow
+due to power surges or hot-plugging cables.</li>
+<li><strong>Silicon Degradation in the Display Controller:</strong> The
+internal display engine within the GPU processor can degrade due to
+sustained high temperatures, corrupting output signaling before it ever
+leaves the card.</li>
+</ol>
+<h3 id="how-to-isolate-a-faulty-gpu-transmitter">How to Isolate a Faulty
+GPU Transmitter</h3>
+<p>Before replacing hardware, follow these targeted checks to confirm
+the GPU transmitter is the source of the problem:</p>
+<ul>
+<li><strong>Take a Software Screenshot:</strong> Press
+<code>Print Screen</code> and view the saved image on another device. If
+the screenshot looks completely normal, the rendering pipeline is
+functioning correctly, meaning the defect lies downstream in the display
+engine, physical connector, cable, or monitor.</li>
+<li><strong>Switch to Another Port Type:</strong> If the GPU has
+DisplayPort or HDMI ports, connect the monitor using those outputs. If
+the tint disappears on DisplayPort or HDMI but persists across multiple
+DVI cables on the DVI port, the GPU's DVI transmitter or port circuitry
+is defective.</li>
+<li><strong>Wiggle the Connector Gently:</strong> If slight pressure on
+the DVI plug temporarily fixes or worsens the color tint, the issue is
+physical—either a broken internal trace on the GPU, damaged port solder
+pads, or a worn-out cable pin.</li>
+<li><strong>Verify Monitor and Cable:</strong> Plug another device into
+the monitor using the same DVI cable. If the color tint remains, the
+cable or the monitor's input board is faulty, not the graphics
+card.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

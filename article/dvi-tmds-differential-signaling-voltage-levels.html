@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI TMDS Differential Signaling Voltage Levels - dvi</title>
+    <meta name="description" content="Transition-Minimized Differential Signaling (TMDS) used in the Digital Visual Interface (DVI) standard relies on specific electrical specifications to transmit high-speed digital video data. This article outlines the exact DC and AC voltage levels employ">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-tmds-differential-signaling-voltage-levels">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI TMDS Differential Signaling Voltage Levels - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-tmds-differential-signaling-voltage-levels" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Transition-Minimized Differential Signaling (TMDS) used in the Digital Visual Interface (DVI) standard relies on specific electrical specifications to transmit high-speed digital video data. This article outlines the exact DC and AC voltage levels employ" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-tmds-differential-signaling-voltage-levels">DVI TMDS
+Differential Signaling Voltage Levels</h1>
+<p>Transition-Minimized Differential Signaling (TMDS) used in the
+Digital Visual Interface (DVI) standard relies on specific electrical
+specifications to transmit high-speed digital video data. This article
+outlines the exact DC and AC voltage levels employed by TMDS, detailing
+the supply voltage, single-ended logic levels, differential peak-to-peak
+swings, and common-mode characteristics defined by the DVI 1.0
+specification.</p>
+<h3 id="electrical-topology-and-supply-voltage">Electrical Topology and
+Supply Voltage</h3>
+<p>TMDS uses Current Mode Logic (CML) topology. The transmitter consists
+of a switched current sink, and the receiver uses 50-ohm (<span
+class="math inline">\(\Omega\)</span>) pull-up termination resistors
+tied to a nominal power supply rail.</p>
+<ul>
+<li><strong>Nominal Supply Voltage (<span
+class="math inline">\(AV_{cc}\)</span>):</strong> <span
+class="math inline">\(+3.3\text{ V DC}\)</span> (typically with a
+tolerance of <span class="math inline">\(\pm 5\%\)</span>, operating
+between <span class="math inline">\(3.135\text{ V}\)</span> and <span
+class="math inline">\(3.465\text{ V}\)</span>).</li>
+</ul>
+<h3 id="single-ended-voltage-levels">Single-Ended Voltage Levels</h3>
+<p>Because the receiver pulls the differential data lines up to the
+supply rail via internal <span class="math inline">\(50\ \Omega\)</span>
+resistors, the single-ended levels on each conductor of a differential
+pair are:</p>
+<ul>
+<li><strong>Output High Voltage (<span
+class="math inline">\(V_{OH}\)</span>):</strong> Equal to <span
+class="math inline">\(AV_{cc}\)</span>, nominally <span
+class="math inline">\(+3.3\text{ V}\)</span>. When the transmitter’s
+current sink is turned off, no current flows across the termination
+resistor, holding the line at the supply voltage.</li>
+<li><strong>Output Low Voltage (<span
+class="math inline">\(V_{OL}\)</span>):</strong> Nominally between <span
+class="math inline">\(+2.7\text{ V}\)</span> and <span
+class="math inline">\(+2.9\text{ V}\)</span> (typically <span
+class="math inline">\(+2.8\text{ V}\)</span>). When the transmitter
+switches on its nominal <span class="math inline">\(10\text{
+mA}\)</span> to <span class="math inline">\(12\text{ mA}\)</span>
+current sink, the voltage drop across the <span
+class="math inline">\(50\ \Omega\)</span> load pulls the line down by
+approximately <span class="math inline">\(500\text{ mV}\)</span> to
+<span class="math inline">\(600\text{ mV}\)</span>.</li>
+<li><strong>Single-Ended Swing (<span class="math inline">\(\Delta
+V_{SE}\)</span>):</strong> <span class="math inline">\(400\text{
+mV}\)</span> to <span class="math inline">\(600\text{ mV}\)</span>, with
+a nominal target of <span class="math inline">\(500\text{
+mV}\)</span>.</li>
+</ul>
+<h3 id="differential-voltage-levels">Differential Voltage Levels</h3>
+<p>TMDS transmits data over complementary pairs (True and Inverting
+lines). The differential voltage (<span
+class="math inline">\(V_{ID}\)</span>) is defined as the voltage of the
+non-inverting line minus the voltage of the inverting line:</p>
+<ul>
+<li><strong>Differential Peak-to-Peak Swing (<span
+class="math inline">\(V_{DIFF(p-p)}\)</span>):</strong> <span
+class="math inline">\(800\text{ mV}\)</span> to <span
+class="math inline">\(1200\text{ mV}\)</span> (nominally <span
+class="math inline">\(1000\text{ mV}\)</span> or <span
+class="math inline">\(1.0\text{ V}\)</span>). Because the two
+complementary signals alternate between high (<span
+class="math inline">\(3.3\text{ V}\)</span>) and low (<span
+class="math inline">\(2.8\text{ V}\)</span>), the differential amplitude
+alternates between <span class="math inline">\(+500\text{ mV}\)</span>
+and <span class="math inline">\(-500\text{ mV}\)</span>, resulting in a
+total peak-to-peak differential amplitude of <span
+class="math inline">\(1.0\text{ V}\)</span>.</li>
+<li><strong>Receiver Differential Threshold:</strong> A DVI-compliant
+receiver must reliably detect transitions with a differential voltage as
+low as <span class="math inline">\(150\text{ mV}\)</span> to <span
+class="math inline">\(200\text{ mV}\)</span>, ensuring signal integrity
+over longer cable runs where attenuation occurs.</li>
+</ul>
+<h3 id="common-mode-voltage">Common-Mode Voltage</h3>
+<p>The common-mode voltage (<span class="math inline">\(V_{CM}\)</span>)
+represents the average voltage of the differential pair relative to
+ground:</p>
+<ul>
+<li><strong>Nominal Common-Mode Voltage (<span
+class="math inline">\(V_{CM}\)</span>):</strong> Approximately <span
+class="math inline">\(+3.0\text{ V}\)</span> to <span
+class="math inline">\(+3.05\text{ V}\)</span>. It sits halfway between
+the high state (<span class="math inline">\(3.3\text{ V}\)</span>) and
+the low state (<span class="math inline">\(2.8\text{ V}\)</span>),
+fluctuating slightly within the range of <span
+class="math inline">\(AV_{cc} - 0.3\text{ V}\)</span> to <span
+class="math inline">\(AV_{cc} - 0.25\text{ V}\)</span>.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

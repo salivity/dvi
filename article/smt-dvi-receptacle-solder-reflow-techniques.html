@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMT DVI Receptacle Solder Reflow Techniques - dvi</title>
+    <meta name="description" content="Replacing surface-mount (SMT) DVI receptacles requires controlled thermal profiling and precise rework methods to manage high-density signal pins and substantial ground shielding without damaging the printed circuit board (PCB) or melting the plastic con">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/smt-dvi-receptacle-solder-reflow-techniques">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SMT DVI Receptacle Solder Reflow Techniques - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/smt-dvi-receptacle-solder-reflow-techniques" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Replacing surface-mount (SMT) DVI receptacles requires controlled thermal profiling and precise rework methods to manage high-density signal pins and substantial ground shielding without damaging the printed circuit board (PCB) or melting the plastic con" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="smt-dvi-receptacle-solder-reflow-techniques">SMT DVI Receptacle
+Solder Reflow Techniques</h1>
+<p>Replacing surface-mount (SMT) DVI receptacles requires controlled
+thermal profiling and precise rework methods to manage high-density
+signal pins and substantial ground shielding without damaging the
+printed circuit board (PCB) or melting the plastic connector body.
+Because DVI ports feature large metal ground tabs acting as massive heat
+sinks alongside fine-pitch signal pins, standard soldering irons alone
+are insufficient. Successful rework relies on a combination of
+bottom-side preheating, hot-air reflow, localized infrared heating, and
+pad-level site preparation to cleanly desolder the damaged connector and
+reflow a new replacement into place.</p>
+<h2 id="pre-rework-preparation-and-thermal-shielding">Pre-Rework
+Preparation and Thermal Shielding</h2>
+<p>Due to the heavy thermal mass of the PCB ground planes and the
+structural shell of the DVI port, heat spreads quickly away from the
+target joints.</p>
+<ul>
+<li><strong>Baking:</strong> If moisture sensitivity is a concern, bake
+the PCB at 100°C–125°C for several hours before rework to eliminate
+trapped moisture and prevent delamination or "popcorning."</li>
+<li><strong>Shielding:</strong> Protect adjacent temperature-sensitive
+components (such as electrolytic capacitors, plastic sockets, and nearby
+small passives) using multiple layers of polyimide (Kapton) tape and
+aluminum foil to deflect stray heat.</li>
+<li><strong>Fluxing:</strong> Apply a generous amount of tacky,
+high-temperature gel flux or paste flux (RMA or no-clean) to all signal
+pins and structural ground tabs to enhance thermal transfer and prevent
+rapid oxidation.</li>
+</ul>
+<h2 id="connector-removal-desoldering">Connector Removal
+(Desoldering)</h2>
+<p>Safe removal demands even heat distribution across both the ground
+anchoring posts (which are often through-hole or heavy surface tabs) and
+the fine-pitch signal pads.</p>
+<ol type="1">
+<li><strong>Bottom-Side Preheating:</strong> Place the PCB on a
+localized under-board preheater. Slowly raise the board temperature to
+between 120°C and 150°C. This minimizes thermal shock and reduces the
+hot-air temperature needed from the top side.</li>
+<li><strong>Focused Hot-Air Delivery:</strong> Use a hot-air rework
+station fitted with a rectangular nozzle sized specifically to the
+footprint of the DVI connector. Set the air temperature to approximately
+350°C–380°C for lead-free solder (or 300°C–320°C for leaded solder) with
+low-to-medium airflow to prevent displacing nearby surface-mount
+parts.</li>
+<li><strong>Extraction:</strong> Once all joints reach the liquidus
+state simultaneously, gently lift the receptacle perpendicular to the
+board using vacuum pick-up tools or thermal tweezers. Do not exert
+mechanical force until all solder is fully molten, as pulling
+prematurely will tear delicate PCB copper traces.</li>
+</ol>
+<h2 id="site-preparation">Site Preparation</h2>
+<p>Once the faulty DVI receptacle is removed, the target area must be
+prepped:</p>
+<ul>
+<li><strong>Solder Removal:</strong> Apply fresh flux and clear old
+solder from the surface pads and ground anchor holes using desoldering
+braid (wick) and a chisel-tip soldering iron.</li>
+<li><strong>Cleaning and Inspection:</strong> Clean the area thoroughly
+with high-purity isopropyl alcohol (IPA) and a lint-free swab. Inspect
+the signal traces under an optical inspection microscope to verify that
+no pads were lifted or bridging tracks broken.</li>
+<li><strong>Solder Application:</strong> Apply new solder paste (SAC305
+for lead-free or Sn63/Pb37 for leaded repairs) across the pads using a
+miniature rework stencil or a fine-gauge pneumatic dispenser.
+Alternatively, manually pretin the pads with a soldering iron to create
+uniform, slight solder domes.</li>
+</ul>
+<h2 id="reflow-techniques-for-installation">Reflow Techniques for
+Installation</h2>
+<h3 id="1-hot-air-shroud-reflow">1. Hot-Air Shroud Reflow</h3>
+<p>The most common technique uses a dedicated hot-air rework station
+equipped with a specialized DVI shroud nozzle.</p>
+<ul>
+<li>Align the new DVI receptacle precisely over the pasted pads.</li>
+<li>Engage the bottom preheater to bring the substrate back to
+130°C–150°C.</li>
+<li>Direct the hot-air nozzle over the connector perimeter. The airflow
+must direct thermal energy primarily at the metal shell tabs and the
+exposed pin leads rather than the plastic housing interior.</li>
+<li>Observe the solder transition to liquidus; surface tension will pull
+the connector pins into final self-alignment with the underlying pads.
+Remove heat immediately once complete wetting occurs.</li>
+</ul>
+<h3 id="2-localized-infrared-ir-rework">2. Localized Infrared (IR)
+Rework</h3>
+<p>Dark-medium infrared rework stations use optical heating rather than
+forced air.</p>
+<ul>
+<li>The IR ceramic or quartz heater projects focused radiation onto the
+DVI solder joints.</li>
+<li>This method eliminates the risk of blowing adjacent miniature
+components out of position.</li>
+<li>The thermal energy is absorbed effectively by the metallic shell,
+distributing heat evenly into the heavy ground anchors without
+overheating the plastic dielectric insert.</li>
+</ul>
+<h3 id="3-hybrid-hot-air-and-iron-reflow">3. Hybrid Hot-Air and Iron
+Reflow</h3>
+<p>For hybrid DVI connectors containing both fine-pitch SMT data pins
+and heavy through-hole shell anchors:</p>
+<ul>
+<li>Reflow the fine-pitch SMT signal pins first using targeted hot air
+or a micro-pencil soldering iron with drag-soldering techniques (using a
+bevel or knife tip with flux).</li>
+<li>Complete the structural ground posts afterward using a
+high-thermal-capacity cartridge soldering iron or focused hot air to
+ensure complete solder barrel fill on the grounding tabs.</li>
+</ul>
+<h2 id="post-reflow-inspection-and-cleaning">Post-Reflow Inspection and
+Cleaning</h2>
+<p>Allow the assembly to cool naturally below the solder solidification
+point before moving the PCB. Clean off residual flux using solvent
+cleaners formulated for the specific flux chemistry used. Finally,
+inspect all signal pins under high magnification or through X-ray
+inspection (AXI) to check for micro-bridging, insufficient wetting, or
+alignment skew between adjacent high-speed differential signal
+lanes.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

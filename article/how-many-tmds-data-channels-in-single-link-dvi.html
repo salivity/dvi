@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Many TMDS Data Channels in Single-Link DVI? - dvi</title>
+    <meta name="description" content="A single-link DVI cable utilizes exactly three Transition-Minimized Differential Signaling (TMDS) data channels alongside one dedicated TMDS clock channel. These three physical twisted-pair data links transmit the primary red, green, and blue color compo">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-many-tmds-data-channels-in-single-link-dvi">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Many TMDS Data Channels in Single-Link DVI? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-many-tmds-data-channels-in-single-link-dvi" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="A single-link DVI cable utilizes exactly three Transition-Minimized Differential Signaling (TMDS) data channels alongside one dedicated TMDS clock channel. These three physical twisted-pair data links transmit the primary red, green, and blue color compo" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-many-tmds-data-channels-in-single-link-dvi">How Many TMDS
+Data Channels in Single-Link DVI?</h1>
+<p>A single-link DVI cable utilizes exactly three Transition-Minimized
+Differential Signaling (TMDS) data channels alongside one dedicated TMDS
+clock channel. These three physical twisted-pair data links transmit the
+primary red, green, and blue color components of the digital video
+signal. By dedicating one channel per primary color, the single-link
+configuration achieves a maximum pixel clock rate of 165 MHz, sufficient
+to drive standard high-definition displays up to 1920×1200 resolution at
+60 Hz.</p>
+<h2 id="the-architecture-of-tmds">The Architecture of TMDS</h2>
+<p>TMDS stands for Transition-Minimized Differential Signaling, an
+encoding and transmission standard developed by Silicon Image. Its
+primary design goal is to carry high-speed serial data over copper
+conductors while reducing electromagnetic interference (EMI) and
+maintaining data integrity over cable lengths.</p>
+<p>TMDS works by applying an 8b/10b encoding algorithm that minimizes
+the total number of voltage transitions (0-to-1 or 1-to-0). Fewer
+transitions reduce high-frequency radiation, while differential
+signaling—sending the true signal alongside an inverted copy across a
+twisted pair—cancels out external electrical noise at the receiving
+end.</p>
+<h2 id="channel-allocation-in-single-link-dvi">Channel Allocation in
+Single-Link DVI</h2>
+<p>In any DVI connection, signals are broken down into discrete
+differential pairs. For single-link DVI (found in DVI-D Single Link and
+DVI-I Single Link connectors), the transmission architecture consists of
+four active differential pairs in total:</p>
+<ul>
+<li><strong>TMDS Data Channel 0:</strong> Carries the Blue color
+component, as well as the horizontal synchronization (HSync) and
+vertical synchronization (VSync) signals during video blanking
+intervals.</li>
+<li><strong>TMDS Data Channel 1:</strong> Transmits the Green color
+component and secondary control data.</li>
+<li><strong>TMDS Data Channel 2:</strong> Transmits the Red color
+component and control data.</li>
+<li><strong>TMDS Clock Channel:</strong> Provides a stable frequency
+reference to allow the receiver to synchronize and correctly sample
+incoming bits across all three data channels.</li>
+</ul>
+<p>While four physical differential pairs exist, only three function as
+active data channels for carrying pixel payload.</p>
+<h2 id="bandwidth-and-resolution-limits">Bandwidth and Resolution
+Limits</h2>
+<p>The three-channel limit directly defines the operational bandwidth of
+single-link DVI. Each data channel can handle 10 bits of data per pixel
+clock cycle. Operating at the standard maximum pixel clock of 165
+MHz:</p>
+<ul>
+<li><strong>Per-channel throughput:</strong> 1.65 Gbps (165 MHz × 10
+bits)</li>
+<li><strong>Total raw data bandwidth:</strong> 4.95 Gbps across all
+three data channels (3 × 1.65 Gbps)</li>
+<li><strong>Effective video payload:</strong> 3.96 Gbps (accounting for
+8b/10b encoding overhead)</li>
+</ul>
+<p>Because of this three-channel architecture, single-link DVI tops out
+at 1920×1080 (1080p) or 1920×1200 at standard 60 Hz refresh rates.
+Handling higher resolutions such as 2560×1600 or 144 Hz refresh rates
+requires dual-link DVI, which doubles the architecture by utilizing six
+TMDS data channels over the same interface.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

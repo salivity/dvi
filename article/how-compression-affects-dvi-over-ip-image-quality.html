@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Compression Affects DVI Over IP Image Quality - dvi</title>
+    <meta name="description" content="Extending Digital Visual Interface (DVI) signals across IP networks requires balancing bandwidth constraints with visual fidelity. Because uncompressed high-definition video requires more throughput than standard local area networks can provide, network">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/how-compression-affects-dvi-over-ip-image-quality">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="How Compression Affects DVI Over IP Image Quality - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/how-compression-affects-dvi-over-ip-image-quality" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Extending Digital Visual Interface (DVI) signals across IP networks requires balancing bandwidth constraints with visual fidelity. Because uncompressed high-definition video requires more throughput than standard local area networks can provide, network" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="how-compression-affects-dvi-over-ip-image-quality">How
+Compression Affects DVI Over IP Image Quality</h1>
+<p>Extending Digital Visual Interface (DVI) signals across IP networks
+requires balancing bandwidth constraints with visual fidelity. Because
+uncompressed high-definition video requires more throughput than
+standard local area networks can provide, network encoders must compress
+the video data. This article examines the mechanisms of video
+compression in DVI-over-IP systems, how different compression profiles
+alter visual quality, the resulting artifacts, and how latency factors
+into the overall user experience.</p>
+<h3 id="the-bandwidth-challenge-of-raw-dvi">The Bandwidth Challenge of
+Raw DVI</h3>
+<p>A standard Single-Link DVI connection delivers uncompressed digital
+video at data rates up to 3.96 Gbps (supporting resolutions up to
+1920x1200 at 60 Hz). Dual-Link DVI nearly doubles this capacity.
+Standard enterprise Ethernet infrastructure typically operates at 1 Gbps
+(Gigabit Ethernet) per port. Because raw DVI data exceeds the capacity
+of a standard 1GbE network pipeline, video compression algorithms must
+discard or re-encode data to fit the stream into available network
+bandwidth.</p>
+<h3 id="lossless-vs-lossy-compression">Lossless vs. Lossy
+Compression</h3>
+<p>When streaming DVI over IP, systems employ either mathematically
+lossless, visually lossless, or lossy compression:</p>
+<ul>
+<li><strong>Mathematically Lossless Compression:</strong> The decoded
+image matches the original source pixel for pixel. While this preserves
+100% of the visual fidelity, it provides low compression ratios
+(typically 2:1 to 3:1). Consequently, uncompressed or mathematically
+lossless DVI generally demands a 10-Gigabit (10GbE) network
+infrastructure to operate smoothly.</li>
+<li><strong>Visually Lossless Compression:</strong> The codec discards
+high-frequency visual information that the human eye struggles to
+perceive under normal viewing conditions. On static desktop backgrounds
+or standard video, the image appears identical to the source, but slight
+discrepancies exist at the data level.</li>
+<li><strong>Lossy Compression:</strong> Used primarily on 1GbE or
+constrained networks, algorithms like H.264, H.265, or high-compression
+JPEG 2000 discard significant amounts of redundant or less-visible image
+data. This lowers the bitrate to anywhere between 15 Mbps and 100 Mbps,
+but it introduces noticeable degradation under specific operating
+conditions.</li>
+</ul>
+<h3 id="impact-on-fine-detail-and-text-clarity">Impact on Fine Detail
+and Text Clarity</h3>
+<p>Computer-generated DVI signals typically carry native RGB 4:4:4
+color, where every pixel has distinct color and luminance information.
+To reduce bandwidth, lossy compression systems often implement chroma
+subsampling, reducing the color resolution to 4:2:2 or 4:2:0.</p>
+<p>While video playback masks this reduction well, computer desktops,
+CAD software, and spreadsheet applications suffer noticeably. Chroma
+subsampling causes:</p>
+<ul>
+<li><strong>Color Fringing:</strong> High-contrast color transitions,
+such as red text on a black background, develop fuzzy or discolored
+halos.</li>
+<li><strong>Text Softening:</strong> Fine, single-pixel fonts lose their
+sharpness and become difficult to read.</li>
+<li><strong>Loss of Geometric Precision:</strong> Thin lines and fine
+grid layouts can break or appear uneven across the display.</li>
+</ul>
+<h3 id="motion-artifacts-and-frame-drops">Motion Artifacts and Frame
+Drops</h3>
+<p>Compression codecs utilize inter-frame prediction (temporal
+compression) to look for changes between successive frames. When
+displayed content contains rapid motion, multiple windows moving
+simultaneously, or fast-scrolling documents, the encoder must process a
+massive surge in data. If the compression pipeline cannot keep up with
+the bitrate spikes:</p>
+<ul>
+<li><strong>Macroblocking:</strong> The screen breaks into visible
+square pixel clusters during high-motion scenes.</li>
+<li><strong>Temporal Stutter (Dropped Frames):</strong> The encoder
+skips frames to stay within network limits, resulting in choppy
+motion.</li>
+<li><strong>Blurring:</strong> The encoder dynamically lowers spatial
+resolution to preserve frame rate, temporarily softening the entire
+screen during movement.</li>
+</ul>
+<h3 id="latency-and-processing-overhead">Latency and Processing
+Overhead</h3>
+<p>Compression is not instantaneous; it requires computation time to
+encode the video at the transmitter and decode it at the receiver. Heavy
+compression algorithms introduce encoding latency ranging from a few
+frames to several hundred milliseconds. In interactive environments
+where a user controls a mouse and keyboard connected to a remote DVI
+source, high latency creates a sluggish, disconnected feeling that
+degrades operational efficiency, regardless of how sharp the static
+image appears.</p>
+<h3 id="application-considerations">Application Considerations</h3>
+<p>Selecting the proper compression level depends on the
+application:</p>
+<ul>
+<li><strong>Command and Control Rooms, Medical, and
+Engineering:</strong> These use cases require visually lossless or
+mathematically lossless compression (often utilizing 10GbE
+infrastructures) to preserve fine text, medical scans, schematics, and
+zero-latency mouse response.</li>
+<li><strong>Digital Signage and General Monitoring:</strong> Standard
+lossy compression (such as H.264/H.265 over 1GbE) is sufficient, as
+motion artifacts are minimal in pre-rendered video and slight text
+degradation does not affect passive viewers.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

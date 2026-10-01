@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Link DVI Clock Frequency vs Data Channels - dvi</title>
+    <meta name="description" content="Dual-link DVI increases display bandwidth by doubling the number of data channels, not by doubling the pixel clock frequency. While a single-link DVI connection transmits digital video across three data pairs synchronized by a single clock pair, dual-lin">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dual-link-dvi-clock-frequency-vs-data-channels">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dual-Link DVI Clock Frequency vs Data Channels - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dual-link-dvi-clock-frequency-vs-data-channels" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Dual-link DVI increases display bandwidth by doubling the number of data channels, not by doubling the pixel clock frequency. While a single-link DVI connection transmits digital video across three data pairs synchronized by a single clock pair, dual-lin" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dual-link-dvi-clock-frequency-vs-data-channels">Dual-Link DVI
+Clock Frequency vs Data Channels</h1>
+<p>Dual-link DVI increases display bandwidth by doubling the number of
+data channels, not by doubling the pixel clock frequency. While a
+single-link DVI connection transmits digital video across three data
+pairs synchronized by a single clock pair, dual-link DVI adds a second
+set of three data pairs. This architecture doubles the physical
+throughput of video data in parallel while sharing the original clock
+signal, enabling support for higher display resolutions and refresh
+rates.</p>
+<h3 id="the-architecture-of-dvi-connections">The Architecture of DVI
+Connections</h3>
+<p>Digital Visual Interface (DVI) relies on Transition-Minimized
+Differential Signaling (TMDS) to transmit high-speed serial data from a
+graphics card to a monitor.</p>
+<p>A standard <strong>Single-Link DVI</strong> cable uses four shielded
+twisted pairs of wires:</p>
+<ul>
+<li>Three TMDS data channels (carrying Red, Green, and Blue pixel
+components)</li>
+<li>One TMDS clock channel (providing the timing reference for the data
+channels)</li>
+</ul>
+<p>The maximum pixel clock for a standard single-link DVI interface is
+typically capped at 165 MHz, yielding a maximum throughput of 4.95 Gbps.
+This bandwidth limit restricts single-link DVI to resolutions up to
+1920×1200 at 60 Hz.</p>
+<h3 id="how-dual-link-dvi-works">How Dual-Link DVI Works</h3>
+<p>Rather than raising the transmission frequency above standard
+operational limits—which would introduce signal degradation and
+electromagnetic interference over copper cabling—the DVI specification
+addresses bandwidth limits through hardware multiplexing.</p>
+<p><strong>Dual-Link DVI</strong> incorporates six additional pins in
+the center of the connector interface to provide:</p>
+<ul>
+<li>Three additional TMDS data channels (totaling six data
+channels)</li>
+<li>The same single TMDS clock channel shared between both links</li>
+</ul>
+<p>Because the clock frequency remains fixed at the standard single-link
+rate (up to 165 MHz per channel group), the transmission frequency
+itself does not double. Instead, pixel processing alternates across the
+two sets of three channels. One set carries the odd-numbered pixels,
+while the second set carries the even-numbered pixels
+simultaneously.</p>
+<h3 id="bandwidth-and-resolution-impact">Bandwidth and Resolution
+Impact</h3>
+<p>By doubling the physical data channels from three to six, dual-link
+DVI doubles the total maximum throughput from 4.95 Gbps to 9.9 Gbps.</p>
+<p>This expanded pipeline allows dual-link DVI to support displays
+requiring significantly more bandwidth, such as 2560×1600 at 60 Hz or
+1920×1080 at 144 Hz, without increasing the base clock frequency of the
+transmission lines.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

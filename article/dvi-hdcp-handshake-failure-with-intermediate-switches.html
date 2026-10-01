@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI HDCP Handshake Failure with Intermediate Switches - dvi</title>
+    <meta name="description" content="An HDCP (High-bandwidth Digital Content Protection) handshake over DVI can fail when routed through an incompatible intermediate switch. This breakdown occurs when an inline device—such as a DVI switcher, matrix, splitter, or KVM—fails to correctly m">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-hdcp-handshake-failure-with-intermediate-switches">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI HDCP Handshake Failure with Intermediate Switches - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-hdcp-handshake-failure-with-intermediate-switches" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="An HDCP (High-bandwidth Digital Content Protection) handshake over DVI can fail when routed through an incompatible intermediate switch. This breakdown occurs when an inline device—such as a DVI switcher, matrix, splitter, or KVM—fails to correctly m" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-hdcp-handshake-failure-with-intermediate-switches">DVI HDCP
+Handshake Failure with Intermediate Switches</h1>
+<p>An HDCP (High-bandwidth Digital Content Protection) handshake over
+DVI can fail when routed through an incompatible intermediate switch.
+This breakdown occurs when an inline device—such as a DVI switcher,
+matrix, splitter, or KVM—fails to correctly manage authentication keys
+between the source device and the sink (display). This article explains
+the technical reasons why intermediate switches cause DVI HDCP handshake
+failures and outlines methods to identify and resolve these issues.</p>
+<h2 id="how-hdcp-works-across-dvi-connections">How HDCP Works Across DVI
+Connections</h2>
+<p>HDCP encrypts digital video data moving from a transmitter (such as a
+media player or PC graphics card) to a receiver (such as a monitor or
+projector). DVI natively supports HDCP through the TMDS (Transition
+Minimized Differential Signaling) lines for video data and the DDC
+(Display Data Channel) I2C lines for the security handshake.</p>
+<p>When you connect a source directly to a display, the devices
+negotiate keys via the DDC channel. If the keys are valid, the source
+encrypts the signal, and the display decrypts it. However, inserting a
+switch into this signal path fundamentally changes the architecture.</p>
+<h2 id="why-an-incompatible-switch-breaks-the-handshake">Why an
+Incompatible Switch Breaks the Handshake</h2>
+<p>An intermediate switch cannot simply pass DVI signals through without
+participating in the HDCP authentication process unless it is purely
+mechanical. When an active switch is introduced, it must function as an
+authorized <strong>HDCP Repeater</strong>. Handshake failures typically
+happen due to the following reasons:</p>
+<h3 id="1-lack-of-hdcp-repeater-support">1. Lack of HDCP Repeater
+Support</h3>
+<p>Many standard DVI switches, especially legacy models and enterprise
+KVM switches, were engineered exclusively for unencrypted computer
+graphics. These devices lack the dedicated cryptographic
+microcontrollers required to act as HDCP repeaters. When an
+HDCP-protected source attempts to authenticate through a non-compliant
+switch, the switch drops the key exchange, resulting in immediate
+handshake failure.</p>
+<h3 id="2-ddcedid-communication-breakdown">2. DDC/EDID Communication
+Breakdown</h3>
+<p>The HDCP handshake relies on continuous DDC communication.
+Low-quality or incompatible switches often fail to maintain an active
+EDID/DDC pass-through. If the switch interrupts this channel—either
+during input switching or due to signal degradation—the source loses its
+link verification and shuts off transmission.</p>
+<h3 id="3-key-vector-limits-and-topology-constraints">3. Key Vector
+Limits and Topology Constraints</h3>
+<p>HDCP specifications impose strict limits on device topology:</p>
+<ul>
+<li>A maximum of <strong>7 levels of repeaters</strong>.</li>
+<li>A maximum of <strong>128 total connected devices/keys</strong>.</li>
+</ul>
+<p>If an intermediate switch fails to accurately report the downstream
+topology, or if downstream displays exceed the switch's internal Key
+Selection Vector (KSV) cache, the source marks the setup as compromised
+and terminates the encrypted link.</p>
+<h3 id="4-handshake-timing-out">4. Handshake Timing Out</h3>
+<p>HDCP protocols enforce strict timing requirements. During an initial
+handshake or hot-plug event, the source expects an immediate response to
+key requests (typically within 100 milliseconds). Slower processing
+switches or matrix routers that experience processing latency during
+switching can cause a timeout, resulting in a black screen or an HDCP
+error state.</p>
+<h3 id="5-dvi-to-hdmi-compatibility-mismatches">5. DVI to HDMI
+Compatibility Mismatches</h3>
+<p>When converting HDMI sources to DVI through a switch, subtle protocol
+differences emerge. While HDMI and single-link DVI share TMDS signaling,
+HDMI carries audio, InfoFrames, and HDCP data packets that legacy DVI
+switches cannot process. If the switch strips required data flags, the
+HDCP cipher collapses.</p>
+<h2 id="common-symptoms-of-hdcp-failures">Common Symptoms of HDCP
+Failures</h2>
+<p>When an intermediate switch causes an HDCP failure, the system
+typically exhibits:</p>
+<ul>
+<li>A completely blank (black) screen.</li>
+<li>Persistent digital "snow" or static on the display.</li>
+<li>Explicit on-screen errors such as "HDCP Unauthorized" or "Content
+Protection Failure."</li>
+<li>A drop to standard-definition or restricted playback resolutions for
+protected media.</li>
+</ul>
+<h2 id="how-to-resolve-hdcp-handshake-failures">How to Resolve HDCP
+Handshake Failures</h2>
+<ol type="1">
+<li><strong>Verify Direct Playback:</strong> Connect the source directly
+to the monitor via the same DVI cable. If protected content plays
+normally, the intermediate switch is confirmed as the point of
+failure.</li>
+<li><strong>Ensure Repeater Compliance:</strong> Verify that the switch
+specifications explicitly state support for <strong>HDCP 1.4 repeater
+functionality</strong>. If the switch does not advertise HDCP support,
+it cannot pass protected content.</li>
+<li><strong>Power-Cycle in Sequence:</strong> Establish the handshake by
+powering on devices in order: turn on the display first, followed by the
+intermediate switch, and finally the video source. This forces the
+switch to read the display's KSV before presenting it to the
+source.</li>
+<li><strong>Use an Active EDID/HDCP Manager:</strong> Inserting an
+inline, HDCP-compliant EDID emulator between the source and the switch
+can continuously simulate a direct display connection, preventing the
+switch from breaking the key exchange.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

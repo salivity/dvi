@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVI TMDS Transmitter Chips on Graphics Cards - dvi</title>
+    <meta name="description" content="This article examines the active silicon chips used to generate and transmit Transition-Minimized Differential Signaling (TMDS) for DVI connections on graphics cards. It covers the historical discrete transmitter chips produced by pioneer semiconductor m">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/dvi-tmds-transmitter-chips-on-graphics-cards">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DVI TMDS Transmitter Chips on Graphics Cards - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/dvi-tmds-transmitter-chips-on-graphics-cards" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article examines the active silicon chips used to generate and transmit Transition-Minimized Differential Signaling (TMDS) for DVI connections on graphics cards. It covers the historical discrete transmitter chips produced by pioneer semiconductor m" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="dvi-tmds-transmitter-chips-on-graphics-cards">DVI TMDS
+Transmitter Chips on Graphics Cards</h1>
+<p>This article examines the active silicon chips used to generate and
+transmit Transition-Minimized Differential Signaling (TMDS) for DVI
+connections on graphics cards. It covers the historical discrete
+transmitter chips produced by pioneer semiconductor manufacturers, the
+shift toward on-die GPU integration, and the modern active level-shifter
+ICs utilized in DisplayPort-to-DVI signal routing.</p>
+<h3 id="discrete-tmds-transmitters">Discrete TMDS Transmitters</h3>
+<p>Before graphics processing units (GPUs) integrated display interfaces
+directly onto the primary silicon die, graphics cards relied on
+external, dedicated transmitter integrated circuits (ICs) to convert
+parallel digital video data from the GPU into serialized high-speed TMDS
+differential pairs.</p>
+<ul>
+<li><strong>Silicon Image (PanelLink Series):</strong> Silicon Image
+co-created the DVI specification and was the dominant supplier of
+external TMDS transmitters.
+<ul>
+<li><strong>SiI 164:</strong> A single-link transmitter operating up to
+165 MHz, capable of driving standard resolutions up to 1920×1200 at 60
+Hz. Widely used on early NVIDIA GeForce, ATI Radeon, and Matrox graphics
+cards.</li>
+<li><strong>SiI 1164 / SiI 160:</strong> Low-power variations tailored
+for mobile graphics and workstation add-in boards.</li>
+<li><strong>SiI 170 / SiI 1170:</strong> Dual-link implementations
+utilized to achieve bandwidth beyond 165 MHz, enabling resolutions such
+as 2560×1600.</li>
+</ul></li>
+<li><strong>Texas Instruments (PanelBus Series):</strong>
+<ul>
+<li><strong>TFP410:</strong> A DVI 1.0-compliant 165 MHz transmitter
+that accepted a 24-bit or 12-bit dual-edge clocked parallel digital
+input and generated high-speed TMDS serial lines. It was a common
+alternative to Silicon Image parts on professional and desktop
+cards.</li>
+<li><strong>TFP510:</strong> An enhanced version supporting higher clock
+stability and dual-pixel interfaces.</li>
+</ul></li>
+<li><strong>Chrontel:</strong>
+<ul>
+<li><strong>CH7301:</strong> A transmitter IC widely deployed on OEM
+systems and low-profile cards. It integrated DVI 1.0 TMDS output
+capability alongside analog TV-out or secondary CRT outputs.</li>
+</ul></li>
+</ul>
+<h3 id="integrated-gpu-tmds-transmitters">Integrated GPU TMDS
+Transmitters</h3>
+<p>By the mid-2000s, graphics hardware manufacturers began moving TMDS
+serializers directly into the main processor package:</p>
+<ul>
+<li><strong>ATI/AMD:</strong> Integrated internal TMDS transmitters
+starting with the Radeon 9000 (RV250) and Radeon 9600 (RV350) series for
+single-link DVI, though external chips (such as the SiI 164) were often
+retained alongside the GPU to supply a second digital output or
+establish dual-link functionality until the Radeon X1000 and HD 2000
+series fully integrated dual dual-link controllers.</li>
+<li><strong>NVIDIA:</strong> Transitioned with the GeForce FX
+(NV30/NV35) and GeForce 6 (NV40) generations, initially integrating one
+TMDS encoder on the GPU core, later embedding dual native encoders to
+drive dual-link DVI natively without external silicon.</li>
+</ul>
+<h3 id="active-level-shifters-and-retimers">Active Level Shifters and
+Retimers</h3>
+<p>As native DVI output was phased out in favor of DisplayPort, graphics
+cards supporting DVI-D output often utilize active level-shifting
+transceiver chips. These active ICs translate the low-voltage,
+AC-coupled differential signals generated by the GPU's DisplayPort
+dual-mode (DP++) physical layer into the DC-coupled 3.3V TMDS signaling
+required by the DVI specification:</p>
+<ul>
+<li><strong>Parade Technologies:</strong> Produces transmitters such as
+the <strong>PS171</strong>, <strong>PS8121</strong>, and
+<strong>PS8402</strong>, which function as active TMDS level shifters
+and jitter-reducing retimers.</li>
+<li><strong>NXP Semiconductors:</strong> Supplies ICs like the
+<strong>PTN3360</strong> and <strong>PTN3381</strong> families, standard
+high-speed level shifters capable of conditioning and converting video
+streams to DVI/HDMI TMDS signal levels.</li>
+<li><strong>Texas Instruments:</strong> Manufactures the
+<strong>SN75DP119</strong> and <strong>SN75DP139</strong> series,
+designed to interface embedded GPU display controllers with standard DVI
+output ports while ensuring TMDS clock and data integrity.</li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

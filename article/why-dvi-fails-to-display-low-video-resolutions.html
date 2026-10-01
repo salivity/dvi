@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why DVI Fails to Display Low Video Resolutions - dvi</title>
+    <meta name="description" content="Many users encounter blank screens or "Out of Range" errors when attempting to display legacy, low-resolution video signals—such as 320x200 or 320x240 from vintage computers and game consoles—on digital DVI monitors. This issue stems from a combinati">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-dvi-fails-to-display-low-video-resolutions">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why DVI Fails to Display Low Video Resolutions - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-dvi-fails-to-display-low-video-resolutions" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Many users encounter blank screens or "Out of Range" errors when attempting to display legacy, low-resolution video signals—such as 320x200 or 320x240 from vintage computers and game consoles—on digital DVI monitors. This issue stems from a combinati" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-dvi-fails-to-display-low-video-resolutions">Why DVI Fails to
+Display Low Video Resolutions</h1>
+<p>Many users encounter blank screens or "Out of Range" errors when
+attempting to display legacy, low-resolution video signals—such as
+320x200 or 320x240 from vintage computers and game consoles—on digital
+DVI monitors. This issue stems from a combination of the digital DVI
+specification's minimum pixel clock limits, phase-locked loop hardware
+constraints, missing support in modern display scalers, and digital
+handshake limitations.</p>
+<h3 id="minimum-pixel-clock-and-tmds-limits">Minimum Pixel Clock and
+TMDS Limits</h3>
+<p>Digital DVI relies on Transition-Minimized Differential Signaling
+(TMDS) to transmit uncompressed pixel data. The DVI specification
+establishes a minimum TMDS clock rate of 25.175 MHz. Standard 640x480
+resolution at 60 Hz operates right at this threshold. Lower video modes
+require significantly lower clock frequencies; for example, an unscaled
+320x240 signal at 60 Hz uses a pixel clock of roughly 6.4 MHz. Because
+the TMDS transmitter and receiver circuits cannot function below ~25
+MHz, they fail to transmit or interpret raw sub-VGA signals over a
+purely digital link.</p>
+<h3 id="phase-locked-loop-pll-constraints">Phase-Locked Loop (PLL)
+Constraints</h3>
+<p>Receivers inside DVI monitors use a Phase-Locked Loop (PLL) circuit
+to synchronize with the incoming clock signal. Hardware manufacturers
+calibrate these PLLs to lock within a specific operating band (typically
+25 MHz to 165 MHz for single-link DVI). When a source outputs a signal
+with a pixel clock lower than the PLL's operational range, the monitor
+cannot achieve phase lock, resulting in an immediate loss of signal or a
+black screen.</p>
+<h3 id="monitor-scaler-limitations">Monitor Scaler Limitations</h3>
+<p>Unlike analog Cathode Ray Tube (CRT) monitors that adjust electron
+beam sweeps dynamically, digital flat-panel displays have a fixed matrix
+of physical pixels. Every incoming signal must be processed by an
+internal display scaler to map the source image to the monitor's native
+panel resolution. To reduce manufacturing costs, modern display scalers
+prioritize high-definition formats and omit timing tables for legacy,
+non-standard, or extremely low resolutions. If the scaler’s firmware
+does not recognize the horizontal and vertical timing parameters, the
+monitor displays an "Out of Range" or "Unsupported Signal" prompt.</p>
+<h3 id="digital-dvi-d-vs-analog-dvi-a">Digital DVI-D vs. Analog
+DVI-A</h3>
+<p>DVI ports come in several variants: DVI-D (digital only), DVI-A
+(analog only), and DVI-I (integrated digital and analog). Analog VGA
+standards have no hard minimum pixel clock, allowing vintage CRT
+monitors to accept very low frequencies. However, when connecting
+directly over DVI-D, the source cannot fall back to analog signaling.
+Unless a modern graphics card or upscaler actively performs
+"pixel-doubling"—transmitting each pixel multiple times to artificially
+raise the pixel clock above 25 MHz—a pure digital DVI link cannot carry
+the signal.</p>
+<h3 id="edid-negotiation">EDID Negotiation</h3>
+<p>Modern display pipelines rely on Extended Display Identification Data
+(EDID) stored inside the monitor's internal EEPROM. When a device
+connects via DVI, the source queries the monitor's EDID for supported
+modes. Because low resolutions are almost never listed in modern EDID
+profiles, modern GPUs and operating systems will often refuse to
+initialize the video mode, leading to handshake failures before a frame
+is even sent to the display.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

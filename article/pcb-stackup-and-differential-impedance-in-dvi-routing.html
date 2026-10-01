@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCB Stackup and Differential Impedance in DVI Routing - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) video transmission relies on high-speed Transition Minimized Differential Signaling (TMDS), which mandates a tightly controlled 100-ohm differential impedance. The PCB layer stackup directly governs this impedance by defini">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/pcb-stackup-and-differential-impedance-in-dvi-routing">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PCB Stackup and Differential Impedance in DVI Routing - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/pcb-stackup-and-differential-impedance-in-dvi-routing" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) video transmission relies on high-speed Transition Minimized Differential Signaling (TMDS), which mandates a tightly controlled 100-ohm differential impedance. The PCB layer stackup directly governs this impedance by defini" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="pcb-stackup-and-differential-impedance-in-dvi-routing">PCB
+Stackup and Differential Impedance in DVI Routing</h1>
+<p>Digital Visual Interface (DVI) video transmission relies on
+high-speed Transition Minimized Differential Signaling (TMDS), which
+mandates a tightly controlled 100-ohm differential impedance. The PCB
+layer stackup directly governs this impedance by defining the dielectric
+constant, the thickness of the dielectric layers, and the physical
+distance between the signal traces and their reference planes. Designing
+an optimized stackup ensures stable electromagnetic coupling, minimizes
+signal reflections, suppresses electromagnetic interference (EMI), and
+preserves signal integrity across all DVI data and clock lanes.</p>
+<h3 id="the-100-ohm-impedance-requirement-in-dvi">The 100-Ohm Impedance
+Requirement in DVI</h3>
+<p>DVI video channels transmit high-speed digital video using four
+differential pairs: three color channels (Red, Green, Blue) and one
+clock channel. The DVI specification mandates that these TMDS pairs
+maintain a differential impedance (<span
+class="math inline">\(Z_{diff}\)</span>) of 100 ohms <span
+class="math inline">\(\pm 10\%\)</span>. Deviations from this target
+cause impedance discontinuities, leading to signal reflections, reduced
+eye diagram openings, jitter, and display artifacts or complete loss of
+sync at high resolutions.</p>
+<h3 id="dielectric-thickness-and-reference-plane-distance">Dielectric
+Thickness and Reference Plane Distance</h3>
+<p>In any PCB stackup, the dielectric thickness (<span
+class="math inline">\(H\)</span>)—the height between the signal layer
+and the adjacent reference plane—is the most sensitive parameter
+influencing impedance:</p>
+<ul>
+<li><strong>Thinner Dielectrics:</strong> Placing a signal layer closer
+to an unbroken reference ground plane increases trace-to-plane
+capacitance, which lowers both single-ended and differential
+impedance.</li>
+<li><strong>Thicker Dielectrics:</strong> Increasing the height lowers
+capacitance and raises impedance, requiring wider traces to bring the
+impedance back down to 100 ohms.</li>
+</ul>
+<p>Controlling the prepreg and core thickness directly enables the
+designer to balance trace width with the physical routing constraints of
+DVI connector pinouts.</p>
+<h3 id="trace-geometry-and-inter-trace-coupling">Trace Geometry and
+Inter-Trace Coupling</h3>
+<p>Differential impedance is a function of odd-mode impedance (<span
+class="math inline">\(Z_{diff} = 2 \times Z_{odd}\)</span>), which
+depends on the coupling between the two traces of a pair:</p>
+<ul>
+<li><strong>Trace Spacing (<span
+class="math inline">\(S\)</span>):</strong> Bringing the two traces
+closer together increases mutual capacitive and inductive coupling,
+reducing differential impedance.</li>
+<li><strong>Trace Width (<span
+class="math inline">\(W\)</span>):</strong> Wider traces increase
+capacitance to the reference plane, decreasing impedance.</li>
+<li><strong>Aspect Ratio in the Stackup:</strong> If the stackup
+specifies a thick dielectric, maintaining 100 ohms requires either
+excessively wide traces or wider spacing, which consumes valuable board
+space and complicates escape routing under high-density DVI connectors.
+A stackup with a thinner dielectric (e.g., 3 to 5 mils) allows for
+narrower traces and tighter spacing (e.g., a 4/4 or 5/5 mil
+width/spacing rule), which closely matches connector pad pitch.</li>
+</ul>
+<h3 id="dielectric-constant-d_k-and-material-selection">Dielectric
+Constant (<span class="math inline">\(D_k\)</span>) and Material
+Selection</h3>
+<p>The relative permittivity (<span class="math inline">\(D_k\)</span>)
+of the substrate material dictates the phase velocity of the TMDS
+signals and influences trace capacitance. Standard FR-4 typically has a
+<span class="math inline">\(D_k\)</span> between 4.2 and 4.5, while
+high-frequency laminates feature a lower <span
+class="math inline">\(D_k\)</span> (around 3.5 to 3.8).</p>
+<p>A higher <span class="math inline">\(D_k\)</span> increases
+capacitance and lowers impedance for a given geometry. When formulating
+the stackup, engineers must account for the effective <span
+class="math inline">\(D_k\)</span>, especially when using core versus
+prepreg layers, as resin content variations across the stackup can alter
+the actual impedance of the differential pairs.</p>
+<h3 id="microstrip-vs-stripline-configurations">Microstrip vs. Stripline
+Configurations</h3>
+<p>The stackup determines whether DVI traces are routed as microstrip
+(outer layers) or stripline (inner layers):</p>
+<ul>
+<li><strong>Surface Microstrip (Top/Bottom Layers):</strong> Traces are
+referenced to a single ground plane beneath them and are surrounded by
+air and solder mask on top. This configuration provides faster
+propagation velocities and avoids layer-transition vias, but it exposes
+TMDS signals to ambient noise and radiates more EMI.</li>
+<li><strong>Symmetrical/Asymmetrical Stripline (Internal
+Layers):</strong> Traces are sandwiched between two reference ground
+planes. Stripline configurations provide superior shielding against EMI
+and cross-talk. However, having two ground planes significantly
+increases capacitance, meaning traces must be designed narrower to
+maintain the target 100-ohm impedance compared to a surface
+microstrip.</li>
+</ul>
+<h3 id="return-paths-and-reference-plane-continuity">Return Paths and
+Reference Plane Continuity</h3>
+<p>Differential signals still require a continuous reference plane to
+carry high-frequency return currents. The layer stackup must place a
+dedicated, unbroken Ground (GND) plane immediately adjacent to every DVI
+routing layer.</p>
+<p>Referencing a high-speed TMDS pair to a power plane or routing across
+plane splits creates severe impedance discontinuities and loop
+inductance. If a DVI pair must change layers within the stackup, the
+stackup should provide ground layers on both target layers, supplemented
+with ground return vias placed immediately adjacent to the signal vias
+to keep the return loop small and maintain impedance stability.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

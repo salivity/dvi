@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDCP Key Exchange: DVI vs HDMI Differences - dvi</title>
+    <meta name="description" content="High-bandwidth Digital Content Protection (HDCP) safeguards digital video transmissions against unauthorized interception. While DVI and HDMI share the same underlying cryptographic handshake defined in HDCP 1.x, their physical hardware implementations a">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/hdcp-key-exchange-dvi-vs-hdmi-differences">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HDCP Key Exchange: DVI vs HDMI Differences - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/hdcp-key-exchange-dvi-vs-hdmi-differences" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="High-bandwidth Digital Content Protection (HDCP) safeguards digital video transmissions against unauthorized interception. While DVI and HDMI share the same underlying cryptographic handshake defined in HDCP 1.x, their physical hardware implementations a" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="hdcp-key-exchange-dvi-vs-hdmi-differences">HDCP Key Exchange:
+DVI vs HDMI Differences</h1>
+<p>High-bandwidth Digital Content Protection (HDCP) safeguards digital
+video transmissions against unauthorized interception. While DVI and
+HDMI share the same underlying cryptographic handshake defined in HDCP
+1.x, their physical hardware implementations and protocol handling
+diverge significantly. This article breaks down how the key exchange and
+authentication processes compare between DVI and HDMI, focusing on the
+communication bus, data payload handling, repeater topology, and
+generational hardware protocol shifts.</p>
+<h3 id="the-baseline-key-exchange-shared-foundations">The Baseline Key
+Exchange: Shared Foundations</h3>
+<p>At their core, both DVI and HDMI utilize the Display Data Channel
+(DDC)—an <span class="math inline">\(I^2C\)</span>-compatible two-wire
+serial interface—to execute the initial authentication handshake under
+HDCP 1.x.</p>
+<p>During this initial exchange, the transmitter (source) sends a 64-bit
+pseudo-random value (<span class="math inline">\(A_n\)</span>) and its
+40-bit Key Selection Vector (<span class="math inline">\(AKSV\)</span>)
+to the receiver (sink). In response, the receiver provides its own <span
+class="math inline">\(BKSV\)</span>. Both devices calculate a shared
+secret value using private keys stored in their hardware. They derive
+matching verification values (<span class="math inline">\(R_0\)</span>
+and <span class="math inline">\(R_0&#39;\)</span>); if the values match
+within 100 milliseconds, the link is considered authenticated, and
+encrypted transmission over the Transition-Minimized Differential
+Signaling (TMDS) lines begins.</p>
+<h3 id="data-stream-scope-and-auxiliary-encryption">Data Stream Scope
+and Auxiliary Encryption</h3>
+<p>The primary hardware divergence during and after the exchange lies in
+how the cipher is synchronized with the transmitted data:</p>
+<ul>
+<li><strong>DVI Implementation:</strong> DVI is strictly a video
+interface. The cipher stream generated after authentication is XORed
+exclusively with active video pixel data. Cipher synchronization resets
+during the vertical blanking intervals (VBLANK), keeping hardware state
+machines relatively simple.</li>
+<li><strong>HDMI Implementation:</strong> HDMI carries audio and
+secondary data packets within "Data Island" periods alongside standard
+video. HDMI hardware must maintain cryptographic continuity across both
+active video and auxiliary packets. Consequently, HDMI implements
+Enhanced Encryption Status Signaling (EESS) or Advanced Encryption
+Status Signaling (AESS). The HDMI transmitter informs the receiver
+hardware of exact packet boundaries via control signals embedded in the
+TMDS stream, ensuring the cipher remains synchronized between audio and
+video frames.</li>
+</ul>
+<h3 id="repeater-architecture-and-topology-handling">Repeater
+Architecture and Topology Handling</h3>
+<p>Another operational difference is how hardware handles multi-device
+topologies:</p>
+<ul>
+<li><strong>DVI Topologies:</strong> DVI hardware was designed primarily
+for direct, point-to-point connections between a computer and a monitor.
+While the HDCP standard technically allows repeaters on DVI, consumer
+DVI hardware rarely incorporates the upstream key propagation logic
+needed to verify downstream devices.</li>
+<li><strong>HDMI Topologies:</strong> HDMI hardware routinely functions
+within complex home theater environments involving Audio/Video Receivers
+(AVRs), matrix switches, and soundbars. HDMI hardware incorporates
+dedicated registers to handle the repeater protocol. During
+authentication, an HDMI repeater must compile a downstream list of
+attached BKSVs, calculate a SHA-1 hash (<span
+class="math inline">\(V\)</span>), verify device depth and count limits
+(up to 7 levels and 127 devices in HDCP 1.4), and transmit this list
+upstream before transmission can proceed.</li>
+</ul>
+<h3 id="evolution-to-hdcp-2x">Evolution to HDCP 2.x</h3>
+<p>The most significant structural difference in modern hardware is
+protocol support:</p>
+<ul>
+<li><strong>DVI Constraint to HDCP 1.x:</strong> DVI hardware is
+essentially limited to HDCP 1.3 and 1.4, which rely on pre-computed
+40-key private matrices and symmetric verification.</li>
+<li><strong>HDMI Transition to HDCP 2.2+:</strong> Modern HDMI standards
+(HDMI 2.0 and later) adopted HDCP 2.2 and 2.3 for 4K and 8K content
+protection. HDCP 2.x completely redesigns the key exchange:
+<ul>
+<li>It replaces the 40-key matrix exchange with asymmetric public-key
+cryptography (RSA-2048 or ECDSA P-256) and AES-128.</li>
+<li>It introduces a mandatory Locality Check, where the transmitter
+sends an ephemeral challenge and verifies that the receiver responds
+within a tight round-trip time (under 20 milliseconds) to prevent
+transmission over long-distance network extenders.</li>
+<li>These commands communicate over HDMI's Status and Control Data
+Channel (SCDC) via <span class="math inline">\(I^2C\)</span>, a hardware
+feature unavailable in legacy DVI hardware.</li>
+</ul></li>
+</ul></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

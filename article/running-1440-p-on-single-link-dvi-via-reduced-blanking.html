@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Running 1440p on Single-Link DVI via Reduced Blanking - dvi</title>
+    <meta name="description" content="This article explains how modifying display timing parameters—specifically shrinking the vertical blanking porch—reduces the overall pixel clock frequency, enabling high-resolution 1440p (2560x1440) video transmission across bandwidth-constrained sin">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/running-1440-p-on-single-link-dvi-via-reduced-blanking">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Running 1440p on Single-Link DVI via Reduced Blanking - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/running-1440-p-on-single-link-dvi-via-reduced-blanking" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="This article explains how modifying display timing parameters—specifically shrinking the vertical blanking porch—reduces the overall pixel clock frequency, enabling high-resolution 1440p (2560x1440) video transmission across bandwidth-constrained sin" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="running-1440p-on-single-link-dvi-via-reduced-blanking">Running
+1440p on Single-Link DVI via Reduced Blanking</h1>
+<p>This article explains how modifying display timing
+parameters—specifically shrinking the vertical blanking porch—reduces
+the overall pixel clock frequency, enabling high-resolution 1440p
+(2560x1440) video transmission across bandwidth-constrained single-link
+DVI connections.</p>
+<h3 id="the-single-link-dvi-bandwidth-limit">The Single-Link DVI
+Bandwidth Limit</h3>
+<p>Single-link DVI relies on three Transition-Minimized Differential
+Signaling (TMDS) data lanes. By standard specification, single-link DVI
+is capped at a 165 MHz pixel clock, translating to a maximum throughput
+of roughly 3.96 Gbps (or 4.95 Gbps at 10-bit line coding). Modern 1440p
+resolutions at standard timings typically require dual-link DVI or
+modern standards like HDMI and DisplayPort, because a standard 2560x1440
+signal at 60 Hz demands a pixel clock of roughly 241.5 MHz—far exceeding
+the standard 165 MHz threshold.</p>
+<h3 id="the-role-of-blanking-porches-in-display-timings">The Role of
+Blanking Porches in Display Timings</h3>
+<p>A video signal transmits more than just the active pixels visible on
+the screen. Inherited from the era of Cathode Ray Tube (CRT) monitors,
+video signals include blanking intervals: periods during which no image
+data is rendered.</p>
+<p>The vertical interval consists of:</p>
+<ul>
+<li><strong>Vertical Front Porch:</strong> The pause between the end of
+the active frame and the synchronization pulse.</li>
+<li><strong>Vertical Sync (V-Sync):</strong> The pulse instructing the
+display to prepare for the next frame.</li>
+<li><strong>Vertical Back Porch:</strong> The pause following
+synchronization before the next frame's active scanlines begin.</li>
+</ul>
+<p>Together with the active vertical resolution (1440 lines), these
+blanking intervals define the "Total Vertical Lines" transmitted in each
+cycle.</p>
+<h3 id="how-reducing-the-vertical-porch-lowers-bandwidth">How Reducing
+the Vertical Porch Lowers Bandwidth</h3>
+<p>The total bandwidth required by a video stream is dictated directly
+by the pixel clock, which is calculated as follows:</p>
+<p><span class="math display">\[\text{Pixel Clock} = \text{Total
+Horizontal Pixels} \times \text{Total Vertical Lines} \times
+\text{Refresh Rate}\]</span></p>
+<p>Because liquid crystal displays (LCDs) do not require physical
+electron guns to reposition themselves between frames, long blanking
+intervals are technically redundant.</p>
+<p>By drastically reducing the vertical front and back porches (along
+with horizontal blanking intervals, commonly implemented via Coordinated
+Video Timings-Reduced Blanking, or CVT-RB):</p>
+<ol type="1">
+<li><strong>Total Frame Size Decreases:</strong> The stream eliminates
+dozens or hundreds of empty, non-data lines that would otherwise be
+calculated and transmitted per frame.</li>
+<li><strong>Frequency Requirements Drop:</strong> Because fewer total
+lines must be sent per second to maintain the target refresh rate, the
+necessary pixel clock drops significantly toward the active pixel
+floor.</li>
+<li><strong>Bandwidth Fits DVI Constraints:</strong> Minimizing the
+vertical blanking overhead lowers the data rate to a level that can
+either operate near the absolute single-link limit or fall within the
+real-world operational tolerance of modern single-link transmitters
+(which can often reach ~200–225 MHz without signal breakdown), or allow
+1440p transmission at targeted refresh rates (such as 30 Hz to 45 Hz)
+directly within the strict 165 MHz specification.</li>
+</ol></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

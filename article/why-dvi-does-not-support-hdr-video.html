@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why DVI Does Not Support HDR Video - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) cannot support High Dynamic Range (HDR) video primarily due to its inability to transmit HDR metadata and its architectural limitation to standard 8-bit color depth. Designed in 1999, the DVI standard was frozen well before">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-dvi-does-not-support-hdr-video">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why DVI Does Not Support HDR Video - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-dvi-does-not-support-hdr-video" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) cannot support High Dynamic Range (HDR) video primarily due to its inability to transmit HDR metadata and its architectural limitation to standard 8-bit color depth. Designed in 1999, the DVI standard was frozen well before" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-dvi-does-not-support-hdr-video">Why DVI Does Not Support HDR
+Video</h1>
+<p>Digital Visual Interface (DVI) cannot support High Dynamic Range
+(HDR) video primarily due to its inability to transmit HDR metadata and
+its architectural limitation to standard 8-bit color depth. Designed in
+1999, the DVI standard was frozen well before the advent of modern HDR
+standards, lacking the signaling protocols, extended color spaces, and
+auxiliary data channels necessary to communicate HDR luminance and color
+grading information between a source and a display.</p>
+<h3 id="absence-of-auxiliary-metadata-transmission">Absence of Auxiliary
+Metadata Transmission</h3>
+<p>The single most critical limiting factor preventing DVI from
+supporting HDR is its inability to carry metadata. HDR formats, such as
+HDR10, HDR10+, and Dolby Vision, rely on static or dynamic metadata sent
+via auxiliary data packets (such as CTA-861 InfoFrames). This metadata
+instructs the display on how to tone-map content based on peak
+brightness and color volume.</p>
+<p>DVI utilizes standard Transition-Minimized Differential Signaling
+(TMDS) solely to transmit active video pixel data during the display
+refresh cycle. Unlike HDMI—which evolved from DVI by utilizing the
+blanking intervals between video frames to send "Data Island" packets
+containing audio and metadata—the original DVI specification provides no
+native mechanism to packetize and transmit HDR metadata. Without this
+data, a connected monitor cannot trigger an HDR mode or interpret
+brightness targets.</p>
+<h3 id="color-depth-and-color-space-restrictions">Color Depth and Color
+Space Restrictions</h3>
+<p>HDR content requires a minimum bit depth of 10 bits per channel (1
+billion colors) to render wide dynamic ranges without noticeable color
+banding, alongside wide color gamuts such as ITU-R Recommendation
+BT.2020.</p>
+<p>The DVI specification was built strictly around 8-bit RGB color depth
+using the standard sRGB (Rec. 709) color space. It lacks the internal
+signaling architecture to negotiate or decode modern Electro-Optical
+Transfer Functions (EOTFs), such as Perceptual Quantizer (PQ/SMPTE ST
+2084) or Hybrid Log-Gamma (HLG), which define how digital values
+translate into absolute light levels.</p>
+<h3 id="specification-obsolescence">Specification Obsolescence</h3>
+<p>While Dual-Link DVI possessed sufficient raw physical bandwidth to
+theoretically carry uncompressed 10-bit video at lower resolutions, the
+standard was officially abandoned by the Digital Display Working Group
+(DDWG) before updates could be implemented. Because the interface was
+never revised to support modern handshake protocols or auxiliary data
+framing, display manufacturers migrated to HDMI and DisplayPort, leaving
+DVI permanently incapable of native HDR playback.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

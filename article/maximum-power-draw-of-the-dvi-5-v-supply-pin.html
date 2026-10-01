@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximum Power Draw of the DVI +5V Supply Pin - dvi</title>
+    <meta name="description" content="The DVI +5V supply pin provides low-voltage power from the video source to the display to read Extended Display Identification Data (EDID) even when the display is powered off. Under the official Digital Visual Interface (DVI 1.0) specification, the sour">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/maximum-power-draw-of-the-dvi-5-v-supply-pin">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Maximum Power Draw of the DVI +5V Supply Pin - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/maximum-power-draw-of-the-dvi-5-v-supply-pin" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="The DVI +5V supply pin provides low-voltage power from the video source to the display to read Extended Display Identification Data (EDID) even when the display is powered off. Under the official Digital Visual Interface (DVI 1.0) specification, the sour" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="maximum-power-draw-of-the-dvi-5v-supply-pin">Maximum Power Draw
+of the DVI +5V Supply Pin</h1>
+<p>The DVI +5V supply pin provides low-voltage power from the video
+source to the display to read Extended Display Identification Data
+(EDID) even when the display is powered off. Under the official Digital
+Visual Interface (DVI 1.0) specification, the source must supply a
+minimum of 55 mA at a nominal 5 volts, which establishes the maximum
+allowed power draw for a fully compliant sink device at 55 mA, or
+approximately 0.275 watts (275 mW).</p>
+<h3 id="dvi-pin-14-specifications">DVI Pin 14 Specifications</h3>
+<p>On both single-link and dual-link DVI connectors (including DVI-D and
+DVI-I), Pin 14 is dedicated to the +5V power line. The key electrical
+tolerances defined by the DVI specification are:</p>
+<ul>
+<li><strong>Nominal Voltage:</strong> +5.0 V</li>
+<li><strong>Allowable Voltage Range:</strong> +4.75 V to +5.25 V (±5%
+tolerance)</li>
+<li><strong>Standard Current Limit:</strong> 55 mA minimum output from
+the source</li>
+<li><strong>Permissible Power Consumption:</strong> 0.275 W (275 mW)
+maximum for compliant sink devices</li>
+</ul>
+<h3 id="purpose-of-the-5v-line">Purpose of the +5V Line</h3>
+<p>The primary function of Pin 14 is to energize the Display Data
+Channel (DDC) circuitry and the I2C-compatible EEPROM inside the
+display. By utilizing power directly from the graphics card or video
+source, the computer can query the monitor's supported resolutions,
+refresh rates, and color profiles via EDID before the monitor itself is
+powered on.</p>
+<h3 id="host-protections-and-real-world-current-limits">Host Protections
+and Real-World Current Limits</h3>
+<p>While a display or downstream device must not rely on more than 55 mA
+to ensure compatibility with all DVI sources, many graphics cards and
+host devices implement current limits higher than the baseline
+specification.</p>
+<p>To protect internal circuitry against short circuits or faulty
+cables, host devices typically incorporate a current-limiting fuse or
+resettable polyfuse on Pin 14. These protection circuits are generally
+rated between 500 mA and 1.0 A. However, relying on this extra headroom
+is not supported by the DVI standard and can result in blown fuses,
+voltage drops, or system shutdown on hardware strictly designed to
+standard tolerances.</p>
+<h3 id="implications-for-active-adapters">Implications for Active
+Adapters</h3>
+<p>Active signal converters, such as DVI-to-VGA or DVI-to-HDMI adapters,
+frequently attempt to draw operating power from Pin 14. If an active
+adapter consumes more than the standard 55 mA (0.275 W) without an
+external power source, it may function inconsistently across different
+host graphics cards or fail to operate entirely on strictly compliant
+systems. Devices requiring more than 275 mW should utilize external
+power or a dedicated USB power tap.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

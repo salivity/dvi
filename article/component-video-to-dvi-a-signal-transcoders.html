@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Video to DVI-A Signal Transcoders - dvi</title>
+    <meta name="description" content="Displaying analog component video on a DVI-A screen requires a specialized analog transcoder because the two formats use fundamentally different color spaces and synchronization methods. While component video utilizes the YPbPr format with sync multiplex">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/component-video-to-dvi-a-signal-transcoders">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Component Video to DVI-A Signal Transcoders - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/component-video-to-dvi-a-signal-transcoders" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Displaying analog component video on a DVI-A screen requires a specialized analog transcoder because the two formats use fundamentally different color spaces and synchronization methods. While component video utilizes the YPbPr format with sync multiplex" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="component-video-to-dvi-a-signal-transcoders">Component Video to
+DVI-A Signal Transcoders</h1>
+<p>Displaying analog component video on a DVI-A screen requires a
+specialized analog transcoder because the two formats use fundamentally
+different color spaces and synchronization methods. While component
+video utilizes the YPbPr format with sync multiplexed onto the luma
+channel, DVI-A relies on an analog RGBHV format with dedicated color and
+timing lines. This article explores why passive conversion fails, how
+active transcoders bridge the gap, and the prominent hardware solutions
+used to achieve this conversion.</p>
+<h3 id="the-signal-mismatch-ypbpr-vs-rgbhv">The Signal Mismatch: YPbPr
+vs. RGBHV</h3>
+<p>Passive pin-to-pin adapters cannot connect component sources to a
+DVI-A display. Component video separates visual information into luma
+(<span class="math inline">\(Y\)</span>) and two color-difference
+channels (<span class="math inline">\(Pb\)</span> and <span
+class="math inline">\(Pr\)</span>), embedding horizontal and vertical
+sync pulses directly onto the <span class="math inline">\(Y\)</span>
+(green) cable.</p>
+<p>In contrast, DVI-A (the analog-only subset of the DVI specification)
+requires an RGBHV signal:</p>
+<ul>
+<li><strong>RGB:</strong> Dedicated Red, Green, and Blue analog
+lines.</li>
+<li><strong>HV:</strong> Separate Horizontal and Vertical
+synchronization lines (or combined composite sync on select
+hardware).</li>
+</ul>
+<p>Because DVI-A ports mirror the electrical signaling of standard
+15-pin VGA displays, an active signal transcoder must perform two
+simultaneous tasks: real-time color-space matrixing (<span
+class="math inline">\(YPbPr \to RGB\)</span>) and sync
+extraction/separation.</p>
+<h3 id="dedicated-transcoder-hardware-solutions">Dedicated Transcoder
+Hardware Solutions</h3>
+<p>During the transition from high-end analog home theater setups and
+CRT displays to early digital interfaces, several manufacturers
+engineered active transcoders capable of driving DVI-A or RGBHV
+displays.</p>
+<h4 id="1-extron-cvc-series">1. Extron CVC Series</h4>
+<p>Extron produced commercial-grade converters, such as the
+<strong>Extron CVC 200</strong> and <strong>CVC 300</strong>. These
+units accepted high-definition and standard-definition YPbPr component
+signals via BNC or RCA connectors and actively transcoded them into
+RGBHV. Because the output of these units adhered to strict RGBHV
+electrical timings, they could feed DVI-A displays directly via a
+passive HD15/BNC-to-DVI-A adapter without inducing signal degradation or
+phase issues.</p>
+<h4 id="2-key-digital-transcoders">2. Key Digital Transcoders</h4>
+<p>Key Digital was widely known in the early HDTV era for products like
+the <strong>KD-CTCA2</strong> and <strong>KD-CTCA3</strong>. These were
+active, high-bandwidth component-to-VGA/RGBHV converters. They featured
+broad resolution support (from 480i up to 1080i/1080p) and low-noise
+matrixing circuits, allowing game consoles (such as the original Xbox or
+PlayStation 2) and DVD players to connect cleanly to DVI-A-equipped
+monitors.</p>
+<h4 id="3-audio-authority-9a60-and-9a62">3. Audio Authority 9A60 and
+9A62</h4>
+<p>The <strong>Audio Authority 9A60</strong> (and its high-bandwidth
+successor, the <strong>9A62</strong>) was an industry-standard solution
+for bridging consumer YPbPr sources to computer monitors and commercial
+projectors. The device automatically detected video formats from 480i
+through 1080p, stripped the sync from the <span
+class="math inline">\(Y\)</span> signal, calculated the separate <span
+class="math inline">\(R\)</span>, <span
+class="math inline">\(G\)</span>, and <span
+class="math inline">\(B\)</span> channels, and generated clean
+horizontal and vertical sync signals suitable for DVI-A analog
+inputs.</p>
+<h4 id="4-crescendo-systems-tc1500--tc1600-series">4. Crescendo Systems
+(TC1500 / TC1600 Series)</h4>
+<p>Crescendo Systems engineered transcoders specifically targeted at CRT
+projectors and high-end analog monitors. Devices like the
+<strong>TC1600</strong> were low-noise, wideband transcoders designed to
+preserve black levels and color accuracy when converting high-definition
+component video into RGBHV, matching the exact analog pins inside a
+DVI-I or DVI-A receptacle.</p>
+<h3 id="implementing-the-physical-connection">Implementing the Physical
+Connection</h3>
+<p>Most standalone transcoders outputted RGBHV via an HD-15 (VGA) port
+or five discrete BNC connectors. To interface these devices with a DVI-A
+screen:</p>
+<ol type="1">
+<li>The component source (YPbPr) plugged directly into the active
+transcoder's input.</li>
+<li>The transcoder mathematically shifted the color space to RGB and
+stripped sync into H-sync and V-sync lines.</li>
+<li>The transcoder's RGBHV output connected to the display using a
+passive VGA-to-DVI-A or BNC-to-DVI-A cable.</li>
+</ol>
+<p>Because DVI-A includes dedicated pins for analog red, green, blue,
+horizontal sync, and vertical sync (pins C1 through C5, along with pin
+8), the transcoded signal bypassed the digital DVI receiver entirely,
+delivering an analog video feed directly to the display's internal
+analog-to-digital converter or CRT chassis.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

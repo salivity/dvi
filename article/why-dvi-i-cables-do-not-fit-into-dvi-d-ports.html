@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why DVI-I Cables Do Not Fit into DVI-D Ports - dvi</title>
+    <meta name="description" content="Connector designers intentionally made DVI-I cables physically incompatible with DVI-D ports to prevent users from attempting electrically impossible connections. By altering the pin layout—specifically adding four analog pins and a wider ground blade">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/why-dvi-i-cables-do-not-fit-into-dvi-d-ports">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Why DVI-I Cables Do Not Fit into DVI-D Ports - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/why-dvi-i-cables-do-not-fit-into-dvi-d-ports" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Connector designers intentionally made DVI-I cables physically incompatible with DVI-D ports to prevent users from attempting electrically impossible connections. By altering the pin layout—specifically adding four analog pins and a wider ground blade" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="why-dvi-i-cables-do-not-fit-into-dvi-d-ports">Why DVI-I Cables
+Do Not Fit into DVI-D Ports</h1>
+<p>Connector designers intentionally made DVI-I cables physically
+incompatible with DVI-D ports to prevent users from attempting
+electrically impossible connections. By altering the pin
+layout—specifically adding four analog pins and a wider ground blade to
+DVI-I—the Digital Display Working Group (DDWG) implemented a classic
+"foolproof" design rule: if a cable can carry an analog signal that the
+receiving port cannot read, the cable should physically refuse to plug
+in.</p>
+<h3 id="the-technical-difference-between-dvi-i-and-dvi-d">The Technical
+Difference Between DVI-I and DVI-D</h3>
+<p>The Digital Visual Interface standard was introduced during the
+transition from cathode-ray tube (CRT) monitors to flat-panel liquid
+crystal displays (LCDs). To ease this transition, the DDWG created
+multiple variations of the same interface:</p>
+<ul>
+<li><strong>DVI-D (Digital Only):</strong> Designed purely for digital
+signals. It features up to 24 digital pins (for single-link or dual-link
+configurations) and a single, flat horizontal ground slot.</li>
+<li><strong>DVI-I (Integrated):</strong> Designed to carry both digital
+and analog signals across a single interface. It contains the standard
+digital pins alongside four additional analog pins (two above and two
+below the horizontal blade) dedicated to red, green, blue, and
+horizontal sync signals, with a broader ground blade.</li>
+</ul>
+<h3 id="preventing-silent-failures-and-user-error">Preventing "Silent
+Failures" and User Error</h3>
+<p>The physical mismatch is not a flaw; it is an intentional barrier
+known in engineering as <em>poka-yoke</em> (mistake-proofing).</p>
+<p>A DVI-D port on a graphics card or monitor lacks the internal wiring,
+digital-to-analog converters (DACs), and analog receivers required to
+interpret analog signals. If a DVI-I cable—frequently used to connect to
+legacy VGA monitors via passive adapters—could plug into a DVI-D port,
+the user would experience a completely blank screen despite the cable
+fitting securely.</p>
+<p>By making the flat ground blade wider on a DVI-I connector and
+surrounding it with four thick analog pins, the designers ensured
+that:</p>
+<ol type="1">
+<li>A DVI-I connector physically hits a solid faceplate on a DVI-D port
+because the DVI-D port lacks the receiving holes for those analog
+pins.</li>
+<li>The user instantly realizes the connection is unsupported,
+eliminating confusion, false returns, and unnecessary troubleshooting
+for computer manufacturers.</li>
+</ol>
+<h3 id="one-way-asymmetrical-compatibility">One-Way Asymmetrical
+Compatibility</h3>
+<p>This mechanical keying is deliberately one-way. While a DVI-I cable
+cannot enter a DVI-D port, a DVI-D cable <em>can</em> be plugged into a
+DVI-I port.</p>
+<p>Because a DVI-I port supports digital signals natively, sending a
+pure digital signal via a DVI-D cable into that port works seamlessly.
+The four analog pin holes simply sit empty, causing no disruption to the
+digital transmission. The physical barrier only engages when a user
+attempts to plug an analog-carrying cable into a port that cannot
+process analog data.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>

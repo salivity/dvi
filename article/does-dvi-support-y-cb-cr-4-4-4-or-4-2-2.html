@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Does DVI Support YCbCr 4:4:4 or 4:2:2? - dvi</title>
+    <meta name="description" content="Digital Visual Interface (DVI) cannot natively transmit video signals in YCbCr 4:4:4 or YCbCr 4:2:2 color spaces. Designed primarily for computer displays, the official DVI 1.0 specification defines RGB as its sole digital color format. While certain dev">
+    <link rel="canonical" href="https://salivity.github.io/dvi/article/does-dvi-support-y-cb-cr-4-4-4-or-4-2-2">
+    <link rel="search" type="application/opensearchdescription+xml" title="dvi" href="/dvi/opensearch.xml">
+    <link rel="icon" href="/dvi/favicon.ico">
+    <link rel="stylesheet" href="/dvi/css/style.css">
+    <link media="print" rel="stylesheet" href="/dvi/css/print.css">
+    <script src="/dvi/js/fuse.min.js"></script>
+    <script src="/dvi/js/script.js"></script>
+    <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/4.1.3/tex-chtml.min.js" defer></script>
+    <script src="/monetize/monetize.js"></script>
+    <script src="/social/social.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Does DVI Support YCbCr 4:4:4 or 4:2:2? - dvi" />
+    <meta property="og:url" content="https://salivity.github.io/dvi/article/does-dvi-support-y-cb-cr-4-4-4-or-4-2-2" />
+    <meta property="og:image" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:secure_url" content="https://salivity.github.io/dvi/images/open-graph/default.webp" />
+    <meta property="og:image:width" content="1120" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Digital Visual Interface (DVI) cannot natively transmit video signals in YCbCr 4:4:4 or YCbCr 4:2:2 color spaces. Designed primarily for computer displays, the official DVI 1.0 specification defines RGB as its sole digital color format. While certain dev" />
+    <link rel="manifest" href="/dvi/pwa/manifest.json" />
+</head>
+<body>
+    <header>
+        <a href="/dvi/" aria-label="Go To Home Page" title="Go To Home Page" id="logo">
+            <span>salivity.github.io/</span><span>dvi</span>
+        </a>
+        <nav>
+            <ul class="header-links">
+                <li><a href="/dvi/search" title="Search" aria-label="Go To Search Page"><svg class="svg-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"></path></svg></a></li>
+                <li><a id="theme-toggle" title="Theme" href="javascript:void(0);" aria-label="Toggle Website Theme"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        
+    <div class="article-layout">
+        <aside id="profile-sidebar" class="profile-column" aria-label="Author Profile"></aside>
+        <div class="article-main-column">
+            <article><h1 id="does-dvi-support-ycbcr-444-or-422">Does DVI Support YCbCr 4:4:4
+or 4:2:2?</h1>
+<p>Digital Visual Interface (DVI) cannot natively transmit video signals
+in YCbCr 4:4:4 or YCbCr 4:2:2 color spaces. Designed primarily for
+computer displays, the official DVI 1.0 specification defines RGB as its
+sole digital color format. While certain devices can transmit YCbCr
+across physical DVI ports by packaging the data inside HDMI-compatible
+signal frames, this relies on HDMI protocols rather than native DVI
+capabilities.</p>
+<p>The DVI specification was published in 1999 by the Digital Display
+Working Group (DDWG) to provide a high-speed digital connection between
+computers and monitors. Under this standard, the digital transmission
+layer (Transition Minimized Differential Signaling, or TMDS) is
+architected strictly around an 8-bit-per-channel RGB pixel format
+(24-bit true color). The original standard does not include color space
+metadata, colorimetric flags, or hardware-level definitions required to
+natively interpret or decode YCbCr color encodings.</p>
+<p>YCbCr formats, including 4:4:4 and chroma-subsampled 4:2:2, are
+standard in consumer television broadcasts and video playback equipment.
+These formats rely on auxiliary data packets—specifically CEA-861
+InfoFrames—to instruct the receiving display on how to decode the
+incoming luma and chroma channels. Pure DVI lacks the data islands and
+auxiliary signaling infrastructure required to transmit these InfoFrames
+during the blanking intervals of the video signal.</p>
+<p>Confusion often arises because single-link DVI and HDMI share the
+exact same underlying TMDS physical signaling. Because the electrical
+pinouts are compatible, many graphics cards and video processors can
+detect a connected display's EDID and switch the output mode over a
+physical DVI port to an HDMI-compliant signal. When this happens, the
+hardware can send CEA-861 InfoFrames carrying YCbCr 4:4:4 or 4:2:2.
+However, this is an HDMI signal transmitted through a DVI-shaped
+physical connector, not a native DVI transmission.</p>
+<p>If a source device strictly adheres to the standard DVI 1.0
+specification, it will only output RGB data. Attempting to force an
+unpacketized YCbCr signal into a native DVI pipeline results in either
+an unsupported format error or severe color distortion (often appearing
+as an intense green or purple tint) because the receiving display
+interprets the luma and chroma components as raw red, green, and blue
+values.</p></article>
+        <div id="comments-container"></div>
+        <script>
+            const utterancesScript = document.createElement('script');
+            utterancesScript.setAttribute('src', 'https://utteranc.es/client.js');
+            utterancesScript.setAttribute('repo', 'salivity/dvi'); 
+            utterancesScript.setAttribute('issue-term', 'pathname'); 
+            utterancesScript.setAttribute('theme', localStorage.getItem('theme') === 'dark' ? 'github-dark' : 'github-light'); 
+            utterancesScript.setAttribute('crossorigin', 'anonymous');
+            utterancesScript.async = true;
+            document.getElementById('comments-container').appendChild(utterancesScript);
+        </script>
+    
+        </div>
+    </div>
+    
+    </main>
+    <footer>
+        <nav>
+            <ul class="social-links">
+            </ul>
+        </nav>
+        <nav>
+            <ul class="footer-links">
+                <li><a href="/dvi/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/dvi/terms-and-conditions">Terms and Conditions</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            Copyright &copy; <span id="current-year"></span>
+        </div>
+    </footer>
+</body>
+</html>
